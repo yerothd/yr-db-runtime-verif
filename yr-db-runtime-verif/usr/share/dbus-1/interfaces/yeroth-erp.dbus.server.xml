@@ -1,0 +1,28 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="com.yeroth-erp.server">
+    <method name="YEROTH_slot_refresh_INSERT_DB_MYSQL">
+      <arg type="text" direction="in"/>
+      <arg type="uint" direction="in"/>
+      <arg type="b" direction="out"/>
+    </method>
+    <method name="YEROTH_slot_refresh_SELECT_DB_MYSQL">
+      <arg type="text" direction="in"/>
+      <arg type="uint" direction="in"/>
+      <arg type="b" direction="out"/>
+    </method>
+    <method name="YEROTH_slot_refresh_update_DB_MYSQL">
+      <arg type="text" direction="in"/>
+      <arg type="uint" direction="in"/>
+      <arg type="b" direction="out"/>
+    </method>
+     <method name="YEROTH_slot_refresh_DELETE_DB_MYSQL">
+      <arg type="text" direction="in"/>
+      <arg type="uint" direction="in"/>
+      <arg type="b" direction="out"/>
+    </method>
+    <method name="YEROTH_slot_refresh_app_parameters">
+      <arg type="b" direction="out"/>
+    </method>
+  </interface>
+</node>

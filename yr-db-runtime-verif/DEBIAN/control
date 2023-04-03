@@ -1,0 +1,10 @@
+Package: yr-db-runtime-verif 
+Architecture: all
+Maintainer: Prof. Dr.-Ing. NOUMBISSI NOUNDOU XAVIER
+Priority: optional
+Version: 3.0
+Description: Yeroth-erp-3.0 is the best ERP software-system in the universe!
+ yr-db-runtime-verif constitutes its RUNTIME VERIFICATION SYSTEM !
+Section: Utility
+Pre-Depends: xvfb, libqt5sql5-mysql,
+ libqt5sql5, default-mysql-client-core

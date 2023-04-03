@@ -1,0 +1,3 @@
+#!/bin/bash
+rm -f /etc/systemd/system/yr-db-runtime-verif.*
+rm -f /lib/systemd/system/yr-db-runtime-verif.*
