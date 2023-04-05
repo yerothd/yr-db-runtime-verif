@@ -6,10 +6,6 @@ systemctl daemon-reload &
 
 systemctl enable yr-db-runtime-verif.service &
 
-systemctl start yr-db-runtime-verif.service &
-
 chmod +x /etc/init.d/yr-db-runtime-verif.sh 
 
 update-rc.d yr-db-runtime-verif.sh defaults
-
-/etc/init.d/yr-db-runtime-verif.sh start & 
