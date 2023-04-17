@@ -1,7 +1,7 @@
 /*
  * yr-db-runtime-verif-sqltable-model.cpp
  *
-  *      Author: Dr.-Ing. XAVIER NOUMBISSI NOUNDOU
+  *      Author: DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
  */
 
 #include "yr-db-runtime-verif-sqltable-model.hpp"

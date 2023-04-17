@@ -1,6 +1,6 @@
 #!/bin/bash
 #email: yeroth.d@gmail.com
-#author: Dr.-Ing. XAVIER NOUMBISSI NOUNDOU (YEROTH R&D)!
+#author: DIPL.-INF. XAVIER NOUMBISSI NOUNDOU (YEROTH R&D)!
 
 cp bin/yr-db-runtime-verif yr-db-runtime-verif/opt/yr-db-runtime-verif/bin
 

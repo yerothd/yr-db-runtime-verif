@@ -1,7 +1,7 @@
 /*
  * yr-db-runtime-verif.cpp
  *
- *      Author: Dr.-Ing. XAVIER NOUMBISSI NOUNDOU
+ *      Author: DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
  */
 
 
@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
         QString
         errMsg
         ("La variable d'environement YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER n'a pas de valeur ! \n\n");
-        errMsg.append("Contacter Dr.-Ing. XAVIER NOUMBISSI NOUNDOU\n"
+        errMsg.append("Contacter DIPL.-INF. XAVIER NOUMBISSI NOUNDOU\n"
                       "\t(yeroth.d@gmail.com)\n\n"
                       "Cliquer sur 'Cancel' pour terminer yr-db-runtime-verif");
         QMessageBox::critical(0, "yr-db-runtime-verif",
@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
         QString
         errMsg
         ("La variable d'environement YR_DB_RUNTIME_VERIF_HOME_FOLDER n'a pas de valeur ! \n\n");
-        errMsg.append("Contacter Dr.-Ing. XAVIER NOUMBISSI NOUNDOU\n"
+        errMsg.append("Contacter DIPL.-INF. XAVIER NOUMBISSI NOUNDOU\n"
                       "\t(yeroth.d@gmail.com)\n\n"
                       "Cliquer sur 'Cancel' pour terminer yr-db-runtime-verif");
         QMessageBox::critical(0, "yr-db-runtime-verif",
@@ -144,7 +144,7 @@ int main(int argc, char *argv[])
 
         errMsg.append(QString("Serveur de base de données: %1.\n\n"
                               "Dernière erreur (%2).\n\n"
-                              "Contacter Dr.-Ing. XAVIER NOUMBISSI NOUNDOU\n"
+                              "Contacter DIPL.-INF. XAVIER NOUMBISSI NOUNDOU\n"
                               "\t(yeroth.d@gmail.com)\n\n"
                               "Cliquer sur 'Cancel' pour terminer YEROTH-PGI-3.0").arg
                       (database.db_ip_address(),

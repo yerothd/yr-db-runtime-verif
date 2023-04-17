@@ -2,7 +2,7 @@
  * YR_DBUS_COMMON.cpp
  *
  *
- *      Author: Author: Dr.-Ing. XAVIER NOUMBISSI NOUNDOU, PhD (ABD)
+ *      Author: Author: DIPL.-INF. XAVIER NOUMBISSI NOUNDOU, PhD (ABD)
  */
 
 

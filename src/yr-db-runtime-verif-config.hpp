@@ -1,7 +1,7 @@
 /*
  * yr-db-runtime-verif-config.hpp
  *
- *      Author: Dr.-Ing. XAVIER NOUMBISSI NOUNDOU
+ *      Author: DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
  */
 
 #ifndef SRC_YEROTH_ALERT_CONFIG_HPP_
@@ -50,7 +50,7 @@ public:
             errMsg.
             append(" ne peut pas ouvrir pour lecture le fichier ").append
             (initCfg).append(". ) !\n\n"
-                             "Contacter Dr.-Ing. XAVIER NOUMBISSI NOUNDOU\n"
+                             "Contacter DIPL.-INF. XAVIER NOUMBISSI NOUNDOU\n"
                              "\t(YEROTHERP30@GMAIL.COM)\n\n"
                              "Cliquer sur 'Cancel' pour terminer yeren");
             QMessageBox::critical(0, "yr-db-runtime-verif",

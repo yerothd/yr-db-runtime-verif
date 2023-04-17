@@ -1,7 +1,7 @@
 /*
  * yeren-database.hpp
  *
- *      Author: Dr.-Ing. XAVIER NOUMBISSI NOUNDOU
+ *      Author: DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
  */
 
 #ifndef SRC_UTILS_YEROTH_DATABASE_HPP_

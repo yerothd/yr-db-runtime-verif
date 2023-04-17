@@ -1,7 +1,7 @@
 /*
  * YR_CPP_BOOLEAN_expression.HPP
  *
- *      Author: Dr.-Ing. XAVIER NOUMBISSI NOUNDOU
+ *      Author: DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
  */
 
 #ifndef _YR_CPP_BOOLEAN_expression_HPP_

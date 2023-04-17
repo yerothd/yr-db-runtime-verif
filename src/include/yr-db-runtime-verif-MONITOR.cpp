@@ -1,7 +1,7 @@
 /*
  * yr-db-runtime-verif-MONITOR.cpp
  *
- *      Author: Dr.-Ing. XAVIER NOUMBISSI NOUNDOU
+ *      Author: DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
  */
 
 

@@ -1,7 +1,7 @@
 /*
  * yr-db-runtime-verif-database-table-column.hpp
  *
- *      Author: Dr.-Ing. XAVIER NOUMBISSI NOUNDOU
+ *      Author: DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
  */
 
 #ifndef _YR_DB_RUNTIME_DB_VERIF_DATABASE_TABLES_COLUMNS_HPP_

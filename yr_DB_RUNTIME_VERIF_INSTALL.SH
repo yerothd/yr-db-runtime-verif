@@ -1,5 +1,5 @@
 #!/bin/sh
-# @author: Dr.-Ing. XAVIER NOUMBISSI NOUNDOU, YEROTH R&D
+# @author: DIPL.-INF. XAVIER NOUMBISSI NOUNDOU, YEROTH R&D
 # @email: YEROTH.D@GMAIL.COM
 
 

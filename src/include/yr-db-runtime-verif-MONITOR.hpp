@@ -1,7 +1,7 @@
 /*
  * yr-db-runtime-verif-MONITOR.hpp
  *
- *      Author: Dr.-Ing. XAVIER NOUMBISSI NOUNDOU
+ *      Author: DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
  */
 
 #ifndef _YR_DB_RUNTIME_VERIF_ABSTRACT_ENTITY_HPP_

@@ -1,7 +1,7 @@
 /*
  * yr-db-runtime-verif-definition-oo-class-operators.hpp
  *
- *      Author: Dr.-Ing. XAVIER NOUMBISSI NOUNDOU
+ *      Author: DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
  */
 
 #ifndef _YEROTH_ERP_3_0_DEFINITION_OO_CLASS_OPERATORS_HPP_
