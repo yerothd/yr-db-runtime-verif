@@ -11,6 +11,7 @@
 #include "YR_CPP_in_SET_TRACE_expression.HPP"
 
 
+
 class YR_CPP_MONITOR_TRACE_EVENT;
 
 class YR_CPP_MONITOR_EVENT;
@@ -25,7 +26,6 @@ class YR_CPP_not_in_SET_TRACE_expression : public YR_CPP_in_SET_TRACE_expression
 public:
 
 	YR_CPP_not_in_SET_TRACE_expression()
-	:_left_value_database_event(0)
 	{
 	}
 
@@ -38,16 +38,11 @@ public:
 		return false;
 	}
 
-	inline virtual bool
-		evaluate_expression(YR_CPP_MONITOR_TRACE_EVENT &_right_value_database_TRACE_events)
-	{
-		return !YR_CPP_in_SET_TRACE_expression::
-				evaluate_expression(_right_value_database_TRACE_events);
-	}
+	bool evaluate_expression(YR_CPP_MONITOR_TRACE_EVENT *_right_value_database_TRACE_events);
 
 protected:
 
-	YR_CPP_MONITOR_EVENT 		*_left_value_database_event;
+	QString	_left_value_database_event;
 
 
 private:

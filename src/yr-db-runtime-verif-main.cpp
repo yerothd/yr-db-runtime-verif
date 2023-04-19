@@ -182,7 +182,7 @@ void YR_DB_RUNTIME_VERIF_Main::YR_SQL_SELECT_STOCKS()
 {
     if (0 != _a_runtime_monitor)
     {
-        _a_runtime_monitor->YR_trigger_an_edge_event("select.stocks");
+        _a_runtime_monitor->YR_trigger_an_edge_event("select.stocks", true);
     }
 }
 
@@ -192,6 +192,6 @@ void YR_DB_RUNTIME_VERIF_Main::YR_SQL_select_DEPARTEMENTS_PRODUITS()
     if (0 != _a_runtime_monitor)
     {
         _a_runtime_monitor->
-        YR_trigger_an_edge_event("select.departements_produits");
+        YR_trigger_an_edge_event("select.departements_produits", true);
     }
 }
