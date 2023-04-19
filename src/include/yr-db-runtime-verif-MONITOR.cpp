@@ -1,7 +1,7 @@
 /*
  * yr-db-runtime-verif-MONITOR.cpp
  *
- *      Author: DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
+ *      Author: DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
  */
 
 
@@ -17,6 +17,25 @@ YR_DB_RUNTIME_VERIF_Monitor::YR_DB_RUNTIME_VERIF_Monitor():YR_CPP_MONITOR(),
 {
     static bool
     FIRST_TIME_CALL = true;
+
+    if (FIRST_TIME_CALL)
+    {
+        YR_CPP_UTILS();
+
+        FIRST_TIME_CALL = false;
+    }
+
+    _dbus_client = new YR_DBUS_COMMON(this);
+}
+
+
+YR_DB_RUNTIME_VERIF_Monitor::YR_DB_RUNTIME_VERIF_Monitor(QString RUNTIME_MONITOR_NAME,
+														 YR_DB_RUNTIME_VERIF_Logger *aLogger)
+:YR_CPP_MONITOR(RUNTIME_MONITOR_NAME),
+ _logger(aLogger),
+ _dbus_client(0)
+{
+    static bool FIRST_TIME_CALL = true;
 
     if (FIRST_TIME_CALL)
     {

@@ -1,7 +1,7 @@
 /*
  * yr-db-runtime-verif-sqltable-model.hpp
  *
- *      Author: DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
+ *      Author: DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
  */
 
 #ifndef _YR_DB_RUNTIME_VERIF_SQLTABLE_MODEL_HPP_

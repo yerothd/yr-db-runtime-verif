@@ -1,7 +1,7 @@
 /*
  * yr-db-runtime-verif-definition-format-date-time.hpp
  *
- *      Author: DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
+ *      Author: DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
  */
 
 #ifndef _YEROTH_ERP_3_0_DEFINITION_FORMAT_DATE_TIME_HPP_

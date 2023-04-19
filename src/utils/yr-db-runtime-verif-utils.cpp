@@ -1,7 +1,7 @@
 /*
  * yr-db-runtime-verif-utils.cpp
  *
- *      Author: DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
+ *      Author: DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
  */
 
 #include "yr-db-runtime-verif-utils.hpp"

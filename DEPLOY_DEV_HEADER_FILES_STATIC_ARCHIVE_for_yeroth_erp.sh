@@ -1,5 +1,5 @@
 #!/bin/bash
-# @AUTHOR: DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
+# @AUTHOR: DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
 # @EMAIL: yeroth.d@gmail.com
 
 

@@ -30,7 +30,9 @@ Q_OBJECT public:
 
     YR_DB_RUNTIME_VERIF_Main(YR_DB_RUNTIME_VERIF_Logger *logger);
 
-    virtual ~ YR_DB_RUNTIME_VERIF_Main();
+    inline virtual ~YR_DB_RUNTIME_VERIF_Main()
+    {
+    }
 
 public slots:
     /**
@@ -52,15 +54,6 @@ public slots:
                                                                      YR_CPP_UTILS::
                                                                      SQL_CONSTANT_IDENTIFIER::
                                                                      UNDEFINED_SQL_COMMAND);
-
-
-    void YR_SQL_SELECT_STOCKS();
-
-    void YR_SQL_select_DEPARTEMENTS_PRODUITS();
-
-private:
-
-    YR_CPP_MONITOR *_a_runtime_monitor;
 };
 
 

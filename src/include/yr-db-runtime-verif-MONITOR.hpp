@@ -1,7 +1,7 @@
 /*
  * yr-db-runtime-verif-MONITOR.hpp
  *
- *      Author: DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
+ *      Author: DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
  */
 
 #ifndef _YR_DB_RUNTIME_VERIF_ABSTRACT_ENTITY_HPP_
@@ -51,6 +51,9 @@ class YR_DB_RUNTIME_VERIF_Monitor:public YR_CPP_MONITOR
 Q_OBJECT public:
 
     YEROTH_CLASS_OPERATORS YR_DB_RUNTIME_VERIF_Monitor();
+
+    YR_DB_RUNTIME_VERIF_Monitor(QString RUNTIME_MONITOR_NAME,
+    							YR_DB_RUNTIME_VERIF_Logger *aLogger);
 
     YR_DB_RUNTIME_VERIF_Monitor(YR_DB_RUNTIME_VERIF_Logger *aLogger);
 

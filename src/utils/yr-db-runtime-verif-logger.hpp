@@ -1,7 +1,7 @@
 /*
  * yr-db-runtime-verif-logger.hpp
  *
- *      Author: DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
+ *      Author: DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
  */
 
 #ifndef _SRC_YR_DB_RUNTIME_VERIF_LOGGER_HPP_
