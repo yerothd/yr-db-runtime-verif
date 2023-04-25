@@ -67,7 +67,7 @@ Q_OBJECT public:
                                                    bool A_RETURNED_VALUE)
     {
         qDebug() << QString("%1; triggered event: ").arg(A_METHOD_CALLED)
-                 << AN_EVENT << " [" << BOOL_TO_STRING(A_RETURNED_VALUE) << "]";
+                 << AN_EVENT << " [" << DB_BOOL_TO_STRING(A_RETURNED_VALUE) << "]";
     }
 
     inline virtual YR_DB_RUNTIME_VERIF_Logger *get_logger()

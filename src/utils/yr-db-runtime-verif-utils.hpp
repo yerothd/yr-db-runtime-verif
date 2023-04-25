@@ -292,7 +292,7 @@ private:
 
 #define QDEBUG_STRINGS_OUTPUT_QSTRINGLIST(X, Y) YR_DB_RUNTIME_VERIF_Utils::qDebugStrings(X, Y)
 
-#define BOOL_TO_STRING(B) (B ? "True" : "False")
+#define DB_BOOL_TO_STRING(B) (B ? "True" : "False")
 
 //Get the value of an QSqlRecord when given as value R
 #define GET_SQL_RECORD_DATA(R,V) YR_DB_RUNTIME_VERIF_Utils::get_text(R.value(V))

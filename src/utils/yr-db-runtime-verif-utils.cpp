@@ -234,7 +234,7 @@ bool YR_DB_RUNTIME_VERIF_Utils::execQuery(const QString &strQuery,
     if (logger)
     {
         logger->log("execQuery",
-                    QString("[%1] %2").arg(BOOL_TO_STRING(success),
+                    QString("[%1] %2").arg(DB_BOOL_TO_STRING(success),
                                            query.executedQuery()));
     }
 
@@ -269,7 +269,7 @@ int YR_DB_RUNTIME_VERIF_Utils::execQuery(QSqlQuery &query,
     if (logger)
     {
         logger->log("execQuery",
-                    QString("[%1] %2").arg(BOOL_TO_STRING(success),
+                    QString("[%1] %2").arg(DB_BOOL_TO_STRING(success),
                                            query.executedQuery()));
     }
 
@@ -303,7 +303,7 @@ int YR_DB_RUNTIME_VERIF_Utils::execQuery(QSqlQuery &query,
     if (logger)
     {
         logger->log("execQuery",
-                    QString("[%1] %2").arg(BOOL_TO_STRING(success),
+                    QString("[%1] %2").arg(DB_BOOL_TO_STRING(success),
                                            query.executedQuery()));
     }
 
