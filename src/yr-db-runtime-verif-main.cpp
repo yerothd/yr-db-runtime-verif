@@ -32,7 +32,9 @@ void YR_DB_RUNTIME_VERIF_Main::YR_CALL_BACK_final_state(YR_CPP_MONITOR_STATE *
 YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main()
 :YR_DB_RUNTIME_VERIF_Monitor()
 {
-    YR_CPP_MONITOR_EDGE *a_last_edge_0 = create_yr_monitor_edge("D", "E");
+    YR_CPP_MONITOR_EDGE *a_last_edge_0 = create_yr_monitor_edge("D",
+    															"E",
+																"select.departements_produits");
 
     a_last_edge_0->get_END_STATE()->set_FINAL_STATE(true);
 
@@ -43,15 +45,15 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main()
                                                           "stocks.nom_departement_produit");
 
     YR_register_set_final_state_CALLBACK_FUNCTION(&YR_CALL_BACK_final_state);
-
-    YR_CPP_MONITOR_EVENT *a_last_edge_event_0 = a_last_edge_0->set_EDGE_EVENT("select.departements_produits");
 }
 
 
 YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main(YR_DB_RUNTIME_VERIF_Logger *logger)
 :YR_DB_RUNTIME_VERIF_Monitor(logger)
 {
-    YR_CPP_MONITOR_EDGE *a_last_edge_0 = create_yr_monitor_edge("D", "E");
+    YR_CPP_MONITOR_EDGE *a_last_edge_0 = create_yr_monitor_edge("D",
+    															"E",
+																"select.departements_produits");
 
     a_last_edge_0->get_END_STATE()->set_FINAL_STATE(true);
 
@@ -62,8 +64,6 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main(YR_DB_RUNTIME_VERIF_Logger *l
                                                           "stocks.nom_departement_produit");
 
     YR_register_set_final_state_CALLBACK_FUNCTION(&YR_CALL_BACK_final_state);
-
-    YR_CPP_MONITOR_EVENT *a_last_edge_event_0 = a_last_edge_0->set_EDGE_EVENT("select.departements_produits");
 }
 
 
