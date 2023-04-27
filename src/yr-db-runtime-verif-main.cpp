@@ -38,11 +38,11 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main()
 
     a_last_edge_0->get_END_STATE()->set_FINAL_STATE(true);
 
-    a_last_edge_0->get_START_STATE()->set_PRE_CONDITION_notIN("YR_ASSET",
-                                                              "departements_produits.nom_departement_produit");
+    a_last_edge_0->set_PRE_CONDITION_notIN("YR_ASSET",
+                                           "departements_produits.nom_departement_produit");
 
-    a_last_edge_0->get_END_STATE()->set_POST_CONDITION_IN("YR_ASSET",
-                                                          "stocks.nom_departement_produit");
+    a_last_edge_0->set_POST_CONDITION_IN("YR_ASSET",
+                                         "stocks.nom_departement_produit");
 
     YR_register_set_final_state_CALLBACK_FUNCTION(&YR_CALL_BACK_final_state);
 }
@@ -57,11 +57,11 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main(YR_DB_RUNTIME_VERIF_Logger *l
 
     a_last_edge_0->get_END_STATE()->set_FINAL_STATE(true);
 
-    a_last_edge_0->get_START_STATE()->set_PRE_CONDITION_notIN("YR_ASSET",
-                                                              "departements_produits.nom_departement_produit");
+    a_last_edge_0->set_PRE_CONDITION_notIN("YR_ASSET",
+                                           "departements_produits.nom_departement_produit");
 
-    a_last_edge_0->get_END_STATE()->set_POST_CONDITION_IN("YR_ASSET",
-                                                          "stocks.nom_departement_produit");
+    a_last_edge_0->set_POST_CONDITION_IN("YR_ASSET",
+                                         "stocks.nom_departement_produit");
 
     YR_register_set_final_state_CALLBACK_FUNCTION(&YR_CALL_BACK_final_state);
 }
