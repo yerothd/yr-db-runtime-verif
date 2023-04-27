@@ -38,7 +38,7 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main()
 
     a_last_edge_0->get_START_STATE()->set_START_STATE(true);
 
-    a_last_edge_0->get_END_STATE()->set_FINAL_STATE(true);
+    a_last_edge_0->get_TARGET_STATE()->set_FINAL_STATE(true);
 
     a_last_edge_0->set_PRE_CONDITION_notIN("YR_ASSET",
                                            "departements_produits.nom_departement_produit");
@@ -59,7 +59,7 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main(YR_DB_RUNTIME_VERIF_Logger *l
 
     a_last_edge_0->get_START_STATE()->set_START_STATE(true);
 
-    a_last_edge_0->get_END_STATE()->set_FINAL_STATE(true);
+    a_last_edge_0->get_TARGET_STATE()->set_FINAL_STATE(true);
 
     a_last_edge_0->set_PRE_CONDITION_notIN("YR_ASSET",
                                            "departements_produits.nom_departement_produit");
