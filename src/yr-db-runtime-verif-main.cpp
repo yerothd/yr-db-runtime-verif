@@ -36,6 +36,8 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main()
     															"E",
 																"select.departements_produits");
 
+    a_last_edge_0->get_START_STATE()->set_START_STATE(true);
+
     a_last_edge_0->get_END_STATE()->set_FINAL_STATE(true);
 
     a_last_edge_0->set_PRE_CONDITION_notIN("YR_ASSET",
@@ -54,6 +56,8 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main(YR_DB_RUNTIME_VERIF_Logger *l
     YR_CPP_MONITOR_EDGE *a_last_edge_0 = create_yr_monitor_edge("D",
     															"E",
 																"select.departements_produits");
+
+    a_last_edge_0->get_START_STATE()->set_START_STATE(true);
 
     a_last_edge_0->get_END_STATE()->set_FINAL_STATE(true);
 
