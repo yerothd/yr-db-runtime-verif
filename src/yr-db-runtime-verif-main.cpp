@@ -36,7 +36,7 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main()
     															"E",
 																"select.departements_produits");
 
-    a_last_edge_0->get_START_STATE()->set_START_STATE(true);
+    a_last_edge_0->get_SOURCE_STATE()->set_START_STATE(true);
 
     a_last_edge_0->get_TARGET_STATE()->set_FINAL_STATE(true);
 
@@ -57,7 +57,7 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main(YR_DB_RUNTIME_VERIF_Logger *l
     															"E",
 																"select.departements_produits");
 
-    a_last_edge_0->get_START_STATE()->set_START_STATE(true);
+    a_last_edge_0->get_SOURCE_STATE()->set_START_STATE(true);
 
     a_last_edge_0->get_TARGET_STATE()->set_FINAL_STATE(true);
 
