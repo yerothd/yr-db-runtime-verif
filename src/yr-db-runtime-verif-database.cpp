@@ -33,11 +33,11 @@ YerothERPDatabase::YerothERPDatabase(QString dbType)
     }
 
     this->set_db_type(dbType);
-    this->set_db_name(YerenConfig::_db_name);
-    this->set_db_ip_address(YerenConfig::_db_ip_address);
-    this->set_db_user_name(YerenConfig::_db_user_name);
-    this->set_db_user_pwd(YerenConfig::_db_user_pwd);
-    this->set_db_connection_options(YerenConfig::_db_connection_options);
+    this->set_db_name(YR_DB_RUNTIME_VERIF_Config::_db_name);
+    this->set_db_ip_address(YR_DB_RUNTIME_VERIF_Config::_db_ip_address);
+    this->set_db_user_name(YR_DB_RUNTIME_VERIF_Config::_db_user_name);
+    this->set_db_user_pwd(YR_DB_RUNTIME_VERIF_Config::_db_user_pwd);
+    this->set_db_connection_options(YR_DB_RUNTIME_VERIF_Config::_db_connection_options);
 }
 
 void YerothERPDatabase::set_db_name(QString db_name)

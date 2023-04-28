@@ -38,11 +38,7 @@
 #include "utils/yr-db-runtime-verif-logger.hpp"
 
 
-
-const QString SQLITE("SQLite");
 const QString MYSQL("MySQL");
-const QString MSSQL("MSSQL");
-const QString ORACLE("Oracle");
 
 
 class YR_DB_RUNTIME_VERIF_ALERT_PERIOD_TIME;
@@ -59,23 +55,23 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
 
-    YerenConfig::YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER =
+    YR_DB_RUNTIME_VERIF_Config::YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER =
                     QString(std::
                             getenv
                             ("YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER")).trimmed();
 
-    YerenConfig::YR_DB_RUNTIME_VERIF_HOME_FOLDER =
+    YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_HOME_FOLDER =
                     QString(std::getenv("YR_DB_RUNTIME_VERIF_HOME_FOLDER")).trimmed();
 
-    YerenConfig::YEROTH_ERP_3_0_HOME_FOLDER =
+    YR_DB_RUNTIME_VERIF_Config::YEROTH_ERP_3_0_HOME_FOLDER =
                     QString(std::getenv("YEROTH_ERP_3_0_HOME_FOLDER")).trimmed();
 
 
     qDebug() << "yr-db-runtime-verif.cpp | main | YEROTH-PGI-3.0 HOME FOLDER: "
-             << YerenConfig::YEROTH_ERP_3_0_HOME_FOLDER;
+             << YR_DB_RUNTIME_VERIF_Config::YEROTH_ERP_3_0_HOME_FOLDER;
 
 
-    if (YerenConfig::YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER.isEmpty())
+    if (YR_DB_RUNTIME_VERIF_Config::YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER.isEmpty())
     {
         QString
         errMsg
@@ -89,7 +85,7 @@ int main(int argc, char *argv[])
     }
 
 
-    if (YerenConfig::YR_DB_RUNTIME_VERIF_HOME_FOLDER.isEmpty())
+    if (YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_HOME_FOLDER.isEmpty())
     {
         QString
         errMsg
@@ -103,12 +99,12 @@ int main(int argc, char *argv[])
     }
 
 
-    QString logFileName(YerenConfig::YR_DB_RUNTIME_VERIF_HOME_FOLDER);
+    QString logFileName(YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_HOME_FOLDER);
     logFileName.append("/yr-db-runtime-verif.log");
 
     qDebug() <<
              "yr-db-runtime-verif.cpp | main | yr-db-runtime-verif home folder: " <<
-             YerenConfig::YR_DB_RUNTIME_VERIF_HOME_FOLDER;
+             YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_HOME_FOLDER;
 
     YR_DB_RUNTIME_VERIF_Utils::setLogFileName(logFileName);
 
@@ -122,16 +118,16 @@ int main(int argc, char *argv[])
 
     QString
     initCfg(QString("%1/%2").arg
-            (YerenConfig::YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER,
+            (YR_DB_RUNTIME_VERIF_Config::YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER,
              "yeroth-erp-3-0.properties"));
 
     qDebug() <<
              "yr-db-runtime-verif.cpp | main | yeroth-erp-3-0.properties absolute file path: "
              << initCfg << "\n";
 
-    YerenConfig::initYerenConfig(initCfg);
+    YR_DB_RUNTIME_VERIF_Config::init_YR_DB_RUNTIME_VERIF_Config(initCfg);
 
-    YerothERPDatabase database(YerenConfig::_db_type);
+    YerothERPDatabase database(YR_DB_RUNTIME_VERIF_Config::_db_type);
 
     //qDebug() << "++ database.toString(): " << database.toString();
 

@@ -12,20 +12,6 @@
 #include "src/include/yr-db-runtime-verif-MONITOR.hpp"
 
 
-
-YR_DBUS_COMMON::YR_DBUS_COMMON(YR_DB_RUNTIME_VERIF_Monitor *A_RUNTIME_MONITOR):_A_RUNTIME_MONITOR
-    (A_RUNTIME_MONITOR)
-{
-
-}
-
-
-YR_DBUS_COMMON::~YR_DBUS_COMMON()
-{
-
-}
-
-
 bool YR_DBUS_COMMON::YR_slot_refresh_INSERT_DB_MYSQL(QString in0, uint in1)
 {
     if (0 != _A_RUNTIME_MONITOR)

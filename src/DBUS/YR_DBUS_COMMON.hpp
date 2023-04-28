@@ -18,14 +18,23 @@ class YR_DB_RUNTIME_VERIF_Monitor;
 
 
 
-class YR_DBUS_COMMON:public QObject
+class YR_DBUS_COMMON : public QObject
 {
-Q_OBJECT public:
-    YR_DBUS_COMMON(YR_DB_RUNTIME_VERIF_Monitor *A_RUNTIME_MONITOR);
+	Q_OBJECT
 
-    virtual ~ YR_DBUS_COMMON();
+public:
+
+	inline YR_DBUS_COMMON(YR_DB_RUNTIME_VERIF_Monitor *A_RUNTIME_MONITOR)
+	:_A_RUNTIME_MONITOR(A_RUNTIME_MONITOR)
+	{
+	}
+
+	virtual inline ~YR_DBUS_COMMON()
+	{
+	}
 
 public Q_SLOTS:
+
     virtual bool YR_slot_refresh_INSERT_DB_MYSQL(QString in0,
                                                  uint in1);
 

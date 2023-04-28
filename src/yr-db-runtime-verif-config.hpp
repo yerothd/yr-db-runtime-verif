@@ -17,7 +17,7 @@
 
 #include <QtWidgets/QMessageBox>
 
-class YerenConfig
+class YR_DB_RUNTIME_VERIF_Config
 {
 public:
 
@@ -40,19 +40,19 @@ public:
     static QString YR_DB_RUNTIME_VERIF_HOME_FOLDER;
 
 
-    static void initYerenConfig(QString initCfg)
+    static void init_YR_DB_RUNTIME_VERIF_Config(QString initCfg)
     {
         QFile file(initCfg);
 
         if (!file.open(QFile::ReadOnly))
         {
-            QString errMsg("yr-db-runtime-verif: YerenConfig::initYerenConfig");
+            QString errMsg("yr-db-runtime-verif: YR_DB_RUNTIME_VERIF_Config::init_YR_DB_RUNTIME_VERIF_Config");
             errMsg.
             append(" ne peut pas ouvrir pour lecture le fichier ").append
             (initCfg).append(". ) !\n\n"
                              "Contacter DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU\n"
-                             "\t(YEROTHERP30@GMAIL.COM)\n\n"
-                             "Cliquer sur 'Cancel' pour terminer yeren");
+                             "\t(yeroth.d@gmail.com)\n\n"
+                             "Cliquer sur 'Cancel' pour terminer yr-db-runtime-verif");
             QMessageBox::critical(0, "yr-db-runtime-verif",
                                   FROM_UTF8_STRING(errMsg),
                                   QMessageBox::Cancel);
@@ -71,32 +71,32 @@ public:
             //qDebug() << "++ line: " << line << "\n";
             if ("db_type" == list.at(0))
             {
-                YerenConfig::_db_type = list.at(1).trimmed();
+                YR_DB_RUNTIME_VERIF_Config::_db_type = list.at(1).trimmed();
                 // qDebug() << "++ db_type = " << YerenConfig::_db_type << "\n";
             }
             if ("db_name" == list.at(0))
             {
-                YerenConfig::_db_name = list.at(1).trimmed();
+                YR_DB_RUNTIME_VERIF_Config::_db_name = list.at(1).trimmed();
                 //qDebug() << "++ db_name = " << YerenConfig::_db_name << "\n";
             }
             else if ("db_ip_address" == list.at(0))
             {
-                YerenConfig::_db_ip_address = list.at(1).trimmed();
+                YR_DB_RUNTIME_VERIF_Config::_db_ip_address = list.at(1).trimmed();
                 //qDebug() << "++ db_ip_address = " << YerenConfig::_db_ip_address << "\n";
             }
             else if ("db_user_name" == list.at(0))
             {
-                YerenConfig::_db_user_name = list.at(1).trimmed();
+                YR_DB_RUNTIME_VERIF_Config::_db_user_name = list.at(1).trimmed();
                 //qDebug() << "++ db_user_name = " << YerenConfig::_db_user_name << "\n";
             }
             else if ("db_user_pwd" == list.at(0))
             {
-                YerenConfig::_db_user_pwd = list.at(1).trimmed();
+                YR_DB_RUNTIME_VERIF_Config::_db_user_pwd = list.at(1).trimmed();
                 //qDebug() << "++ db_user_pwd = " << YerenConfig::_db_user_pwd << "\n";
             }
             else if ("db_connection_options" == list.at(0))
             {
-                YerenConfig::_db_connection_options = list.at(1).trimmed();
+                YR_DB_RUNTIME_VERIF_Config::_db_connection_options = list.at(1).trimmed();
                 //qDebug() << "++ db_connection_options = " <<YerenConfig::_ db_connection_options << "\n";
             }
         }
