@@ -14,8 +14,7 @@ DEFINE YOUR CLIENT ANALYSIS VERIFICATION
 algorithm;
 
 
-# HOW TO GET a generated analysis client
-# from specification language 'YR_SD_RUNTIME_VERIF_LANG' 
+# HOW TO GET a generated analysis client from specification language 'YR_SD_RUNTIME_VERIF_LANG' 
 
 1. THE PROJECT 'YR_SD_RUNTIME_VERIF_LANG_COMP' : 
 	"https://github.com/yerothd/yr_sd_runtime_verif_lang"
