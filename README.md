@@ -3,10 +3,10 @@
 
 # HOW TO BUILD THIS PROJECT
 
-[a link](https://github.com/yerothd/yr-db-runtime-verif/blob/master/COMPILING.md)
+[compilation in file BUILDING.md](https://github.com/yerothd/yr-db-runtime-verif/blob/master/BUILDING.md)
 
 
 # HOW TO EXECUTE THIS PROJECT AFTER A SUCCESSFUL BUILD
 
-[a link](https://github.com/yerothd/yr-db-runtime-verif/blob/master/EXECUTING.md)
+[HOW TO RUN in file EXECUTING.md](https://github.com/yerothd/yr-db-runtime-verif/blob/master/EXECUTING.md)
 
