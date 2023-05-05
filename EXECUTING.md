@@ -13,6 +13,9 @@ named 'yr-db-runtime-verif-main.hpp' and
 DEFINE YOUR CLIENT ANALYSIS VERIFICATION
 algorithm;
 
+Detailled information on how to compile
+this project in file [BUILDING.md](https://github.com/yerothd/yr-db-runtime-verif/blob/master/BUILDING.md)
+
 
 # HOW TO GET a generated analysis client from specification language 'YR_SD_RUNTIME_VERIF_LANG' 
 
