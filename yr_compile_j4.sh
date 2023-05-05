@@ -25,7 +25,7 @@ make clean
 
 OUT_CMD_TIME=$(time make -j4 > /dev/null 2> "${YR_ERRORS_LOG_FILE}")
 
-val=$(cat "${YR_ERRORS_LOG_FILE}" | grep -w 'error\|ERROR\|Error' | wc -l)
+val=$(cat "${YR_ERRORS_LOG_FILE}" | grep -w "*** No rule to make target\|error\|ERROR\|Error" | wc -l)
 
 if [ ${val} -eq 0 ]; then
 	#rm -f "${YR_ERRORS_LOG_FILE}" 

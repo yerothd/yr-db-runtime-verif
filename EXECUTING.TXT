@@ -1,0 +1,13 @@
+You must provide C++ header and source files
+named 'yr-db-runtime-verif-main.hpp' and
+'yr-db-runtime-verif-main.cpp', WHERE YOU
+DEFINE YOUR CLIENT ANALYSIS VERIFICATION
+algorithm;
+
+1. THE PROJECT 'YR_SD_RUNTIME_VERIF_LANG_COMP' : 
+	"https://github.com/yerothd/yr_sd_runtime_verif_lang"
+  PROVIDES A WORKING STATE DIAGRAM MEALY 
+  MACHINE into C++ SOURCE CODE FILES
+	COMPILER that could generate files
+  'yr-db-runtime-verif-main.hpp' and
+  'yr-db-runtime-verif-main.cpp' FOR YOU.
