@@ -1,7 +1,9 @@
 #!/bin/bash
-#AUTEUR: DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
-#EMAIL: yeroth.d@gmail.com
+#@AUTEUR: DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
 
+# SHOWS THIS Makefile FILE COMMAND STRING IN THE
+# CONSOLE AS THEY ARE EXECUTED.
+set -x
 
 # -------------------------------------------------------------- #
 YR_DB_RUNTIME_VERIF_deb_folder=yr-db-runtime-verif

@@ -1,6 +1,9 @@
 #!/bin/sh
 # @author: DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU, YEROTH R&D
-# @email: YEROTH.D@GMAIL.COM
+
+# SHOWS THIS Makefile FILE COMMAND STRING IN THE
+# CONSOLE AS THEY ARE EXECUTED.
+set -x
 
 
 sudo systemctl stop yr-db-runtime-verif
