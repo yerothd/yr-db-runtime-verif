@@ -115,11 +115,13 @@ Q_OBJECT public:
 
     QString YR_open_SOURCE_TEMPLATE_FILE();
 
+
+    QString YR_generate_cplusplus_headers_files__AND__SAVE__TO__DISK();
+
     QString YR_generate_cplusplus_headers_files();
 
 
-    QString GENERATE_METHOD_event_call(QString _a_yr_rtm_MONITOR_name,
-                                       QString _event_METHOD_name,
+    QString GENERATE_METHOD_event_call(QString _event_METHOD_name,
                                        QString _STRING_bool_GUARDED_CONDITION =
                                                        YR_CPP_UTILS::EMPTY_STRING);
 
@@ -130,6 +132,9 @@ Q_OBJECT public:
     QString GENERATE_pre_post_conditions_code(QString &
                                               a_last_edge_VARIABLE_STRING_pointer,
                                               YR_CPP_MONITOR_EDGE &_AN_EDGE);
+
+
+    QString YR_generate_cplusplus_sources_files__AND__SAVE__TO__DISK();
 
     QString YR_generate_cplusplus_sources_files();
 
@@ -228,6 +233,16 @@ Q_OBJECT public:
     inline YR_CPP_MONITOR_EDGE *get_current_triggered_EDGE()
     {
         return _current_triggered_EDGE;
+    }
+
+    inline uint YR_CPP_monitor_edge_count()
+    {
+    	return (uint) _EDGES.size();
+    }
+
+    inline uint YR_CPP_monitor_state_count()
+    {
+    	return (uint) _STATES.size();
     }
 
 protected:
