@@ -1,26 +1,26 @@
-# HOW TO COMPILE YOUR PROJECT
+### HOW TO COMPILE YOUR PROJECT
 
 You compile this project with the
-bash script 'yr_compile_j4.sh', which
-automatically generates a DEBIAN 
-INSTALLATION PACKAGE FILE ('.deb') 
+bash script '**_yr_compile_j4.sh_**', which
+automatically generates a **_DEBIAN 
+INSTALLATION PACKAGE FILE ('.deb')_** 
 upon successful COMPILATION.
 
 
-# HOW TO USE "UNINSTALL SCRIPT"
+### HOW TO USE "UNINSTALL SCRIPT"
 
-BASH SCRIPT 'yr_DB_RUNTIME_VERIF_uninstall.sh'
+BASH SCRIPT '**_yr_DB_RUNTIME_VERIF_uninstall.sh_**'
 UNINSTALLS A CURRENT INSTANCE OF
 THIS PROJECT ON YOUR SYSTEM.
 
 
-# HOW TO USE "INSTALL SCRIPT"
+### HOW TO USE "INSTALL SCRIPT"
 
-BASH SCRIPT 'yr_DB_RUNTIME_VERIF_INSTALL.SH'
+BASH SCRIPT '**_yr_DB_RUNTIME_VERIF_INSTALL.SH_**'
 INSTALLS THE DEBIAN PACKAGE 
-'yr-db-runtime-verif.deb' GENERATED UPON
+'**_yr-db-runtime-verif.deb_**' GENERATED UPON
 SUCCESSFUL COMPILATION, ON YOUR SYSTEM.
 
-# REPORT BUGS / IMPROVEMENT
+### REPORT BUGS / IMPROVEMENT
 
-CONTACT ME AT GMAIL: yeroth.d 
+CONTACT ME AT **_GMAIL_**: **_yeroth.d_**
