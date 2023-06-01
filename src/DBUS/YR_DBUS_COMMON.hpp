@@ -9,7 +9,6 @@
 #ifndef YR_DBUS_COMMON_HPP_
 #define YR_DBUS_COMMON_HPP_
 
-
 #include <QtCore/QObject>
 
 
@@ -33,10 +32,10 @@ public:
 	{
 	}
 
+
 public Q_SLOTS:
 
-    virtual bool YR_slot_refresh_INSERT_DB_MYSQL(QString in0,
-                                                 uint in1);
+    virtual bool YR_slot_refresh_INSERT_DB_MYSQL(QString in0, uint in1);
 
     virtual bool YR_slot_refresh_SELECT_DB_MYSQL(QString in0, uint in1);
 
@@ -45,10 +44,16 @@ public Q_SLOTS:
     virtual bool YR_slot_refresh_DELETE_DB_MYSQL(QString in0, uint in1);
 
 Q_SIGNALS:
+
     void YR_VERIFIED();
 
 
 protected:
+
+	static void TRACE_SYSTEM_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_monitor,
+									   uint 					   cur_command,
+									   QString 					   &in0);
+
 
     YR_DB_RUNTIME_VERIF_Monitor *_A_RUNTIME_MONITOR;
 

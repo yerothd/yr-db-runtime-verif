@@ -52,7 +52,7 @@ public slots:
             YR_CPP_UTILS::SQL_CONSTANT_IDENTIFIER::UNDEFINED_SQL_COMMAND);
 
 
-    bool YR_SQL_select_departements_produits();
+    bool YR_SQL_SELECT_departements_produits();
 
 };
 

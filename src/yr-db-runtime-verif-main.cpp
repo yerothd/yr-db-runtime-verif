@@ -36,7 +36,7 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main()
     a_last_edge_0->get_SOURCE_STATE()->set_PRE_CONDITION_notIN("YR_ASSET", "departements_produits.nom_departement_produit");
     a_last_edge_0->get_TARGET_STATE()->set_POST_CONDITION_IN("YR_ASSET", "stocks.nom_departement_produit");
 
-    YR_CPP_MONITOR_EVENT *a_last_edge_event_0 = a_last_edge_0->set_EDGE_EVENT ("'select.departements_produits'");
+    YR_CPP_MONITOR_EVENT *a_last_edge_event_0 = a_last_edge_0->set_EDGE_EVENT ("'SELECT.departements_produits'");
     YR_register_set_final_state_CALLBACK_FUNCTION(&YR_CALL_BACK_final_state);
 }
 
@@ -50,7 +50,7 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main(YR_DB_RUNTIME_VERIF_Logger *l
     a_last_edge_0->get_SOURCE_STATE()->set_PRE_CONDITION_notIN("YR_ASSET", "departements_produits.nom_departement_produit");
     a_last_edge_0->get_TARGET_STATE()->set_POST_CONDITION_IN("YR_ASSET", "stocks.nom_departement_produit");
 
-    YR_CPP_MONITOR_EVENT *a_last_edge_event_0 = a_last_edge_0->set_EDGE_EVENT ("'select.departements_produits'");
+    YR_CPP_MONITOR_EVENT *a_last_edge_event_0 = a_last_edge_0->set_EDGE_EVENT ("'SELECT.departements_produits'");
     YR_register_set_final_state_CALLBACK_FUNCTION(&YR_CALL_BACK_final_state);
 }
 
@@ -82,11 +82,9 @@ bool YR_DB_RUNTIME_VERIF_Main::DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(
     qDebug() << "\t "
              << QString("[C++_STMT (%1.%2)[%3,%4] at %5:%6]").
              arg(YR_CPP_UTILS::_DB_STMT_verification_ToUserViewString.
-                 value(cur_SQL_command),
-				 sql_table_name,
+                 value(cur_SQL_command), sql_table_name,
                  QString::number(cur_SQL_command),
-                 QString::number(sql_record_qty_MODIFIED),
-				 CPP_FILE_NAME,
+                 QString::number(sql_record_qty_MODIFIED), CPP_FILE_NAME,
                  cpp_line_number);
 
 
@@ -98,9 +96,10 @@ bool YR_DB_RUNTIME_VERIF_Main::DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(
     case YR_CPP_UTILS::SELECT:
 
     	if (YR_CPP_UTILS::isEqualsCaseSensitive("departements_produits", sql_table_name))
-        {
-            return YR_trigger_an_edge_event("'select.departements_produits'");
-        }
+    	{
+    		return YR_SQL_SELECT_departements_produits();
+    	}
+
         break;
 
     case YR_CPP_UTILS::UPDATE:
@@ -118,8 +117,8 @@ bool YR_DB_RUNTIME_VERIF_Main::DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(
 }
 
 
-bool YR_DB_RUNTIME_VERIF_Main::YR_SQL_select_departements_produits()
+bool YR_DB_RUNTIME_VERIF_Main::YR_SQL_SELECT_departements_produits()
 {
-    return YR_trigger_an_edge_event("'select.departements_produits'");
+    return YR_trigger_an_edge_event("'SELECT.departements_produits'");
 }
 
