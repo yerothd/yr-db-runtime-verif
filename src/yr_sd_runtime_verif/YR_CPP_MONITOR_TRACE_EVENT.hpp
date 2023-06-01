@@ -29,7 +29,7 @@ Q_OBJECT public:
     {
     }
 
-    virtual ~YR_CPP_MONITOR_TRACE_EVENT()
+    virtual ~ YR_CPP_MONITOR_TRACE_EVENT()
     {
     }
 

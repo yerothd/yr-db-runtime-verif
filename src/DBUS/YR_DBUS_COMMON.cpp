@@ -17,11 +17,10 @@ bool YR_DBUS_COMMON::YR_slot_refresh_INSERT_DB_MYSQL(QString in0, uint in1)
     if (0 != _A_RUNTIME_MONITOR)
     {
         bool verification_check_RESULT =
-                        _A_RUNTIME_MONITOR->DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(in0,
-                                                                                in1,
-                                                                                YR_CPP_UTILS::
-                                                                                SQL_CONSTANT_IDENTIFIER::
-                                                                                INSERT);
+                        _A_RUNTIME_MONITOR
+							->DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(in0,
+                                                                  in1,
+                                                                  YR_CPP_UTILS::SQL_CONSTANT_IDENTIFIER::INSERT);
 
         return verification_check_RESULT;
     }
@@ -35,11 +34,10 @@ bool YR_DBUS_COMMON::YR_slot_refresh_SELECT_DB_MYSQL(QString in0, uint in1)
     if (0 != _A_RUNTIME_MONITOR)
     {
         bool verification_check_RESULT =
-                        _A_RUNTIME_MONITOR->DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(in0,
-                                                                                in1,
-                                                                                YR_CPP_UTILS::
-                                                                                SQL_CONSTANT_IDENTIFIER::
-                                                                                SELECT);
+                        _A_RUNTIME_MONITOR
+							->DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(in0,
+                                                                  in1,
+                                                                  YR_CPP_UTILS::SQL_CONSTANT_IDENTIFIER::SELECT);
 
         return verification_check_RESULT;
     }
@@ -53,11 +51,10 @@ bool YR_DBUS_COMMON::YR_slot_refresh_UPDATE_DB_MYSQL(QString in0, uint in1)
     if (0 != _A_RUNTIME_MONITOR)
     {
         bool verification_check_RESULT =
-                        _A_RUNTIME_MONITOR->DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(in0,
-                                                                                in1,
-                                                                                YR_CPP_UTILS::
-                                                                                SQL_CONSTANT_IDENTIFIER::
-                                                                                UPDATE);
+                        _A_RUNTIME_MONITOR
+							->DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(in0,
+                                                                  in1,
+                                                                  YR_CPP_UTILS::SQL_CONSTANT_IDENTIFIER::UPDATE);
 
         return verification_check_RESULT;
     }
@@ -71,11 +68,10 @@ bool YR_DBUS_COMMON::YR_slot_refresh_DELETE_DB_MYSQL(QString in0, uint in1)
     if (0 != _A_RUNTIME_MONITOR)
     {
         bool verification_check_RESULT =
-                        _A_RUNTIME_MONITOR->DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(in0,
-                                                                                in1,
-                                                                                YR_CPP_UTILS::
-                                                                                SQL_CONSTANT_IDENTIFIER::
-                                                                                DELETE);
+                        _A_RUNTIME_MONITOR
+							->DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(in0,
+                                                                  in1,
+                                                                  YR_CPP_UTILS::SQL_CONSTANT_IDENTIFIER::DELETE);
 
         return verification_check_RESULT;
     }

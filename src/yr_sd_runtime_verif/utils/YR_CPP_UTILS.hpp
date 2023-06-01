@@ -38,7 +38,7 @@ Q_OBJECT public:
 
     YR_CPP_CLASS_OPERATORS YR_CPP_UTILS();
 
-    inline ~YR_CPP_UTILS()
+    inline ~ YR_CPP_UTILS()
     {
     }
 

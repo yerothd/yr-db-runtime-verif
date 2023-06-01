@@ -46,28 +46,35 @@ class YR_DB_RUNTIME_VERIF_Logger;
  * SO method 'bool DO_VERIFY_AND_or_CHECK_ltl_PROPERTY()'
  * COULD PERFORM effective runtime check !
  */
-class YR_DB_RUNTIME_VERIF_Monitor:public YR_CPP_MONITOR
+class YR_DB_RUNTIME_VERIF_Monitor : public YR_CPP_MONITOR
 {
-Q_OBJECT public:
+	Q_OBJECT
 
-    YEROTH_CLASS_OPERATORS YR_DB_RUNTIME_VERIF_Monitor();
+public:
 
-    YR_DB_RUNTIME_VERIF_Monitor(QString RUNTIME_MONITOR_NAME,
-    							YR_DB_RUNTIME_VERIF_Logger *aLogger);
+    YEROTH_CLASS_OPERATORS
+
+	YR_DB_RUNTIME_VERIF_Monitor();
+
+    YR_DB_RUNTIME_VERIF_Monitor(QString 					RUNTIME_MONITOR_NAME,
+    							YR_DB_RUNTIME_VERIF_Logger 	*aLogger);
 
     YR_DB_RUNTIME_VERIF_Monitor(YR_DB_RUNTIME_VERIF_Logger *aLogger);
 
-    virtual ~ YR_DB_RUNTIME_VERIF_Monitor();
+    virtual ~YR_DB_RUNTIME_VERIF_Monitor();
 
     static bool YR_DB_RUNTIME_VERIF_Monitor_notify_SUCCESS_VERIFICATION();
 
-    inline virtual void YR_TRIGGERED_EVENT_LOGGING(const QString
-                                                   A_METHOD_CALLED,
+    inline virtual void YR_TRIGGERED_EVENT_LOGGING(const QString A_METHOD_CALLED,
                                                    const QString AN_EVENT,
-                                                   bool A_RETURNED_VALUE)
+                                                   bool 		 A_RETURNED_VALUE)
     {
-        qDebug() << QString("%1; triggered event: ").arg(A_METHOD_CALLED)
-                 << AN_EVENT << " [" << DB_BOOL_TO_STRING(A_RETURNED_VALUE) << "]";
+        qDebug() << QString("%1; triggered event: ")
+        				.arg(A_METHOD_CALLED)
+                 << AN_EVENT
+				 << " ["
+				 << DB_BOOL_TO_STRING(A_RETURNED_VALUE)
+				 << "]";
     }
 
     inline virtual YR_DB_RUNTIME_VERIF_Logger *get_logger()
@@ -76,8 +83,8 @@ Q_OBJECT public:
     }
 
 public Q_SLOTS:
-    virtual bool YR_slot_refresh_INSERT_DB_MYSQL(QString in0,
-                                                 uint in1);
+
+    virtual bool YR_slot_refresh_INSERT_DB_MYSQL(QString in0, uint in1);
 
     virtual bool YR_slot_refresh_SELECT_DB_MYSQL(QString in0, uint in1);
 
@@ -93,23 +100,17 @@ public Q_SLOTS:
      * A SERIOUS VERIFICATION CLIENT MUST OVERRIDE THIS
      * METHOD !
      */
-    virtual bool DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(QString
-                                                     sql_table_ADDED_with_file_AND_line_number,
-                                                     uint
-                                                     sql_record_qty_MODIFIED,
-                                                     YR_CPP_UTILS::
-                                                     SQL_CONSTANT_IDENTIFIER
-                                                     cur_SQL_command =
-                                                                     YR_CPP_UTILS::
-                                                                     SQL_CONSTANT_IDENTIFIER::
-                                                                     UNDEFINED_SQL_COMMAND);
+    virtual bool DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(QString 	sql_table_ADDED_with_file_AND_line_number,
+                                                     uint 		sql_record_qty_MODIFIED,
+                                                     YR_CPP_UTILS::SQL_CONSTANT_IDENTIFIER
+                                                     	 cur_SQL_command = YR_CPP_UTILS::SQL_CONSTANT_IDENTIFIER::UNDEFINED_SQL_COMMAND);
 
 
 protected:
 
-    YR_DB_RUNTIME_VERIF_Logger *_logger;
+    YR_DB_RUNTIME_VERIF_Logger 	*_logger;
 
-    YR_DBUS_COMMON *_dbus_client;
+    YR_DBUS_COMMON 				*_dbus_client;
 };
 
 

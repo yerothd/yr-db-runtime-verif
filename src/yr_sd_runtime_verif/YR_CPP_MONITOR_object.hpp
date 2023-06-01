@@ -21,7 +21,7 @@ Q_OBJECT public:
         _MONITOR_OBJECT_ID = get_next_id();
     }
 
-    virtual ~YR_CPP_MONITOR_object();
+    virtual ~ YR_CPP_MONITOR_object();
 
     inline virtual int GET_ID()
     {

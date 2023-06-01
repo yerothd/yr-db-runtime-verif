@@ -53,7 +53,7 @@ protected:
 
 public:
 
-    virtual ~YR_CPP_MONITOR_EDGE();
+    virtual ~ YR_CPP_MONITOR_EDGE();
 
     QString YR_EXPORT_edge_CLASS_INSTANCE();
 
