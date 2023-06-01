@@ -45,15 +45,17 @@ class YerenSqlTableModel;
 
 
 
-class YR_DB_RUNTIME_VERIF_Utils:public QObject
+class YR_DB_RUNTIME_VERIF_Utils : public QObject
 {
-Q_OBJECT public:
+	Q_OBJECT
+
+public:
 
     inline YR_DB_RUNTIME_VERIF_Utils()
     {
     }
 
-    virtual ~ YR_DB_RUNTIME_VERIF_Utils()
+    virtual ~YR_DB_RUNTIME_VERIF_Utils()
     {
     }
 
@@ -67,13 +69,13 @@ Q_OBJECT public:
         return _logFileName;
     }
 
-    inline static bool isEqualCaseSensitive(const QString &str1,
+    inline static bool isEqualsCaseSensitive(const QString &str1,
                                             const QString &str2)
     {
         return (0 == str1.compare(str2, Qt::CaseSensitive));
     }
 
-    inline static bool isEqualCaseInsensitive(const QString &str1,
+    inline static bool isEqualsCaseInsensitive(const QString &str1,
                                               const QString &str2)
     {
         return (0 == str1.compare(str2, Qt::CaseInsensitive));
@@ -84,8 +86,7 @@ Q_OBJECT public:
         return aStr.replace("'", "''");
     }
 
-    inline static QString getFileNameWithDateANDCurrentTime(const QString &
-                                                            fileName)
+    inline static QString getFileNameWithDateANDCurrentTime(const QString &fileName)
     {
         return QString("%1%2%3").arg(fileName,
                                      QDate::
@@ -96,66 +97,47 @@ Q_OBJECT public:
 
     static void YEROTH_CREATE_FOLDER(const QString &aFullPathDir);
 
-    static int start_PROCESS_AND_GET_PROCESS_output_AS_QSTRING(const QString &
-                                                               program_executable_location_full_path,
-                                                               const
-                                                               QStringList &
-                                                               program_executable_args,
-                                                               QString &
-                                                               program_output_IN_OUT);
+    static int start_PROCESS_AND_GET_PROCESS_output_AS_QSTRING(const QString 		&program_executable_location_full_path,
+                                                               const QStringList 	&program_executable_args,
+                                                               QString 				&program_output_IN_OUT);
 
     /**
      * Returns the size of the output file created
      * by execution of the program 'program' !
      */
-    inline static int start_PROCESS_AND_READ_PROCESS_output_INTO_FILE(const
-                                                                      QString &
-                                                                      program_executable_location_full_path,
-                                                                      const
-                                                                      QString &
-                                                                      program_working_directory_full_path,
-                                                                      const
-                                                                      QString &
-                                                                      output_file_name,
-                                                                      const
-                                                                      QStringList
-                                                                      &
-                                                                      program_executable_args)
+    inline static int start_PROCESS_AND_READ_PROCESS_output_INTO_FILE(const QString &program_executable_location_full_path,
+                                                                      const QString &program_working_directory_full_path,
+                                                                      const QString &output_file_name,
+                                                                      const QStringList &program_executable_args)
     {
-        return
-                        YR_DB_RUNTIME_VERIF_Utils::
-                        start_PROCESS_AND_READ_PROCESS_output_INTO_FILE
+        return YR_DB_RUNTIME_VERIF_Utils::start_PROCESS_AND_READ_PROCESS_output_INTO_FILE
                         (program_executable_location_full_path,
-                         QString("%1/%2").arg(program_working_directory_full_path,
-                                              output_file_name), program_executable_args);
+                         QString("%1/%2").arg(program_working_directory_full_path, output_file_name),
+						 program_executable_args);
     }
 
     /**
      * Returns the size of the output file created
      * by execution of the program 'program' !
      */
-    static int start_PROCESS_AND_READ_PROCESS_output_INTO_FILE(const QString &
-                                                               program_executable_location_full_path,
-                                                               const QString &
-                                                               output_file_full_path,
-                                                               const
-                                                               QStringList &
-                                                               program_executable_args);
+    static int start_PROCESS_AND_READ_PROCESS_output_INTO_FILE(const QString 		&program_executable_location_full_path,
+                                                               const QString 		&output_file_full_path,
+                                                               const QStringList 	&program_executable_args);
 
-    static bool GZIP_YEROTH_FILE(const QString &
-                                 program_working_directory_full_path,
+    static bool GZIP_YEROTH_FILE(const QString &program_working_directory_full_path,
                                  const QString &file_full_path);
 
     static QString generateSqlLike__AS_IS(QString sqlTableColumn,
                                           QString searchStr);
 
-    static QString generateSqlLike(QString sqlTableColumn, QString searchStr);
+    static QString generateSqlLike(QString sqlTableColumn,
+    							   QString searchStr);
 
-    inline static QString generateSqlLike(const char *sqlTableColumn,
-                                          QString searchStr)
+    inline static QString generateSqlLike(const char 	*sqlTableColumn,
+                                          QString 		searchStr)
     {
-        return YR_DB_RUNTIME_VERIF_Utils::
-               generateSqlLike(QString(sqlTableColumn), searchStr);
+        return YR_DB_RUNTIME_VERIF_Utils::generateSqlLike(QString(sqlTableColumn),
+        												  searchStr);
     }
 
     inline static QString generateSqlIs(QString sqlTableColumn,
@@ -166,14 +148,14 @@ Q_OBJECT public:
     }
 
     inline static QString generateSqlIs(const char *sqlTableColumn,
-                                        QString searchStr)
+                                        QString 	searchStr)
     {
         return YR_DB_RUNTIME_VERIF_Utils::generateSqlIs(QString(sqlTableColumn),
                                                         searchStr);
     }
 
-    inline static void qDebugStrings(const QString &firstString,
-                                     const QStringList &aStringList)
+    inline static void qDebugStrings(const QString 		&firstString,
+                                     const QStringList 	&aStringList)
     {
         qDebug() << QString("++ %1: ").arg(firstString) << aStringList;
     }
@@ -187,7 +169,8 @@ Q_OBJECT public:
     static bool execQuery(const QString &strQuery,
                           YR_DB_RUNTIME_VERIF_Logger *logger = 0);
 
-    static int execQuery(QSqlQuery &query, const QString &strQuery,
+    static int execQuery(QSqlQuery &query,
+    					 const QString &strQuery,
                          YR_DB_RUNTIME_VERIF_Logger *logger = 0);
 
     static int execQuery(QSqlQuery &query,
@@ -205,8 +188,7 @@ Q_OBJECT public:
 
     inline static QByteArray md5Hash(QString data)
     {
-        return QCryptographicHash::hash(data.toLatin1(),
-                                        QCryptographicHash::Md5);
+        return QCryptographicHash::hash(data.toLatin1(), QCryptographicHash::Md5);
     }
 
     static const QString EMPTY_STRING;

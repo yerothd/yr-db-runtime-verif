@@ -24,7 +24,7 @@ QString YerothERPDatabase::_db_connection_options("");
 
 YerothERPDatabase::YerothERPDatabase(QString dbType)
 {
-    if (YR_DB_RUNTIME_VERIF_Utils::isEqualCaseInsensitive
+    if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive
             (dbType, YerothERPDatabase::MYSQL))
     {
         qDebug() <<

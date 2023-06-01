@@ -64,6 +64,7 @@ SOURCES       = src/include/yr-db-runtime-verif-MONITOR.cpp \
 		src/yr-db-runtime-verif-config.cpp moc/moc_yr-db-runtime-verif-MONITOR.cpp \
 		moc/moc_YR_DBUS_COMMON.cpp \
 		moc/moc_yr-db-runtime-verif-utils.cpp \
+		moc/moc_yr-db-runtime-verif-main.cpp \
 		verif_adaptor.cpp \
 		moc/moc_verif_adaptor.cpp
 OBJECTS       = obj/yr-db-runtime-verif-MONITOR.o \
@@ -79,6 +80,7 @@ OBJECTS       = obj/yr-db-runtime-verif-MONITOR.o \
 		obj/moc_yr-db-runtime-verif-MONITOR.o \
 		obj/moc_YR_DBUS_COMMON.o \
 		obj/moc_yr-db-runtime-verif-utils.o \
+		obj/moc_yr-db-runtime-verif-main.o \
 		obj/verif_adaptor.o \
 		obj/moc_verif_adaptor.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -459,9 +461,9 @@ moc/moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 		obj/yr-db-runtime-verif.gch/c++
 	g++ -pipe -g -dM -E -o moc/moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc/moc_yr-db-runtime-verif-MONITOR.cpp moc/moc_YR_DBUS_COMMON.cpp moc/moc_yr-db-runtime-verif-utils.cpp
+compiler_moc_header_make_all: moc/moc_yr-db-runtime-verif-MONITOR.cpp moc/moc_YR_DBUS_COMMON.cpp moc/moc_yr-db-runtime-verif-utils.cpp moc/moc_yr-db-runtime-verif-main.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc/moc_yr-db-runtime-verif-MONITOR.cpp moc/moc_YR_DBUS_COMMON.cpp moc/moc_yr-db-runtime-verif-utils.cpp
+	-$(DEL_FILE) moc/moc_yr-db-runtime-verif-MONITOR.cpp moc/moc_YR_DBUS_COMMON.cpp moc/moc_yr-db-runtime-verif-utils.cpp moc/moc_yr-db-runtime-verif-main.cpp
 moc/moc_yr-db-runtime-verif-MONITOR.cpp: src/include/yr-db-runtime-verif-MONITOR.hpp \
 		src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
@@ -486,6 +488,21 @@ moc/moc_yr-db-runtime-verif-utils.cpp: src/utils/yr-db-runtime-verif-utils.hpp \
 		moc/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/yer/yr-db-runtime-verif/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/yer/yr-db-runtime-verif -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include src/utils/yr-db-runtime-verif-utils.hpp -o moc/moc_yr-db-runtime-verif-utils.cpp
+
+moc/moc_yr-db-runtime-verif-main.cpp: src/yr-db-runtime-verif-main.hpp \
+		src/include/yr-db-runtime-verif-MONITOR.hpp \
+		src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
+		src/utils/yr-db-runtime-verif-utils.hpp \
+		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/DBUS/YR_DBUS_COMMON.hpp \
+		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
+		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_in_SET_TRACE_expression.HPP \
+		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_BOOLEAN_expression.HPP \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
+		moc/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/yer/yr-db-runtime-verif/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/yer/yr-db-runtime-verif -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include src/yr-db-runtime-verif-main.hpp -o moc/moc_yr-db-runtime-verif-main.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -544,9 +561,18 @@ obj/yr-db-runtime-verif-MONITOR.o: src/include/yr-db-runtime-verif-MONITOR.cpp s
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif-MONITOR.o src/include/yr-db-runtime-verif-MONITOR.cpp
 
 obj/yr-db-runtime-verif.o: src/yr-db-runtime-verif.cpp src/YRruntimeverification_adaptor.h \
-		src/yr-db-runtime-verif-config.hpp \
+		src/yr-db-runtime-verif-main.hpp \
+		src/include/yr-db-runtime-verif-MONITOR.hpp \
+		src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/DBUS/YR_DBUS_COMMON.hpp \
+		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
+		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_in_SET_TRACE_expression.HPP \
+		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_BOOLEAN_expression.HPP \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
+		src/yr-db-runtime-verif-config.hpp \
 		src/yr-db-runtime-verif-database.hpp \
 		src/utils/yr-db-runtime-verif-logger.hpp \
 		obj/yr-db-runtime-verif.gch/c++
@@ -591,7 +617,22 @@ obj/yr-db-runtime-verif-database-table-column.o: src/utils/yr-db-runtime-verif-d
 		obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif-database-table-column.o src/utils/yr-db-runtime-verif-database-table-column.cpp
 
-obj/yr-db-runtime-verif-main.o: src/yr-db-runtime-verif-main.cpp obj/yr-db-runtime-verif.gch/c++
+obj/yr-db-runtime-verif-main.o: src/yr-db-runtime-verif-main.cpp src/yr-db-runtime-verif-main.hpp \
+		src/include/yr-db-runtime-verif-MONITOR.hpp \
+		src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
+		src/utils/yr-db-runtime-verif-utils.hpp \
+		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/DBUS/YR_DBUS_COMMON.hpp \
+		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
+		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_in_SET_TRACE_expression.HPP \
+		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_BOOLEAN_expression.HPP \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
+		src/utils/yr-db-runtime-verif-logger.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_STATE.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
+		obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif-main.o src/yr-db-runtime-verif-main.cpp
 
 obj/yr-db-runtime-verif-database.o: src/yr-db-runtime-verif-database.cpp src/yr-db-runtime-verif-database.hpp \
@@ -615,6 +656,9 @@ obj/moc_YR_DBUS_COMMON.o: moc/moc_YR_DBUS_COMMON.cpp obj/yr-db-runtime-verif.gch
 
 obj/moc_yr-db-runtime-verif-utils.o: moc/moc_yr-db-runtime-verif-utils.cpp obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/moc_yr-db-runtime-verif-utils.o moc/moc_yr-db-runtime-verif-utils.cpp
+
+obj/moc_yr-db-runtime-verif-main.o: moc/moc_yr-db-runtime-verif-main.cpp obj/yr-db-runtime-verif.gch/c++
+	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/moc_yr-db-runtime-verif-main.o moc/moc_yr-db-runtime-verif-main.cpp
 
 obj/verif_adaptor.o: verif_adaptor.cpp obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/verif_adaptor.o verif_adaptor.cpp
@@ -642,6 +686,7 @@ install_sources: first FORCE
 	$(QINSTALL) /home/yer/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-sqltable-model.cpp $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-sqltable-model.cpp
 	$(QINSTALL) /home/yer/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-utils.cpp $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-utils.cpp
 	$(QINSTALL) /home/yer/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-database-table-column.cpp $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-database-table-column.cpp
+	$(QINSTALL) /home/yer/yr-db-runtime-verif/src/yr-db-runtime-verif-main.cpp $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-main.cpp
 	$(QINSTALL) /home/yer/yr-db-runtime-verif/src/yr-db-runtime-verif-database.cpp $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-database.cpp
 	$(QINSTALL) /home/yer/yr-db-runtime-verif/src/yr-db-runtime-verif-config.cpp $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-config.cpp
 	$(QINSTALL) /home/yer/yr-db-runtime-verif/src/include/yr-db-runtime-verif-MONITOR.hpp $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-MONITOR.hpp
@@ -653,6 +698,7 @@ install_sources: first FORCE
 	$(QINSTALL) /home/yer/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-sqltable-model.hpp $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-sqltable-model.hpp
 	$(QINSTALL) /home/yer/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-utils.hpp $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-utils.hpp
 	$(QINSTALL) /home/yer/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-database-table-column.hpp $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-database-table-column.hpp
+	$(QINSTALL) /home/yer/yr-db-runtime-verif/src/yr-db-runtime-verif-main.hpp $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-main.hpp
 	$(QINSTALL) /home/yer/yr-db-runtime-verif/src/yr-db-runtime-verif-database.hpp $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-database.hpp
 	$(QINSTALL) /home/yer/yr-db-runtime-verif/src/yr-db-runtime-verif-config.hpp $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-config.hpp
 	$(QINSTALL) /home/yer/yr-db-runtime-verif/lib.pro $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./lib.pro
@@ -663,6 +709,7 @@ uninstall_sources: FORCE
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./lib.pro
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-config.hpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-database.hpp
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-main.hpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-database-table-column.hpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-utils.hpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-sqltable-model.hpp
@@ -674,6 +721,7 @@ uninstall_sources: FORCE
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-MONITOR.hpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-config.cpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-database.cpp
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-main.cpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-database-table-column.cpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-utils.cpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yer/yr-db-runtime-verif/./yr-db-runtime-verif-sqltable-model.cpp
