@@ -25,7 +25,7 @@ Q_OBJECT public:
     {
     }
 
-    virtual ~ YR_CPP_MONITOR_EVENT()
+    virtual ~YR_CPP_MONITOR_EVENT()
     {
     }
 

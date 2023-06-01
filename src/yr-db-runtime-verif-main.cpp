@@ -82,9 +82,11 @@ bool YR_DB_RUNTIME_VERIF_Main::DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(
     qDebug() << "\t "
              << QString("[C++_STMT (%1.%2)[%3,%4] at %5:%6]").
              arg(YR_CPP_UTILS::_DB_STMT_verification_ToUserViewString.
-                 value(cur_SQL_command), sql_table_name,
+                 value(cur_SQL_command),
+				 sql_table_name,
                  QString::number(cur_SQL_command),
-                 QString::number(sql_record_qty_MODIFIED), CPP_FILE_NAME,
+                 QString::number(sql_record_qty_MODIFIED),
+				 CPP_FILE_NAME,
                  cpp_line_number);
 
 

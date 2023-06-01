@@ -59,7 +59,7 @@ public:
     {
     }
 
-    virtual ~ YR_CPP_MONITOR_STATE();
+    virtual ~YR_CPP_MONITOR_STATE();
 
     inline virtual QString get_MONITOR_STATE_NAME()
     {

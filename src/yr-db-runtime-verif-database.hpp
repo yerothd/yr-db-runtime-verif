@@ -23,7 +23,7 @@ public:
 
     YerothERPDatabase(QString dbType);
 
-    inline ~ YerothERPDatabase()
+    inline ~YerothERPDatabase()
     {
     }
 
