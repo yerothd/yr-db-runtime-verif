@@ -56,9 +56,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     YR_DB_RUNTIME_VERIF_Config::YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER =
-                    QString(std::
-                            getenv
-                            ("YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER")).trimmed();
+                    QString(std::getenv("YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER")).trimmed();
 
     YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_HOME_FOLDER =
                     QString(std::getenv("YR_DB_RUNTIME_VERIF_HOME_FOLDER")).trimmed();
@@ -73,57 +71,61 @@ int main(int argc, char *argv[])
 
     if (YR_DB_RUNTIME_VERIF_Config::YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER.isEmpty())
     {
-        QString
-        errMsg
-        ("La variable d'environement YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER n'a pas de valeur ! \n\n");
+        QString errMsg
+			("La variable d'environement YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER n'a pas de valeur ! \n\n");
+
         errMsg.append("Contacter DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU\n"
                       "\t(yeroth.d@gmail.com)\n\n"
                       "Cliquer sur 'Cancel' pour terminer yr-db-runtime-verif");
-        QMessageBox::critical(0, "yr-db-runtime-verif",
-                              FROM_UTF8_STRING(errMsg), QMessageBox::Cancel);
+
+        QMessageBox::critical(0,
+        					  "yr-db-runtime-verif",
+                              FROM_UTF8_STRING(errMsg),
+							  QMessageBox::Cancel);
         exit(1);
     }
 
 
     if (YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_HOME_FOLDER.isEmpty())
     {
-        QString
-        errMsg
-        ("La variable d'environement YR_DB_RUNTIME_VERIF_HOME_FOLDER n'a pas de valeur ! \n\n");
+        QString errMsg
+        	("La variable d'environement YR_DB_RUNTIME_VERIF_HOME_FOLDER n'a pas de valeur ! \n\n");
+
         errMsg.append("Contacter DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU\n"
                       "\t(yeroth.d@gmail.com)\n\n"
                       "Cliquer sur 'Cancel' pour terminer yr-db-runtime-verif");
-        QMessageBox::critical(0, "yr-db-runtime-verif",
-                              FROM_UTF8_STRING(errMsg), QMessageBox::Cancel);
+
+        QMessageBox::critical(0,
+        					  "yr-db-runtime-verif",
+                              FROM_UTF8_STRING(errMsg),
+							  QMessageBox::Cancel);
         exit(1);
     }
 
 
     QString logFileName(YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_HOME_FOLDER);
+
     logFileName.append("/yr-db-runtime-verif.log");
 
-    qDebug() <<
-             "yr-db-runtime-verif.cpp | main | yr-db-runtime-verif home folder: " <<
-             YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_HOME_FOLDER;
+    qDebug() << "yr-db-runtime-verif.cpp | main | yr-db-runtime-verif home folder: "
+    		 << YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_HOME_FOLDER;
 
     YR_DB_RUNTIME_VERIF_Utils::setLogFileName(logFileName);
 
     qDebug() << "yr-db-runtime-verif.cpp | main | log file name: "
              << logFileName;
 
-    YR_DB_RUNTIME_VERIF_Logger logger(YR_DB_RUNTIME_VERIF_Utils::
-                                      getLogFileName());
+    YR_DB_RUNTIME_VERIF_Logger logger(YR_DB_RUNTIME_VERIF_Utils::getLogFileName());
 
 
+    QString initCfg(QString("%1/%2")
+    				.arg(YR_DB_RUNTIME_VERIF_Config::YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER,
+    					 "yeroth-erp-3-0.properties"));
 
-    QString
-    initCfg(QString("%1/%2").arg
-            (YR_DB_RUNTIME_VERIF_Config::YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER,
-             "yeroth-erp-3-0.properties"));
 
-    qDebug() <<
-             "yr-db-runtime-verif.cpp | main | yeroth-erp-3-0.properties absolute file path: "
+    qDebug() << "yr-db-runtime-verif.cpp | main | yeroth-erp-3-0.properties absolute file path: "
              << initCfg << "\n";
+
 
     YR_DB_RUNTIME_VERIF_Config::init_YR_DB_RUNTIME_VERIF_Config(initCfg);
 
@@ -142,17 +144,19 @@ int main(int argc, char *argv[])
                               "Dernière erreur (%2).\n\n"
                               "Contacter DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU\n"
                               "\t(yeroth.d@gmail.com)\n\n"
-                              "Cliquer sur 'Cancel' pour terminer YEROTH-PGI-3.0").arg
-                      (database.db_ip_address(),
-                       database.lastError().text()));
+                              "Cliquer sur 'Cancel' pour terminer YEROTH-PGI-3.0")
+        				.arg(database.db_ip_address(),
+        					 database.lastError().text()));
 
         logger.log("main",
-                   QString("last database (host: %1) error: %2").arg
-                   (database.db_ip_address(), database.lastError().text()));
+                   QString("last database (host: %1) error: %2")
+				   	   .arg(database.db_ip_address(),
+				   			database.lastError().text()));
 
         QMessageBox::critical(0,
                               "yr-db-runtime-verif",
-                              FROM_UTF8_STRING(errMsg), QMessageBox::Cancel);
+                              FROM_UTF8_STRING(errMsg),
+							  QMessageBox::Cancel);
         exit(4);
     }
 
@@ -164,9 +168,6 @@ int main(int argc, char *argv[])
     YR_DB_RUNTIME_VERIF_Main YR_DB_RUNTIME_VERIF_instance(&logger);
 
     new IYRruntimeverificationAdaptor(&YR_DB_RUNTIME_VERIF_instance);
-
-
-
 
 
     QDBusConnection connection = QDBusConnection::systemBus();
@@ -182,8 +183,8 @@ int main(int argc, char *argv[])
     if (!connection.registerObject("/YR_DB_RUNTIME_VERIF_Main",
                                    &YR_DB_RUNTIME_VERIF_instance))
     {
-        qDebug() << QString("++ could not register '%1' object").
-                 arg("/YR_DB_RUNTIME_VERIF_Main");
+        qDebug() << QString("++ could not register '%1' object")
+        				.arg("/YR_DB_RUNTIME_VERIF_Main");
 
         qDebug() << "++ last error: "
                  << QDBusError::errorString(connection.lastError().type());
@@ -192,8 +193,8 @@ int main(int argc, char *argv[])
     }
     else
     {
-        qDebug() << QString("could register '%1' object").
-                 arg("/YR_DB_RUNTIME_VERIF_Main");
+        qDebug() << QString("could register '%1' object")
+        				.arg("/YR_DB_RUNTIME_VERIF_Main");
 
         couldRegisterObject = true;
     }
@@ -201,8 +202,8 @@ int main(int argc, char *argv[])
 
     if (!connection.registerService(systemYerothService))
     {
-        qDebug() << QString("could not register '%1' service").
-                 arg(systemYerothService);
+        qDebug() << QString("could not register '%1' service")
+        				.arg(systemYerothService);
 
         qDebug() << "++ last error: " << connection.lastError();
 
@@ -210,8 +211,8 @@ int main(int argc, char *argv[])
     }
     else
     {
-        qDebug() << QString("could register '%1' service").
-                 arg(systemYerothService);
+        qDebug() << QString("could register '%1' service")
+        				.arg(systemYerothService);
 
         couldRegisterService = true;
     }
