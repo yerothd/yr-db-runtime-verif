@@ -50,9 +50,9 @@ Q_SIGNALS:
 
 protected:
 
-	static void TRACE_SYSTEM_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_monitor,
-									   uint 					   cur_command,
-									   QString 					   &in0);
+	static void TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_monitor,
+									uint 						cur_command,
+									QString 					&in0);
 
 
     YR_DB_RUNTIME_VERIF_Monitor *_A_RUNTIME_MONITOR;

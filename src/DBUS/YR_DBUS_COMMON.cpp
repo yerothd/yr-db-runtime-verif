@@ -12,9 +12,9 @@
 #include "src/include/yr-db-runtime-verif-MONITOR.hpp"
 
 
-void YR_DBUS_COMMON::TRACE_SYSTEM_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_monitor,
-											uint 						cur_command,
-											QString 					&in0)
+void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_monitor,
+										 uint 						 cur_command,
+										 QString 					 &in0)
 {
 	QString sql_table_ADDED_with_file_AND_line_number = in0;
 
@@ -39,9 +39,9 @@ bool YR_DBUS_COMMON::YR_slot_refresh_INSERT_DB_MYSQL(QString in0, uint in1)
 {
     if (0 != _A_RUNTIME_MONITOR)
     {
-    	YR_DBUS_COMMON::TRACE_SYSTEM_LOG_EVENT(*_A_RUNTIME_MONITOR,
-    										   YR_CPP_UTILS::SQL_CONSTANT_IDENTIFIER::INSERT,
-											   in0);
+    	YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(*_A_RUNTIME_MONITOR,
+    										YR_CPP_UTILS::SQL_CONSTANT_IDENTIFIER::INSERT,
+											in0);
 
         bool verification_check_RESULT =
                         _A_RUNTIME_MONITOR
@@ -60,9 +60,9 @@ bool YR_DBUS_COMMON::YR_slot_refresh_SELECT_DB_MYSQL(QString in0, uint in1)
 {
     if (0 != _A_RUNTIME_MONITOR)
     {
-    	YR_DBUS_COMMON::TRACE_SYSTEM_LOG_EVENT(*_A_RUNTIME_MONITOR,
-    										   YR_CPP_UTILS::SQL_CONSTANT_IDENTIFIER::SELECT,
-											   in0);
+    	YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(*_A_RUNTIME_MONITOR,
+    										YR_CPP_UTILS::SQL_CONSTANT_IDENTIFIER::SELECT,
+											in0);
 
         bool verification_check_RESULT =
                         _A_RUNTIME_MONITOR
@@ -81,9 +81,9 @@ bool YR_DBUS_COMMON::YR_slot_refresh_UPDATE_DB_MYSQL(QString in0, uint in1)
 {
     if (0 != _A_RUNTIME_MONITOR)
     {
-    	YR_DBUS_COMMON::TRACE_SYSTEM_LOG_EVENT(*_A_RUNTIME_MONITOR,
-    										   YR_CPP_UTILS::SQL_CONSTANT_IDENTIFIER::UPDATE,
-											   in0);
+    	YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(*_A_RUNTIME_MONITOR,
+    										YR_CPP_UTILS::SQL_CONSTANT_IDENTIFIER::UPDATE,
+											in0);
 
         bool verification_check_RESULT =
                         _A_RUNTIME_MONITOR
@@ -102,9 +102,9 @@ bool YR_DBUS_COMMON::YR_slot_refresh_DELETE_DB_MYSQL(QString in0, uint in1)
 {
     if (0 != _A_RUNTIME_MONITOR)
     {
-    	YR_DBUS_COMMON::TRACE_SYSTEM_LOG_EVENT(*_A_RUNTIME_MONITOR,
-    										   YR_CPP_UTILS::SQL_CONSTANT_IDENTIFIER::DELETE,
-											   in0);
+    	YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(*_A_RUNTIME_MONITOR,
+    										YR_CPP_UTILS::SQL_CONSTANT_IDENTIFIER::DELETE,
+											in0);
 
         bool verification_check_RESULT =
                         _A_RUNTIME_MONITOR
