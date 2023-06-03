@@ -36,6 +36,11 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main()
     a_last_edge_0->get_SOURCE_STATE()->set_PRE_CONDITION_notIN("YR_ASSET", "departements_produits.nom_departement_produit");
     a_last_edge_0->get_TARGET_STATE()->set_POST_CONDITION_IN("YR_ASSET", "stocks.nom_departement_produit");
 
+    YR_CPP_notinset_inset_TRACE_expression *a_last_edge_0_GUARDED_CONDITION
+        = new YR_CPP_notinset_inset_TRACE_expression(true, "'DELETE.departements_produits.YR_ASSET'", "d");
+
+    a_last_edge_0->set_GUARDED_CONDITION(a_last_edge_0_GUARDED_CONDITION);
+
     YR_CPP_MONITOR_EVENT *a_last_edge_event_0 = a_last_edge_0->set_EDGE_EVENT ("'SELECT.departements_produits'");
     YR_register_set_final_state_CALLBACK_FUNCTION(&YR_CALL_BACK_final_state);
 }
@@ -49,6 +54,11 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main(YR_DB_RUNTIME_VERIF_Logger *l
     a_last_edge_0->get_TARGET_STATE()->set_FINAL_STATE(true);
     a_last_edge_0->get_SOURCE_STATE()->set_PRE_CONDITION_notIN("YR_ASSET", "departements_produits.nom_departement_produit");
     a_last_edge_0->get_TARGET_STATE()->set_POST_CONDITION_IN("YR_ASSET", "stocks.nom_departement_produit");
+
+    YR_CPP_notinset_inset_TRACE_expression *a_last_edge_0_GUARDED_CONDITION
+        = new YR_CPP_notinset_inset_TRACE_expression(true, "'DELETE.departements_produits.YR_ASSET'", "d");
+
+    a_last_edge_0->set_GUARDED_CONDITION(a_last_edge_0_GUARDED_CONDITION);
 
     YR_CPP_MONITOR_EVENT *a_last_edge_event_0 = a_last_edge_0->set_EDGE_EVENT ("'SELECT.departements_produits'");
     YR_register_set_final_state_CALLBACK_FUNCTION(&YR_CALL_BACK_final_state);
