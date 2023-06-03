@@ -470,8 +470,7 @@ moc/moc_yr-db-runtime-verif-MONITOR.cpp: src/include/yr-db-runtime-verif-MONITOR
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
 		src/DBUS/YR_DBUS_COMMON.hpp \
 		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
-		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_in_SET_TRACE_expression.HPP \
-		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_BOOLEAN_expression.HPP \
+		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
 		moc/moc_predefs.h \
@@ -496,8 +495,7 @@ moc/moc_yr-db-runtime-verif-main.cpp: src/yr-db-runtime-verif-main.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
 		src/DBUS/YR_DBUS_COMMON.hpp \
 		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
-		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_in_SET_TRACE_expression.HPP \
-		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_BOOLEAN_expression.HPP \
+		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
 		moc/moc_predefs.h \
@@ -552,8 +550,7 @@ obj/yr-db-runtime-verif-MONITOR.o: src/include/yr-db-runtime-verif-MONITOR.cpp s
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
 		src/DBUS/YR_DBUS_COMMON.hpp \
 		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
-		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_in_SET_TRACE_expression.HPP \
-		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_BOOLEAN_expression.HPP \
+		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
 		src/utils/yr-db-runtime-verif-logger.hpp \
@@ -568,8 +565,7 @@ obj/yr-db-runtime-verif.o: src/yr-db-runtime-verif.cpp src/YRruntimeverification
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
 		src/DBUS/YR_DBUS_COMMON.hpp \
 		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
-		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_in_SET_TRACE_expression.HPP \
-		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_BOOLEAN_expression.HPP \
+		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
 		src/yr-db-runtime-verif-config.hpp \
@@ -584,8 +580,7 @@ obj/YR_DBUS_COMMON.o: src/DBUS/YR_DBUS_COMMON.cpp src/DBUS/YR_DBUS_COMMON.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
 		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
-		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_in_SET_TRACE_expression.HPP \
-		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_BOOLEAN_expression.HPP \
+		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
 		obj/yr-db-runtime-verif.gch/c++
@@ -624,8 +619,7 @@ obj/yr-db-runtime-verif-main.o: src/yr-db-runtime-verif-main.cpp src/yr-db-runti
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
 		src/DBUS/YR_DBUS_COMMON.hpp \
 		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
-		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_in_SET_TRACE_expression.HPP \
-		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_BOOLEAN_expression.HPP \
+		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
 		src/utils/yr-db-runtime-verif-logger.hpp \
