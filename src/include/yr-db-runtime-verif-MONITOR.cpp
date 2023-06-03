@@ -142,7 +142,7 @@ bool YR_DB_RUNTIME_VERIF_Monitor::YR_slot_refresh_DELETE_DB_MYSQL(QString in0,
  * A SERIOUS VERIFICATION CLIENT MUST OVERRIDE THIS
  * METHOD !
  */
-bool YR_DB_RUNTIME_VERIF_Monitor::*
+bool YR_DB_RUNTIME_VERIF_Monitor::
 	DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(QString sql_table_ADDED_with_file_AND_line_number,
                                         uint sql_record_qty_MODIFIED,
 										YR_CPP_UTILS::SQL_CONSTANT_IDENTIFIER cur_SQL_command
