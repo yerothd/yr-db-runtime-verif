@@ -29,7 +29,7 @@ val=$(cat "${YR_ERRORS_LOG_FILE}" | grep -w "*** No rule to make target\|error\|
 
 if [ ${val} -eq 0 ]; then
 	#rm -f "${YR_ERRORS_LOG_FILE}" 
-	echo "[compilation avec succes]"
+	echo "[success build]"
 	
 	rm -f verif_adaptor.h
 	rm -f verif_adaptor.cpp

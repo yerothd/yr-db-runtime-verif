@@ -553,6 +553,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_yr-db-runtime-verif.cpp
 qrc_yr-db-runtime-verif.cpp: yr-db-runtime-verif.qrc \
 		/usr/lib/qt5/bin/rcc \
+		yr-db-runtime-verif-images/LOGO-icon.png \
 		yr-db-runtime-verif-images/pdf-print-icon.svg
 	/usr/lib/qt5/bin/rcc -name yr-db-runtime-verif yr-db-runtime-verif.qrc -o qrc_yr-db-runtime-verif.cpp
 
@@ -642,20 +643,25 @@ obj/yr-db-runtime-verif.o: src/yr-db-runtime-verif.cpp src/YRruntimeverification
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
 		src/yr-db-runtime-verif-config.hpp \
-		src/yr-db-runtime-verif-database.hpp \
 		src/windows/yr-db-runtime-verif-windows.hpp \
 		src/windows/yr-db-runtime-verif-main-window.hpp \
 		ui_yr-db-runtime-verif-main-window.h \
 		src/widgets/yr-db-runtime-verif-logging-table-widget.hpp \
+		src/yr-db-runtime-verif-database.hpp \
 		src/utils/yr-db-runtime-verif-logger.hpp \
 		obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif.o src/yr-db-runtime-verif.cpp
 
 obj/YR_DBUS_COMMON.o: src/DBUS/YR_DBUS_COMMON.cpp src/DBUS/YR_DBUS_COMMON.hpp \
-		src/include/yr-db-runtime-verif-MONITOR.hpp \
-		src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
+		src/yr-db-runtime-verif-config.hpp \
+		src/windows/yr-db-runtime-verif-windows.hpp \
+		src/windows/yr-db-runtime-verif-main-window.hpp \
+		ui_yr-db-runtime-verif-main-window.h \
+		src/widgets/yr-db-runtime-verif-logging-table-widget.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/include/yr-db-runtime-verif-MONITOR.hpp \
+		src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
 		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
 		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
@@ -708,12 +714,20 @@ obj/yr-db-runtime-verif-main.o: src/yr-db-runtime-verif-main.cpp src/yr-db-runti
 
 obj/yr-db-runtime-verif-database.o: src/yr-db-runtime-verif-database.cpp src/yr-db-runtime-verif-database.hpp \
 		src/yr-db-runtime-verif-config.hpp \
+		src/windows/yr-db-runtime-verif-windows.hpp \
+		src/windows/yr-db-runtime-verif-main-window.hpp \
+		ui_yr-db-runtime-verif-main-window.h \
+		src/widgets/yr-db-runtime-verif-logging-table-widget.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
 		obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif-database.o src/yr-db-runtime-verif-database.cpp
 
 obj/yr-db-runtime-verif-config.o: src/yr-db-runtime-verif-config.cpp src/yr-db-runtime-verif-config.hpp \
+		src/windows/yr-db-runtime-verif-windows.hpp \
+		src/windows/yr-db-runtime-verif-main-window.hpp \
+		ui_yr-db-runtime-verif-main-window.h \
+		src/widgets/yr-db-runtime-verif-logging-table-widget.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
 		obj/yr-db-runtime-verif.gch/c++

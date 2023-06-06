@@ -41,7 +41,6 @@
 
 #include "src/windows/yr-db-runtime-verif-windows.hpp"
 
-
 //#######################################################################
 
 
@@ -66,7 +65,8 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
 
-
+    //########################### GRAPHICAL USER INTERFACE SETUL CODE ###########################
+    QApplication::setWindowIcon(QIcon(":yr-db-runtime-verif-images/LOGO-icon.png"));
 
     QApplication::setStyle(QStyleFactory::create("cde"));
 
@@ -75,6 +75,8 @@ int main(int argc, char *argv[])
 
     all_windows.createAll_YRDBRUNTIMEVERIF_Windows();
 
+    YR_DB_RUNTIME_VERIF_Config::SET_ALL_WINDOWS_instance(&all_windows);
+    //############################################################################################
 
 
 

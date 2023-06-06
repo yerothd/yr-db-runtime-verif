@@ -28,6 +28,19 @@ public:
     {
     }
 
+	inline virtual int ADD_ITEM(QString TIMESTAMPtem,
+								 QString SIGNALItem,
+								 QString SOURCEItem,
+								 QString TARGETItem,
+								 QString changed_OR_modified_database_qty_Item)
+	{
+		return tableWidget_LOGGING->ADD_ITEM(TIMESTAMPtem,
+											 SIGNALItem,
+											 SOURCEItem,
+											 TARGETItem,
+											 changed_OR_modified_database_qty_Item);
+	}
+
 protected slots:
 
     inline virtual void about()

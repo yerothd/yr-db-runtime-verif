@@ -25,6 +25,8 @@ public:
 	{
 	}
 
+	void setQStandardItemFlags(Qt::ItemFlags &flags);
+
 	int ADD_ITEM(QString TIMESTAMPtem,
 				 QString SIGNALItem,
 				 QString SOURCEItem,
@@ -44,6 +46,8 @@ public:
 
 
 private:
+
+	static const uint MAX_TABLE_WIDGET_ROW_COUNT;
 
     int _curRow;
 
