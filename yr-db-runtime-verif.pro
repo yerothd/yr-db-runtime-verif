@@ -3,7 +3,6 @@
 CONFIG += debug
 CONFIG += precompile_header 
 CONFIG += qt
-CONFIG += console
 CONFIG += moc
 
 CONFIG -= import_plugins
