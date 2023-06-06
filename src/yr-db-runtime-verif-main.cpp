@@ -22,7 +22,7 @@
 
 
 void YR_DB_RUNTIME_VERIF_Main::YR_CALL_BACK_final_state(YR_CPP_MONITOR 			*a_runtime_monitor,
-        YR_CPP_MONITOR_STATE *a_cal_back_function)
+        YR_CPP_MONITOR_STATE *a_FINAL_error_STATE)
 {
     if (0 != a_runtime_monitor)
     {
@@ -45,6 +45,7 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main()
                 "'DELETE.departements_produits.YR_ASSET'",
                 "d");
     a_last_edge_1->set_GUARDED_CONDITION(a_last_edge_1_GUARDED_CONDITION);
+
     YR_CPP_MONITOR_EVENT *a_last_edge_event_1 = a_last_edge_1->set_EDGE_EVENT("'SELECT.departements_produits'");
 
     //print_TO_dot_FILE();
@@ -67,6 +68,7 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main(YR_DB_RUNTIME_VERIF_Logger *l
                 "'DELETE.departements_produits.YR_ASSET'",
                 "d");
     a_last_edge_1->set_GUARDED_CONDITION(a_last_edge_1_GUARDED_CONDITION);
+
     YR_CPP_MONITOR_EVENT *a_last_edge_event_1 = a_last_edge_1->set_EDGE_EVENT("'SELECT.departements_produits'");
 
     //print_TO_dot_FILE();
