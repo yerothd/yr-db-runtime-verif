@@ -63,7 +63,7 @@ public:
 
     virtual ~YR_DB_RUNTIME_VERIF_Monitor();
 
-    static bool YR_DB_RUNTIME_VERIF_Monitor_notify_SUCCESS_VERIFICATION();
+    virtual bool YR_DB_RUNTIME_VERIF_Monitor_notify_SUCCESS_VERIFICATION();
 
     inline virtual void YR_TRIGGERED_EVENT_LOGGING(const QString A_METHOD_CALLED,
                                                    const QString AN_EVENT,

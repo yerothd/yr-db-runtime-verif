@@ -11,12 +11,12 @@
 
 
 
-YR_DB_RUNTIME_VERIF_Monitor::YR_DB_RUNTIME_VERIF_Monitor():YR_CPP_MONITOR(),
-    _logger(0),
-    _dbus_client(0)
+YR_DB_RUNTIME_VERIF_Monitor::YR_DB_RUNTIME_VERIF_Monitor()
+:YR_CPP_MONITOR(),
+ _logger(0),
+ _dbus_client(0)
 {
-    static bool
-    FIRST_TIME_CALL = true;
+    static bool FIRST_TIME_CALL = true;
 
     if (FIRST_TIME_CALL)
     {
@@ -75,14 +75,15 @@ YR_DB_RUNTIME_VERIF_Monitor::~YR_DB_RUNTIME_VERIF_Monitor()
 }
 
 
-bool
-YR_DB_RUNTIME_VERIF_Monitor::YR_DB_RUNTIME_VERIF_Monitor_notify_SUCCESS_VERIFICATION
-()
+bool YR_DB_RUNTIME_VERIF_Monitor::YR_DB_RUNTIME_VERIF_Monitor_notify_SUCCESS_VERIFICATION()
 {
-    qDebug() <<
-             "//** YR_DB_RUNTIME_VERIF_Monitor::YR_DB_RUNTIME_VERIF_Monitor_notify_SUCCESS_VERIFICATION **//";
+	bool ret_value = false;
 
-    return false;
+    qDebug() << "//** YR_DB_RUNTIME_VERIF_Monitor::YR_DB_RUNTIME_VERIF_Monitor_notify_SUCCESS_VERIFICATION **//";
+
+    ret_value = RESET_RUNTIME_MONITOR();
+
+    return ret_value;
 }
 
 
