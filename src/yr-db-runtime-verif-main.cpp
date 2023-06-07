@@ -34,6 +34,8 @@ void YR_DB_RUNTIME_VERIF_Main::YR_CALL_BACK_final_state(YR_CPP_MONITOR 			*a_run
 YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main()
     :YR_DB_RUNTIME_VERIF_Monitor()
 {
+    set_RUNTIME_MONITOR_NAME("yr_sd_mealy_automaton_spec");
+
     YR_CPP_MONITOR_EDGE *a_last_edge_1 = create_yr_monitor_edge ("d", "e");
     a_last_edge_1->get_SOURCE_STATE()->set_START_STATE(*this, true);
     a_last_edge_1->get_TARGET_STATE()->set_FINAL_STATE(true);
@@ -44,6 +46,7 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main()
         = new YR_CPP_notinset_inset_TRACE_expression(true,
                 "'DELETE.departements_produits.YR_ASSET'",
                 "d");
+
     a_last_edge_1->set_GUARDED_CONDITION(a_last_edge_1_GUARDED_CONDITION);
 
     YR_CPP_MONITOR_EVENT *a_last_edge_event_1 = a_last_edge_1->set_EDGE_EVENT("'SELECT.departements_produits'");
@@ -57,6 +60,8 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main()
 YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main(YR_DB_RUNTIME_VERIF_Logger *logger)
     :YR_DB_RUNTIME_VERIF_Monitor(logger)
 {
+    set_RUNTIME_MONITOR_NAME("yr_sd_mealy_automaton_spec");
+
     YR_CPP_MONITOR_EDGE *a_last_edge_1 = create_yr_monitor_edge ("d", "e");
     a_last_edge_1->get_SOURCE_STATE()->set_START_STATE(*this, true);
     a_last_edge_1->get_TARGET_STATE()->set_FINAL_STATE(true);
@@ -67,6 +72,7 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main(YR_DB_RUNTIME_VERIF_Logger *l
         = new YR_CPP_notinset_inset_TRACE_expression(true,
                 "'DELETE.departements_produits.YR_ASSET'",
                 "d");
+
     a_last_edge_1->set_GUARDED_CONDITION(a_last_edge_1_GUARDED_CONDITION);
 
     YR_CPP_MONITOR_EVENT *a_last_edge_event_1 = a_last_edge_1->set_EDGE_EVENT("'SELECT.departements_produits'");
