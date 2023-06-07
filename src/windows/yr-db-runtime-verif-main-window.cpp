@@ -41,7 +41,7 @@ void YRDBRUNTIMEVERIF_MainWindow::ACTION_USER_GUIDE_method()
 
 	QProcess aProcess;
 
-	progArguments << "doc/yr_sd_runtime_verif_doc.pdf";
+	progArguments << "/usr/share/doc/yr-db-runtime-verif/YEROTH_QVGE.pdf";
 
 	aProcess.startDetached("/usr/bin/evince",
 						   progArguments);
