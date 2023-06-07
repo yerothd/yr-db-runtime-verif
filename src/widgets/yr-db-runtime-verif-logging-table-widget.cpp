@@ -7,7 +7,7 @@
 #include "yr-db-runtime-verif-logging-table-widget.hpp"
 
 
-const uint YRDBRUNTIMEVERIF_TableWidget::MAX_TABLE_WIDGET_ROW_COUNT = 22;
+const uint YRDBRUNTIMEVERIF_TableWidget::MAX_TABLE_WIDGET_ROW_COUNT = 8;
 
 
 const unsigned int YRDBRUNTIMEVERIF_TableWidget::TIME_STAMP_COLUMN(0);
@@ -40,7 +40,7 @@ YRDBRUNTIMEVERIF_TableWidget::YRDBRUNTIMEVERIF_TableWidget(QWidget *parent /* = 
 
     setFrameShadow(QFrame::Plain);
 
-    setEditTriggers(QAbstractItemView::CurrentChanged);
+    setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     setSelectionBehavior(QAbstractItemView::SelectRows);
 
@@ -68,6 +68,14 @@ void YRDBRUNTIMEVERIF_TableWidget::setQStandardItemFlags(Qt::ItemFlags &flags)
             }
         }
     }
+}
+
+
+void YRDBRUNTIMEVERIF_TableWidget::setQStandardItemFlags(QTableWidgetItem &anItem,
+						   	   	   	   	   	   	   	     Qt::ItemFlags 	&flags)
+{
+	anItem.setTextAlignment(Qt::AlignHCenter);
+	anItem.setFlags(flags);
 }
 
 
@@ -99,11 +107,11 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString TIMESTAMPtem,
     setItem(_curRow, idx++, _TARGETItem);
     setItem(_curRow, idx++, _changed_OR_modified_database_qty_Item);
 
-    _TIMESTAMPtem->setFlags(_myQStandardItemFlags);
-    _SIGNALItem->setFlags(_myQStandardItemFlags);
-    _SOURCEItem->setFlags(_myQStandardItemFlags);
-    _TARGETItem->setFlags(_myQStandardItemFlags);
-    _changed_OR_modified_database_qty_Item->setFlags(_myQStandardItemFlags);
+    setQStandardItemFlags(*_TIMESTAMPtem, _myQStandardItemFlags);
+    setQStandardItemFlags(*_SIGNALItem, _myQStandardItemFlags);
+    setQStandardItemFlags(*_SOURCEItem, _myQStandardItemFlags);
+    setQStandardItemFlags(*_TARGETItem, _myQStandardItemFlags);
+    setQStandardItemFlags(*_changed_OR_modified_database_qty_Item, _myQStandardItemFlags);
 
     selectRow(_curRow);
 

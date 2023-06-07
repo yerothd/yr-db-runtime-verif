@@ -27,6 +27,9 @@ public:
 
 	void setQStandardItemFlags(Qt::ItemFlags &flags);
 
+	void setQStandardItemFlags(QTableWidgetItem &anItem,
+							   Qt::ItemFlags 	&flags);
+
 	int ADD_ITEM(QString TIMESTAMPtem,
 				 QString SIGNALItem,
 				 QString SOURCEItem,

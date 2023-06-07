@@ -482,7 +482,7 @@
       <x>29</x>
       <y>31</y>
       <width>741</width>
-      <height>401</height>
+      <height>343</height>
      </rect>
     </property>
     <property name="palette">
@@ -568,7 +568,7 @@
        <x>3</x>
        <y>22</y>
        <width>735</width>
-       <height>376</height>
+       <height>318</height>
       </rect>
      </property>
      <property name="palette">
@@ -1067,6 +1067,18 @@
        </disabled>
       </palette>
      </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::DoubleClicked</set>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="showGrid">
+      <bool>true</bool>
+     </property>
+     <property name="cornerButtonEnabled">
+      <bool>true</bool>
+     </property>
      <column>
       <property name="text">
        <string>tIme STAMP</string>
@@ -1076,6 +1088,9 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="textAlignment">
+       <set>AlignCenter</set>
       </property>
      </column>
      <column>
@@ -1088,6 +1103,9 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="textAlignment">
+       <set>AlignCenter</set>
+      </property>
      </column>
      <column>
       <property name="text">
@@ -1098,6 +1116,9 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="textAlignment">
+       <set>AlignCenter</set>
       </property>
      </column>
      <column>
@@ -1110,6 +1131,9 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="textAlignment">
+       <set>AlignCenter</set>
+      </property>
      </column>
      <column>
       <property name="text">
@@ -1120,6 +1144,9 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="textAlignment">
+       <set>AlignCenter</set>
       </property>
      </column>
     </widget>
