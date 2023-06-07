@@ -43,6 +43,13 @@ public:
 
 protected slots:
 
+	virtual void ACTION_USER_GUIDE_method();
+
+	inline virtual void ACTION_EXIT_method()
+	{
+		close();
+	}
+
     inline virtual void about()
     {
     }
