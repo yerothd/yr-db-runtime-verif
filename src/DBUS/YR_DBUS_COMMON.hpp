@@ -12,6 +12,8 @@
 #include <QtCore/QObject>
 
 
+#include "src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp"
+
 
 class YR_DB_RUNTIME_VERIF_Monitor;
 
@@ -24,7 +26,8 @@ class YR_DBUS_COMMON : public QObject
 public:
 
 	inline YR_DBUS_COMMON(YR_DB_RUNTIME_VERIF_Monitor *A_RUNTIME_MONITOR)
-	:_A_RUNTIME_MONITOR(A_RUNTIME_MONITOR)
+	:_LAST_trace_SQL_event_log_GUI_row_number(0),
+	 _A_RUNTIME_MONITOR(A_RUNTIME_MONITOR)
 	{
 	}
 
@@ -48,16 +51,21 @@ Q_SIGNALS:
     void YR_VERIFIED();
 
 
-protected:
+public:
 
-	static void TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_monitor,
-									uint 						cur_command,
-									QString 					&in0,
-									QString 					CHANGED_RECORD_DB_QTY);
+	void TRACE_SUT_LOG_EVENT_complement_info_ON_ACCEPTING_STATE
+					(YR_CPP_MONITOR_EDGE &an_EDGE_leading_TO_error_FINAL_state);
 
+
+	void TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_monitor,
+							 uint 						 cur_command,
+							 QString 					 &in0,
+							 QString 					 CHANGED_RECORD_DB_QTY);
+
+
+	int _LAST_trace_SQL_event_log_GUI_row_number;
 
     YR_DB_RUNTIME_VERIF_Monitor *_A_RUNTIME_MONITOR;
-
 };
 
 

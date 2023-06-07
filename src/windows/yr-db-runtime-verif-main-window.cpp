@@ -64,10 +64,31 @@ int YRDBRUNTIMEVERIF_MainWindow::
 												  	logging_info);
 
 
-	tableWidget_LOGGING_2->ADD_ITEM(logging_info);
+	tableWidget_LOGGING_2
+		->ADD_ITEM(QString("%1:%2")
+					.arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
+						 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
 
 
 	return last_current_row_nr;
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::
+	Set_YRDBRUNTIMEVERIF_Logging_Info(uint row_number, QString logging_info)
+{
+
+}
+
+
+YRDBRUNTIMEVERIF_Logging_Info *YRDBRUNTIMEVERIF_MainWindow::
+	Get_YRDBRUNTIMEVERIF_Logging_Info(uint row_number)
+{
+
+
+
+
+	return 0;
 }
 
 
@@ -76,10 +97,14 @@ void YRDBRUNTIMEVERIF_MainWindow::
 {
 	if (0 != aQTable_widget_item)
 	{
-		QString SOURCE_FILE__line_number =
-				_MAP_dbsqlevent__TO__cppfileinfo.value(aQTable_widget_item->row());
+		QString LOGGING_INFO = _MAP_dbsqlevent__TO__cppfileinfo.value(aQTable_widget_item->row());
 
-		tableWidget_LOGGING_2->ADD_ITEM(SOURCE_FILE__line_number);
+		YRDBRUNTIMEVERIF_Logging_Info a_logging_info(LOGGING_INFO);
+
+		tableWidget_LOGGING_2
+			->ADD_ITEM(QString("%1:%2")
+						.arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
+							 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
 	}
 	else
 	{

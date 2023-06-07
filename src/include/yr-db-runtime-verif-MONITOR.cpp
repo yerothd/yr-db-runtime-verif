@@ -75,15 +75,52 @@ YR_DB_RUNTIME_VERIF_Monitor::~YR_DB_RUNTIME_VERIF_Monitor()
 }
 
 
-bool YR_DB_RUNTIME_VERIF_Monitor::YR_DB_RUNTIME_VERIF_Monitor_notify_SUCCESS_VERIFICATION()
+bool YR_DB_RUNTIME_VERIF_Monitor::
+		YR_DB_RUNTIME_VERIF_Monitor_notify_SUCCESS_VERIFICATION
+			(YR_CPP_MONITOR_EDGE *an_EDGE_leading_TO_error_FINAL_state /* = 0 */)
 {
 	bool ret_value = false;
 
     qDebug() << "//** YR_DB_RUNTIME_VERIF_Monitor::YR_DB_RUNTIME_VERIF_Monitor_notify_SUCCESS_VERIFICATION **//";
 
+    if (0 != an_EDGE_leading_TO_error_FINAL_state)
+    {
+    	TRACE_SUT_LOG_EVENT_complement_info_ON_ACCEPTING_STATE(*an_EDGE_leading_TO_error_FINAL_state);
+    }
+
     ret_value = RESET_RUNTIME_MONITOR();
 
     return ret_value;
+}
+
+
+void YR_DB_RUNTIME_VERIF_Monitor::
+		TRACE_SUT_LOG_EVENT_complement_info_ON_ACCEPTING_STATE
+				(YR_CPP_MONITOR_EDGE &an_EDGE_leading_TO_error_FINAL_state)
+{
+	if (0 != _dbus_client)
+	{
+		_dbus_client
+			->TRACE_SUT_LOG_EVENT_complement_info_ON_ACCEPTING_STATE
+				(an_EDGE_leading_TO_error_FINAL_state);
+	}
+}
+
+
+void YR_DB_RUNTIME_VERIF_Monitor::
+		TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_monitor,
+						 	uint 						cur_command,
+							QString 					&in0,
+							QString 					CHANGED_RECORD_DB_QTY)
+{
+	if (0 != _dbus_client)
+	{
+		_dbus_client
+			->TRACE_SUT_LOG_EVENT(a_runtime_monitor,
+								  cur_command,
+								  in0,
+								  CHANGED_RECORD_DB_QTY);
+	}
 }
 
 

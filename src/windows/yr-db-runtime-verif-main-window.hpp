@@ -48,6 +48,10 @@ public:
 
 public slots:
 
+	virtual void Set_YRDBRUNTIMEVERIF_Logging_Info(uint row_number, QString logging_info);
+
+	virtual YRDBRUNTIMEVERIF_Logging_Info *Get_YRDBRUNTIMEVERIF_Logging_Info(uint row_number);
+
 	inline virtual void set_connection_DBUS_status(QString message_STATUS)
 	{
     	label_display_yr_db_runtime_verifier_connection_STATUS

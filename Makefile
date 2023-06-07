@@ -545,15 +545,23 @@ moc/moc_yr-db-runtime-verif-MONITOR.cpp: src/include/yr-db-runtime-verif-MONITOR
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
 		src/DBUS/YR_DBUS_COMMON.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
 		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
 		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
 		moc/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/yer/yr-db-runtime-verif/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/yer/yr-db-runtime-verif -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include src/include/yr-db-runtime-verif-MONITOR.hpp -o moc/moc_yr-db-runtime-verif-MONITOR.cpp
 
 moc/moc_YR_DBUS_COMMON.cpp: src/DBUS/YR_DBUS_COMMON.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
+		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
+		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
 		moc/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/yer/yr-db-runtime-verif/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/yer/yr-db-runtime-verif -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include src/DBUS/YR_DBUS_COMMON.hpp -o moc/moc_YR_DBUS_COMMON.cpp
@@ -570,10 +578,12 @@ moc/moc_yr-db-runtime-verif-main.cpp: src/yr-db-runtime-verif-main.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
 		src/DBUS/YR_DBUS_COMMON.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
 		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
 		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
 		moc/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/yer/yr-db-runtime-verif/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/yer/yr-db-runtime-verif -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include src/yr-db-runtime-verif-main.hpp -o moc/moc_yr-db-runtime-verif-main.cpp
@@ -686,10 +696,12 @@ obj/yr-db-runtime-verif-MONITOR.o: src/include/yr-db-runtime-verif-MONITOR.cpp s
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
 		src/DBUS/YR_DBUS_COMMON.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
 		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
 		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
 		src/utils/yr-db-runtime-verif-logger.hpp \
 		obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif-MONITOR.o src/include/yr-db-runtime-verif-MONITOR.cpp
@@ -701,10 +713,12 @@ obj/yr-db-runtime-verif.o: src/yr-db-runtime-verif.cpp src/YRruntimeverification
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
 		src/DBUS/YR_DBUS_COMMON.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
 		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
 		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
 		src/yr-db-runtime-verif-config.hpp \
 		src/windows/yr-db-runtime-verif-windows.hpp \
 		src/windows/yr-db-runtime-verif-main-window.hpp \
@@ -719,6 +733,12 @@ obj/yr-db-runtime-verif.o: src/yr-db-runtime-verif.cpp src/YRruntimeverification
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif.o src/yr-db-runtime-verif.cpp
 
 obj/YR_DBUS_COMMON.o: src/DBUS/YR_DBUS_COMMON.cpp src/DBUS/YR_DBUS_COMMON.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
+		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
+		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
 		src/utils/yr-db-runtime-verif-LOGGING-INFO.hpp \
 		src/yr-db-runtime-verif-config.hpp \
 		src/windows/yr-db-runtime-verif-windows.hpp \
@@ -731,10 +751,6 @@ obj/YR_DBUS_COMMON.o: src/DBUS/YR_DBUS_COMMON.cpp src/DBUS/YR_DBUS_COMMON.hpp \
 		src/utils/yr-db-runtime-verif-qmap.hpp \
 		src/include/yr-db-runtime-verif-MONITOR.hpp \
 		src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
-		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
-		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
 		obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/YR_DBUS_COMMON.o src/DBUS/YR_DBUS_COMMON.cpp
 
@@ -770,14 +786,14 @@ obj/yr-db-runtime-verif-main.o: src/yr-db-runtime-verif-main.cpp src/yr-db-runti
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
 		src/DBUS/YR_DBUS_COMMON.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
 		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
 		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
 		src/utils/yr-db-runtime-verif-logger.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_STATE.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
 		obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif-main.o src/yr-db-runtime-verif-main.cpp
 

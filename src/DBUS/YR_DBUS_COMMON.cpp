@@ -20,6 +20,49 @@
 #include "src/include/yr-db-runtime-verif-MONITOR.hpp"
 
 
+void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT_complement_info_ON_ACCEPTING_STATE
+						(YR_CPP_MONITOR_EDGE &an_EDGE_leading_TO_error_FINAL_state)
+{
+    //######################################## GUI CODE ########################################
+    YRDBRUNTIMEVERIF_Windows *ALL_WINDOWS_INSTANCE =
+    		YR_DB_RUNTIME_VERIF_Config::GET_ALL_WINDOWS_instance();
+
+    if (0 != ALL_WINDOWS_INSTANCE 								&&
+    	0 != ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window)
+    {
+    	YRDBRUNTIMEVERIF_Logging_Info *a_logging_info =
+    			ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
+					->Get_YRDBRUNTIMEVERIF_Logging_Info
+						(_LAST_trace_SQL_event_log_GUI_row_number);
+
+
+    	if (0 != a_logging_info)
+    	{
+    		a_logging_info->A_SQL_EVENT_LOG_guarded_condition_expression
+				= an_EDGE_leading_TO_error_FINAL_state
+					.get_guarded_CONDITION_expression()->toString();
+
+    		a_logging_info->A_SQL_EVENT_LOG_guarded_condition_expression_VALUE
+				= BOOL_TO_STRING(true);
+
+    		a_logging_info->AN_ACCEPTING_STATE
+				= an_EDGE_leading_TO_error_FINAL_state.get_TARGET_STATE_KEY();
+
+    		a_logging_info->AN_ACCEPTING_STATE_is_error_state_VALUE
+				= BOOL_TO_STRING(true);
+
+    		ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
+				->Set_YRDBRUNTIMEVERIF_Logging_Info
+					(_LAST_trace_SQL_event_log_GUI_row_number,
+					 a_logging_info->toString());
+
+    		YEROTH_DELETE_FREE_POINTER_NOW(a_logging_info);
+    	}
+    }
+    //###########################################################################################
+}
+
+
 void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_monitor,
 										 uint 						 cur_command,
 										 QString 					 &in0,
@@ -60,13 +103,14 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_
 			->SET_CURRENT_RUNTIME_MONITOR_name
 				(a_logging_info.A_RUNTIME_MONITOR_name);
 
-    	ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
-								->ADD_ITEM(DBUS_CURRENT_TIME_WITH_MILLISECONDS,
-										   a_trace_log_EVENT_TOKEN,
-										   "SUT",
-										   "YR-DB-RUNTIME-VERIF",
-										   CHANGED_RECORD_DB_QTY,
-										   a_logging_info);
+    	_LAST_trace_SQL_event_log_GUI_row_number =
+    			ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
+									->ADD_ITEM(DBUS_CURRENT_TIME_WITH_MILLISECONDS,
+											   a_trace_log_EVENT_TOKEN,
+											   "SUT",
+											   "YR-DB-RUNTIME-VERIF",
+											   CHANGED_RECORD_DB_QTY,
+											   a_logging_info);
     }
     //###########################################################################################
 
