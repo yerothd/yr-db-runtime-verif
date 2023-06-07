@@ -19,6 +19,12 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 
 
 
+    connect(tableWidget_LOGGING,
+    		SIGNAL(itemPressed(QTableWidgetItem *)),
+			this,
+            SLOT(ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *)));
+
+
     connect(actionExit,
     		SIGNAL(triggered()),
 			this,
@@ -56,12 +62,32 @@ int YRDBRUNTIMEVERIF_MainWindow::
 										.arg(A_CPP_FILE_NAME,
 											 A_CPP_FILE_LINE_NUMBER);
 
-	_MAP_dbsqlevent__TO__cppfileinfo.insert(last_current_row_nr,
-											SOURCE_FILE__line_number);
+
+	_MAP_dbsqlevent__TO__cppfileinfo.yr_insert_item(last_current_row_nr,
+												  	SOURCE_FILE__line_number);
+
 
 	tableWidget_LOGGING_2->ADD_ITEM(SOURCE_FILE__line_number);
 
+
 	return last_current_row_nr;
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::
+		ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *aQTable_widget_item)
+{
+	if (0 != aQTable_widget_item)
+	{
+		QString SOURCE_FILE__line_number =
+				_MAP_dbsqlevent__TO__cppfileinfo.value(aQTable_widget_item->row());
+
+		tableWidget_LOGGING_2->ADD_ITEM(SOURCE_FILE__line_number);
+	}
+	else
+	{
+		tableWidget_LOGGING_2->ADD_ITEM(QString("no source file info:-1"));
+	}
 }
 
 
@@ -76,6 +102,5 @@ void YRDBRUNTIMEVERIF_MainWindow::ACTION_USER_GUIDE_method()
 	aProcess.startDetached("/usr/bin/evince",
 						   progArguments);
 }
-
 
 

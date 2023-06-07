@@ -47,7 +47,7 @@ YRDBRUNTIMEVERIF_TableWidget::YRDBRUNTIMEVERIF_TableWidget(QWidget *parent /* = 
     setEditTriggers(QAbstractItemView::NoEditTriggers);
 
 
-	setRowCount(MAX_TABLE_WIDGET_ROW_COUNT);
+    setMaxSize(MAX_TABLE_WIDGET_ROW_COUNT);
 }
 
 
@@ -79,8 +79,29 @@ void YRDBRUNTIMEVERIF_TableWidget::setQStandardItemFlags(QTableWidgetItem &anIte
 }
 
 
+void YRDBRUNTIMEVERIF_TableWidget::setMaxSize(uint MAX_SIZE)
+{
+	setRowCount(MAX_SIZE);
+
+	_mapListIdxToElement_db_ID.setMaxSize(MAX_SIZE);
+}
+
+
+/*
+ * THIS METHOS IS meant to be only called by
+ * class 'YRDBRUNTIMEVERIF_MainWindow.tableWidget_LOGGING_2'.
+ */
 int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString Source_file__line_number)
 {
+	static bool first_time_call = true;
+
+	if (first_time_call)
+	{
+		setMaxSize(1);
+
+		first_time_call = false;
+	}
+
 	_curRow = 0;
 
     setRowCount(1);
@@ -94,7 +115,7 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString Source_file__line_number)
     _TIMESTAMPtem = new QTableWidgetItem(Source_file);
     _SIGNALItem = new QTableWidgetItem(line_number);
 
-    _mapListIdxToElement_db_ID.insert(_curRow, Source_file__line_number);
+    _mapListIdxToElement_db_ID.yr_insert_item(_curRow, Source_file__line_number);
 
     unsigned idx = 0;
 
@@ -130,7 +151,7 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString TIMESTAMPtem,
     _changed_OR_modified_database_qty_Item =
     		new QTableWidgetItem(changed_OR_modified_database_qty_Item);
 
-    _mapListIdxToElement_db_ID.insert(_curRow, SIGNALItem);
+    _mapListIdxToElement_db_ID.yr_insert_item(_curRow, SIGNALItem);
 
     unsigned idx = 0;
 
@@ -153,7 +174,7 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString TIMESTAMPtem,
 
     int lastCurRow = _curRow;
 
-    if (_curRow < MAX_TABLE_WIDGET_ROW_COUNT)
+    if (_curRow <= getMaxSize())
     {
     	++_curRow;
     }

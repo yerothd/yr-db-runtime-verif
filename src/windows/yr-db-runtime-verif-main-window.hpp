@@ -10,6 +10,9 @@
 #include "../../ui_yr-db-runtime-verif-main-window.h"
 
 
+#include "src/utils/yr-db-runtime-verif-qmap.hpp"
+
+
 #include <QtWidgets/QMainWindow>
 
 #include <QtCore/QObject>
@@ -46,6 +49,8 @@ public slots:
 
 protected slots:
 
+	virtual void ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *aQTable_widget_item);
+
 	virtual void ACTION_USER_GUIDE_method();
 
 	inline virtual void ACTION_EXIT_method()
@@ -63,7 +68,7 @@ protected slots:
 
 private:
 
-    QMap<uint, QString> _MAP_dbsqlevent__TO__cppfileinfo;
+    YRDBRUNTIMEVERIF_QMap _MAP_dbsqlevent__TO__cppfileinfo;
 };
 
 #endif /* _YR_DB_RUNTIME_VERIF_MAIN_WINDOW_HPP_ */

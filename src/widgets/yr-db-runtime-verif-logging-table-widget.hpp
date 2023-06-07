@@ -8,9 +8,9 @@
 #define _YR_DB_RUNTIME_VERIF_LOGGING_TABLE_WIDGET_HPP_
 
 
+#include "src/utils/yr-db-runtime-verif-qmap.hpp"
 
 #include <QtWidgets/QTableWidget>
-
 
 
 class YRDBRUNTIMEVERIF_TableWidget : public QTableWidget
@@ -29,6 +29,13 @@ public:
 
 	void setQStandardItemFlags(QTableWidgetItem &anItem,
 							   Qt::ItemFlags 	&flags);
+
+	inline uint getMaxSize()
+	{
+		return _mapListIdxToElement_db_ID.getMaxSize();
+	}
+
+	void setMaxSize(uint MAX_SIZE);
 
 	int ADD_ITEM(QString Source_file__line_number);
 
@@ -58,7 +65,7 @@ private:
 
     Qt::ItemFlags _myQStandardItemFlags;
 
-    QMap<int, QString> _mapListIdxToElement_db_ID;
+    YRDBRUNTIMEVERIF_QMap _mapListIdxToElement_db_ID;
 
 
 	QTableWidgetItem *_TIMESTAMPtem;
