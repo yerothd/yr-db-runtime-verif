@@ -79,6 +79,40 @@ void YRDBRUNTIMEVERIF_TableWidget::setQStandardItemFlags(QTableWidgetItem &anIte
 }
 
 
+int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString Source_file__line_number)
+{
+	_curRow = 0;
+
+    setRowCount(1);
+
+    QList<QString> source_file__line_number_LIST = Source_file__line_number.split(':');
+
+    QString Source_file = source_file__line_number_LIST.at(0);
+
+    QString line_number = source_file__line_number_LIST.at(1);
+
+    _TIMESTAMPtem = new QTableWidgetItem(Source_file);
+    _SIGNALItem = new QTableWidgetItem(line_number);
+
+    _mapListIdxToElement_db_ID.insert(_curRow, Source_file__line_number);
+
+    unsigned idx = 0;
+
+    //Each call to setItem triggers a call to YerothPointDeVenteWindow::handleQteChange
+    setItem(_curRow, idx++, _TIMESTAMPtem);
+    setItem(_curRow, idx++, _SIGNALItem);
+
+    setQStandardItemFlags(*_TIMESTAMPtem, _myQStandardItemFlags);
+    setQStandardItemFlags(*_SIGNALItem, _myQStandardItemFlags);
+
+    selectRow(_curRow);
+
+    resizeColumnsToContents();
+
+    return _curRow;
+}
+
+
 int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString TIMESTAMPtem,
 										   QString SIGNALItem,
 		   	   	   	   	   	   	   	   	   QString SOURCEItem,

@@ -31,6 +31,10 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_
 
     QString sql_table_name = sql_table_ADDED_with_file_AND_line_number_LIST.at(0);
 
+    QString CPP_FILE_NAME = sql_table_ADDED_with_file_AND_line_number_LIST.at(1);
+
+    QString cpp_line_number = sql_table_ADDED_with_file_AND_line_number_LIST.at(2);
+
     QString a_trace_log_EVENT_TOKEN =
     		QString("'%1.%2'")
     			.arg(YR_CPP_UTILS::_DB_STMT_verification_ToUserViewString
@@ -49,7 +53,9 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_
 										   a_trace_log_EVENT_TOKEN,
 										   "SUT",
 										   "YR-DB-RUNTIME-VERIF",
-										   CHANGED_RECORD_DB_QTY);
+										   CHANGED_RECORD_DB_QTY,
+										   CPP_FILE_NAME,
+										   cpp_line_number);
     }
 
 

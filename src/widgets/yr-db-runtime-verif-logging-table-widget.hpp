@@ -30,6 +30,8 @@ public:
 	void setQStandardItemFlags(QTableWidgetItem &anItem,
 							   Qt::ItemFlags 	&flags);
 
+	int ADD_ITEM(QString Source_file__line_number);
+
 	int ADD_ITEM(QString TIMESTAMPtem,
 				 QString SIGNALItem,
 				 QString SOURCEItem,

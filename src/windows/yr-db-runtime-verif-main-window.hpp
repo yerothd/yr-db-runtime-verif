@@ -28,18 +28,13 @@ public:
     {
     }
 
-	inline virtual int ADD_ITEM(QString TIMESTAMPtem,
-								 QString SIGNALItem,
-								 QString SOURCEItem,
-								 QString TARGETItem,
-								 QString changed_OR_modified_database_qty_Item)
-	{
-		return tableWidget_LOGGING->ADD_ITEM(TIMESTAMPtem,
-											 SIGNALItem,
-											 SOURCEItem,
-											 TARGETItem,
-											 changed_OR_modified_database_qty_Item);
-	}
+	virtual int ADD_ITEM(QString TIMESTAMPtem,
+						 QString SIGNALItem,
+						 QString SOURCEItem,
+						 QString TARGETItem,
+						 QString changed_OR_modified_database_qty_Item,
+						 QString A_CPP_FILE_NAME,
+						 QString A_CPP_FILE_LINE_NUMBER);
 
 protected slots:
 
@@ -57,6 +52,10 @@ protected slots:
     inline virtual void help()
     {
     }
+
+private:
+
+    QMap<uint, QString> _MAP_dbsqlevent__TO__cppfileinfo;
 };
 
 #endif /* _YR_DB_RUNTIME_VERIF_MAIN_WINDOW_HPP_ */
