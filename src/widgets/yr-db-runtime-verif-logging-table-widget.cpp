@@ -40,11 +40,11 @@ YRDBRUNTIMEVERIF_TableWidget::YRDBRUNTIMEVERIF_TableWidget(QWidget *parent /* = 
 
     setFrameShadow(QFrame::Plain);
 
-    setEditTriggers(QAbstractItemView::NoEditTriggers);
-
     setSelectionBehavior(QAbstractItemView::SelectRows);
 
     setSelectionMode(QAbstractItemView::SingleSelection);
+
+    setEditTriggers(QAbstractItemView::NoEditTriggers);
 
 
 	setRowCount(MAX_TABLE_WIDGET_ROW_COUNT);
