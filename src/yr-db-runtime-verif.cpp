@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
 
-    //########################### GRAPHICAL USER INTERFACE SETUL CODE ###########################
+    //########################### GRAPHICAL USER INTERFACE SETUP CODE ###########################
     QApplication::setWindowIcon(QIcon(":yr-db-runtime-verif-images/LOGO-icon.png"));
 
     QApplication::setStyle(QStyleFactory::create("cde"));
@@ -242,10 +242,25 @@ int main(int argc, char *argv[])
         couldRegisterService = true;
     }
 
+    //########################### GRAPHICAL USER INTERFACE STATUS CODE ###########################
     if (couldRegisterService && couldRegisterObject)
     {
+    	all_windows._yrdbruntimeverif_main_Window
+			->set_connection_DBUS_status
+				(QString("YR-DB-RUNTIME-VERIF: this console registered to system d-bus as service: '%1'.")
+					.arg(systemYerothService));
+
         qDebug() << "STARTING YR-DB-RUNTIME-VERIF !";
     }
+    else
+    {
+    	all_windows._yrdbruntimeverif_main_Window
+			->set_connection_DBUS_status
+				(QString("YR-DB-RUNTIME-VERIF: this console NOT REGISTERED TO SYSTEM D-BUS."));
+    }
+    //############################################################################################
+
+
 
     return app.exec();
 }

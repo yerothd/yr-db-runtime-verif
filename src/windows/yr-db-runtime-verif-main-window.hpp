@@ -36,6 +36,14 @@ public:
 						 QString A_CPP_FILE_NAME,
 						 QString A_CPP_FILE_LINE_NUMBER);
 
+public slots:
+
+	inline virtual void set_connection_DBUS_status(QString message_STATUS)
+	{
+    	label_display_yr_db_runtime_verifier_connection_STATUS
+			->setText(message_STATUS);
+	}
+
 protected slots:
 
 	virtual void ACTION_USER_GUIDE_method();
