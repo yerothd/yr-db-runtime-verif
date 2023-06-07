@@ -1726,7 +1726,7 @@
       </property>
      </column>
     </widget>
-    <widget class="YRDBRUNTIMEVERIF_TableWidget" name="tableWidget_LOGGING_3">
+    <widget class="YRDBRUNTIMEVERIF_TableWidget" name="tableWidget_LOGGING_guarded_condition_expression">
      <property name="enabled">
       <bool>true</bool>
      </property>
@@ -1798,8 +1798,8 @@
         <colorrole role="Text">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>255</red>
-           <green>255</green>
+           <red>27</red>
+           <green>93</green>
            <blue>255</blue>
           </color>
          </brush>
@@ -1861,9 +1861,9 @@
         <colorrole role="HighlightedText">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>204</red>
-           <green>0</green>
-           <blue>0</blue>
+           <red>27</red>
+           <green>93</green>
+           <blue>255</blue>
           </color>
          </brush>
         </colorrole>
@@ -1962,8 +1962,8 @@
         <colorrole role="Text">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>255</red>
-           <green>255</green>
+           <red>27</red>
+           <green>93</green>
            <blue>255</blue>
           </color>
          </brush>
@@ -2025,9 +2025,9 @@
         <colorrole role="HighlightedText">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>204</red>
-           <green>0</green>
-           <blue>0</blue>
+           <red>27</red>
+           <green>93</green>
+           <blue>255</blue>
           </color>
          </brush>
         </colorrole>
@@ -2189,9 +2189,9 @@
         <colorrole role="HighlightedText">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>204</red>
-           <green>0</green>
-           <blue>0</blue>
+           <red>27</red>
+           <green>93</green>
+           <blue>255</blue>
           </color>
          </brush>
         </colorrole>
@@ -2410,9 +2410,9 @@
         <colorrole role="HighlightedText">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>204</red>
-           <green>0</green>
-           <blue>0</blue>
+           <red>27</red>
+           <green>93</green>
+           <blue>255</blue>
           </color>
          </brush>
         </colorrole>
@@ -2574,9 +2574,9 @@
         <colorrole role="HighlightedText">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>204</red>
-           <green>0</green>
-           <blue>0</blue>
+           <red>27</red>
+           <green>93</green>
+           <blue>255</blue>
           </color>
          </brush>
         </colorrole>
@@ -2738,9 +2738,9 @@
         <colorrole role="HighlightedText">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>204</red>
-           <green>0</green>
-           <blue>0</blue>
+           <red>27</red>
+           <green>93</green>
+           <blue>255</blue>
           </color>
          </brush>
         </colorrole>

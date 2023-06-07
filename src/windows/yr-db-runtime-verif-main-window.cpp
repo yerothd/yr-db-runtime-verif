@@ -7,6 +7,8 @@
 #include "yr-db-runtime-verif-main-window.hpp"
 
 
+#include "src/utils/yr-db-runtime-verif-utils.hpp"
+
 #include <QtCore/QProcess>
 
 
@@ -75,20 +77,84 @@ int YRDBRUNTIMEVERIF_MainWindow::
 
 
 void YRDBRUNTIMEVERIF_MainWindow::
-	Set_YRDBRUNTIMEVERIF_Logging_Info(uint row_number, QString logging_info)
+	Set_YRDBRUNTIMEVERIF_Logging_Info(uint row_number,
+									  QString logging_info)
 {
+	_MAP_dbsqlevent__TO__cppfileinfo.insert(row_number, logging_info);
 
+	YRDBRUNTIMEVERIF_Logging_Info a_logging_info(logging_info);
+
+	if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive
+			("True", a_logging_info.AN_ACCEPTING_STATE_is_error_state_VALUE))
+	{
+		QTableWidgetItem *a_qtable_widget_item = tableWidget_LOGGING_4->item(0, 1);
+
+		if (0 != a_qtable_widget_item)
+		{
+			a_qtable_widget_item->setForeground(Qt::red);
+		}
+	}
+
+
+	tableWidget_LOGGING_4
+		->ADD_ITEM(QString("%1:%2")
+					.arg(a_logging_info.AN_ACCEPTING_STATE,
+						 a_logging_info.AN_ACCEPTING_STATE_is_error_state_VALUE));
+
+
+	tableWidget_LOGGING_guarded_condition_expression
+		->ADD_ITEM(QString("%1:%2")
+					.arg(a_logging_info.A_SQL_EVENT_LOG_guarded_condition_expression,
+						 a_logging_info.A_SQL_EVENT_LOG_guarded_condition_expression_VALUE));
+
+
+	//tableWidget_LOGGING_2 ONLY HAS A SINGLE ROW !
+	YRDBRUNTIMEVERIF_MainWindow::
+		SET__foregroundcolor__ON__accepting_state(tableWidget_LOGGING_2->currentRow(),
+												  tableWidget_LOGGING_2);
+
+	YRDBRUNTIMEVERIF_MainWindow::
+		SET__foregroundcolor__ON__accepting_state(row_number,
+												  tableWidget_LOGGING);
 }
 
 
 YRDBRUNTIMEVERIF_Logging_Info *YRDBRUNTIMEVERIF_MainWindow::
 	Get_YRDBRUNTIMEVERIF_Logging_Info(uint row_number)
 {
+	YRDBRUNTIMEVERIF_Logging_Info *a_logging_info_SAVED = 0;
+
+	if (_MAP_dbsqlevent__TO__cppfileinfo.contains(row_number))
+	{
+		QString a_QSTRING_saved_logging_info = _MAP_dbsqlevent__TO__cppfileinfo.value(row_number);
+
+		a_logging_info_SAVED = new YRDBRUNTIMEVERIF_Logging_Info(a_QSTRING_saved_logging_info);
+	}
+
+	return a_logging_info_SAVED;
+}
 
 
+void YRDBRUNTIMEVERIF_MainWindow::
+		SET__foregroundcolor__ON__accepting_state(uint 			row_number,
+												  QTableWidget 	*a_table_widget)
+{
+	if (0 != a_table_widget)
+	{
+		QTableWidgetItem *a_qwidget_item = 0;
 
+		for (int k = 0; k < a_table_widget->columnCount(); ++k)
+		{
+			a_qwidget_item = a_table_widget->item(row_number, k);
 
-	return 0;
+			if (0 != a_qwidget_item)
+			{
+//				QDEBUG_STRINGS_OUTPUT_2_N("row_number", row_number);
+//				a_qwidget_item->setForeground(Qt::green);
+				a_qwidget_item->setForeground(Qt::blue);
+			}
+		}
+	}
 }
 
 
@@ -105,6 +171,26 @@ void YRDBRUNTIMEVERIF_MainWindow::
 			->ADD_ITEM(QString("%1:%2")
 						.arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
 							 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
+
+
+		if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive
+				("True", a_logging_info.A_SQL_EVENT_LOG_guarded_condition_expression_VALUE))
+		{
+			//tableWidget_LOGGING_2 ONLY HAS A SINGLE ROW !
+			YRDBRUNTIMEVERIF_MainWindow::
+				SET__foregroundcolor__ON__accepting_state(tableWidget_LOGGING_2->currentRow(),
+														  tableWidget_LOGGING_2);
+		}
+
+		tableWidget_LOGGING_4
+			->ADD_ITEM(QString("%1:%2")
+						.arg(a_logging_info.AN_ACCEPTING_STATE,
+							 a_logging_info.AN_ACCEPTING_STATE_is_error_state_VALUE));
+
+		tableWidget_LOGGING_guarded_condition_expression
+			->ADD_ITEM(QString("%1:%2")
+						.arg(a_logging_info.A_SQL_EVENT_LOG_guarded_condition_expression,
+							 a_logging_info.A_SQL_EVENT_LOG_guarded_condition_expression_VALUE));
 	}
 	else
 	{

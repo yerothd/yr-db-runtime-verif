@@ -48,7 +48,8 @@ public:
 
 public slots:
 
-	virtual void Set_YRDBRUNTIMEVERIF_Logging_Info(uint row_number, QString logging_info);
+	virtual void Set_YRDBRUNTIMEVERIF_Logging_Info(uint row_number,
+												   QString logging_info);
 
 	virtual YRDBRUNTIMEVERIF_Logging_Info *Get_YRDBRUNTIMEVERIF_Logging_Info(uint row_number);
 
@@ -59,6 +60,9 @@ public slots:
 	}
 
 protected slots:
+
+	static void SET__foregroundcolor__ON__accepting_state(uint 			row_number,
+														  QTableWidget 	*a_table_widget);
 
 	virtual void ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *aQTable_widget_item);
 

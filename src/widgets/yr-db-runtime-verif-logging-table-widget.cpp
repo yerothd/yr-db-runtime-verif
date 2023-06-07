@@ -7,7 +7,7 @@
 #include "yr-db-runtime-verif-logging-table-widget.hpp"
 
 
-const uint YRDBRUNTIMEVERIF_TableWidget::MAX_TABLE_WIDGET_ROW_COUNT = 70;
+const uint YRDBRUNTIMEVERIF_TableWidget::MAX_TABLE_WIDGET_ROW_COUNT = 1000;
 
 
 const unsigned int YRDBRUNTIMEVERIF_TableWidget::TIME_STAMP_COLUMN(0);
