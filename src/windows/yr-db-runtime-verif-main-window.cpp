@@ -67,9 +67,9 @@ int YRDBRUNTIMEVERIF_MainWindow::
 
 
 	tableWidget_LOGGING_2
-		->ADD_ITEM(QString("%1:%2")
-					.arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
-						 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
+		->ADD_ITEM_2(QString("%1:%2")
+						.arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
+							 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
 
 
 	return last_current_row_nr;
@@ -97,15 +97,16 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
 
 	tableWidget_LOGGING_4
-		->ADD_ITEM(QString("%1:%2")
-					.arg(a_logging_info.AN_ACCEPTING_STATE,
+		->ADD_ITEM_3(QString("%1:%2:%3")
+					.arg(a_logging_info.A_PREVIOUS_STATE,
+						 a_logging_info.AN_ACCEPTING_STATE,
 						 a_logging_info.AN_ACCEPTING_STATE_is_error_state_VALUE));
 
 
 	tableWidget_LOGGING_guarded_condition_expression
-		->ADD_ITEM(QString("%1:%2")
-					.arg(a_logging_info.A_SQL_EVENT_LOG_guarded_condition_expression,
-						 a_logging_info.A_SQL_EVENT_LOG_guarded_condition_expression_VALUE));
+		->ADD_ITEM_2(QString("%1:%2")
+						.arg(a_logging_info.A_SQL_EVENT_LOG_guarded_condition_expression,
+							 a_logging_info.A_SQL_EVENT_LOG_guarded_condition_expression_VALUE));
 
 
 	//tableWidget_LOGGING_2 ONLY HAS A SINGLE ROW !
@@ -168,9 +169,9 @@ void YRDBRUNTIMEVERIF_MainWindow::
 		YRDBRUNTIMEVERIF_Logging_Info a_logging_info(LOGGING_INFO);
 
 		tableWidget_LOGGING_2
-			->ADD_ITEM(QString("%1:%2")
-						.arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
-							 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
+			->ADD_ITEM_2(QString("%1:%2")
+							.arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
+								 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
 
 
 		if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive
@@ -182,19 +183,21 @@ void YRDBRUNTIMEVERIF_MainWindow::
 														  tableWidget_LOGGING_2);
 		}
 
+
 		tableWidget_LOGGING_4
-			->ADD_ITEM(QString("%1:%2")
-						.arg(a_logging_info.AN_ACCEPTING_STATE,
+			->ADD_ITEM_3(QString("%1:%2:%3")
+						.arg(a_logging_info.A_PREVIOUS_STATE,
+							 a_logging_info.AN_ACCEPTING_STATE,
 							 a_logging_info.AN_ACCEPTING_STATE_is_error_state_VALUE));
 
 		tableWidget_LOGGING_guarded_condition_expression
-			->ADD_ITEM(QString("%1:%2")
+			->ADD_ITEM_2(QString("%1:%2")
 						.arg(a_logging_info.A_SQL_EVENT_LOG_guarded_condition_expression,
 							 a_logging_info.A_SQL_EVENT_LOG_guarded_condition_expression_VALUE));
 	}
 	else
 	{
-		tableWidget_LOGGING_2->ADD_ITEM(QString("no source file info:-1"));
+		tableWidget_LOGGING_2->ADD_ITEM_2(QString("no source file info:-1"));
 	}
 }
 

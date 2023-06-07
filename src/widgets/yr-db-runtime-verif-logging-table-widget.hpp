@@ -37,7 +37,9 @@ public:
 
 	void setMaxSize(uint MAX_SIZE);
 
-	int ADD_ITEM(QString Source_file__line_number);
+	int ADD_ITEM_3(QString Source_file__line_number);
+
+	int ADD_ITEM_2(QString Source_file__line_number);
 
 	int ADD_ITEM(QString TIMESTAMPtem,
 				 QString SIGNALItem,

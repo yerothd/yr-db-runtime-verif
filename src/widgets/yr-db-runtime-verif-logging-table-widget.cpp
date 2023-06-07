@@ -89,9 +89,61 @@ void YRDBRUNTIMEVERIF_TableWidget::setMaxSize(uint MAX_SIZE)
 
 /*
  * THIS METHOS IS meant to be only called by
+ * class 'YRDBRUNTIMEVERIF_MainWindow.tableWidget_LOGGING_4'.
+ */
+int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM_3(QString Source_file__line_number)
+{
+	static bool first_time_call = true;
+
+	if (first_time_call)
+	{
+		setMaxSize(1);
+
+		first_time_call = false;
+	}
+
+	_curRow = 0;
+
+    setRowCount(1);
+
+    QList<QString> source_file__line_number_LIST = Source_file__line_number.split(':');
+
+    QString A_PREVIOUS_STATE = source_file__line_number_LIST.at(0);
+
+    QString AN_ACCEPTING_STATE = source_file__line_number_LIST.at(1);
+
+    QString AN_ACCEPTING_STATE_is_error_state_VALUE = source_file__line_number_LIST.at(2);
+
+    _TIMESTAMPtem = new QTableWidgetItem(A_PREVIOUS_STATE);
+    _SIGNALItem = new QTableWidgetItem(AN_ACCEPTING_STATE);
+    _SOURCEItem = new QTableWidgetItem(AN_ACCEPTING_STATE_is_error_state_VALUE);
+
+    _mapListIdxToElement_db_ID.yr_insert_item(_curRow, Source_file__line_number);
+
+    unsigned idx = 0;
+
+    //Each call to setItem triggers a call to YerothPointDeVenteWindow::handleQteChange
+    setItem(_curRow, idx++, _TIMESTAMPtem);
+    setItem(_curRow, idx++, _SIGNALItem);
+    setItem(_curRow, idx++, _SOURCEItem);
+
+    setQStandardItemFlags(*_TIMESTAMPtem, _myQStandardItemFlags);
+    setQStandardItemFlags(*_SIGNALItem, _myQStandardItemFlags);
+    setQStandardItemFlags(*_SOURCEItem, _myQStandardItemFlags);
+
+    selectRow(_curRow);
+
+    resizeColumnsToContents();
+
+    return _curRow;
+}
+
+
+/*
+ * THIS METHOS IS meant to be only called by
  * class 'YRDBRUNTIMEVERIF_MainWindow.tableWidget_LOGGING_2'.
  */
-int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString Source_file__line_number)
+int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM_2(QString Source_file__line_number)
 {
 	static bool first_time_call = true;
 
