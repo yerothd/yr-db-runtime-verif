@@ -1,3 +1,4 @@
 #!/bin/bash
 
-chmod +x /etc/init.d/yr-db-runtime-verif.sh 
+echo "ok"
+#chmod +x /etc/init.d/yr-db-runtime-verif.sh 
