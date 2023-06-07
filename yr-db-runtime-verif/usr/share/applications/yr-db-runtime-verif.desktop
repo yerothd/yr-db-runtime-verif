@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=YR-DB-RUNTIME-VERIF runtime verifier monitoring tester
+Exec=/opt/yr-db-runtime-verif/bin/yr-db-runtime-verif-BIN.SH
+Icon=LOGO-icon.png
+Terminal=false
+Type=Application
+StartupNotify=true
+Hidden=false
+Categories=Utility;Development;

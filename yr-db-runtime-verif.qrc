@@ -1,0 +1,6 @@
+<RCC>
+  <qresource>
+		<file>yr-db-runtime-verif-images/LOGO-icon.png</file>
+		<file>yr-db-runtime-verif-images/pdf-print-icon.svg</file>
+  </qresource>
+</RCC>

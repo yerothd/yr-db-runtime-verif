@@ -35,6 +35,16 @@
 
 #include <unistd.h>
 
+
+
+//##################### QMAINWINDOW RELATED IMPORTS #####################
+
+#include "src/windows/yr-db-runtime-verif-windows.hpp"
+
+//#######################################################################
+
+
+
 #include "utils/yr-db-runtime-verif-logger.hpp"
 
 
@@ -51,9 +61,24 @@ int main(int argc, char *argv[])
     qDebug() << "yr-db-runtime-verif | yr-db-runtime-verif.cpp | main. started"
              << "\n";
 
-    //sleep(30);
 
     QApplication app(argc, argv);
+
+
+    //########################### GRAPHICAL USER INTERFACE SETUL CODE ###########################
+    QApplication::setWindowIcon(QIcon(":yr-db-runtime-verif-images/LOGO-icon.png"));
+
+    QApplication::setStyle(QStyleFactory::create("cde"));
+
+
+    YRDBRUNTIMEVERIF_Windows all_windows(app.desktop());
+
+    all_windows.createAll_YRDBRUNTIMEVERIF_Windows();
+
+    YR_DB_RUNTIME_VERIF_Config::SET_ALL_WINDOWS_instance(&all_windows);
+    //############################################################################################
+
+
 
     YR_DB_RUNTIME_VERIF_Config::YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER =
                     QString(std::getenv("YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER")).trimmed();

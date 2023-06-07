@@ -7,6 +7,10 @@
 #ifndef SRC_YEROTH_ALERT_CONFIG_HPP_
 #define SRC_YEROTH_ALERT_CONFIG_HPP_
 
+
+#include "src/windows/yr-db-runtime-verif-windows.hpp"
+
+
 #include "src/utils/yr-db-runtime-verif-utils.hpp"
 
 #include <QtCore/QDebug>
@@ -38,6 +42,21 @@ public:
     static QString YEROTH_ERP_3_0_HOME_FOLDER;
 
     static QString YR_DB_RUNTIME_VERIF_HOME_FOLDER;
+
+
+    static YRDBRUNTIMEVERIF_Windows *ALL_WINDOWS;
+
+
+
+    inline static void SET_ALL_WINDOWS_instance(YRDBRUNTIMEVERIF_Windows *WINDOWS)
+    {
+    	ALL_WINDOWS = WINDOWS;
+    }
+
+    inline static YRDBRUNTIMEVERIF_Windows *GET_ALL_WINDOWS_instance()
+    {
+    	return ALL_WINDOWS;
+    }
 
 
     static void init_YR_DB_RUNTIME_VERIF_Config(QString initCfg)

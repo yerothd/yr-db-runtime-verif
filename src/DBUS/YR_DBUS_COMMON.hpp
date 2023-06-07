@@ -52,12 +52,16 @@ protected:
 
 	static void TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_monitor,
 									uint 						cur_command,
-									QString 					&in0);
+									QString 					&in0,
+									QString 					CHANGED_RECORD_DB_QTY);
 
 
     YR_DB_RUNTIME_VERIF_Monitor *_A_RUNTIME_MONITOR;
 
 };
+
+
+#define DBUS_CURRENT_TIME_WITH_MILLISECONDS QTime::currentTime().toString("HH:mm:ss:zzz")
 
 
 #endif // YR_DBUS_COMMON_HPP_

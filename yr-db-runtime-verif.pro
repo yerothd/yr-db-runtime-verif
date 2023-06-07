@@ -30,7 +30,14 @@ PRECOMPILED_HEADER  = src/include/yr-db-runtime-verif-precompiled-header.hpp
  
 DBUS_ADAPTORS += yr.db-runtime.verif.xml
 
-HEADERS = src/include/yr-db-runtime-verif-MONITOR.hpp \
+
+FORMS = ui/yr-db-runtime-verif-main-window.ui
+
+
+HEADERS = src/widgets/yr-db-runtime-verif-logging-table-widget.hpp \
+			src/windows/yr-db-runtime-verif-windows.hpp \
+			src/windows/yr-db-runtime-verif-main-window.hpp \
+			src/include/yr-db-runtime-verif-MONITOR.hpp \
 			src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
 			src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
 			src/include/yr-db-runtime-verif-software-text-configuration.hpp \
@@ -43,7 +50,10 @@ HEADERS = src/include/yr-db-runtime-verif-MONITOR.hpp \
 		  src/yr-db-runtime-verif-database.hpp \
 		  src/yr-db-runtime-verif-config.hpp 
  
-SOURCES = src/include/yr-db-runtime-verif-MONITOR.cpp \
+SOURCES = src/widgets/yr-db-runtime-verif-logging-table-widget.cpp \
+			src/windows/yr-db-runtime-verif-windows.cpp \
+			src/windows/yr-db-runtime-verif-main-window.cpp \
+			src/include/yr-db-runtime-verif-MONITOR.cpp \
 		  src/yr-db-runtime-verif.cpp \
 			src/DBUS/YR_DBUS_COMMON.cpp \
 			src/utils/yr-db-runtime-verif-logger.cpp \
@@ -55,6 +65,7 @@ SOURCES = src/include/yr-db-runtime-verif-MONITOR.cpp \
 		  src/yr-db-runtime-verif-config.cpp 
 
 
+RESOURCES    = yr-db-runtime-verif.qrc
 
 
 #link static libraries
