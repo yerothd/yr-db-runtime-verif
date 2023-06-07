@@ -2797,7 +2797,7 @@
      </property>
      <column>
       <property name="text">
-       <string>ACCEPTED state</string>
+       <string>ACCEPTING state</string>
       </property>
       <property name="font">
        <font>
