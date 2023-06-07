@@ -10,6 +10,7 @@
 
 
 //#################### INCLUDED FILES FOR GUI handling ####################
+#include "src/utils/yr-db-runtime-verif-LOGGING-INFO.hpp"
 #include "src/yr-db-runtime-verif-config.hpp"
 #include "src/windows/yr-db-runtime-verif-windows.hpp"
 //#########################################################################
@@ -49,9 +50,15 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_
     if (0 != ALL_WINDOWS_INSTANCE 								&&
     	0 != ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window)
     {
-//		ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
-//			->SET_CURRENT_RUNTIME_MONITOR_name
-//				(a_runtime_monitor.get_RUNTIME_MONITOR_NAME());
+    	YRDBRUNTIMEVERIF_Logging_Info a_logging_info;
+
+		a_logging_info.A_RUNTIME_MONITOR_name = a_runtime_monitor.get_RUNTIME_MONITOR_NAME();
+		a_logging_info.A_CPP_SOURCE_FILE_NAME = CPP_FILE_NAME;
+		a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER = cpp_line_number;
+
+    	ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
+			->SET_CURRENT_RUNTIME_MONITOR_name
+				(a_logging_info.A_RUNTIME_MONITOR_name);
 
     	ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
 								->ADD_ITEM(DBUS_CURRENT_TIME_WITH_MILLISECONDS,
@@ -59,8 +66,7 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_
 										   "SUT",
 										   "YR-DB-RUNTIME-VERIF",
 										   CHANGED_RECORD_DB_QTY,
-										   CPP_FILE_NAME,
-										   cpp_line_number);
+										   a_logging_info);
     }
     //###########################################################################################
 

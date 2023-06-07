@@ -10,6 +10,8 @@
 #include "../../ui_yr-db-runtime-verif-main-window.h"
 
 
+#include "src/utils/yr-db-runtime-verif-LOGGING-INFO.hpp"
+
 #include "src/utils/yr-db-runtime-verif-qmap.hpp"
 
 
@@ -42,8 +44,7 @@ public:
 						 QString SOURCEItem,
 						 QString TARGETItem,
 						 QString changed_OR_modified_database_qty_Item,
-						 QString A_CPP_FILE_NAME,
-						 QString A_CPP_FILE_LINE_NUMBER);
+						 YRDBRUNTIMEVERIF_Logging_Info &a_logging_info);
 
 public slots:
 

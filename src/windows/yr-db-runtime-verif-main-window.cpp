@@ -47,8 +47,7 @@ int YRDBRUNTIMEVERIF_MainWindow::
 						 QString SOURCEItem,
 						 QString TARGETItem,
 						 QString changed_OR_modified_database_qty_Item,
-						 QString A_CPP_FILE_NAME,
-						 QString A_CPP_FILE_LINE_NUMBER)
+						 YRDBRUNTIMEVERIF_Logging_Info &a_logging_info)
 {
 
 	int last_current_row_nr
@@ -58,16 +57,14 @@ int YRDBRUNTIMEVERIF_MainWindow::
 											TARGETItem,
 											changed_OR_modified_database_qty_Item);
 
-	QString SOURCE_FILE__line_number = QString("%1:%2")
-										.arg(A_CPP_FILE_NAME,
-											 A_CPP_FILE_LINE_NUMBER);
+	QString logging_info = a_logging_info.toString();
 
 
 	_MAP_dbsqlevent__TO__cppfileinfo.yr_insert_item(last_current_row_nr,
-												  	SOURCE_FILE__line_number);
+												  	logging_info);
 
 
-	tableWidget_LOGGING_2->ADD_ITEM(SOURCE_FILE__line_number);
+	tableWidget_LOGGING_2->ADD_ITEM(logging_info);
 
 
 	return last_current_row_nr;

@@ -34,7 +34,8 @@ DBUS_ADAPTORS += yr.db-runtime.verif.xml
 FORMS = ui/yr-db-runtime-verif-main-window.ui
 
 
-HEADERS = src/widgets/yr-db-runtime-verif-combo-box.hpp \
+HEADERS = src/utils/yr-db-runtime-verif-LOGGING-INFO.hpp \
+			src/widgets/yr-db-runtime-verif-combo-box.hpp \
 			src/utils/yr-db-runtime-verif-qmap.hpp \
 			src/widgets/yr-db-runtime-verif-logging-table-widget.hpp \
 			src/windows/yr-db-runtime-verif-windows.hpp \
@@ -52,7 +53,8 @@ HEADERS = src/widgets/yr-db-runtime-verif-combo-box.hpp \
 		  src/yr-db-runtime-verif-database.hpp \
 		  src/yr-db-runtime-verif-config.hpp 
  
-SOURCES = src/widgets/yr-db-runtime-verif-combo-box.cpp \
+SOURCES = src/utils/yr-db-runtime-verif-LOGGING-INFO.cpp \
+			src/widgets/yr-db-runtime-verif-combo-box.cpp \
 			src/utils/yr-db-runtime-verif-qmap.cpp \
 			src/widgets/yr-db-runtime-verif-logging-table-widget.cpp \
 			src/windows/yr-db-runtime-verif-windows.cpp \
