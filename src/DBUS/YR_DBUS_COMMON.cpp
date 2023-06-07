@@ -42,12 +42,17 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_
 					 sql_table_name);
 
 
+    //######################################## GUI CODE ########################################
     YRDBRUNTIMEVERIF_Windows *ALL_WINDOWS_INSTANCE =
     		YR_DB_RUNTIME_VERIF_Config::GET_ALL_WINDOWS_instance();
 
     if (0 != ALL_WINDOWS_INSTANCE 								&&
     	0 != ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window)
     {
+//		ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
+//			->SET_CURRENT_RUNTIME_MONITOR_name
+//				(a_runtime_monitor.get_RUNTIME_MONITOR_NAME());
+
     	ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
 								->ADD_ITEM(DBUS_CURRENT_TIME_WITH_MILLISECONDS,
 										   a_trace_log_EVENT_TOKEN,
@@ -57,6 +62,7 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_
 										   CPP_FILE_NAME,
 										   cpp_line_number);
     }
+    //###########################################################################################
 
 
     //    QDEBUG_STRING_OUTPUT_2("a_trace_log_EVENT_TOKEN", a_trace_log_EVENT_TOKEN);

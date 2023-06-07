@@ -2824,7 +2824,7 @@
       </property>
      </column>
     </widget>
-    <widget class="QComboBox" name="comboBox_RUNTIME_MONITOR_VERIFIER_TESTER">
+    <widget class="YRDBRUNTIMEVERIF_ComboBox" name="comboBox_RUNTIME_MONITOR_VERIFIER_TESTER">
      <property name="geometry">
       <rect>
        <x>3</x>
@@ -2936,6 +2936,15 @@
          </brush>
         </colorrole>
         <colorrole role="Shadow">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Highlight">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
            <red>0</red>
@@ -3090,6 +3099,15 @@
           </color>
          </brush>
         </colorrole>
+        <colorrole role="Highlight">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
         <colorrole role="AlternateBase">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
@@ -3233,6 +3251,15 @@
            <red>0</red>
            <green>0</green>
            <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Highlight">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>145</red>
+           <green>145</green>
+           <blue>145</blue>
           </color>
          </brush>
         </colorrole>
@@ -5444,6 +5471,11 @@
    <class>YRDBRUNTIMEVERIF_TableWidget</class>
    <extends>QTableWidget</extends>
    <header>src/widgets/yr-db-runtime-verif-logging-table-widget.hpp</header>
+  </customwidget>
+  <customwidget>
+   <class>YRDBRUNTIMEVERIF_ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>src/widgets/yr-db-runtime-verif-combo-box.hpp</header>
   </customwidget>
  </customwidgets>
  <resources>

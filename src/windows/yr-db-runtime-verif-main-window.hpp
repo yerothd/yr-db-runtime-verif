@@ -31,6 +31,12 @@ public:
     {
     }
 
+    inline virtual void SET_CURRENT_RUNTIME_MONITOR_name(QString A_RUNTIME_MONITOR_name)
+    {
+    	comboBox_RUNTIME_MONITOR_VERIFIER_TESTER
+			->find_AND_SET_CURRENT_INDEX(A_RUNTIME_MONITOR_name);
+    }
+
 	virtual int ADD_ITEM(QString TIMESTAMPtem,
 						 QString SIGNALItem,
 						 QString SOURCEItem,
