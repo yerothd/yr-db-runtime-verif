@@ -48,6 +48,9 @@ YRDBRUNTIMEVERIF_TableWidget::YRDBRUNTIMEVERIF_TableWidget(QWidget *parent /* = 
 
 
     setMaxSize(MAX_TABLE_WIDGET_ROW_COUNT);
+
+
+    resizeColumnsToContents();
 }
 
 

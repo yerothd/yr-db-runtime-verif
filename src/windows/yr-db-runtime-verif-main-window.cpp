@@ -20,6 +20,12 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     setFixedSize(width(), height());
 
 
+    tableWidget_LOGGING_2->setMaxSize(1);
+
+    tableWidget_LOGGING_4->setMaxSize(1);
+
+    tableWidget_LOGGING_guarded_condition_expression->setMaxSize(1);
+
 
     connect(tableWidget_LOGGING,
     		SIGNAL(itemPressed(QTableWidgetItem *)),
