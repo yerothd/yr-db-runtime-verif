@@ -156,8 +156,6 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
 			if (0 != a_qwidget_item)
 			{
-//				QDEBUG_STRINGS_OUTPUT_2_N("row_number", row_number);
-//				a_qwidget_item->setForeground(Qt::green);
 				a_qwidget_item->setForeground(Qt::blue);
 			}
 		}
@@ -183,12 +181,15 @@ void YRDBRUNTIMEVERIF_MainWindow::
 		if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive
 				("True", a_logging_info.A_SQL_EVENT_LOG_guarded_condition_expression_VALUE))
 		{
+			YRDBRUNTIMEVERIF_MainWindow::
+				SET__foregroundcolor__ON__accepting_state(aQTable_widget_item->row(),
+														  tableWidget_LOGGING);
+
 			//tableWidget_LOGGING_2 ONLY HAS A SINGLE ROW !
 			YRDBRUNTIMEVERIF_MainWindow::
 				SET__foregroundcolor__ON__accepting_state(tableWidget_LOGGING_2->currentRow(),
 														  tableWidget_LOGGING_2);
 		}
-
 
 		tableWidget_LOGGING_4
 			->ADD_ITEM_3(QString("%1:%2:%3")
