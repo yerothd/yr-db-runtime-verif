@@ -638,7 +638,7 @@
      </font>
     </property>
     <property name="title">
-     <string>Logging from YR-DB-RUNTIME-VERIF</string>
+     <string>SQL Event Logging from YR-DB-RUNTIME-VERIF</string>
     </property>
     <widget class="YRDBRUNTIMEVERIF_TableWidget" name="tableWidget_LOGGING">
      <property name="enabled">
