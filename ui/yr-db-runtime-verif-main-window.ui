@@ -3614,9 +3614,9 @@
         <colorrole role="HighlightedText">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>204</red>
-           <green>0</green>
-           <blue>0</blue>
+           <red>27</red>
+           <green>93</green>
+           <blue>255</blue>
           </color>
          </brush>
         </colorrole>
@@ -3778,9 +3778,9 @@
         <colorrole role="HighlightedText">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>204</red>
-           <green>0</green>
-           <blue>0</blue>
+           <red>27</red>
+           <green>93</green>
+           <blue>255</blue>
           </color>
          </brush>
         </colorrole>
@@ -3942,9 +3942,9 @@
         <colorrole role="HighlightedText">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>204</red>
-           <green>0</green>
-           <blue>0</blue>
+           <red>27</red>
+           <green>93</green>
+           <blue>255</blue>
           </color>
          </brush>
         </colorrole>
