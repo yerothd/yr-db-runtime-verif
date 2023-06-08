@@ -20,22 +20,22 @@
 #include "yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp"
 
 
-
-void YR_DB_RUNTIME_VERIF_Main::YR_CALL_BACK_final_state(YR_CPP_MONITOR 		*a_runtime_monitor,
-														YR_CPP_MONITOR_EDGE *an_EDGE_leading_TO_error_FINAL_state)
+void YR_DB_RUNTIME_VERIF_Main::YR_CALL_BACK_final_state(YR_CPP_MONITOR 			*a_runtime_monitor,
+        YR_CPP_MONITOR_EDGE 	*an_EDGE_leading_TO_error_FINAL_state)
 {
     if (0 != a_runtime_monitor)
     {
         ( (YR_DB_RUNTIME_VERIF_Monitor *) a_runtime_monitor)
-        		->YR_DB_RUNTIME_VERIF_Monitor_notify_SUCCESS_VERIFICATION(an_EDGE_leading_TO_error_FINAL_state);
+        ->YR_DB_RUNTIME_VERIF_Monitor_notify_SUCCESS_VERIFICATION(an_EDGE_leading_TO_error_FINAL_state);
     }
 }
+
 
 
 YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main()
     :YR_DB_RUNTIME_VERIF_Monitor()
 {
-    set_RUNTIME_MONITOR_NAME("yr_sd_mealy_automaton_spec");
+    set_RUNTIME_MONITOR_NAME("yr_sd_runtime_verif_language_EXAMPLE_realcase");
 
     YR_CPP_MONITOR_EDGE *a_last_edge_1 = create_yr_monitor_edge ("d", "e");
     a_last_edge_1->get_SOURCE_STATE()->set_START_STATE(*this, true);
@@ -61,7 +61,7 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main()
 YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main(YR_DB_RUNTIME_VERIF_Logger *logger)
     :YR_DB_RUNTIME_VERIF_Monitor(logger)
 {
-    set_RUNTIME_MONITOR_NAME("yr_sd_mealy_automaton_spec");
+    set_RUNTIME_MONITOR_NAME("yr_sd_runtime_verif_language_EXAMPLE_realcase");
 
     YR_CPP_MONITOR_EDGE *a_last_edge_1 = create_yr_monitor_edge ("d", "e");
     a_last_edge_1->get_SOURCE_STATE()->set_START_STATE(*this, true);
