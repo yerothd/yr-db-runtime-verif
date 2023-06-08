@@ -688,6 +688,15 @@ obj/yr-db-runtime-verif-main-window.o: src/windows/yr-db-runtime-verif-main-wind
 		src/widgets/yr-db-runtime-verif-logging-table-widget.hpp \
 		src/utils/yr-db-runtime-verif-qmap.hpp \
 		src/utils/yr-db-runtime-verif-LOGGING-INFO.hpp \
+		src/include/yr-db-runtime-verif-MONITOR.hpp \
+		src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
+		src/DBUS/YR_DBUS_COMMON.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
+		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
+		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
+		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
 		obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif-main-window.o src/windows/yr-db-runtime-verif-main-window.cpp
 

@@ -20,6 +20,9 @@
 #include <QtCore/QObject>
 
 
+class YR_DB_RUNTIME_VERIF_Monitor;
+
+
 class YRDBRUNTIMEVERIF_MainWindow : public QMainWindow,
 									public Ui_YRDBRUNTIMEVERIF_MainWindow
 {
@@ -46,6 +49,15 @@ public:
 						 QString changed_OR_modified_database_qty_Item,
 						 YRDBRUNTIMEVERIF_Logging_Info &a_logging_info);
 
+	virtual void SET__CURRENT__RUNTIME__MONITOR
+		(YR_DB_RUNTIME_VERIF_Monitor *a_current_runtime_monitor_INSTANCE);
+
+	inline virtual YR_DB_RUNTIME_VERIF_Monitor *GET__CURRENT__RUNTIME__MONITOR()
+	{
+		return _current_runtime_monitor_INSTANCE;
+	}
+
+
 public slots:
 
 	virtual void Set_YRDBRUNTIMEVERIF_Logging_Info(uint row_number,
@@ -63,6 +75,8 @@ protected slots:
 
 	static void SET__foregroundcolor__ON__accepting_state(uint 			row_number,
 														  QTableWidget 	*a_table_widget);
+
+	virtual void VIEW_current_RUNTIME_MONITOR();
 
 	virtual void ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *aQTable_widget_item);
 
@@ -83,7 +97,9 @@ protected slots:
 
 private:
 
-    YRDBRUNTIMEVERIF_QMap _MAP_dbsqlevent__TO__cppfileinfo;
+    YR_DB_RUNTIME_VERIF_Monitor	*_current_runtime_monitor_INSTANCE;
+
+    YRDBRUNTIMEVERIF_QMap 		_MAP_dbsqlevent__TO__cppfileinfo;
 };
 
 #endif /* _YR_DB_RUNTIME_VERIF_MAIN_WINDOW_HPP_ */

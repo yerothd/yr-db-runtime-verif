@@ -6,6 +6,7 @@
 
 #include "yr-db-runtime-verif-main-window.hpp"
 
+#include "src/include/yr-db-runtime-verif-MONITOR.hpp"
 
 #include "src/utils/yr-db-runtime-verif-utils.hpp"
 
@@ -13,6 +14,7 @@
 
 
 YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
+:_current_runtime_monitor_INSTANCE(0)
 {
     setupUi(this);
 
@@ -28,6 +30,13 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     tableWidget_LOGGING_4->setVisible(false);
     tableWidget_LOGGING_PRECONDITIONS_postconditions->setVisible(false);
     tableWidget_LOGGING_guarded_condition_expression->setVisible(false);
+
+
+
+    connect(actionVIEW_RUNTIME_monitor,
+    		SIGNAL(triggered()),
+			this,
+            SLOT(VIEW_current_RUNTIME_MONITOR()));
 
 
     connect(tableWidget_LOGGING,
@@ -82,6 +91,22 @@ int YRDBRUNTIMEVERIF_MainWindow::
 
 
 	return last_current_row_nr;
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow
+		::SET__CURRENT__RUNTIME__MONITOR
+			(YR_DB_RUNTIME_VERIF_Monitor *a_current_runtime_monitor_INSTANCE)
+{
+	_current_runtime_monitor_INSTANCE = a_current_runtime_monitor_INSTANCE;
+
+    if (0 != _current_runtime_monitor_INSTANCE)
+    {
+    	actionVIEW_RUNTIME_monitor
+			->setText(QString("view runtime monitor (%1)")
+						.arg(_current_runtime_monitor_INSTANCE
+								->get_RUNTIME_MONITOR_NAME()));
+    }
 }
 
 
@@ -167,6 +192,16 @@ void YRDBRUNTIMEVERIF_MainWindow::
 				a_qwidget_item->setForeground(Qt::green);
 			}
 		}
+	}
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::VIEW_current_RUNTIME_MONITOR()
+{
+	if (0 != _current_runtime_monitor_INSTANCE)
+	{
+		QString DOT_FORMAT =
+				_current_runtime_monitor_INSTANCE->print_TO_dot_FILE(true);
 	}
 }
 
