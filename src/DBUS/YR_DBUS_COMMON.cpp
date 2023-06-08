@@ -21,7 +21,8 @@
 
 
 void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT_complement_info_ON_ACCEPTING_STATE
-						(YR_CPP_MONITOR_EDGE &an_EDGE_leading_TO_error_FINAL_state)
+						(YR_CPP_MONITOR_EDGE &an_EDGE_leading_TO_error_FINAL_state,
+						 bool PRINT_SQL_EVENT_LOG_string /* = true */)
 {
     //######################################## GUI CODE ########################################
     YRDBRUNTIMEVERIF_Windows *ALL_WINDOWS_INSTANCE =
@@ -38,9 +39,19 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT_complement_info_ON_ACCEPTING_STATE
 
     	if (0 != a_logging_info)
     	{
-    		a_logging_info->A_SQL_EVENT_LOG_guarded_condition_expression
-				= an_EDGE_leading_TO_error_FINAL_state
-					.get_guarded_CONDITION_expression()->toString();
+    		if (PRINT_SQL_EVENT_LOG_string)
+    		{
+        		a_logging_info->A_SQL_EVENT_LOG_guarded_condition_expression
+    				= an_EDGE_leading_TO_error_FINAL_state
+    					.get_guarded_CONDITION_expression()->toString_SQL_EVENT_LOG_TOKEN();
+    		}
+    		else
+    		{
+        		a_logging_info->A_SQL_EVENT_LOG_guarded_condition_expression
+    				= an_EDGE_leading_TO_error_FINAL_state
+    					.get_guarded_CONDITION_expression()->toString();
+    		}
+
 
     		a_logging_info->A_SQL_EVENT_LOG_guarded_condition_expression_VALUE
 				= BOOL_TO_STRING(true);
