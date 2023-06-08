@@ -3371,7 +3371,7 @@
       </palette>
      </property>
      <property name="text">
-      <string>RUNTIME MONITOR VERIFIER TESTER</string>
+      <string>RUNTIME MONITOR name</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
