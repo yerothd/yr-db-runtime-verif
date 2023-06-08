@@ -5022,6 +5022,9 @@
     </property>
     <addaction name="separator"/>
     <addaction name="actionUserGuide_PDF"/>
+    <addaction name="separator"/>
+    <addaction name="actionVIEW_RUNTIME_monitor"/>
+    <addaction name="separator"/>
     <addaction name="actionAbout"/>
    </widget>
    <widget class="QMenu" name="menu_actions">
@@ -6046,6 +6049,7 @@
     </property>
     <addaction name="separator"/>
     <addaction name="actionLOGGING_from_SUT"/>
+    <addaction name="separator"/>
     <addaction name="actionD_BUS"/>
    </widget>
    <addaction name="menu_actions"/>
@@ -6641,6 +6645,11 @@
     <font>
      <pointsize>10</pointsize>
     </font>
+   </property>
+  </action>
+  <action name="actionVIEW_RUNTIME_monitor">
+   <property name="text">
+    <string>VIEW RUNTIME monitor</string>
    </property>
   </action>
  </widget>
