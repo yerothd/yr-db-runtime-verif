@@ -2837,6 +2837,20 @@
        <set>AlignCenter</set>
       </property>
      </column>
+     <column>
+      <property name="text">
+       <string>is RECOVERED</string>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="textAlignment">
+       <set>AlignCenter</set>
+      </property>
+     </column>
     </widget>
     <widget class="YRDBRUNTIMEVERIF_ComboBox" name="comboBox_RUNTIME_MONITOR_VERIFIER_TESTER">
      <property name="geometry">
@@ -4905,8 +4919,16 @@
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
+   <widget class="QMenu" name="menuCONFIGURE">
+    <property name="title">
+     <string>CONFIGURE</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionLOGGING_from_SUT"/>
+   </widget>
    <addaction name="menu_actions"/>
    <addaction name="menu_help"/>
+   <addaction name="menuCONFIGURE"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar_mainWindow">
@@ -5477,6 +5499,11 @@
      <weight>50</weight>
      <bold>false</bold>
     </font>
+   </property>
+  </action>
+  <action name="actionLOGGING_from_SUT">
+   <property name="text">
+    <string>LOGGING from SUT</string>
    </property>
   </action>
  </widget>
