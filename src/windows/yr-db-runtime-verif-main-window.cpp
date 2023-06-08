@@ -16,8 +16,8 @@
 const QString YRDBRUNTIMEVERIF_MainWindow::QMESSAGE_BOX_STYLE_SHEET =
 		QString("QMessageBox {background-color: rgb(%1);}"
                 "QMessageBox QLabel {color: rgb(%2);}")
-			.arg("255,48,48",
-				 "255,255,255");
+			.arg("47,67,67",
+				 "02,160,70");
 
 
 YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
@@ -178,6 +178,27 @@ YRDBRUNTIMEVERIF_Logging_Info *YRDBRUNTIMEVERIF_MainWindow::
 	}
 
 	return a_logging_info_SAVED;
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::set_connection_DBUS_status(QString message_STATUS,
+															 bool 	 error_not_connected /* = false*/)
+{
+	if (!error_not_connected)
+	{
+		label_display_yr_db_runtime_verifier_connection_STATUS
+			->setStyleSheet(QString("color: rgb(%1);")
+								.arg("255,255,255"));
+	}
+	else
+	{
+		label_display_yr_db_runtime_verifier_connection_STATUS
+			->setStyleSheet(QString("color: rgb(%1);")
+								.arg("255,48,48"));
+	}
+
+	label_display_yr_db_runtime_verifier_connection_STATUS
+		->setText(message_STATUS);
 }
 
 

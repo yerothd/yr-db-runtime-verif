@@ -259,7 +259,8 @@ int main(int argc, char *argv[])
     {
     	all_windows._yrdbruntimeverif_main_Window
 			->set_connection_DBUS_status
-				(QString("YR-DB-RUNTIME-VERIF: this console NOT REGISTERED TO SYSTEM D-BUS."));
+				(QString("YR-DB-RUNTIME-VERIF: this console NOT REGISTERED TO SYSTEM D-BUS."),
+				 true);
     }
     //############################################################################################
 

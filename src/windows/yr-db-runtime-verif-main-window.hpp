@@ -65,11 +65,8 @@ public slots:
 
 	virtual YRDBRUNTIMEVERIF_Logging_Info *Get_YRDBRUNTIMEVERIF_Logging_Info(uint row_number);
 
-	inline virtual void set_connection_DBUS_status(QString message_STATUS)
-	{
-    	label_display_yr_db_runtime_verifier_connection_STATUS
-			->setText(message_STATUS);
-	}
+	virtual void set_connection_DBUS_status(QString	message_STATUS,
+											bool 	error_not_connected = false);
 
 protected slots:
 
