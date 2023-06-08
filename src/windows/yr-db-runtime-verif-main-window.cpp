@@ -12,7 +12,6 @@
 #include <QtCore/QProcess>
 
 
-
 YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 {
     setupUi(this);
@@ -21,10 +20,14 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 
 
     tableWidget_LOGGING_2->setMaxSize(1);
-
     tableWidget_LOGGING_4->setMaxSize(1);
-
+    tableWidget_LOGGING_PRECONDITIONS_postconditions->setMaxSize(1);
     tableWidget_LOGGING_guarded_condition_expression->setMaxSize(1);
+
+
+    tableWidget_LOGGING_4->setVisible(false);
+    tableWidget_LOGGING_PRECONDITIONS_postconditions->setVisible(false);
+    tableWidget_LOGGING_guarded_condition_expression->setVisible(false);
 
 
     connect(tableWidget_LOGGING,
@@ -102,6 +105,11 @@ void YRDBRUNTIMEVERIF_MainWindow::
 	}
 
 
+    tableWidget_LOGGING_4->setVisible(true);
+    tableWidget_LOGGING_PRECONDITIONS_postconditions->setVisible(true);
+    tableWidget_LOGGING_guarded_condition_expression->setVisible(true);
+
+
 	tableWidget_LOGGING_4
 		->ADD_ITEM_3(QString("%1:%2:%3")
 					.arg(a_logging_info.A_PREVIOUS_STATE,
@@ -156,7 +164,7 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
 			if (0 != a_qwidget_item)
 			{
-				a_qwidget_item->setForeground(Qt::blue);
+				a_qwidget_item->setForeground(Qt::green);
 			}
 		}
 	}
@@ -181,6 +189,10 @@ void YRDBRUNTIMEVERIF_MainWindow::
 		if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive
 				("True", a_logging_info.A_SQL_EVENT_LOG_guarded_condition_expression_VALUE))
 		{
+		    tableWidget_LOGGING_4->setVisible(true);
+		    tableWidget_LOGGING_PRECONDITIONS_postconditions->setVisible(true);
+		    tableWidget_LOGGING_guarded_condition_expression->setVisible(true);
+
 			YRDBRUNTIMEVERIF_MainWindow::
 				SET__foregroundcolor__ON__accepting_state(aQTable_widget_item->row(),
 														  tableWidget_LOGGING);
@@ -190,6 +202,13 @@ void YRDBRUNTIMEVERIF_MainWindow::
 				SET__foregroundcolor__ON__accepting_state(tableWidget_LOGGING_2->currentRow(),
 														  tableWidget_LOGGING_2);
 		}
+		else
+		{
+		    tableWidget_LOGGING_4->setVisible(false);
+		    tableWidget_LOGGING_PRECONDITIONS_postconditions->setVisible(false);
+		    tableWidget_LOGGING_guarded_condition_expression->setVisible(false);
+		}
+
 
 		tableWidget_LOGGING_4
 			->ADD_ITEM_3(QString("%1:%2:%3")
