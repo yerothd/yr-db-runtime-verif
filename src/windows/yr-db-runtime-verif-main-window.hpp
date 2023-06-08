@@ -87,15 +87,16 @@ protected slots:
 		close();
 	}
 
-    inline virtual void about()
-    {
-    }
+    virtual void about();
 
     inline virtual void help()
     {
     }
 
 private:
+
+    static const QString QMESSAGE_BOX_STYLE_SHEET;
+
 
     YR_DB_RUNTIME_VERIF_Monitor	*_current_runtime_monitor_INSTANCE;
 

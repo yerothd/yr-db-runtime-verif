@@ -6057,7 +6057,7 @@
    <addaction name="menuCONFIGURE"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <widget class="QToolBar" name="toolBar_mainWindow">
+  <widget class="QToolBar" name="toolBar_mainWindow_YR_DB_RUNTIME_VERIF">
    <property name="palette">
     <palette>
      <active>

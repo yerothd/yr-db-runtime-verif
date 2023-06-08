@@ -13,6 +13,13 @@
 #include <QtCore/QProcess>
 
 
+const QString YRDBRUNTIMEVERIF_MainWindow::QMESSAGE_BOX_STYLE_SHEET =
+		QString("QMessageBox {background-color: rgb(%1);}"
+                "QMessageBox QLabel {color: rgb(%2);}")
+			.arg("255,48,48",
+				 "255,255,255");
+
+
 YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 :_current_runtime_monitor_INSTANCE(0)
 {
@@ -33,23 +40,22 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 
 
 
+    connect(actionAbout, SIGNAL(triggered()), this, SLOT(about()));
+
     connect(actionVIEW_RUNTIME_monitor,
     		SIGNAL(triggered()),
 			this,
             SLOT(VIEW_current_RUNTIME_MONITOR()));
-
 
     connect(tableWidget_LOGGING,
     		SIGNAL(itemPressed(QTableWidgetItem *)),
 			this,
             SLOT(ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *)));
 
-
     connect(actionExit,
     		SIGNAL(triggered()),
 			this,
             SLOT(ACTION_EXIT_method()));
-
 
     connect(actionUserGuide_PDF,
     		SIGNAL(triggered()),
@@ -274,5 +280,17 @@ void YRDBRUNTIMEVERIF_MainWindow::ACTION_USER_GUIDE_method()
 	aProcess.startDetached("/usr/bin/evince",
 						   progArguments);
 }
+
+
+void YRDBRUNTIMEVERIF_MainWindow::about()
+{
+	toolBar_mainWindow_YR_DB_RUNTIME_VERIF
+		->setStyleSheet(QMESSAGE_BOX_STYLE_SHEET);
+
+		QMessageBox::information(toolBar_mainWindow_YR_DB_RUNTIME_VERIF,
+								 "ABOUT THIS SOFTWARE (YR-DB-RUNTIME-VERIF)",
+								 QString("DEVELOPED by DR.-ING. DIPL.-INF. xavier noumbissi noundou."));
+}
+
 
 
