@@ -1280,7 +1280,7 @@
      </property>
      <column>
       <property name="text">
-       <string>tIme STAMP</string>
+       <string>tIme stamp</string>
       </property>
       <property name="font">
        <font>
@@ -1294,7 +1294,7 @@
      </column>
      <column>
       <property name="text">
-       <string>SQL_QUERY</string>
+       <string>sql query</string>
       </property>
       <property name="font">
        <font>
@@ -1308,7 +1308,7 @@
      </column>
      <column>
       <property name="text">
-       <string>SOURCE</string>
+       <string>source</string>
       </property>
       <property name="font">
        <font>
@@ -1322,7 +1322,7 @@
      </column>
      <column>
       <property name="text">
-       <string>TARGET</string>
+       <string>target</string>
       </property>
       <property name="font">
        <font>
@@ -2420,7 +2420,7 @@
      </property>
      <column>
       <property name="text">
-       <string>EVALUATED guarded condition expression</string>
+       <string>evaluated guarded condition expression</string>
       </property>
       <property name="font">
        <font>
@@ -2434,7 +2434,7 @@
      </column>
      <column>
       <property name="text">
-       <string>VALUE</string>
+       <string>value</string>
       </property>
       <property name="font">
        <font>
@@ -2453,9 +2453,9 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>277</x>
+       <x>255</x>
        <y>432</y>
-       <width>461</width>
+       <width>483</width>
        <height>55</height>
       </rect>
      </property>
@@ -2969,7 +2969,7 @@
      </property>
      <column>
       <property name="text">
-       <string>PREVIOUS state</string>
+       <string>previous state</string>
       </property>
       <property name="font">
        <font>
@@ -2983,7 +2983,7 @@
      </column>
      <column>
       <property name="text">
-       <string>ACCEPTING state</string>
+       <string>accepting state</string>
       </property>
       <property name="font">
        <font>
@@ -2997,7 +2997,7 @@
      </column>
      <column>
       <property name="text">
-       <string>IS ERROR state</string>
+       <string>is error state</string>
       </property>
       <property name="font">
        <font>
@@ -3011,7 +3011,7 @@
      </column>
      <column>
       <property name="text">
-       <string>is RECOVERED</string>
+       <string>is recovered</string>
       </property>
       <property name="font">
        <font>
@@ -3029,7 +3029,7 @@
       <rect>
        <x>3</x>
        <y>453</y>
-       <width>271</width>
+       <width>250</width>
        <height>25</height>
       </rect>
      </property>
@@ -3515,7 +3515,7 @@
       <rect>
        <x>3</x>
        <y>430</y>
-       <width>271</width>
+       <width>250</width>
        <height>21</height>
       </rect>
      </property>
@@ -3591,7 +3591,7 @@
       </font>
      </property>
      <property name="text">
-      <string>RUNTIME MONITOR name</string>
+      <string>runtime monitor name</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -4119,7 +4119,7 @@
      </property>
      <column>
       <property name="text">
-       <string>SOURCE file</string>
+       <string>source file</string>
       </property>
       <property name="font">
        <font>
