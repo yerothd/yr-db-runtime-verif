@@ -55,7 +55,7 @@ public:
 
 	void TRACE_SUT_LOG_EVENT_complement_info_ON_ACCEPTING_STATE
 					(YR_CPP_MONITOR_EDGE &an_EDGE_leading_TO_error_FINAL_state,
-					 bool PRINT_SQL_EVENT_LOG_string = true);
+					 bool PRINT_with_trace_syntax = false);
 
 	void TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_monitor,
 							 uint 						 cur_command,
