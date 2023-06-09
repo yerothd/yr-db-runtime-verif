@@ -28,18 +28,7 @@ public:
 	{
 	}
 
-	inline virtual QString toString()
-	{
-		return QString("%1:%2:%3:%4:%5:%6:%7:%8")
-				.arg(A_RUNTIME_MONITOR_name,
-					 A_CPP_SOURCE_FILE_NAME,
-					 A_CPP_SOURCE_FILE_LINE_NUMBER,
-					 A_SQL_EVENT_LOG_guarded_condition_expression,
-					 A_SQL_EVENT_LOG_guarded_condition_expression_VALUE,
-					 A_PREVIOUS_STATE,
-					 AN_ACCEPTING_STATE,
-					 AN_ACCEPTING_STATE_is_error_state_VALUE);
-	}
+	virtual QString toString();
 
 
 	QString A_RUNTIME_MONITOR_name;
@@ -52,6 +41,10 @@ public:
 
 	QString A_SQL_EVENT_LOG_guarded_condition_expression_VALUE;
 
+	QString A_TRANSITION_precondition;
+
+	QString A_TRANSITION_postcondition;
+
 	QString A_PREVIOUS_STATE;
 
 	QString AN_ACCEPTING_STATE;
@@ -59,9 +52,6 @@ public:
 	QString AN_ACCEPTING_STATE_is_error_state_VALUE;
 
 };
-
-
-
 
 
 

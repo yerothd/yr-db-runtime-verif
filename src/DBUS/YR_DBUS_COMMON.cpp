@@ -47,6 +47,12 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT_complement_info_ON_ACCEPTING_STATE
     		a_logging_info->A_SQL_EVENT_LOG_guarded_condition_expression_VALUE
 				= BOOL_TO_STRING(true);
 
+    		a_logging_info->A_TRANSITION_precondition
+				= an_EDGE_leading_TO_error_FINAL_state.Get__precondition__STRING_VALUE_EXPRESSION();
+
+    		a_logging_info->A_TRANSITION_postcondition
+				= an_EDGE_leading_TO_error_FINAL_state.Get__POSTcondition__STRING_VALUE_EXPRESSION();
+
     		a_logging_info->A_PREVIOUS_STATE
 				= an_EDGE_leading_TO_error_FINAL_state.get_SOURCE_STATE_KEY();
 

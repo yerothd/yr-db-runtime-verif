@@ -147,6 +147,10 @@ void YRDBRUNTIMEVERIF_MainWindow::
 						 a_logging_info.AN_ACCEPTING_STATE,
 						 a_logging_info.AN_ACCEPTING_STATE_is_error_state_VALUE));
 
+	tableWidget_LOGGING_PRECONDITIONS_postconditions
+		->ADD_ITEM_2(QString("%1:%2")
+						.arg(a_logging_info.A_TRANSITION_precondition,
+							 a_logging_info.A_TRANSITION_postcondition));
 
 	tableWidget_LOGGING_guarded_condition_expression
 		->ADD_ITEM_2(QString("%1:%2")
@@ -277,6 +281,11 @@ void YRDBRUNTIMEVERIF_MainWindow::
 						.arg(a_logging_info.A_PREVIOUS_STATE,
 							 a_logging_info.AN_ACCEPTING_STATE,
 							 a_logging_info.AN_ACCEPTING_STATE_is_error_state_VALUE));
+
+		tableWidget_LOGGING_PRECONDITIONS_postconditions
+			->ADD_ITEM_2(QString("%1:%2")
+							.arg(a_logging_info.A_TRANSITION_precondition,
+								 a_logging_info.A_TRANSITION_postcondition));
 
 		tableWidget_LOGGING_guarded_condition_expression
 			->ADD_ITEM_2(QString("%1:%2")
