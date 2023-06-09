@@ -651,9 +651,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>29</x>
+      <x>23</x>
       <y>6</y>
-      <width>741</width>
+      <width>753</width>
       <height>489</height>
      </rect>
     </property>
@@ -766,7 +766,7 @@
       <rect>
        <x>3</x>
        <y>22</y>
-       <width>735</width>
+       <width>747</width>
        <height>220</height>
       </rect>
      </property>
@@ -1357,7 +1357,7 @@
       <rect>
        <x>3</x>
        <y>310</y>
-       <width>735</width>
+       <width>747</width>
        <height>55</height>
       </rect>
      </property>
@@ -1856,6 +1856,13 @@
         </colorrole>
        </disabled>
       </palette>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
      </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
@@ -1906,7 +1913,7 @@
       <rect>
        <x>3</x>
        <y>372</y>
-       <width>735</width>
+       <width>747</width>
        <height>55</height>
       </rect>
      </property>
@@ -2405,6 +2412,13 @@
         </colorrole>
        </disabled>
       </palette>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
      </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
@@ -2455,7 +2469,7 @@
       <rect>
        <x>255</x>
        <y>432</y>
-       <width>483</width>
+       <width>494</width>
        <height>55</height>
       </rect>
      </property>
@@ -2954,6 +2968,13 @@
         </colorrole>
        </disabled>
       </palette>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
      </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
@@ -3504,7 +3525,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <pointsize>9</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -3605,7 +3626,7 @@
       <rect>
        <x>3</x>
        <y>250</y>
-       <width>735</width>
+       <width>747</width>
        <height>55</height>
       </rect>
      </property>
@@ -4104,6 +4125,13 @@
         </colorrole>
        </disabled>
       </palette>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
      </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
