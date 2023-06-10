@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>YRDBRUNTIMEVERIF_MainWindow</class>
- <widget class="QMainWindow" name="YRDBRUNTIMEVERIF_MainWindow">
+ <class>YRDBRUNTIMEVERIF_SetupWindow</class>
+ <widget class="QMainWindow" name="YRDBRUNTIMEVERIF_SetupWindow">
   <property name="windowModality">
    <enum>Qt::NonModal</enum>
   </property>
@@ -518,7 +518,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>YR-DB-RUNTIME-VERIF _ console</string>
+   <string>YR-DB-RUNTIME-VERIF _ settings configuration panel</string>
   </property>
   <property name="autoFillBackground">
    <bool>true</bool>
@@ -1167,10 +1167,10 @@
    <widget class="QTabWidget" name="tabWidget_administration">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>19</y>
-      <width>760</width>
-      <height>477</height>
+      <x>23</x>
+      <y>6</y>
+      <width>757</width>
+      <height>489</height>
      </rect>
     </property>
     <property name="palette">
@@ -1179,9 +1179,9 @@
        <colorrole role="WindowText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
+          <red>2</red>
+          <green>160</green>
+          <blue>70</blue>
          </color>
         </brush>
        </colorrole>
@@ -1281,6 +1281,15 @@
           <red>0</red>
           <green>0</green>
           <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="HighlightedText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>48</red>
+          <green>140</green>
+          <blue>198</blue>
          </color>
         </brush>
        </colorrole>
@@ -1325,9 +1334,9 @@
        <colorrole role="WindowText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
+          <red>2</red>
+          <green>160</green>
+          <blue>70</blue>
          </color>
         </brush>
        </colorrole>
@@ -1427,6 +1436,15 @@
           <red>0</red>
           <green>0</green>
           <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="HighlightedText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>48</red>
+          <green>140</green>
+          <blue>198</blue>
          </color>
         </brush>
        </colorrole>
@@ -1576,6 +1594,15 @@
          </color>
         </brush>
        </colorrole>
+       <colorrole role="HighlightedText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>48</red>
+          <green>140</green>
+          <blue>198</blue>
+         </color>
+        </brush>
+       </colorrole>
        <colorrole role="AlternateBase">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
@@ -1629,11 +1656,11 @@
      <attribute name="title">
       <string>APPLICATION PARAMETERS</string>
      </attribute>
-     <widget class="YerothPushButton" name="pushButton_RESET_parameters_change">
+     <widget class="QPushButton" name="pushButton_RESET_parameters_change">
       <property name="geometry">
        <rect>
-        <x>527</x>
-        <y>416</y>
+        <x>528</x>
+        <y>436</y>
         <width>111</width>
         <height>25</height>
        </rect>
@@ -2091,11 +2118,11 @@
        <string>Reset</string>
       </property>
      </widget>
-     <widget class="YerothPushButton" name="pushButton_SAVE_parameters">
+     <widget class="QPushButton" name="pushButton_SAVE_parameters">
       <property name="geometry">
        <rect>
-        <x>640</x>
-        <y>416</y>
+        <x>641</x>
+        <y>436</y>
         <width>111</width>
         <height>25</height>
        </rect>
@@ -2208,6 +2235,24 @@
             <red>0</red>
             <green>0</green>
             <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>47</red>
+            <green>67</green>
+            <blue>67</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>47</red>
+            <green>67</green>
+            <blue>67</blue>
            </color>
           </brush>
          </colorrole>
@@ -2357,6 +2402,24 @@
            </color>
           </brush>
          </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>47</red>
+            <green>67</green>
+            <blue>67</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>47</red>
+            <green>67</green>
+            <blue>67</blue>
+           </color>
+          </brush>
+         </colorrole>
          <colorrole role="AlternateBase">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
@@ -2503,6 +2566,24 @@
            </color>
           </brush>
          </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>145</red>
+            <green>145</green>
+            <blue>145</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>47</red>
+            <green>67</green>
+            <blue>67</blue>
+           </color>
+          </brush>
+         </colorrole>
          <colorrole role="AlternateBase">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
@@ -2553,7 +2634,7 @@
        <string>Save</string>
       </property>
      </widget>
-     <widget class="YerothPushButton" name="pushButton_choose_repertoire_systeme_latex">
+     <widget class="QPushButton" name="pushButton_choose_repertoire_systeme_latex">
       <property name="geometry">
        <rect>
         <x>330</x>
@@ -3011,12 +3092,11 @@
        <string/>
       </property>
       <property name="icon">
-       <iconset>
-        <normaloff>../../yeroth-erp-3-0/yeroth-erp-3-0-images/folder-sort.svg.png</normaloff>
-        <normalon>:/yeroth-erp-3-0-images/folder-sort.svg.png</normalon>../../yeroth-erp-3-0/yeroth-erp-3-0-images/folder-sort.svg.png</iconset>
+       <iconset resource="../yr-db-runtime-verif.qrc">
+        <normaloff>:/yr-db-runtime-verif-images/folder-sort.svg.png</normaloff>:/yr-db-runtime-verif-images/folder-sort.svg.png</iconset>
       </property>
      </widget>
-     <widget class="QLabel" name="label_repertoire_systeme_latex">
+     <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -3036,13 +3116,13 @@
        <string/>
       </property>
       <property name="text">
-       <string>PDF reader path</string>
+       <string>PDF reader full path</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
-     <widget class="YerothLineEdit" name="lineEdit_repertoire_systeme_latex">
+     <widget class="QLineEdit" name="lineEdit_pdf_reader_full_path">
       <property name="geometry">
        <rect>
         <x>165</x>
@@ -3154,6 +3234,15 @@
           </brush>
          </colorrole>
          <colorrole role="Shadow">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>0</red>
@@ -3317,6 +3406,15 @@
            </color>
           </brush>
          </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
          <colorrole role="HighlightedText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
@@ -3469,6 +3567,15 @@
             <red>0</red>
             <green>0</green>
             <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>145</red>
+            <green>145</green>
+            <blue>145</blue>
            </color>
           </brush>
          </colorrole>
@@ -4864,21 +4971,6 @@
    </property>
   </action>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>YerothPushButton</class>
-   <extends>QPushButton</extends>
-   <header>src/widgets/yeroth-erp-push-button.hpp</header>
-   <slots>
-    <slot>handleItemModification(QModelIndex)</slot>
-   </slots>
-  </customwidget>
-  <customwidget>
-   <class>YerothLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>src/widgets/yeroth-erp-line-edit.hpp</header>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="../yr-db-runtime-verif.qrc"/>
  </resources>

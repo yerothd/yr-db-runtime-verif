@@ -31,10 +31,12 @@ PRECOMPILED_HEADER  = src/include/yr-db-runtime-verif-precompiled-header.hpp
 DBUS_ADAPTORS += yr.db-runtime.verif.xml
 
 
-FORMS = ui/yr-db-runtime-verif-main-window.ui
+FORMS = ui/yr-db-runtime-verif-setup-window.ui \
+				ui/yr-db-runtime-verif-main-window.ui
 
 
-HEADERS = src/utils/yr-db-runtime-verif-LOGGING-INFO.hpp \
+HEADERS = src/windows/yr-db-runtime-verif-setup-window.hpp \
+			src/utils/yr-db-runtime-verif-LOGGING-INFO.hpp \
 			src/widgets/yr-db-runtime-verif-combo-box.hpp \
 			src/utils/yr-db-runtime-verif-qmap.hpp \
 			src/widgets/yr-db-runtime-verif-logging-table-widget.hpp \
@@ -53,7 +55,8 @@ HEADERS = src/utils/yr-db-runtime-verif-LOGGING-INFO.hpp \
 		  src/yr-db-runtime-verif-database.hpp \
 		  src/yr-db-runtime-verif-config.hpp 
  
-SOURCES = src/utils/yr-db-runtime-verif-LOGGING-INFO.cpp \
+SOURCES = src/windows/yr-db-runtime-verif-setup-window.cpp \
+			src/utils/yr-db-runtime-verif-LOGGING-INFO.cpp \
 			src/widgets/yr-db-runtime-verif-combo-box.cpp \
 			src/utils/yr-db-runtime-verif-qmap.cpp \
 			src/widgets/yr-db-runtime-verif-logging-table-widget.cpp \

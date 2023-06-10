@@ -6467,8 +6467,8 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionUserGuide_PDF"/>
    <addaction name="actionCONFIGURATION_panel_window"/>
+   <addaction name="actionUserGuide_PDF"/>
   </widget>
   <action name="actionAbout">
    <property name="text">

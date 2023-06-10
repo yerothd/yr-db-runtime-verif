@@ -60,6 +60,16 @@ public:
 
 public slots:
 
+	inline virtual void yr_show()
+	{
+		setVisible(true);
+	}
+
+	inline virtual void yr_close()
+	{
+		close();
+	}
+
 	virtual void Set_YRDBRUNTIMEVERIF_Logging_Info(uint row_number,
 												   QString logging_info);
 
@@ -75,14 +85,13 @@ protected slots:
 
 	virtual void VIEW_current_RUNTIME_MONITOR();
 
+	virtual void ON_Configfuration_panel_window_trigerred();
+
 	virtual void ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *aQTable_widget_item);
 
 	virtual void ACTION_USER_GUIDE_method();
 
-	inline virtual void ACTION_EXIT_method()
-	{
-		close();
-	}
+	virtual void ACTION_EXIT_method();
 
     virtual void about();
 

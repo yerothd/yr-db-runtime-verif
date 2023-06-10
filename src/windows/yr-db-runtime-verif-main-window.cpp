@@ -6,7 +6,12 @@
 
 #include "yr-db-runtime-verif-main-window.hpp"
 
+//verification related.
 #include "src/include/yr-db-runtime-verif-MONITOR.hpp"
+
+#include "src/yr-db-runtime-verif-config.hpp"
+
+#include "src/windows/yr-db-runtime-verif-windows.hpp"
 
 #include "src/utils/yr-db-runtime-verif-utils.hpp"
 
@@ -41,6 +46,12 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 
 
     connect(actionAbout, SIGNAL(triggered()), this, SLOT(about()));
+
+
+    connect(actionCONFIGURATION_panel_window,
+    		SIGNAL(triggered()),
+			this,
+            SLOT(ON_Configfuration_panel_window_trigerred()));
 
     connect(actionVIEW_RUNTIME_monitor,
     		SIGNAL(triggered()),
@@ -246,6 +257,19 @@ void YRDBRUNTIMEVERIF_MainWindow::VIEW_current_RUNTIME_MONITOR()
 }
 
 
+void YRDBRUNTIMEVERIF_MainWindow::ON_Configfuration_panel_window_trigerred()
+{
+    YRDBRUNTIMEVERIF_Windows *ALL_WINDOWS_INSTANCE =
+    		YR_DB_RUNTIME_VERIF_Config::GET_ALL_WINDOWS_instance();
+
+    if (0 != ALL_WINDOWS_INSTANCE)
+    {
+    	ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_setup_Window->yr_show();
+    	ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window->yr_close();
+    }
+}
+
+
 void YRDBRUNTIMEVERIF_MainWindow::
 		ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *aQTable_widget_item)
 {
@@ -318,6 +342,20 @@ void YRDBRUNTIMEVERIF_MainWindow::ACTION_USER_GUIDE_method()
 
 	aProcess.startDetached("/usr/bin/evince",
 						   progArguments);
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::ACTION_EXIT_method()
+{
+    YRDBRUNTIMEVERIF_Windows *ALL_WINDOWS_INSTANCE =
+    		YR_DB_RUNTIME_VERIF_Config::GET_ALL_WINDOWS_instance();
+
+    if (0 != ALL_WINDOWS_INSTANCE)
+    {
+    	ALL_WINDOWS_INSTANCE->CLOSE_allWindows();
+    }
+
+	close();
 }
 
 

@@ -9,6 +9,8 @@
 
 #include <QtCore/QObject>
 
+
+#include "src/windows/yr-db-runtime-verif-setup-window.hpp"
 #include "src/windows/yr-db-runtime-verif-main-window.hpp"
 
 
@@ -23,27 +25,28 @@ class YRDBRUNTIMEVERIF_Windows : public QObject
 public:
 
 	inline YRDBRUNTIMEVERIF_Windows(QDesktopWidget *desktopWidget)
-	:_yrdbruntimeverif_main_Window(0),
+	:_yrdbruntimeverif_setup_Window(0),
+	 _yrdbruntimeverif_main_Window(0),
 	 _desktopWidget(desktopWidget)
 	{
 	}
 
-	inline virtual ~YRDBRUNTIMEVERIF_Windows()
-	{
-		delete _yrdbruntimeverif_main_Window;
-	}
+	virtual ~YRDBRUNTIMEVERIF_Windows();
 
-    void createAll_YRDBRUNTIMEVERIF_Windows();
+	virtual void createAll_YRDBRUNTIMEVERIF_Windows();
 
-    void hideAllWindows();
+	virtual void CLOSE_allWindows();
 
+
+    YRDBRUNTIMEVERIF_SetupWindow *_yrdbruntimeverif_setup_Window;
 
     YRDBRUNTIMEVERIF_MainWindow *_yrdbruntimeverif_main_Window;
 
 private:
 
 	inline YRDBRUNTIMEVERIF_Windows()
-	:_yrdbruntimeverif_main_Window(0),
+	:_yrdbruntimeverif_setup_Window(0),
+	 _yrdbruntimeverif_main_Window(0),
 	 _desktopWidget(0)
 	{
 	}
