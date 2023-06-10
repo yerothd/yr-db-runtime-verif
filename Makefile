@@ -596,6 +596,7 @@ compiler_rcc_clean:
 qrc_yr-db-runtime-verif.cpp: yr-db-runtime-verif.qrc \
 		/usr/lib/qt5/bin/rcc \
 		yr-db-runtime-verif-images/LOGO-icon.png \
+		yr-db-runtime-verif-images/printing-setting.png \
 		yr-db-runtime-verif-images/pdf-print-icon.svg
 	/usr/lib/qt5/bin/rcc -name yr-db-runtime-verif yr-db-runtime-verif.qrc -o qrc_yr-db-runtime-verif.cpp
 
