@@ -47,6 +47,15 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 			this,
             SLOT(VIEW_current_RUNTIME_MONITOR()));
 
+    /*
+     * USEFUL TO UPDATE sql event information WHEN
+     * 'QtableWidget::selectRow' IS CALLED.
+     */
+    connect(tableWidget_LOGGING,
+    		SIGNAL(itemChanged(QTableWidgetItem *)),
+			this,
+            SLOT(ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *)));
+
     connect(tableWidget_LOGGING,
     		SIGNAL(itemPressed(QTableWidgetItem *)),
 			this,
