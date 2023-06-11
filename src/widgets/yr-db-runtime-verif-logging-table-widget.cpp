@@ -117,6 +117,14 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM_3(QString Source_file__line_number)
 
     QString AN_ACCEPTING_STATE_is_error_state_VALUE = source_file__line_number_LIST.at(2);
 
+
+    A_PREVIOUS_STATE.truncate(50);
+
+    AN_ACCEPTING_STATE.truncate(50);
+
+    AN_ACCEPTING_STATE_is_error_state_VALUE.truncate(50);
+
+
     _TIMESTAMPtem = new QTableWidgetItem(A_PREVIOUS_STATE);
     _SIGNALItem = new QTableWidgetItem(AN_ACCEPTING_STATE);
     _SOURCEItem = new QTableWidgetItem(AN_ACCEPTING_STATE_is_error_state_VALUE);
@@ -167,6 +175,10 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM_2(QString Source_file__line_number)
 
     QString line_number = source_file__line_number_LIST.at(1);
 
+    Source_file.truncate(50);
+
+    line_number.truncate(50);
+
     _TIMESTAMPtem = new QTableWidgetItem(Source_file);
     _SIGNALItem = new QTableWidgetItem(line_number);
 
@@ -196,6 +208,12 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString TIMESTAMPtem,
 										   QString changed_OR_modified_database_qty_Item)
 {
     setRowCount(_curRow + 1);
+
+    TIMESTAMPtem.truncate(50);
+    SIGNALItem.truncate(50);
+    SOURCEItem.truncate(50);
+    TARGETItem.truncate(50);
+    changed_OR_modified_database_qty_Item.truncate(50);
 
     _TIMESTAMPtem = new QTableWidgetItem(TIMESTAMPtem);
     _SIGNALItem = new QTableWidgetItem(SIGNALItem);
