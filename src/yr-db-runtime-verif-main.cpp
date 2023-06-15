@@ -35,22 +35,29 @@ void YR_DB_RUNTIME_VERIF_Main::YR_CALL_BACK_final_state(YR_CPP_MONITOR 			*a_run
 YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main()
     :YR_DB_RUNTIME_VERIF_Monitor()
 {
-    set_RUNTIME_MONITOR_NAME("yr_sd_runtime_verif_language_EXAMPLE_realcase");
+    set_RUNTIME_MONITOR_NAME("yr_sd_runtime_verif_EXAMPLE_realcase_2");
 
-    YR_CPP_MONITOR_EDGE *a_last_edge_1 = create_yr_monitor_edge ("d", "e");
+
+    YR_CPP_MONITOR_EDGE *a_last_edge_1 = create_yr_monitor_edge ("c", "d");
     a_last_edge_1->get_SOURCE_STATE()->set_START_STATE(*this, true);
-    a_last_edge_1->get_TARGET_STATE()->set_FINAL_STATE(true);
-    a_last_edge_1->get_SOURCE_STATE()->set_PRE_CONDITION_notIN("YR_ASSET", "departements_produits.nom_departement_produit");
     a_last_edge_1->get_TARGET_STATE()->set_POST_CONDITION_IN("YR_ASSET", "stocks.nom_departement_produit");
 
-    YR_CPP_notinset_inset_TRACE_expression *a_last_edge_1_GUARDED_CONDITION
+    YR_CPP_MONITOR_EDGE *a_last_edge_2 = create_yr_monitor_edge ("d", "e");
+    a_last_edge_2->get_TARGET_STATE()->set_ERROR_STATE(true);
+    a_last_edge_2->get_TARGET_STATE()->set_POST_CONDITION_notIN("YR_ASSET", "departements_produits.nom_departement_produit");
+
+
+    YR_CPP_MONITOR_EVENT *a_last_edge_event_1 = a_last_edge_1->set_EDGE_EVENT("'DELETE.marchandises.YR_ASSET'");
+
+    YR_CPP_notinset_inset_TRACE_expression *a_last_edge_2_GUARDED_CONDITION
         = new YR_CPP_notinset_inset_TRACE_expression(true,
                 "'DELETE.departements_produits.YR_ASSET'",
                 "d");
 
-    a_last_edge_1->set_GUARDED_CONDITION(a_last_edge_1_GUARDED_CONDITION);
+    a_last_edge_2->set_GUARDED_CONDITION(a_last_edge_2_GUARDED_CONDITION);
 
-    YR_CPP_MONITOR_EVENT *a_last_edge_event_1 = a_last_edge_1->set_EDGE_EVENT("'SELECT.departements_produits'");
+
+    YR_CPP_MONITOR_EVENT *a_last_edge_event_2 = a_last_edge_2->set_EDGE_EVENT("'INSERT.departements_produits.YR_ASSET'");
 
     //print_TO_dot_FILE();
 
@@ -61,22 +68,29 @@ YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main()
 YR_DB_RUNTIME_VERIF_Main::YR_DB_RUNTIME_VERIF_Main(YR_DB_RUNTIME_VERIF_Logger *logger)
     :YR_DB_RUNTIME_VERIF_Monitor(logger)
 {
-    set_RUNTIME_MONITOR_NAME("yr_sd_runtime_verif_language_EXAMPLE_realcase");
+    set_RUNTIME_MONITOR_NAME("yr_sd_runtime_verif_EXAMPLE_realcase_2");
 
-    YR_CPP_MONITOR_EDGE *a_last_edge_1 = create_yr_monitor_edge ("d", "e");
+
+    YR_CPP_MONITOR_EDGE *a_last_edge_1 = create_yr_monitor_edge ("c", "d");
     a_last_edge_1->get_SOURCE_STATE()->set_START_STATE(*this, true);
-    a_last_edge_1->get_TARGET_STATE()->set_FINAL_STATE(true);
-    a_last_edge_1->get_SOURCE_STATE()->set_PRE_CONDITION_notIN("YR_ASSET", "departements_produits.nom_departement_produit");
     a_last_edge_1->get_TARGET_STATE()->set_POST_CONDITION_IN("YR_ASSET", "stocks.nom_departement_produit");
 
-    YR_CPP_notinset_inset_TRACE_expression *a_last_edge_1_GUARDED_CONDITION
+    YR_CPP_MONITOR_EDGE *a_last_edge_2 = create_yr_monitor_edge ("d", "e");
+    a_last_edge_2->get_TARGET_STATE()->set_ERROR_STATE(true);
+    a_last_edge_2->get_TARGET_STATE()->set_POST_CONDITION_notIN("YR_ASSET", "departements_produits.nom_departement_produit");
+
+
+    YR_CPP_MONITOR_EVENT *a_last_edge_event_1 = a_last_edge_1->set_EDGE_EVENT("'DELETE.marchandises.YR_ASSET'");
+
+    YR_CPP_notinset_inset_TRACE_expression *a_last_edge_2_GUARDED_CONDITION
         = new YR_CPP_notinset_inset_TRACE_expression(true,
                 "'DELETE.departements_produits.YR_ASSET'",
                 "d");
 
-    a_last_edge_1->set_GUARDED_CONDITION(a_last_edge_1_GUARDED_CONDITION);
+    a_last_edge_2->set_GUARDED_CONDITION(a_last_edge_2_GUARDED_CONDITION);
 
-    YR_CPP_MONITOR_EVENT *a_last_edge_event_1 = a_last_edge_1->set_EDGE_EVENT("'SELECT.departements_produits'");
+
+    YR_CPP_MONITOR_EVENT *a_last_edge_event_2 = a_last_edge_2->set_EDGE_EVENT("'INSERT.departements_produits.YR_ASSET'");
 
     //print_TO_dot_FILE();
 
@@ -120,22 +134,16 @@ bool YR_DB_RUNTIME_VERIF_Main::DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(
     switch(cur_SQL_command)
     {
     case YR_CPP_UTILS::INSERT:
-        break;
+        return YR_SQL_INSERT_departements_produits_YR_ASSET();
 
     case YR_CPP_UTILS::SELECT:
-
-    	if (YR_CPP_UTILS::isEqualsCaseSensitive("departements_produits", sql_table_name))
-    	{
-    		return YR_SQL_SELECT_departements_produits();
-    	}
-
         break;
 
     case YR_CPP_UTILS::UPDATE:
         break;
 
     case YR_CPP_UTILS::DELETE:
-        break;
+        return YR_SQL_DELETE_marchandises_YR_ASSET();
 
     default:
 
@@ -146,8 +154,12 @@ bool YR_DB_RUNTIME_VERIF_Main::DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(
 }
 
 
-bool YR_DB_RUNTIME_VERIF_Main::YR_SQL_SELECT_departements_produits()
+bool YR_DB_RUNTIME_VERIF_Main::YR_SQL_DELETE_marchandises_YR_ASSET()
 {
-    return YR_trigger_an_edge_event("'SELECT.departements_produits'");
+    return YR_trigger_an_edge_event("'DELETE.marchandises.YR_ASSET'");
+}
+bool YR_DB_RUNTIME_VERIF_Main::YR_SQL_INSERT_departements_produits_YR_ASSET()
+{
+    return YR_trigger_an_edge_event("'INSERT.departements_produits.YR_ASSET'");
 }
 
