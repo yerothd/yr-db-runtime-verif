@@ -20,10 +20,6 @@ QString YR_DB_RUNTIME_VERIF_Config::_db_user_pwd("");
 
 QString YR_DB_RUNTIME_VERIF_Config::_db_connection_options("");
 
-QString YR_DB_RUNTIME_VERIF_Config::YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER("");
-
-QString YR_DB_RUNTIME_VERIF_Config::YEROTH_ERP_3_0_HOME_FOLDER("");
-
 QString YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_HOME_FOLDER("");
 
 

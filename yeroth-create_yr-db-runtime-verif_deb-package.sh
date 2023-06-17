@@ -14,6 +14,10 @@ cp YR-DB-RUNTIME-VERIF-GUI-ELEMENTS-SETUP/LOGO-icon.png \
 	yr-db-runtime-verif/usr/share/pixmaps
 
 
+cp YR-DB-RUNTIME-VERIF-GUI-ELEMENTS-SETUP/yr-db-runtime-verif-database-connection.properties \
+	yr-db-runtime-verif/opt/yr-db-runtime-verif
+
+
 cp YR-DB-RUNTIME-VERIF-GUI-ELEMENTS-SETUP/yr-db-runtime-verif-BIN.SH \
 	yr-db-runtime-verif/opt/yr-db-runtime-verif/bin
 

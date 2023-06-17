@@ -80,35 +80,12 @@ int main(int argc, char *argv[])
 
 
 
-    YR_DB_RUNTIME_VERIF_Config::YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER =
-                    QString(std::getenv("YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER")).trimmed();
-
     YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_HOME_FOLDER =
                     QString(std::getenv("YR_DB_RUNTIME_VERIF_HOME_FOLDER")).trimmed();
 
-    YR_DB_RUNTIME_VERIF_Config::YEROTH_ERP_3_0_HOME_FOLDER =
-                    QString(std::getenv("YEROTH_ERP_3_0_HOME_FOLDER")).trimmed();
 
-
-    qDebug() << "yr-db-runtime-verif.cpp | main | YEROTH-PGI-3.0 HOME FOLDER: "
-             << YR_DB_RUNTIME_VERIF_Config::YEROTH_ERP_3_0_HOME_FOLDER;
-
-
-    if (YR_DB_RUNTIME_VERIF_Config::YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER.isEmpty())
-    {
-        QString errMsg
-			("La variable d'environement YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER n'a pas de valeur ! \n\n");
-
-        errMsg.append("Contacter DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU\n"
-                      "\t(yeroth.d@gmail.com)\n\n"
-                      "Cliquer sur 'Cancel' pour terminer yr-db-runtime-verif");
-
-        QMessageBox::critical(0,
-        					  "yr-db-runtime-verif",
-                              FROM_UTF8_STRING(errMsg),
-							  QMessageBox::Cancel);
-        exit(1);
-    }
+    qDebug() << "yr-db-runtime-verif.cpp | main | YR-DB-RUNTIME-VERIF HOME FOLDER: "
+             << YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_HOME_FOLDER;
 
 
     if (YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_HOME_FOLDER.isEmpty())
@@ -116,7 +93,7 @@ int main(int argc, char *argv[])
         QString errMsg
         	("La variable d'environement YR_DB_RUNTIME_VERIF_HOME_FOLDER n'a pas de valeur ! \n\n");
 
-        errMsg.append("Contacter DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU\n"
+        errMsg.append("Contacter XAVIER NOUMBISSI NOUNDOU, PH.D. (waterloo), P.ENG.\n"
                       "\t(yeroth.d@gmail.com)\n\n"
                       "Cliquer sur 'Cancel' pour terminer yr-db-runtime-verif");
 
@@ -144,11 +121,11 @@ int main(int argc, char *argv[])
 
 
     QString initCfg(QString("%1/%2")
-    				.arg(YR_DB_RUNTIME_VERIF_Config::YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER,
-    					 "yeroth-erp-3-0.properties"));
+    				.arg(YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_HOME_FOLDER,
+    					 "yr-db-runtime-verif-database-connection.properties"));
 
 
-    qDebug() << "yr-db-runtime-verif.cpp | main | yeroth-erp-3-0.properties absolute file path: "
+    qDebug() << "yr-db-runtime-verif.cpp | main | yr-db-runtime-verif-database-connection.properties absolute file path: "
              << initCfg << "\n";
 
 
@@ -167,7 +144,7 @@ int main(int argc, char *argv[])
 
         errMsg.append(QString("Serveur de base de données: %1.\n\n"
                               "Dernière erreur (%2).\n\n"
-                              "Contacter DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU\n"
+                              "Contacter XAVIER NOUMBISSI NOUNDOU, PH.D. (waterloo), P.ENG.\n"
                               "\t(yeroth.d@gmail.com)\n\n"
                               "Cliquer sur 'Cancel' pour terminer YEROTH-PGI-3.0")
         				.arg(database.db_ip_address(),

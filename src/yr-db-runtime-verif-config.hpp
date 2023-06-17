@@ -37,10 +37,6 @@ public:
 
     static QString _db_connection_options;
 
-    static QString YEROTH_ERP_3_0_PROPERTIES_CONFIGURATION_FOLDER;
-
-    static QString YEROTH_ERP_3_0_HOME_FOLDER;
-
     static QString YR_DB_RUNTIME_VERIF_HOME_FOLDER;
 
 
