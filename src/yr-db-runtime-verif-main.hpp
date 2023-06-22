@@ -54,8 +54,7 @@ public slots:
             YR_CPP_UTILS::SQL_CONSTANT_IDENTIFIER::UNDEFINED_SQL_COMMAND);
 
 
-    bool YR_SQL_DELETE_marchandises_YR_ASSET();
-    bool YR_SQL_INSERT_departements_produits_YR_ASSET();
+    bool YR_SQL_SELECT_departements_produits();
 
 };
 
