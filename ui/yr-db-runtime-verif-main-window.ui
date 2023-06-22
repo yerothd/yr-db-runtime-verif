@@ -1878,7 +1878,7 @@
      </property>
      <column>
       <property name="text">
-       <string>pre-condition on source state</string>
+       <string>(before) pre-condition on source state</string>
       </property>
       <property name="font">
        <font>
@@ -1892,7 +1892,7 @@
      </column>
      <column>
       <property name="text">
-       <string>post-condition on target state</string>
+       <string>(after) post-condition on target state</string>
       </property>
       <property name="font">
        <font>
