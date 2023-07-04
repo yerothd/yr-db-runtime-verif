@@ -10,7 +10,7 @@
 #include "../../ui_yr-db-runtime-verif-main-window.h"
 
 
-#include "src/utils/yr-db-runtime-verif-LOGGING-INFO.hpp"
+#include "src/windows/yr-db-runtime-verif-COMMONS-window.hpp"
 
 #include "src/utils/yr-db-runtime-verif-qmap.hpp"
 
@@ -23,7 +23,7 @@
 class YR_DB_RUNTIME_VERIF_Monitor;
 
 
-class YRDBRUNTIMEVERIF_MainWindow : public QMainWindow,
+class YRDBRUNTIMEVERIF_MainWindow : public YRDBRUNTIMEVERIF_CommonsWindow,
 									public Ui_YRDBRUNTIMEVERIF_MainWindow
 {
 	Q_OBJECT
@@ -60,16 +60,6 @@ public:
 
 public slots:
 
-	inline virtual void yr_show()
-	{
-		setVisible(true);
-	}
-
-	inline virtual void yr_close()
-	{
-		close();
-	}
-
 	virtual void Set_YRDBRUNTIMEVERIF_Logging_Info(uint row_number,
 												   QString logging_info);
 
@@ -91,13 +81,7 @@ protected slots:
 
 	virtual void ACTION_USER_GUIDE_method();
 
-	virtual void ACTION_EXIT_method();
-
     virtual void about();
-
-    inline virtual void help()
-    {
-    }
 
 private:
 

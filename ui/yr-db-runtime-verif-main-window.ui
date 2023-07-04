@@ -6467,8 +6467,9 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionCONFIGURATION_panel_window"/>
+   <addaction name="actionVIEW_RUNTIME_monitor"/>
    <addaction name="actionUserGuide_PDF"/>
+   <addaction name="actionCONFIGURATION_panel_window"/>
   </widget>
   <action name="actionAbout">
    <property name="text">
@@ -6503,7 +6504,7 @@
   <action name="actionUserGuide_PDF">
    <property name="icon">
     <iconset resource="../yr-db-runtime-verif.qrc">
-     <normaloff>:/yr-db-runtime-verif-images/pdf-print-icon.svg</normaloff>:/yr-db-runtime-verif-images/pdf-print-icon.svg</iconset>
+     <normaloff>:/yr-db-runtime-verif-images/question.png</normaloff>:/yr-db-runtime-verif-images/question.png</iconset>
    </property>
    <property name="text">
     <string>User Guide (PDF)</string>
@@ -6538,6 +6539,10 @@
    </property>
   </action>
   <action name="actionVIEW_RUNTIME_monitor">
+   <property name="icon">
+    <iconset resource="../yr-db-runtime-verif.qrc">
+     <normaloff>:/yr-db-runtime-verif-images/pdf-print-icon.svg</normaloff>:/yr-db-runtime-verif-images/pdf-print-icon.svg</iconset>
+   </property>
    <property name="text">
     <string>VIEW RUNTIME monitor</string>
    </property>

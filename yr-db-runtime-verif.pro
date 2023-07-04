@@ -35,7 +35,8 @@ FORMS = ui/yr-db-runtime-verif-setup-window.ui \
 				ui/yr-db-runtime-verif-main-window.ui
 
 
-HEADERS = src/windows/yr-db-runtime-verif-setup-window.hpp \
+HEADERS = src/windows/yr-db-runtime-verif-COMMONS-window.hpp \
+			src/windows/yr-db-runtime-verif-setup-window.hpp \
 			src/utils/yr-db-runtime-verif-LOGGING-INFO.hpp \
 			src/widgets/yr-db-runtime-verif-combo-box.hpp \
 			src/utils/yr-db-runtime-verif-qmap.hpp \
@@ -55,7 +56,8 @@ HEADERS = src/windows/yr-db-runtime-verif-setup-window.hpp \
 		  src/yr-db-runtime-verif-database.hpp \
 		  src/yr-db-runtime-verif-config.hpp 
  
-SOURCES = src/windows/yr-db-runtime-verif-setup-window.cpp \
+SOURCES = src/windows/yr-db-runtime-verif-COMMONS-window.cpp \
+			src/windows/yr-db-runtime-verif-setup-window.cpp \
 			src/utils/yr-db-runtime-verif-LOGGING-INFO.cpp \
 			src/widgets/yr-db-runtime-verif-combo-box.cpp \
 			src/utils/yr-db-runtime-verif-qmap.cpp \

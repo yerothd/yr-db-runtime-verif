@@ -345,20 +345,6 @@ void YRDBRUNTIMEVERIF_MainWindow::ACTION_USER_GUIDE_method()
 }
 
 
-void YRDBRUNTIMEVERIF_MainWindow::ACTION_EXIT_method()
-{
-    YRDBRUNTIMEVERIF_Windows *ALL_WINDOWS_INSTANCE =
-    		YR_DB_RUNTIME_VERIF_Config::GET_ALL_WINDOWS_instance();
-
-    if (0 != ALL_WINDOWS_INSTANCE)
-    {
-    	ALL_WINDOWS_INSTANCE->CLOSE_allWindows();
-    }
-
-	close();
-}
-
-
 void YRDBRUNTIMEVERIF_MainWindow::about()
 {
 	toolBar_mainWindow_YR_DB_RUNTIME_VERIF
