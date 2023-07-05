@@ -76,6 +76,8 @@ int main(int argc, char *argv[])
     all_windows.createAll_YRDBRUNTIMEVERIF_Windows();
 
     YR_DB_RUNTIME_VERIF_Config::SET_ALL_WINDOWS_instance(&all_windows);
+
+    QToolBar &atoolBar = all_windows._yrdbruntimeverif_main_Window->get_tool_bar();
     //############################################################################################
 
 
@@ -91,17 +93,17 @@ int main(int argc, char *argv[])
     if (YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_HOME_FOLDER.isEmpty())
     {
         QString errMsg
-        	("La variable d'environement YR_DB_RUNTIME_VERIF_HOME_FOLDER n'a pas de valeur ! \n\n");
+        	("Environment variable YR_DB_RUNTIME_VERIF_HOME_FOLDER isn't set ! \n\n");
 
-        errMsg.append("Contacter XAVIER NOUMBISSI NOUNDOU, PH.D. (waterloo), P.ENG.\n"
-                      "\t(yeroth.d@gmail.com)\n\n"
-                      "Cliquer sur 'Cancel' pour terminer yr-db-runtime-verif");
+        errMsg.append("PLEASE TRY logging out AND THEN logging in. \n\n"
+        			  "In case yr-db-runtime-verif is still not functional,\n"
+        			  "please contact DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU: "
+                      "'yeroth.d@gmail.com'.");
 
-        QMessageBox::critical(0,
+        QMessageBox::critical(&atoolBar,
         					  "yr-db-runtime-verif",
                               FROM_UTF8_STRING(errMsg),
 							  QMessageBox::Cancel);
-        exit(1);
     }
 
 
@@ -139,14 +141,13 @@ int main(int argc, char *argv[])
 
     if (!database.open())
     {
-        QString errMsg(QObject::trUtf8("La connection de yr-db-runtime-verif "
+        QString errMsg(QObject::tr("La connection de yr-db-runtime-verif "
                                        "à la base de données ne peut être établiée!\n\n"));
 
-        errMsg.append(QString("Serveur de base de données: %1.\n\n"
-                              "Dernière erreur (%2).\n\n"
-                              "Contacter XAVIER NOUMBISSI NOUNDOU, PH.D. (waterloo), P.ENG.\n"
-                              "\t(yeroth.d@gmail.com)\n\n"
-                              "Cliquer sur 'Cancel' pour terminer YEROTH-PGI-3.0")
+        errMsg.append(QObject::tr("DATABASE SERVER: %1.\n\n"
+                              	  "Last error message (%2).\n\n"
+                              	  "Please contact DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU\n"
+                              	  "\t(yeroth.d@gmail.com)\n")
         				.arg(database.db_ip_address(),
         					 database.lastError().text()));
 
@@ -155,11 +156,10 @@ int main(int argc, char *argv[])
 				   	   .arg(database.db_ip_address(),
 				   			database.lastError().text()));
 
-        QMessageBox::critical(0,
+        QMessageBox::critical(&atoolBar,
                               "yr-db-runtime-verif",
                               FROM_UTF8_STRING(errMsg),
 							  QMessageBox::Cancel);
-        exit(4);
     }
 
     //qDebug() << "yr-db-runtime-verif.cpp | main | Database connection could be opened successfully";
@@ -236,7 +236,7 @@ int main(int argc, char *argv[])
     {
     	all_windows._yrdbruntimeverif_main_Window
 			->set_connection_DBUS_status
-				(QString("YR-DB-RUNTIME-VERIF: this console NOT REGISTERED TO SYSTEM D-BUS."),
+				(QObject::tr("YR-DB-RUNTIME-VERIF: this console NOT REGISTERED TO SYSTEM D-BUS."),
 				 true);
     }
     //############################################################################################

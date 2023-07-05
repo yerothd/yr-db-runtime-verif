@@ -1,3 +1,5 @@
 #!/bin/bash
+
+sed -i '/YR_DB_RUNTIME_VERIF_HOME_FOLDER/d' /etc/environment
 rm -f /etc/systemd/system/yr-db-runtime-verif.*
 rm -f /lib/systemd/system/yr-db-runtime-verif.*

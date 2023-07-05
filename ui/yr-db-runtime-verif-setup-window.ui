@@ -5955,7 +5955,7 @@
    <addaction name="menu_actions"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <widget class="QToolBar" name="toolBar_mainWindow_YR_DB_RUNTIME_VERIF">
+  <widget class="QToolBar" name="toolBar_SetupWindow_YR_DB_RUNTIME_VERIF">
    <property name="palette">
     <palette>
      <active>

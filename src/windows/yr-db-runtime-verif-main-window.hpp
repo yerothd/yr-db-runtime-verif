@@ -36,6 +36,11 @@ public:
     {
     }
 
+    inline virtual QToolBar &get_tool_bar()
+    {
+    	return *toolBar_mainWindow_YR_DB_RUNTIME_VERIF;
+    }
+
     inline virtual void SET_CURRENT_RUNTIME_MONITOR_name(QString A_RUNTIME_MONITOR_name)
     {
     	comboBox_RUNTIME_MONITOR_VERIFIER_TESTER
@@ -81,12 +86,19 @@ protected slots:
 
 	virtual void ACTION_USER_GUIDE_method();
 
-    virtual void about();
 
-private:
+    inline virtual void about()
+    {
+    	QMessageBox::information(toolBar_mainWindow_YR_DB_RUNTIME_VERIF,
+    							 "ABOUT THIS SOFTWARE (YR-DB-RUNTIME-VERIF)",
+    							 QObject::tr("DEVELOPED by DR.-ING. DIPL.-INF. xavier noumbissi noundou."));
+    }
+
+public:
 
     static const QString QMESSAGE_BOX_STYLE_SHEET;
 
+private:
 
     YR_DB_RUNTIME_VERIF_Monitor	*_current_runtime_monitor_INSTANCE;
 

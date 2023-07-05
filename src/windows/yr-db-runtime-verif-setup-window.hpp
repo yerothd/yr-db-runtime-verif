@@ -31,6 +31,11 @@ public:
     {
     }
 
+    inline virtual QToolBar &get_tool_bar()
+    {
+    	return *toolBar_SetupWindow_YR_DB_RUNTIME_VERIF;
+    }
+
 
 public slots:
 

@@ -1294,7 +1294,7 @@
      </column>
      <column>
       <property name="text">
-       <string>sql query</string>
+       <string>sql event log</string>
       </property>
       <property name="font">
        <font>

@@ -33,6 +33,10 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     setFixedSize(width(), height());
 
 
+	toolBar_mainWindow_YR_DB_RUNTIME_VERIF
+		->setStyleSheet(QMESSAGE_BOX_STYLE_SHEET);
+
+
     tableWidget_LOGGING_2->setMaxSize(1);
     tableWidget_LOGGING_4->setMaxSize(1);
     tableWidget_LOGGING_PRECONDITIONS_postconditions->setMaxSize(1);
@@ -342,17 +346,6 @@ void YRDBRUNTIMEVERIF_MainWindow::ACTION_USER_GUIDE_method()
 
 	aProcess.startDetached("/usr/bin/evince",
 						   progArguments);
-}
-
-
-void YRDBRUNTIMEVERIF_MainWindow::about()
-{
-	toolBar_mainWindow_YR_DB_RUNTIME_VERIF
-		->setStyleSheet(QMESSAGE_BOX_STYLE_SHEET);
-
-		QMessageBox::information(toolBar_mainWindow_YR_DB_RUNTIME_VERIF,
-								 "ABOUT THIS SOFTWARE (YR-DB-RUNTIME-VERIF)",
-								 QString("DEVELOPED by DR.-ING. DIPL.-INF. xavier noumbissi noundou."));
 }
 
 

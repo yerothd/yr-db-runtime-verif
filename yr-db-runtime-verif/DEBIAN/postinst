@@ -1,4 +1,5 @@
 #!/bin/bash
 
-echo "ok"
+echo -e "export YR_DB_RUNTIME_VERIF_HOME_FOLDER=/opt/yr-db-runtime-verif" >> /etc/environment
+sh /etc/environment
 #chmod +x /etc/init.d/yr-db-runtime-verif.sh 

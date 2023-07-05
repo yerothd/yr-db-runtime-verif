@@ -30,6 +30,8 @@ public:
     {
     }
 
+    virtual QToolBar &get_tool_bar() = 0;
+
 
 public slots:
 
