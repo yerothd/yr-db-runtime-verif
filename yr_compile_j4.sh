@@ -19,6 +19,8 @@ cp yr.db-runtime.verif.service 	${YR_DB_RUNTIME_VERIF_deb_folder}/usr/share/dbus
 
 YR_ERRORS_LOG_FILE="yr_errors.log"
 
+mkdir bin
+
 clear && qmake -o Makefile yr-db-runtime-verif.pro
 
 make clean
