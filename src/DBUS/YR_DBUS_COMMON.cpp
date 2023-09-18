@@ -92,6 +92,8 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_
 
     QString cpp_line_number = sql_table_ADDED_with_file_AND_line_number_LIST.at(2);
 
+    QString SUT_string_unique_ID = sql_table_ADDED_with_file_AND_line_number_LIST.at(3);
+
     QString a_trace_log_EVENT_TOKEN =
     		QString("'%1.%2'")
     			.arg(YR_CPP_UTILS::_DB_STMT_verification_ToUserViewString
@@ -109,6 +111,7 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_
     	YRDBRUNTIMEVERIF_Logging_Info a_logging_info;
 
 		a_logging_info.A_RUNTIME_MONITOR_name = a_runtime_monitor.get_RUNTIME_MONITOR_NAME();
+		a_logging_info.A_SUT_string_unique_ID = SUT_string_unique_ID;
 		a_logging_info.A_CPP_SOURCE_FILE_NAME = CPP_FILE_NAME;
 		a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER = cpp_line_number;
 
@@ -120,7 +123,7 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_
     			ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
 									->ADD_ITEM(DBUS_CURRENT_TIME_WITH_MILLISECONDS,
 											   a_trace_log_EVENT_TOKEN,
-											   "SUT",
+											   a_logging_info.A_SUT_string_unique_ID,
 											   "YR-DB-RUNTIME-VERIF",
 											   CHANGED_RECORD_DB_QTY,
 											   a_logging_info);

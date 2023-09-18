@@ -33,6 +33,8 @@ public:
 
 	QString A_RUNTIME_MONITOR_name;
 
+	QString A_SUT_string_unique_ID;
+
 	QString A_CPP_SOURCE_FILE_NAME;
 
 	QString A_CPP_SOURCE_FILE_LINE_NUMBER;
