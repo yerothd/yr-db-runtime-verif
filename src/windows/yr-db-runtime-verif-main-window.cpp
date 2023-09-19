@@ -344,7 +344,7 @@ void YRDBRUNTIMEVERIF_MainWindow::ACTION_USER_GUIDE_method()
 
 	progArguments << "/usr/share/doc/yr-db-runtime-verif/YEROTH_QVGE.pdf";
 
-	aProcess.startDetached("/usr/bin/evince",
+	aProcess.startDetached(YRDBRUNTIMEVERIF_SetupWindow::YR_LINE_EDIT_PDF_FULL_PATH_READER,
 						   progArguments);
 }
 

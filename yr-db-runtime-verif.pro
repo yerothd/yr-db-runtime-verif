@@ -40,6 +40,7 @@ HEADERS = src/windows/yr-db-runtime-verif-COMMONS-window.hpp \
 			src/utils/yr-db-runtime-verif-LOGGING-INFO.hpp \
 			src/widgets/yr-db-runtime-verif-combo-box.hpp \
 			src/utils/yr-db-runtime-verif-qmap.hpp \
+			src/widgets/yr-db-runtime-verif-push-button.hpp \
 			src/widgets/yr-db-runtime-verif-logging-table-widget.hpp \
 			src/windows/yr-db-runtime-verif-windows.hpp \
 			src/windows/yr-db-runtime-verif-main-window.hpp \
@@ -61,6 +62,7 @@ SOURCES = src/windows/yr-db-runtime-verif-COMMONS-window.cpp \
 			src/utils/yr-db-runtime-verif-LOGGING-INFO.cpp \
 			src/widgets/yr-db-runtime-verif-combo-box.cpp \
 			src/utils/yr-db-runtime-verif-qmap.cpp \
+			src/widgets/yr-db-runtime-verif-push-button.cpp \
 			src/widgets/yr-db-runtime-verif-logging-table-widget.cpp \
 			src/windows/yr-db-runtime-verif-windows.cpp \
 			src/windows/yr-db-runtime-verif-main-window.cpp \

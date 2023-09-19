@@ -1656,7 +1656,7 @@
      <attribute name="title">
       <string>APPLICATION PARAMETERS</string>
      </attribute>
-     <widget class="QPushButton" name="pushButton_choose_repertoire_systeme_latex">
+     <widget class="YRDBRUNTIMEVERIF_QPushButton" name="pushButton_choose_pdfReader">
       <property name="geometry">
        <rect>
         <x>330</x>
@@ -2108,7 +2108,7 @@
        </palette>
       </property>
       <property name="toolTip">
-       <string>Supprimer un article</string>
+       <string>Select a Pdf reader viewer</string>
       </property>
       <property name="text">
        <string/>
@@ -4240,7 +4240,7 @@
      </widget>
     </widget>
    </widget>
-   <widget class="QPushButton" name="pushButton_SAVE_parameters">
+   <widget class="YRDBRUNTIMEVERIF_QPushButton" name="pushButton_SAVE_parameters">
     <property name="geometry">
      <rect>
       <x>669</x>
@@ -4756,7 +4756,7 @@
      <string>Save</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_RESET_parameters_change">
+   <widget class="YRDBRUNTIMEVERIF_QPushButton" name="pushButton_RESET_parameters_change">
     <property name="geometry">
      <rect>
       <x>557</x>
@@ -6542,6 +6542,13 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>YRDBRUNTIMEVERIF_QPushButton</class>
+   <extends>QPushButton</extends>
+   <header>src/widgets/yr-db-runtime-verif-push-button.hpp</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../yr-db-runtime-verif.qrc"/>
  </resources>

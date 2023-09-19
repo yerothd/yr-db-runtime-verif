@@ -44,7 +44,17 @@ public slots:
 
 protected slots:
 
-	virtual void ON_actionRETURN_TO_console_trigerred();
+    virtual void ON_choose_path_pdfReader();
+
+    virtual void ON_actionRETURN_TO_console_trigerred();
+
+
+	virtual void ON_pushButton_SAVE_parameters_PRESSED();
+
+
+public:
+
+    static QString YR_LINE_EDIT_PDF_FULL_PATH_READER;
 
 };
 
