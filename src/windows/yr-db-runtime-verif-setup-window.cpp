@@ -29,6 +29,9 @@ YRDBRUNTIMEVERIF_SetupWindow::YRDBRUNTIMEVERIF_SetupWindow()
 	setFixedSize(width(), height());
 
 
+	toolBar_SetupWindow_YR_DB_RUNTIME_VERIF
+		->setStyleSheet(YRDBRUNTIMEVERIF_MainWindow::QMESSAGE_BOX_STYLE_SHEET);
+
 
 	lineEdit_pdf_reader_full_path
         ->setText(YRDBRUNTIMEVERIF_SetupWindow::YR_LINE_EDIT_PDF_FULL_PATH_READER);
@@ -96,14 +99,14 @@ void YRDBRUNTIMEVERIF_SetupWindow::ON_pushButton_SAVE_parameters_PRESSED()
     QString msgEnregistrer = QObject::tr("Save current settings ?");
 
     if (QMessageBox::Ok ==
-            QMessageBox::question(this,
+            QMessageBox::question(toolBar_SetupWindow_YR_DB_RUNTIME_VERIF,
                                   QObject::tr("save current YR-DB-RUNTIME-VERIF GUI settings"),
                                   msgEnregistrer,
                                   QMessageBox::Cancel,
                                   QMessageBox::Ok))
     {
         YRDBRUNTIMEVERIF_SetupWindow::YR_LINE_EDIT_PDF_FULL_PATH_READER =
-        lineEdit_pdf_reader_full_path->text();
+            lineEdit_pdf_reader_full_path->text();
     }
 }
 
