@@ -95,7 +95,8 @@ protected slots:
                                              "\n\nAcknowledgments:\n"
                                              "1. Jan Peleska, VERIFIED SYSTEMS INTERNATIONAL GmbH\n"
                                              "2. Jan Peleska, UNIVERSITY OF BREMEN, BREMEN, GERMANY\n\n"
-                                             "3. Patrick Lam, WATFORM, THE UNIVERSITY OF WATERLOO, ON, CANADA\n"));
+                                             "3. Patrick Lam, WATFORM, THE UNIVERSITY OF WATERLOO, ON, CANADA\n\n"
+                                             "4. The Qt Company\n"));
     }
 
 public:
