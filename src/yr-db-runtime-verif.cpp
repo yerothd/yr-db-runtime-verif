@@ -7,7 +7,15 @@
 
 #include "YRruntimeverification_adaptor.h"
 
-#include "yr-db-runtime-verif-main.hpp"
+
+//############ USER'S RUNTIME MONITOR HEADER RELATED IMPORTS ############
+
+#include "src/include/yr-db-runtime-verif-MONITOR.hpp"
+
+//-USER-RUNTIME-MONITOR-RELATED-IMPORTS
+
+//#######################################################################
+
 
 #include "yr-db-runtime-verif-config.hpp"
 
@@ -16,6 +24,7 @@
 #include "src/utils/yr-db-runtime-verif-utils.hpp"
 
 
+#include <QtCore/QVector>
 #include <QtCore/QList>
 #include <QtCore/QTextStream>
 #include <QtCore/QDebug>
@@ -167,9 +176,15 @@ int main(int argc, char *argv[])
     //         << "\n";
 
 
-    YR_DB_RUNTIME_VERIF_Main YR_DB_RUNTIME_VERIF_instance(&logger);
 
-    new IYRruntimeverificationAdaptor(&YR_DB_RUNTIME_VERIF_instance);
+    //##################### RUNTIME MONITOR DECLARATION INSTANTIATION #####################
+
+    QVector<YR_DB_RUNTIME_VERIF_Monitor *> user_defined_Runtime_Monitors;
+
+    //-USER-RUNTIME-MONITOR-DECLARATION INSTANTIATION
+
+    //######################################################################################
+
 
 
     QDBusConnection connection = QDBusConnection::systemBus();
@@ -177,53 +192,76 @@ int main(int argc, char *argv[])
     QString systemYerothService = "yr.db-runtime.verif";
 
 
+    QString current_RT_Monitor_OBJECT_ID_for_query_RPC_Dbus;
+
+    YR_DB_RUNTIME_VERIF_Monitor *A_USER_DEFINED_RT_MONITOR = 0;
+
     bool couldRegisterService = false;
 
     bool couldRegisterObject = false;
 
+    int rt_monitor_Vector_SIZE = user_defined_Runtime_Monitors.size();
 
-    if (!connection.registerObject("/YR_DB_RUNTIME_VERIF_Main",
-                                   &YR_DB_RUNTIME_VERIF_instance))
+    for (uint k = 0; k < rt_monitor_Vector_SIZE; ++k)
     {
-        qDebug() << QString("++ could not register '%1' object")
-        				.arg("/YR_DB_RUNTIME_VERIF_Main");
+        if (0 != A_USER_DEFINED_RT_MONITOR)
+        {
+            current_RT_Monitor_OBJECT_ID_for_query_RPC_Dbus =
+                QString("/%1")
+                 .arg(A_USER_DEFINED_RT_MONITOR->get_RUNTIME_MONITOR_NAME());
 
-        qDebug() << "++ last error: "
-                 << QDBusError::errorString(connection.lastError().type());
+            if (!connection.registerObject(current_RT_Monitor_OBJECT_ID_for_query_RPC_Dbus,
+                                           A_USER_DEFINED_RT_MONITOR))
+            {
+                QDEBUG_STRINGS_OUTPUT_1(QString("Could not register '%1' object")
+                                        .arg(current_RT_Monitor_OBJECT_ID_for_query_RPC_Dbus));
 
-        couldRegisterObject = false;
+                QDEBUG_STRINGS_OUTPUT_1(QString("Last error: %1")
+                                        .arg(QDBusError::errorString(connection.lastError().type())));
+
+                                        couldRegisterObject = false;
+            }
+            else
+            {
+                QDEBUG_STRINGS_OUTPUT_1(QString("Could register '%1' object")
+                                        .arg(current_RT_Monitor_OBJECT_ID_for_query_RPC_Dbus));
+
+                couldRegisterObject = true;
+            }
+        }
     }
-    else
-    {
-        qDebug() << QString("could register '%1' object")
-        				.arg("/YR_DB_RUNTIME_VERIF_Main");
 
-        couldRegisterObject = true;
-    }
 
+    // REGISTERING DBUS SERVICE ON system bus !
 
     if (!connection.registerService(systemYerothService))
     {
-        qDebug() << QString("could not register '%1' service")
-        				.arg(systemYerothService);
+        QDEBUG_STRINGS_OUTPUT_1(QString("Could not Register '%1' SERVICE")
+                                .arg(systemYerothService));
 
-        qDebug() << "++ last error: " << connection.lastError();
+        QDEBUG_STRINGS_OUTPUT_1(QString("Last error: %1")
+                                .arg(connection.lastError().message()));
 
         couldRegisterService = false;
     }
     else
     {
-        qDebug() << QString("could register '%1' service")
-        				.arg(systemYerothService);
+        QDEBUG_STRINGS_OUTPUT_1(QString("Could register '%1' SERVICE")
+                                .arg(systemYerothService));
 
         couldRegisterService = true;
     }
 
+
+
     //########################### GRAPHICAL USER INTERFACE STATUS CODE ###########################
     if (couldRegisterService && couldRegisterObject)
     {
-    	all_windows._yrdbruntimeverif_main_Window
-			->SET__CURRENT__RUNTIME__MONITOR(&YR_DB_RUNTIME_VERIF_instance);
+        if (user_defined_Runtime_Monitors.size() > 0)
+        {
+            all_windows._yrdbruntimeverif_main_Window
+                ->SET__CURRENT__RUNTIME__MONITOR(user_defined_Runtime_Monitors.at(0));
+        }
 
     	all_windows._yrdbruntimeverif_main_Window
 			->set_connection_DBUS_status

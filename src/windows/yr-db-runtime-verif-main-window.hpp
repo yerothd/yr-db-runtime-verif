@@ -91,7 +91,11 @@ protected slots:
     {
     	QMessageBox::information(toolBar_mainWindow_YR_DB_RUNTIME_VERIF,
     							 "ABOUT THIS SOFTWARE (YR-DB-RUNTIME-VERIF)",
-    							 QObject::tr("DEVELOPED by DR.-ING. DIPL.-INF. xavier noumbissi noundou."));
+    							 QObject::tr("DEVELOPED by PROF. DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU."
+                                             "\n\nAcknowledgments:\n"
+                                             "1. Jan Peleska, VERIFIED SYSTEMS INTERNATIONAL GmbH\n"
+                                             "2. Jan Peleska, UNIVERSITY OF BREMEN, BREMEN, GERMANY\n\n"
+                                             "3. Patrick Lam, WATFORM, THE UNIVERSITY OF WATERLOO, ON, CANADA\n"));
     }
 
 public:

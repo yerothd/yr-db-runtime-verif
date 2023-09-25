@@ -1,7 +1,7 @@
 
 
 CONFIG += debug
-CONFIG += precompile_header 
+CONFIG += precompile_header
 CONFIG += qt
 CONFIG += moc
 
@@ -27,7 +27,7 @@ MOC_DIR  = moc
 OBJECTS_DIR = obj
 
 PRECOMPILED_HEADER  = src/include/yr-db-runtime-verif-precompiled-header.hpp
- 
+
 DBUS_ADAPTORS += yr.db-runtime.verif.xml
 
 
@@ -53,10 +53,9 @@ HEADERS = src/windows/yr-db-runtime-verif-COMMONS-window.hpp \
 			src/utils/yr-db-runtime-verif-sqltable-model.hpp \
 		  src/utils/yr-db-runtime-verif-utils.hpp \
 			src/utils/yr-db-runtime-verif-database-table-column.hpp \
-			src/yr-db-runtime-verif-main.hpp \
 		  src/yr-db-runtime-verif-database.hpp \
-		  src/yr-db-runtime-verif-config.hpp 
- 
+		  src/yr-db-runtime-verif-config.hpp
+
 SOURCES = src/windows/yr-db-runtime-verif-COMMONS-window.cpp \
 			src/windows/yr-db-runtime-verif-setup-window.cpp \
 			src/utils/yr-db-runtime-verif-LOGGING-INFO.cpp \
@@ -73,9 +72,15 @@ SOURCES = src/windows/yr-db-runtime-verif-COMMONS-window.cpp \
 			src/utils/yr-db-runtime-verif-sqltable-model.cpp \
 			src/utils/yr-db-runtime-verif-utils.cpp \
 			src/utils/yr-db-runtime-verif-database-table-column.cpp \
-			src/yr-db-runtime-verif-main.cpp \
 		  src/yr-db-runtime-verif-database.cpp \
-		  src/yr-db-runtime-verif-config.cpp 
+		  src/yr-db-runtime-verif-config.cpp
+
+
+
+HEADERS += $$files($$PWD/$$COMPILER_GENERATED_OUTPUT_FOLDER_FULL_PATH/*.hpp)
+
+
+SOURCES += $$files($$PWD/$$COMPILER_GENERATED_OUTPUT_FOLDER_FULL_PATH/*.cpp)
 
 
 RESOURCES    = yr-db-runtime-verif.qrc
