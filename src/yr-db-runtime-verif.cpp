@@ -202,6 +202,8 @@ int main(int argc, char *argv[])
 
     for (uint k = 0; k < rt_monitor_Vector_SIZE; ++k)
     {
+        A_USER_DEFINED_RT_MONITOR = user_defined_Runtime_Monitors.at(k);
+
         if (0 != A_USER_DEFINED_RT_MONITOR)
         {
             current_RT_Monitor_OBJECT_ID_for_query_RPC_Dbus =
