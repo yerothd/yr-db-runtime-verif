@@ -149,8 +149,7 @@ int main(int argc, char *argv[])
 
     if (!database.open())
     {
-        QString errMsg(QObject::tr("La connection de yr-db-runtime-verif "
-                                       "à la base de données ne peut être établiée!\n\n"));
+        QString errMsg(QObject::tr("yr-db-runtime-verif couldn't connect to database!\n\n"));
 
         errMsg.append(QObject::tr("DATABASE SERVER: %1.\n\n"
                               	  "Last error message (%2).\n\n"
@@ -274,7 +273,7 @@ int main(int argc, char *argv[])
     {
     	all_windows._yrdbruntimeverif_main_Window
 			->set_connection_DBUS_status
-				(QObject::tr("YR-DB-RUNTIME-VERIF: this console NOT REGISTERED TO SYSTEM D-BUS."),
+				(QObject::tr("YR-DB-RUNTIME-VERIF: this console IS NOT REGISTERED TO SYSTEM D-BUS."),
 				 true);
     }
     //############################################################################################
