@@ -77,10 +77,7 @@ SOURCES = src/windows/yr-db-runtime-verif-COMMONS-window.cpp \
 
 
 
-HEADERS += $$files($$PWD/$$COMPILER_GENERATED_OUTPUT_FOLDER_FULL_PATH/*.hpp)
-
-
-SOURCES += $$files($$PWD/$$COMPILER_GENERATED_OUTPUT_FOLDER_FULL_PATH/*.cpp)
+#YR-USER-CODE-INCLUDE
 
 
 RESOURCES    = yr-db-runtime-verif.qrc
