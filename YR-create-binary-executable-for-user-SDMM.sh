@@ -65,6 +65,6 @@ cd "${YR_DB_RUNTIME_VERIF_DEVEL_HOME}"
 
 ./GENERATE_INCLUSION_CODE_runtime_monitor.sh
 
-./yr_compile_j4.sh
+./yr_db_runtime_verif_BUILD_DEBIAN_PACKAGE.sh
 
 
