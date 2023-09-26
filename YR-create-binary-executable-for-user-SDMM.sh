@@ -17,7 +17,6 @@ do
   case $OPTION in
     d)	projectdirectoryFlag=1
       	USER_PROJECT_REL_PATH_DIRECTORY_VAL="$OPTARG"
-        #echo new string: ${nval} 
 	;;
     ?)	printf "$USAGE" >&2
         exit 2
@@ -27,10 +26,33 @@ done
 shift $(($OPTIND - 1))
 
 
+set -x
+
+
 YR_DB_RUNTIME_VERIF_DEVEL_HOME="${PWD}"
 
 
 USER_PROJECT_FULL_PATH_DIRECTORY_VAL="${YR_DB_RUNTIME_VERIF_DEVEL_HOME}/${USER_PROJECT_REL_PATH_DIRECTORY_VAL}"
+
+
+. ${USER_PROJECT_REL_PATH_DIRECTORY_VAL}/bin/configuration-properties.sh
+
+
+for f in $(dir ${COMPILER_GENERATED_OUTPUT_FOLDER_FULL_PATH});
+do
+    YR_INCLUDE_PATH=$(basename $f)
+
+    rm -f src/${YR_INCLUDE_PATH}
+done
+
+
+rm -rf ${COMPILER_GENERATED_OUTPUT_FOLDER_FULL_PATH}
+
+
+git checkout yr-db-runtime-verif.pro
+git checkout Makefile
+git checkout src/yr-db-runtime-verif.cpp
+
 
 
 cd "${USER_PROJECT_FULL_PATH_DIRECTORY_VAL}"
