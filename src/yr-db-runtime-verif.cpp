@@ -13,7 +13,6 @@
 #include "src/include/yr-db-runtime-verif-MONITOR.hpp"
 
 yr-USER-RUNTIME-MONITOR-RELATED-IMPORTS
-
 //#######################################################################
 
 
@@ -181,8 +180,7 @@ int main(int argc, char *argv[])
 
     QVector<YR_DB_RUNTIME_VERIF_Monitor *> user_defined_Runtime_Monitors;
 
-    //-USER-RUNTIME-MONITOR-DECLARATION INSTANTIATION
-
+    yr-USER-RUNTIME-MONITOR-DECLARATION INSTANTIATION
     //######################################################################################
 
 
