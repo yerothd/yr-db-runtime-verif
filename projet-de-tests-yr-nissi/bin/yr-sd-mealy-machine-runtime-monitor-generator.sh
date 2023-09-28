@@ -22,9 +22,14 @@ do
 
 done
 
+
 sleep 0.3
 
+
 rm -f ${COMPILER_GENERATED_OUTPUT_FOLDER_FULL_PATH}/*.orig
+
+cp -r ${COMPILER_GENERATED_OUTPUT_FOLDER_FULL_PATH}/* ${YR_DB_RUNTIME_VERIF_SRC_FULL_PATH}
+
 
 rm -f *.dot *.pdf
 
