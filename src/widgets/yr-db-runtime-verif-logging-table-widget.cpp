@@ -280,6 +280,12 @@ void YRDBRUNTIMEVERIF_TableWidget::CLEAR_FILTERING()
 uint YRDBRUNTIMEVERIF_TableWidget::FILTER_ITEM(const QString &SIGNALItem_TEXT,
                                                bool exact_sql_event_query)
 {
+    if (SIGNALItem_TEXT.isEmpty())
+    {
+        return 0;
+    }
+
+
     uint MATCHED_search = 0;
 
     QString searched_SIGNALItem_TEXT = SIGNALItem_TEXT;

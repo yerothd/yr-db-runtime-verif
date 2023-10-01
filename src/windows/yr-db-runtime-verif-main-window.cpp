@@ -54,7 +54,7 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 
     lineEdit_SQL_event_filtering->setAlignment(Qt::AlignHCenter);
 
-    lineEdit_nombre_de_resultats->setAlignment(Qt::AlignHCenter);
+    lineEdit_FILTERING_COUNT->setAlignment(Qt::AlignHCenter);
 
 
     tableWidget_LOGGING_2->setMaxSize(1);
@@ -315,9 +315,11 @@ void YRDBRUNTIMEVERIF_MainWindow::ON_Configfuration_panel_window_trigerred()
 
 void YRDBRUNTIMEVERIF_MainWindow::ON_BUTON_Reset_pressed()
 {
+    comboBox_SQL_event_filtering->setCurrentIndex(0);
+
     lineEdit_SQL_event_filtering->clear();
 
-    comboBox_SQL_event_filtering->setCurrentIndex(0);
+    lineEdit_FILTERING_COUNT->clear();
 
     tableWidget_LOGGING->CLEAR_FILTERING();
 }
@@ -388,9 +390,11 @@ void YRDBRUNTIMEVERIF_MainWindow::
 void YRDBRUNTIMEVERIF_MainWindow::
         ON_QTABLEWIDGET_FILTER_ITEM_selected(const QString &a_SQL_event_item)
 {
+    lineEdit_SQL_event_filtering->clear();
+
     uint MATCHED_search = tableWidget_LOGGING->FILTER_ITEM(a_SQL_event_item);
 
-    lineEdit_nombre_de_resultats->setText(QString::number(MATCHED_search));
+    lineEdit_FILTERING_COUNT->setText(QString::number(MATCHED_search));
 }
 
 
@@ -399,10 +403,13 @@ void YRDBRUNTIMEVERIF_MainWindow::
 {
     comboBox_SQL_event_filtering->setCurrentIndex(0);
 
+    //THE PREVIOUS COMMAND CLEARS content of "lineEdit_SQL_event_filtering"
+    lineEdit_SQL_event_filtering->setText(a_SQL_event_item);
+
     uint MATCHED_search = tableWidget_LOGGING->FILTER_ITEM(a_SQL_event_item,
                                                           true);
 
-    lineEdit_nombre_de_resultats->setText(QString::number(MATCHED_search));
+    lineEdit_FILTERING_COUNT->setText(QString::number(MATCHED_search));
 }
 
 
