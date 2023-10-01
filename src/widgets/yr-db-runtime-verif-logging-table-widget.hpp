@@ -50,7 +50,17 @@ public:
 
 public slots:
 
-    uint FILTER_ITEM(const QString &SIGNALItem_TEXT);
+    virtual void CLEAR_FILTERING();
+
+
+    virtual uint FILTER_ITEM(const QString &SIGNALItem_TEXT,
+                             bool exact_sql_event_query);
+
+
+    virtual inline uint FILTER_ITEM(const QString &SIGNALItem_TEXT)
+    {
+        FILTER_ITEM(SIGNALItem_TEXT, false);
+    }
 
 
 

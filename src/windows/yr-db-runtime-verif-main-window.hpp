@@ -83,9 +83,15 @@ protected slots:
 
 	virtual void ON_Configfuration_panel_window_trigerred();
 
+
+	virtual void ON_BUTON_Reset_pressed();
+
+
 	virtual void ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *aQTable_widget_item);
 
-    virtual void ON_QTABLEWIDGET_FILTER_ITEM_selected(const QString &a_SQL_event_item);
+	virtual void ON_QTABLEWIDGET_FILTER_ITEM_selected(const QString &a_SQL_event_item);
+
+    virtual void ON_QTABLEWIDGET_FILTER_ITEM_Exact_GIVEN(const QString &a_SQL_event_item);
 
 
 	virtual void ACTION_USER_GUIDE_method();

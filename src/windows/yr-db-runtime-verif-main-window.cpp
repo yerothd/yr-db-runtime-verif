@@ -45,11 +45,14 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
         ->setAlignment(Qt::AlignHCenter | Qt::AlignCenter);
 
 
+    comboBox_SQL_event_filtering->addItem("");
     comboBox_SQL_event_filtering->addItem("DELETE");
     comboBox_SQL_event_filtering->addItem("UPDATE");
     comboBox_SQL_event_filtering->addItem("SELECT");
     comboBox_SQL_event_filtering->addItem("INSERT");
 
+
+    lineEdit_SQL_event_filtering->setAlignment(Qt::AlignHCenter);
 
     lineEdit_nombre_de_resultats->setAlignment(Qt::AlignHCenter);
 
@@ -64,6 +67,12 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     tableWidget_LOGGING_PRECONDITIONS_postconditions->setVisible(false);
     tableWidget_LOGGING_guarded_condition_expression->setVisible(false);
 
+
+
+    connect(pushButton_reset_filtering,
+    		SIGNAL(clicked()),
+			this,
+            SLOT(ON_BUTON_Reset_pressed()));
 
 
     connect(actionAbout, SIGNAL(triggered()), this, SLOT(about()));
@@ -93,10 +102,17 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 			this,
             SLOT(ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *)));
 
+
     connect(comboBox_SQL_event_filtering,
     		SIGNAL(currentTextChanged(const QString &)),
 			this,
             SLOT(ON_QTABLEWIDGET_FILTER_ITEM_selected(const QString &)));
+
+
+    connect(lineEdit_SQL_event_filtering,
+    		SIGNAL(textChanged(const QString &)),
+			this,
+            SLOT(ON_QTABLEWIDGET_FILTER_ITEM_Exact_GIVEN(const QString &)));
 
 
     connect(actionExit,
@@ -297,6 +313,16 @@ void YRDBRUNTIMEVERIF_MainWindow::ON_Configfuration_panel_window_trigerred()
 }
 
 
+void YRDBRUNTIMEVERIF_MainWindow::ON_BUTON_Reset_pressed()
+{
+    lineEdit_SQL_event_filtering->clear();
+
+    comboBox_SQL_event_filtering->setCurrentIndex(0);
+
+    tableWidget_LOGGING->CLEAR_FILTERING();
+}
+
+
 void YRDBRUNTIMEVERIF_MainWindow::
 		ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *aQTable_widget_item)
 {
@@ -363,6 +389,18 @@ void YRDBRUNTIMEVERIF_MainWindow::
         ON_QTABLEWIDGET_FILTER_ITEM_selected(const QString &a_SQL_event_item)
 {
     uint MATCHED_search = tableWidget_LOGGING->FILTER_ITEM(a_SQL_event_item);
+
+    lineEdit_nombre_de_resultats->setText(QString::number(MATCHED_search));
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::
+        ON_QTABLEWIDGET_FILTER_ITEM_Exact_GIVEN(const QString &a_SQL_event_item)
+{
+    comboBox_SQL_event_filtering->setCurrentIndex(0);
+
+    uint MATCHED_search = tableWidget_LOGGING->FILTER_ITEM(a_SQL_event_item,
+                                                          true);
 
     lineEdit_nombre_de_resultats->setText(QString::number(MATCHED_search));
 }
