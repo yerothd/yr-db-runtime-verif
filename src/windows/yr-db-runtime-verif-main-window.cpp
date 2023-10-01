@@ -74,6 +74,11 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 			this,
             SLOT(ON_BUTON_Reset_pressed()));
 
+    connect(pushButton_filter,
+    		SIGNAL(clicked()),
+			this,
+            SLOT(ON_BUTON_Filter_pressed()));
+
 
     connect(actionAbout, SIGNAL(triggered()), this, SLOT(about()));
 
@@ -103,16 +108,12 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
             SLOT(ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *)));
 
 
+
     connect(comboBox_SQL_event_filtering,
     		SIGNAL(currentTextChanged(const QString &)),
 			this,
             SLOT(ON_QTABLEWIDGET_FILTER_ITEM_selected(const QString &)));
 
-
-    connect(lineEdit_SQL_event_filtering,
-    		SIGNAL(textChanged(const QString &)),
-			this,
-            SLOT(ON_QTABLEWIDGET_FILTER_ITEM_Exact_GIVEN(const QString &)));
 
 
     connect(actionExit,

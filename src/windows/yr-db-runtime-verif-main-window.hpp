@@ -86,6 +86,11 @@ protected slots:
 
 	virtual void ON_BUTON_Reset_pressed();
 
+	virtual inline void ON_BUTON_Filter_pressed()
+	{
+        ON_QTABLEWIDGET_FILTER_ITEM_Exact_GIVEN(lineEdit_SQL_event_filtering->text().trimmed());
+	}
+
 
 	virtual void ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *aQTable_widget_item);
 

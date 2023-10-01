@@ -330,7 +330,7 @@ uint YRDBRUNTIMEVERIF_TableWidget::FILTER_ITEM(const QString &SIGNALItem_TEXT,
                 {
                     ++MATCHED_search;
 
-                    current_signal_item->setBackground(Qt::red);
+                    current_signal_item->setBackground(Qt::darkMagenta);
                 }
             }
             else
@@ -344,7 +344,7 @@ uint YRDBRUNTIMEVERIF_TableWidget::FILTER_ITEM(const QString &SIGNALItem_TEXT,
                 {
                     ++MATCHED_search;
 
-                    current_signal_item->setBackground(Qt::red);
+                    current_signal_item->setBackground(Qt::darkMagenta);
                 }
             }
         }
