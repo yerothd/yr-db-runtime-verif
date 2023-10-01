@@ -37,6 +37,23 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 		->setStyleSheet(QMESSAGE_BOX_STYLE_SHEET);
 
 
+    comboBox_SQL_event_filtering->setLineEdit(new QLineEdit);
+
+	comboBox_SQL_event_filtering->lineEdit()->setReadOnly(true);
+
+    comboBox_SQL_event_filtering->lineEdit()
+        ->setAlignment(Qt::AlignHCenter | Qt::AlignCenter);
+
+
+    comboBox_SQL_event_filtering->addItem("DELETE");
+    comboBox_SQL_event_filtering->addItem("UPDATE");
+    comboBox_SQL_event_filtering->addItem("SELECT");
+    comboBox_SQL_event_filtering->addItem("INSERT");
+
+
+    lineEdit_nombre_de_resultats->setAlignment(Qt::AlignHCenter);
+
+
     tableWidget_LOGGING_2->setMaxSize(1);
     tableWidget_LOGGING_4->setMaxSize(1);
     tableWidget_LOGGING_PRECONDITIONS_postconditions->setMaxSize(1);
@@ -75,6 +92,12 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     		SIGNAL(itemPressed(QTableWidgetItem *)),
 			this,
             SLOT(ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *)));
+
+    connect(comboBox_SQL_event_filtering,
+    		SIGNAL(currentTextChanged(const QString &)),
+			this,
+            SLOT(ON_QTABLEWIDGET_FILTER_ITEM_selected(const QString &)));
+
 
     connect(actionExit,
     		SIGNAL(triggered()),
@@ -333,6 +356,15 @@ void YRDBRUNTIMEVERIF_MainWindow::
 	{
 		tableWidget_LOGGING_2->ADD_ITEM_2(QString("no source file info:-1"));
 	}
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::
+        ON_QTABLEWIDGET_FILTER_ITEM_selected(const QString &a_SQL_event_item)
+{
+    uint MATCHED_search = tableWidget_LOGGING->FILTER_ITEM(a_SQL_event_item);
+
+    lineEdit_nombre_de_resultats->setText(QString::number(MATCHED_search));
 }
 
 

@@ -48,6 +48,14 @@ public:
 				 QString changed_OR_modified_database_qty_Item);
 
 
+public slots:
+
+    uint FILTER_ITEM(const QString &SIGNALItem_TEXT);
+
+
+
+public:
+
 	static const unsigned int TIME_STAMP_COLUMN;
 
 	static const unsigned int SIGNAL_COLUMN;

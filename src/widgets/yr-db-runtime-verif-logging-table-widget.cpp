@@ -7,6 +7,9 @@
 #include "yr-db-runtime-verif-logging-table-widget.hpp"
 
 
+#include "src/utils/yr-db-runtime-verif-utils.hpp"
+
+
 const uint YRDBRUNTIMEVERIF_TableWidget::MAX_TABLE_WIDGET_ROW_COUNT = 1000;
 
 
@@ -248,3 +251,58 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString TIMESTAMPtem,
 
     return lastCurRow;
 }
+
+
+uint YRDBRUNTIMEVERIF_TableWidget::FILTER_ITEM(const QString &SIGNALItem_TEXT)
+{
+    uint MATCHED_search = 0;
+
+
+    QString searched_SIGNALItem_TEXT =
+        QString("'%1")
+            .arg(SIGNALItem_TEXT);
+
+
+    int row_size = rowCount();
+
+    int column_size = columnCount();
+
+
+    static const uint SIGNALItem_COLUMN= 1;
+
+
+    QTableWidgetItem *current_signal_item = 0;
+
+    QString current_signal_item_TEXT;
+
+
+    for (uint row = 0; row < row_size; ++row)
+    {
+        current_signal_item = item(row, SIGNALItem_COLUMN);
+
+        if (0 != current_signal_item)
+        {
+            current_signal_item_TEXT = current_signal_item->text();
+
+            if (!current_signal_item_TEXT.startsWith(searched_SIGNALItem_TEXT))
+            {
+                current_signal_item->setBackground(Qt::black);
+            }
+            else
+            {
+                ++MATCHED_search;
+
+                current_signal_item->setBackground(Qt::red);
+            }
+        }
+
+    }//for
+
+    resizeColumnsToContents();
+
+
+    return MATCHED_search;
+}
+
+
+
