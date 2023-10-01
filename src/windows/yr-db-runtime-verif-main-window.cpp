@@ -402,6 +402,11 @@ void YRDBRUNTIMEVERIF_MainWindow::
 void YRDBRUNTIMEVERIF_MainWindow::
         ON_QTABLEWIDGET_FILTER_ITEM_Exact_GIVEN(const QString &a_SQL_event_item)
 {
+    if (a_SQL_event_item.isEmpty())
+    {
+        return ;
+    }
+
     comboBox_SQL_event_filtering->setCurrentIndex(0);
 
     //THE PREVIOUS COMMAND CLEARS content of "lineEdit_SQL_event_filtering"
