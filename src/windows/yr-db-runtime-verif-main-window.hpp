@@ -15,6 +15,8 @@
 #include "src/utils/yr-db-runtime-verif-qmap.hpp"
 
 
+#include <QtGui/QContextMenuEvent>
+
 #include <QtWidgets/QMainWindow>
 
 #include <QtCore/QObject>
@@ -84,6 +86,8 @@ protected slots:
 	virtual void ON_Configfuration_panel_window_trigerred();
 
 
+	virtual void action_set_current_selected_SQL_event_as_filter_and_search();
+
 	virtual void ON_BUTON_Reset_pressed();
 
 	virtual inline void ON_BUTON_Filter_pressed()
@@ -114,9 +118,18 @@ protected slots:
                                              "4. The Qt Company\n"));
     }
 
+
+protected:
+
+    virtual void contextMenuEvent(QContextMenuEvent *event);
+
+
 public:
 
+    static const QPalette CONTEXT_MENU_PALETTE_QCOLOR;
+
     static const QString QMESSAGE_BOX_STYLE_SHEET;
+
 
 private:
 

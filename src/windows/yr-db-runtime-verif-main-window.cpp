@@ -18,6 +18,11 @@
 #include <QtCore/QProcess>
 
 
+
+const QPalette YRDBRUNTIMEVERIF_MainWindow::CONTEXT_MENU_PALETTE_QCOLOR
+        = QPalette(QColor(Qt::darkMagenta));
+
+
 const QString YRDBRUNTIMEVERIF_MainWindow::QMESSAGE_BOX_STYLE_SHEET =
 		QString("QMessageBox {background-color: rgb(%1);}"
                 "QMessageBox QLabel {color: rgb(%2);}")
@@ -68,6 +73,11 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     tableWidget_LOGGING_guarded_condition_expression->setVisible(false);
 
 
+
+    connect(actionSet_current_selected_SQL_event_as_filter_and_search,
+            SIGNAL(triggered()),
+            this,
+            SLOT(action_set_current_selected_SQL_event_as_filter_and_search()));
 
     connect(pushButton_reset_filtering,
     		SIGNAL(clicked()),
@@ -314,6 +324,35 @@ void YRDBRUNTIMEVERIF_MainWindow::ON_Configfuration_panel_window_trigerred()
 }
 
 
+void YRDBRUNTIMEVERIF_MainWindow::
+        action_set_current_selected_SQL_event_as_filter_and_search()
+{
+    if (tableWidget_LOGGING->rowCount() <= 0)
+    {
+        return ;
+    }
+
+    int current_row = tableWidget_LOGGING->currentRow();
+
+    static const uint SIGNALItem_COLUMN = 1;
+
+    QString current_selected_SQL_event_text;
+
+    QTableWidgetItem *an_item =
+        tableWidget_LOGGING->item(current_row,
+                                  SIGNALItem_COLUMN);
+
+    if (0 != an_item)
+    {
+        current_selected_SQL_event_text = an_item->text();
+
+        lineEdit_SQL_event_filtering->setText(current_selected_SQL_event_text);
+
+        ON_QTABLEWIDGET_FILTER_ITEM_Exact_GIVEN(current_selected_SQL_event_text);
+    }
+}
+
+
 void YRDBRUNTIMEVERIF_MainWindow::ON_BUTON_Reset_pressed()
 {
     comboBox_SQL_event_filtering->setCurrentIndex(0);
@@ -436,6 +475,19 @@ void YRDBRUNTIMEVERIF_MainWindow::ACTION_USER_GUIDE_method()
 
 	aProcess.startDetached(YRDBRUNTIMEVERIF_SetupWindow::YR_LINE_EDIT_PDF_FULL_PATH_READER,
 						   progArguments);
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::
+        contextMenuEvent(QContextMenuEvent *event)
+{
+    if (tableWidget_LOGGING->rowCount() > 0)
+    {
+        QMenu menu(this);
+        menu.setPalette(YRDBRUNTIMEVERIF_MainWindow::CONTEXT_MENU_PALETTE_QCOLOR);
+        menu.addAction(actionSet_current_selected_SQL_event_as_filter_and_search);
+        menu.exec(event->globalPos());
+    }
 }
 
 
