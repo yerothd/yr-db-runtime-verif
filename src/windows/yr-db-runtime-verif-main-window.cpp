@@ -57,6 +57,10 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     comboBox_SQL_event_filtering->addItem("INSERT");
 
 
+    lineEdit_SQL_event_filtering
+        ->setPlaceholderText(QString("Enter SQL event string for search filtering"));
+
+
     lineEdit_SQL_event_filtering->setAlignment(Qt::AlignHCenter);
 
     lineEdit_FILTERING_COUNT->setAlignment(Qt::AlignHCenter);
