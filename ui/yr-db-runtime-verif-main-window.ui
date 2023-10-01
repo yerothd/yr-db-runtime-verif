@@ -4693,6 +4693,9 @@
        <bold>false</bold>
       </font>
      </property>
+     <property name="toolTip">
+      <string>Select a SQL event to filter</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_FILTERING_COUNT">
      <property name="geometry">
@@ -6090,6 +6093,9 @@ background-color: rgb(0, 0, 0); </string>
        <bold>false</bold>
       </font>
      </property>
+     <property name="toolTip">
+      <string>Type-in a SQL event to filter</string>
+     </property>
      <property name="styleSheet">
       <string notr="true">border: 1px solid rgb(60, 60, 60);
 color: rgb(255, 255, 255);
@@ -6564,7 +6570,7 @@ background-color: rgb(0, 0, 0); </string>
       </font>
      </property>
      <property name="toolTip">
-      <string>Reset SQL event filtering</string>
+      <string>Filter SQL event</string>
      </property>
      <property name="text">
       <string>Filter</string>
