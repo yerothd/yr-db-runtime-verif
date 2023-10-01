@@ -393,6 +393,13 @@ void YRDBRUNTIMEVERIF_MainWindow::
 {
     lineEdit_SQL_event_filtering->clear();
 
+    if (a_SQL_event_item.isEmpty())
+    {
+        ON_BUTON_Reset_pressed();
+
+        return ;
+    }
+
     uint MATCHED_search = tableWidget_LOGGING->FILTER_ITEM(a_SQL_event_item);
 
     lineEdit_FILTERING_COUNT->setText(QString::number(MATCHED_search));
