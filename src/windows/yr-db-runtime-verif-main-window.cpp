@@ -530,6 +530,8 @@ void YRDBRUNTIMEVERIF_MainWindow::
     }
 
 
+    tableWidget_LOGGING->CLEAR_FILTERING();
+
     RESET_comboBox_SQL_event_filtering();
 
     //THE PREVIOUS COMMAND CLEARS content of "lineEdit_SQL_event_filtering"

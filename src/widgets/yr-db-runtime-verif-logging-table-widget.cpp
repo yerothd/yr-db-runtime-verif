@@ -260,19 +260,29 @@ void YRDBRUNTIMEVERIF_TableWidget::CLEAR_FILTERING()
 
     static const uint SIGNALItem_COLUMN = 1;
 
+    static const uint SUT_SOURCEItem_COLUMN = 2;
+
 
     QTableWidgetItem *current_signal_item = 0;
+
+    QTableWidgetItem *current_signal_item_two = 0;
 
 
     for (uint row = 0; row < row_size; ++row)
     {
         current_signal_item = item(row, SIGNALItem_COLUMN);
 
+        current_signal_item_two = item(row, SUT_SOURCEItem_COLUMN);
+
         if (0 != current_signal_item)
         {
             current_signal_item->setBackground(Qt::black);
         }
 
+        if (0 != current_signal_item_two)
+        {
+            current_signal_item_two->setBackground(Qt::black);
+        }
     }
 }
 
@@ -376,5 +386,47 @@ uint YRDBRUNTIMEVERIF_TableWidget::
     uint MATCHED_search = 0;
 
     QString searched_SUT_SOURCEItem_TEXT = SUT_SOURCEItem_TEXT;
+
+
+    int row_size = rowCount();
+
+    int column_size = columnCount();
+
+
+    static const uint SUT_SOURCEItem_COLUMN = 2;
+
+
+    QTableWidgetItem *current_SUT_source_item = 0;
+
+    QString current_SUT_source_item_TEXT;
+
+
+    for (uint row = 0; row < row_size; ++row)
+    {
+        current_SUT_source_item = item(row, SUT_SOURCEItem_COLUMN);
+
+        if (0 != current_SUT_source_item)
+        {
+            current_SUT_source_item_TEXT = current_SUT_source_item->text();
+
+            if (!YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive(current_SUT_source_item_TEXT,
+                                                                    searched_SUT_SOURCEItem_TEXT))
+            {
+                current_SUT_source_item->setBackground(Qt::black);
+            }
+            else
+            {
+                ++MATCHED_search;
+
+                current_SUT_source_item->setBackground(Qt::darkMagenta);
+            }
+        }
+
+    }//for
+
+    resizeColumnsToContents();
+
+
+    return MATCHED_search;
 }
 
