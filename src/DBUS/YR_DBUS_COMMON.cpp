@@ -115,6 +115,8 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_
 		a_logging_info.A_CPP_SOURCE_FILE_NAME = CPP_FILE_NAME;
 		a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER = cpp_line_number;
 
+
+
     	ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
 			->SET_CURRENT_RUNTIME_MONITOR_name
 				(a_logging_info.A_RUNTIME_MONITOR_name);
