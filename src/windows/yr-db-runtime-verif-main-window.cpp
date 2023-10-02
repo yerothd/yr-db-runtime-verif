@@ -42,15 +42,9 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 		->setStyleSheet(QMESSAGE_BOX_STYLE_SHEET);
 
 
-    comboBox_RUNTIME_MONITOR_VERIFIER_TESTER->yr__setEditable(false);
-
-
-    comboBox_SQL_event_filtering->setLineEdit(new QLineEdit);
-
-	comboBox_SQL_event_filtering->lineEdit()->setReadOnly(true);
-
-    comboBox_SQL_event_filtering->lineEdit()
-        ->setAlignment(Qt::AlignHCenter | Qt::AlignCenter);
+    comboBox_global_filtering->addItem("");
+    comboBox_global_filtering->addItem("sql event log");
+    comboBox_global_filtering->addItem("source");
 
 
     comboBox_SQL_event_filtering->addItem("");
@@ -58,6 +52,9 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     comboBox_SQL_event_filtering->addItem("UPDATE");
     comboBox_SQL_event_filtering->addItem("SELECT");
     comboBox_SQL_event_filtering->addItem("INSERT");
+
+
+    comboBox_RUNTIME_MONITOR_NAME->yr__setEditable(false);
 
 
     lineEdit_SQL_event_filtering
@@ -125,6 +122,10 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
             SLOT(ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *)));
 
 
+    connect(comboBox_global_filtering,
+    		SIGNAL(currentTextChanged(const QString &)),
+			this,
+            SLOT(RESET_comboBox_SQL_event_filtering(const QString &)));
 
     connect(comboBox_SQL_event_filtering,
     		SIGNAL(currentTextChanged(const QString &)),
@@ -360,8 +361,20 @@ void YRDBRUNTIMEVERIF_MainWindow::
 }
 
 
+void YRDBRUNTIMEVERIF_MainWindow::SOFT_Reset_selected()
+{
+    lineEdit_SQL_event_filtering->clear();
+
+    lineEdit_FILTERING_COUNT->clear();
+
+    tableWidget_LOGGING->CLEAR_FILTERING();
+}
+
+
 void YRDBRUNTIMEVERIF_MainWindow::ON_BUTON_Reset_pressed()
 {
+    comboBox_global_filtering->setCurrentIndex(0);
+
     comboBox_SQL_event_filtering->setCurrentIndex(0);
 
     lineEdit_SQL_event_filtering->clear();
@@ -455,6 +468,36 @@ void YRDBRUNTIMEVERIF_MainWindow::
 }
 
 
+//for combobox "comboBox_global_filtering"
+void YRDBRUNTIMEVERIF_MainWindow::RESET_comboBox_SQL_event_filtering()
+{
+    comboBox_SQL_event_filtering->setCurrentIndex(0);
+
+    QString lineEdit_SQL_event_filtering__CURRENT_text =
+                lineEdit_SQL_event_filtering->text();
+
+    SOFT_Reset_selected();
+
+    //THE PREVIOUS COMMAND CLEARS content of "lineEdit_SQL_event_filtering"
+    lineEdit_SQL_event_filtering->setText(lineEdit_SQL_event_filtering__CURRENT_text);
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::
+        RESET_comboBox_SQL_event_filtering(const QString &a_SQL_event_item)
+{
+    comboBox_SQL_event_filtering->setCurrentIndex(0);
+
+    QString lineEdit_SQL_event_filtering__CURRENT_text =
+                lineEdit_SQL_event_filtering->text();
+
+    SOFT_Reset_selected();
+
+    //THE PREVIOUS COMMAND CLEARS content of "lineEdit_SQL_event_filtering"
+    lineEdit_SQL_event_filtering->setText(lineEdit_SQL_event_filtering__CURRENT_text);
+}
+
+
 void YRDBRUNTIMEVERIF_MainWindow::
         ON_QTABLEWIDGET_FILTER_ITEM_selected(const QString &a_SQL_event_item)
 {
@@ -462,10 +505,15 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
     if (a_SQL_event_item.isEmpty())
     {
-        ON_BUTON_Reset_pressed();
+        SOFT_Reset_selected();
 
         return ;
     }
+
+    RESET_comboBox_global_filtering();
+
+    //PREVIOUS COMMAND CLEARS resets of "comboBox_SQL_event_filtering"
+    comboBox_SQL_event_filtering->find_AND_SET_CURRENT_INDEX(a_SQL_event_item);
 
     uint MATCHED_search = tableWidget_LOGGING->FILTER_ITEM(a_SQL_event_item);
 
@@ -474,20 +522,34 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
 
 void YRDBRUNTIMEVERIF_MainWindow::
-        ON_QTABLEWIDGET_FILTER_ITEM_Exact_GIVEN(const QString &a_SQL_event_item)
+        ON_QTABLEWIDGET_FILTER_ITEM_Exact_GIVEN(const QString &a_SourceSUT__OR__SQLEvent__Text)
 {
-    if (a_SQL_event_item.isEmpty())
+    if (a_SourceSUT__OR__SQLEvent__Text.isEmpty())
     {
         return ;
     }
 
-    comboBox_SQL_event_filtering->setCurrentIndex(0);
+
+    RESET_comboBox_SQL_event_filtering();
 
     //THE PREVIOUS COMMAND CLEARS content of "lineEdit_SQL_event_filtering"
-    lineEdit_SQL_event_filtering->setText(a_SQL_event_item);
+    lineEdit_SQL_event_filtering->setText(a_SourceSUT__OR__SQLEvent__Text);
 
-    uint MATCHED_search = tableWidget_LOGGING->FILTER_ITEM(a_SQL_event_item,
+
+    uint MATCHED_search = 0;
+
+    if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive(comboBox_global_filtering->currentText(),
+                                                           QString("source")))
+    {
+        MATCHED_search = tableWidget_LOGGING->FILTER__SUT_SOURCE__ITEM(a_SourceSUT__OR__SQLEvent__Text);
+    }
+    else if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive(comboBox_global_filtering->currentText(),
+                                                                QString("sql event log")))
+    {
+        MATCHED_search = tableWidget_LOGGING->FILTER_ITEM(a_SourceSUT__OR__SQLEvent__Text,
                                                           true);
+    }
+
 
     lineEdit_FILTERING_COUNT->setText(QString::number(MATCHED_search));
 }

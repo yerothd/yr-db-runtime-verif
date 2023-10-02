@@ -286,6 +286,9 @@ uint YRDBRUNTIMEVERIF_TableWidget::FILTER_ITEM(const QString &SIGNALItem_TEXT,
     }
 
 
+    CLEAR_FILTERING();
+
+
     uint MATCHED_search = 0;
 
     QString searched_SIGNALItem_TEXT = SIGNALItem_TEXT;
@@ -358,4 +361,20 @@ uint YRDBRUNTIMEVERIF_TableWidget::FILTER_ITEM(const QString &SIGNALItem_TEXT,
 }
 
 
+uint YRDBRUNTIMEVERIF_TableWidget::
+        FILTER__SUT_SOURCE__ITEM(const QString &SUT_SOURCEItem_TEXT)
+{
+    if (SUT_SOURCEItem_TEXT.isEmpty())
+    {
+        return 0;
+    }
+
+
+    CLEAR_FILTERING();
+
+
+    uint MATCHED_search = 0;
+
+    QString searched_SUT_SOURCEItem_TEXT = SUT_SOURCEItem_TEXT;
+}
 

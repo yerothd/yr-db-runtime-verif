@@ -57,6 +57,9 @@ public slots:
                              bool exact_sql_event_query);
 
 
+    virtual uint FILTER__SUT_SOURCE__ITEM(const QString &SUT_SOURCEItem_TEXT);
+
+
     virtual inline uint FILTER_ITEM(const QString &SIGNALItem_TEXT)
     {
         FILTER_ITEM(SIGNALItem_TEXT, false);

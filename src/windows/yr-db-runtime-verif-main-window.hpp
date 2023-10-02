@@ -45,7 +45,7 @@ public:
 
     inline virtual void SET_CURRENT_RUNTIME_MONITOR_name(QString A_RUNTIME_MONITOR_name)
     {
-    	comboBox_RUNTIME_MONITOR_VERIFIER_TESTER
+    	comboBox_RUNTIME_MONITOR_NAME
 			->find_AND_SET_CURRENT_INDEX(A_RUNTIME_MONITOR_name);
     }
 
@@ -88,6 +88,8 @@ protected slots:
 
 	virtual void action_set_current_selected_SQL_event_as_filter_and_search();
 
+	virtual void SOFT_Reset_selected();
+
 	virtual void ON_BUTON_Reset_pressed();
 
 	virtual inline void ON_BUTON_Filter_pressed()
@@ -98,9 +100,31 @@ protected slots:
 
 	virtual void ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *aQTable_widget_item);
 
+
+    //for combobox "comboBox_global_filtering"
+    virtual void RESET_comboBox_SQL_event_filtering();
+
+    virtual void RESET_comboBox_SQL_event_filtering(const QString &a_SQL_event_item);
+
+
+    //for combobox "comboBox_global_filtering"
+    virtual inline void RESET_comboBox_global_filtering()
+    {
+        comboBox_global_filtering->setCurrentIndex(0);
+    }
+
+    virtual inline void RESET_comboBox_global_filtering(const QString &a_SQL_event_item)
+    {
+        comboBox_global_filtering->setCurrentIndex(0);
+    }
+
+    //for combobox "comboBox_SQL_event_filtering"
 	virtual void ON_QTABLEWIDGET_FILTER_ITEM_selected(const QString &a_SQL_event_item);
 
-    virtual void ON_QTABLEWIDGET_FILTER_ITEM_Exact_GIVEN(const QString &a_SQL_event_item);
+
+    //for QLinedEdit "lineEdit_SQL_event_filtering"
+    virtual void ON_QTABLEWIDGET_FILTER_ITEM_Exact_GIVEN(const QString &a_SourceSUT__OR__SQLEvent__Text);
+
 
 
 	virtual void ACTION_USER_GUIDE_method();
