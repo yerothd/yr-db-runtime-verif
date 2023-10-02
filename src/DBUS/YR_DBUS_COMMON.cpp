@@ -69,6 +69,14 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT_complement_info_ON_ACCEPTING_STATE
 					(_LAST_trace_SQL_event_log_GUI_row_number,
 					 a_logging_info->toString());
 
+            // 1. Runtime monitor name is set on the main window
+            // only for SQL events that lead to an accepting
+            // error state.
+            ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
+			->SET_CURRENT_RUNTIME_MONITOR_name
+				(a_logging_info->A_RUNTIME_MONITOR_name);
+
+
     		YEROTH_DELETE_FREE_POINTER_NOW(a_logging_info);
     	}
     }
@@ -117,9 +125,12 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_
 
 
 
-    	ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
-			->SET_CURRENT_RUNTIME_MONITOR_name
-				(a_logging_info.A_RUNTIME_MONITOR_name);
+        // 2. Runtime monitor name is set on the main window
+        // only for SQL events that lead to an accepting
+        // error state.
+        ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
+            ->SET_CURRENT_RUNTIME_MONITOR_name(QString(""));
+
 
     	_LAST_trace_SQL_event_log_GUI_row_number =
     			ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window

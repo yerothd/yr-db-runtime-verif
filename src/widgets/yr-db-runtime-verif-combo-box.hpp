@@ -44,6 +44,8 @@ public:
         return QComboBox::currentText().trimmed();
     }
 
+    virtual void yr__setEditable(bool editable);
+
     inline virtual bool isReadOnly()
     {
         return lineEdit()->isReadOnly();

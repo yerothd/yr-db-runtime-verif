@@ -42,6 +42,9 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 		->setStyleSheet(QMESSAGE_BOX_STYLE_SHEET);
 
 
+    comboBox_RUNTIME_MONITOR_VERIFIER_TESTER->yr__setEditable(false);
+
+
     comboBox_SQL_event_filtering->setLineEdit(new QLineEdit);
 
 	comboBox_SQL_event_filtering->lineEdit()->setReadOnly(true);
@@ -384,12 +387,23 @@ void YRDBRUNTIMEVERIF_MainWindow::
 								 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
 
 
+        QString CURRENT_RUNTIME_MONITOR_name__to__display_Now;
+
+
 		if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive
 				("True", a_logging_info.A_SQL_EVENT_LOG_guarded_condition_expression_VALUE))
 		{
 		    tableWidget_LOGGING_4->setVisible(true);
 		    tableWidget_LOGGING_PRECONDITIONS_postconditions->setVisible(true);
-		    tableWidget_LOGGING_guarded_condition_expression->setVisible(true);
+            tableWidget_LOGGING_guarded_condition_expression->setVisible(true);
+
+
+            // 3. Runtime monitor name is set on the main window
+            // only for SQL events that lead to an accepting
+            // error state.
+            CURRENT_RUNTIME_MONITOR_name__to__display_Now =
+                a_logging_info.A_RUNTIME_MONITOR_name;
+
 
 			YRDBRUNTIMEVERIF_MainWindow::
 				SET__foregroundcolor__ON__accepting_state(aQTable_widget_item->row(),
@@ -402,10 +416,20 @@ void YRDBRUNTIMEVERIF_MainWindow::
 		}
 		else
 		{
+            CURRENT_RUNTIME_MONITOR_name__to__display_Now.clear();
+
 		    tableWidget_LOGGING_4->setVisible(false);
 		    tableWidget_LOGGING_PRECONDITIONS_postconditions->setVisible(false);
 		    tableWidget_LOGGING_guarded_condition_expression->setVisible(false);
 		}
+
+
+
+        // 4. Runtime monitor name is set on the main window
+        // only for SQL events that lead to an accepting
+        // error state.
+        SET_CURRENT_RUNTIME_MONITOR_name(CURRENT_RUNTIME_MONITOR_name__to__display_Now);
+
 
 
 		tableWidget_LOGGING_4
@@ -493,6 +517,5 @@ void YRDBRUNTIMEVERIF_MainWindow::
         menu.exec(event->globalPos());
     }
 }
-
 
 
