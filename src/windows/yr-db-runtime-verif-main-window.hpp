@@ -157,7 +157,12 @@ public:
     static const QString QMESSAGE_BOX_STYLE_SHEET;
 
 
+    QMap<QString, YR_DB_RUNTIME_VERIF_Monitor *> user_defined_Runtime_Monitors_NAME__TO__RUNTIME_INSTANCES;
+
+
 private:
+
+    QString RUNTIME_MONITOR_name_TO_PRINT_DOT;
 
     YR_DB_RUNTIME_VERIF_Monitor	*_current_runtime_monitor_INSTANCE;
 

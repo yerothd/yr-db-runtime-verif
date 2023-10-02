@@ -190,10 +190,12 @@ void YRDBRUNTIMEVERIF_MainWindow
 
     if (0 != _current_runtime_monitor_INSTANCE)
     {
+        QString current_runtime_monitor_NAME =
+            _current_runtime_monitor_INSTANCE->get_RUNTIME_MONITOR_NAME();
+
     	actionVIEW_RUNTIME_monitor
 			->setText(QString("view runtime monitor (%1)")
-						.arg(_current_runtime_monitor_INSTANCE
-								->get_RUNTIME_MONITOR_NAME()));
+						.arg(current_runtime_monitor_NAME));
     }
 }
 
@@ -311,10 +313,15 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
 void YRDBRUNTIMEVERIF_MainWindow::VIEW_current_RUNTIME_MONITOR()
 {
-	if (0 != _current_runtime_monitor_INSTANCE)
+    YR_DB_RUNTIME_VERIF_Monitor *a_to_print_DOT_FORMAT_runtime_monitor =
+        user_defined_Runtime_Monitors_NAME__TO__RUNTIME_INSTANCES
+            .value(RUNTIME_MONITOR_name_TO_PRINT_DOT);
+
+
+	if (0 != a_to_print_DOT_FORMAT_runtime_monitor)
 	{
 		QString DOT_FORMAT =
-				_current_runtime_monitor_INSTANCE->print_TO_dot_FILE(true);
+				a_to_print_DOT_FORMAT_runtime_monitor->print_TO_dot_FILE(true);
 	}
 }
 
@@ -431,10 +438,33 @@ void YRDBRUNTIMEVERIF_MainWindow::
 		{
             CURRENT_RUNTIME_MONITOR_name__to__display_Now.clear();
 
+
 		    tableWidget_LOGGING_4->setVisible(false);
 		    tableWidget_LOGGING_PRECONDITIONS_postconditions->setVisible(false);
 		    tableWidget_LOGGING_guarded_condition_expression->setVisible(false);
 		}
+
+
+
+        RUNTIME_MONITOR_name_TO_PRINT_DOT = CURRENT_RUNTIME_MONITOR_name__to__display_Now;
+
+
+
+        if (RUNTIME_MONITOR_name_TO_PRINT_DOT.isEmpty())
+        {
+            actionVIEW_RUNTIME_monitor
+                ->setText(QString("NO runtime monitor to visualize in PDF form"));
+
+            actionVIEW_RUNTIME_monitor->setEnabled(false);
+        }
+        else
+        {
+            actionVIEW_RUNTIME_monitor
+                ->setText(QString("view runtime monitor (%1)")
+                            .arg(RUNTIME_MONITOR_name_TO_PRINT_DOT));
+
+            actionVIEW_RUNTIME_monitor->setEnabled(true);
+        }
 
 
 
