@@ -6097,7 +6097,7 @@ background-color: rgb(0, 0, 0); </string>
       </font>
      </property>
      <property name="toolTip">
-      <string>Type-in a SQL event to filter</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Type-in a string (SUT source or SQL event) to filter&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="styleSheet">
       <string notr="true">border: 1px solid rgb(60, 60, 60);
@@ -7092,7 +7092,7 @@ background-color: rgb(0, 0, 0); </string>
       </font>
      </property>
      <property name="toolTip">
-      <string>Select a SQL event to filter</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select a string type to filter (SUT source or SQL event)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </widget>
@@ -9973,7 +9973,10 @@ background-color: rgb(0, 0, 0); </string>
   </action>
   <action name="actionSet_current_selected_SQL_event_as_filter_and_search">
    <property name="text">
-    <string>Set current selected SQL event as filter and search</string>
+    <string>Set 'current selected SQL event' as filter and search</string>
+   </property>
+   <property name="toolTip">
+    <string>Set 'current selected SQL event' as filter and search</string>
    </property>
    <property name="font">
     <font>

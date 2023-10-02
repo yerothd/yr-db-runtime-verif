@@ -58,7 +58,7 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 
 
     lineEdit_SQL_event_filtering
-        ->setPlaceholderText(QString("Enter SQL event string for search filtering"));
+        ->setPlaceholderText(QString("Enter \"source\" or \"SQL event\" for filtering"));
 
 
     lineEdit_SQL_event_filtering->setAlignment(Qt::AlignHCenter);

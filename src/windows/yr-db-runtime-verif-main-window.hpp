@@ -30,6 +30,7 @@ class YRDBRUNTIMEVERIF_MainWindow : public YRDBRUNTIMEVERIF_CommonsWindow,
 {
 	Q_OBJECT
 
+
 public:
 
 	YRDBRUNTIMEVERIF_MainWindow();
@@ -74,6 +75,7 @@ public slots:
 
 	virtual void set_connection_DBUS_status(QString	message_STATUS,
 											bool 	error_not_connected = false);
+
 
 protected slots:
 
