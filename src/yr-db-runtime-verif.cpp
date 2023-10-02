@@ -264,7 +264,7 @@ int main(int argc, char *argv[])
 
     	all_windows._yrdbruntimeverif_main_Window
 			->set_connection_DBUS_status
-				(QString("YR-DB-RUNTIME-VERIF: this console registered to system d-bus as service: '%1'.")
+				(QString("YR-DB-RUNTIME-VERIF: this console registered is to system d-bus as service: '%1'.")
 					.arg(systemYerothService));
 
         qDebug() << "STARTING YR-DB-RUNTIME-VERIF !";
