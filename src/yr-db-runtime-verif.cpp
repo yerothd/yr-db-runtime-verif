@@ -222,6 +222,12 @@ int main(int argc, char *argv[])
             }
             else
             {
+                all_windows._yrdbruntimeverif_main_Window
+                    ->user_defined_Runtime_Monitors_NAME__TO__RUNTIME_INSTANCES
+                        .insert(A_USER_DEFINED_RT_MONITOR->get_RUNTIME_MONITOR_NAME(),
+                                 A_USER_DEFINED_RT_MONITOR);
+
+
                 QDEBUG_STRINGS_OUTPUT_1(QString("Could register '%1' object")
                                         .arg(current_RT_Monitor_OBJECT_ID_for_query_RPC_Dbus));
 
@@ -256,12 +262,6 @@ int main(int argc, char *argv[])
     //########################### GRAPHICAL USER INTERFACE STATUS CODE ###########################
     if (couldRegisterService && couldRegisterObject)
     {
-        if (user_defined_Runtime_Monitors.size() > 0)
-        {
-            all_windows._yrdbruntimeverif_main_Window
-                ->SET__CURRENT__RUNTIME__MONITOR(user_defined_Runtime_Monitors.at(0));
-        }
-
     	all_windows._yrdbruntimeverif_main_Window
 			->set_connection_DBUS_status
 				(QString("YR-DB-RUNTIME-VERIF: this console registered is to system d-bus as service: '%1'.")
