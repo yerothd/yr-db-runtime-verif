@@ -361,6 +361,8 @@ void YRDBRUNTIMEVERIF_MainWindow::
     {
         current_selected_SQL_event_text = an_item->text();
 
+        comboBox_global_filtering->find_AND_SET_CURRENT_INDEX(QString("sql event log"));
+
         lineEdit_SQL_event_filtering->setText(current_selected_SQL_event_text);
 
         ON_QTABLEWIDGET_FILTER_ITEM_Exact_GIVEN(current_selected_SQL_event_text);
