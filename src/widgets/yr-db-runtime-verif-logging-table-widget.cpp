@@ -194,6 +194,40 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM_2(QString Source_file__line_number)
 }
 
 
+int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM_1(QString Precondition__Or__POST_CONDITION)
+{
+    static bool first_time_call = true;
+
+    if (first_time_call)
+    {
+        setMaxSize(1);
+
+        first_time_call = false;
+    }
+
+    _curRow = 0;
+
+    setRowCount(1);
+
+    _TIMESTAMPtem = new QTableWidgetItem(Precondition__Or__POST_CONDITION);
+
+    _mapListIdxToElement_db_ID.yr_insert_item(_curRow, Precondition__Or__POST_CONDITION);
+
+    unsigned idx = 0;
+
+    //Each call to setItem triggers a call to YerothPointDeVenteWindow::handleQteChange
+    setItem(_curRow, idx++, _TIMESTAMPtem);
+
+    setQStandardItemFlags(*_TIMESTAMPtem, _myQStandardItemFlags);
+
+    selectRow(_curRow);
+
+    resizeColumnsToContents();
+
+    return _curRow;
+}
+
+
 int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString TIMESTAMPtem,
 										   QString SIGNALItem,
 		   	   	   	   	   	   	   	   	   QString SOURCEItem,

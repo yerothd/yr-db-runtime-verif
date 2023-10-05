@@ -41,6 +41,8 @@ public:
 
 	int ADD_ITEM_2(QString Source_file__line_number);
 
+	int ADD_ITEM_1(QString Precondition__Or__POST_CONDITION);
+
 	int ADD_ITEM(QString TIMESTAMPtem,
 				 QString SIGNALItem,
 				 QString SOURCEItem,

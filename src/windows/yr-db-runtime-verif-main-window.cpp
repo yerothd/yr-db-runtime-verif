@@ -68,12 +68,14 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 
     tableWidget_LOGGING_2->setMaxSize(1);
     tableWidget_LOGGING_4->setMaxSize(1);
-    tableWidget_LOGGING_PRECONDITIONS_postconditions->setMaxSize(1);
+    tableWidget_LOGGING_PRECONDITIONS->setMaxSize(1);
+    tableWidget_LOGGING_postconditions->setMaxSize(1);
     tableWidget_LOGGING_guarded_condition_expression->setMaxSize(1);
 
 
     tableWidget_LOGGING_4->setVisible(false);
-    tableWidget_LOGGING_PRECONDITIONS_postconditions->setVisible(false);
+    tableWidget_LOGGING_PRECONDITIONS->setVisible(false);
+    tableWidget_LOGGING_postconditions->setVisible(false);
     tableWidget_LOGGING_guarded_condition_expression->setVisible(false);
 
 
@@ -221,7 +223,8 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
 
     tableWidget_LOGGING_4->setVisible(true);
-    tableWidget_LOGGING_PRECONDITIONS_postconditions->setVisible(true);
+    tableWidget_LOGGING_PRECONDITIONS->setVisible(true);
+    tableWidget_LOGGING_postconditions->setVisible(true);
     tableWidget_LOGGING_guarded_condition_expression->setVisible(true);
 
 
@@ -231,10 +234,13 @@ void YRDBRUNTIMEVERIF_MainWindow::
 						 a_logging_info.AN_ACCEPTING_STATE,
 						 a_logging_info.AN_ACCEPTING_STATE_is_error_state_VALUE));
 
-	tableWidget_LOGGING_PRECONDITIONS_postconditions
-		->ADD_ITEM_2(QString("%1:%2")
-						.arg(a_logging_info.A_TRANSITION_precondition,
-							 a_logging_info.A_TRANSITION_postcondition));
+
+    tableWidget_LOGGING_PRECONDITIONS
+        ->ADD_ITEM_1(a_logging_info.A_TRANSITION_precondition);
+
+    tableWidget_LOGGING_postconditions
+        ->ADD_ITEM_1(a_logging_info.A_TRANSITION_postcondition);
+
 
 	tableWidget_LOGGING_guarded_condition_expression
 		->ADD_ITEM_2(QString("%1:%2")
@@ -416,7 +422,8 @@ void YRDBRUNTIMEVERIF_MainWindow::
 				("True", a_logging_info.A_SQL_EVENT_LOG_guarded_condition_expression_VALUE))
 		{
 		    tableWidget_LOGGING_4->setVisible(true);
-		    tableWidget_LOGGING_PRECONDITIONS_postconditions->setVisible(true);
+		    tableWidget_LOGGING_PRECONDITIONS->setVisible(true);
+		    tableWidget_LOGGING_postconditions->setVisible(true);
             tableWidget_LOGGING_guarded_condition_expression->setVisible(true);
 
 
@@ -442,7 +449,8 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
 
 		    tableWidget_LOGGING_4->setVisible(false);
-		    tableWidget_LOGGING_PRECONDITIONS_postconditions->setVisible(false);
+		    tableWidget_LOGGING_PRECONDITIONS->setVisible(false);
+		    tableWidget_LOGGING_postconditions->setVisible(false);
 		    tableWidget_LOGGING_guarded_condition_expression->setVisible(false);
 		}
 
@@ -483,10 +491,14 @@ void YRDBRUNTIMEVERIF_MainWindow::
 							 a_logging_info.AN_ACCEPTING_STATE,
 							 a_logging_info.AN_ACCEPTING_STATE_is_error_state_VALUE));
 
-		tableWidget_LOGGING_PRECONDITIONS_postconditions
-			->ADD_ITEM_2(QString("%1:%2")
-							.arg(a_logging_info.A_TRANSITION_precondition,
-								 a_logging_info.A_TRANSITION_postcondition));
+
+		tableWidget_LOGGING_PRECONDITIONS
+			->ADD_ITEM_1(a_logging_info.A_TRANSITION_precondition);
+
+
+		tableWidget_LOGGING_postconditions
+			->ADD_ITEM_1(a_logging_info.A_TRANSITION_postcondition);
+
 
 		tableWidget_LOGGING_guarded_condition_expression
 			->ADD_ITEM_2(QString("%1:%2")
