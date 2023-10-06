@@ -80,6 +80,12 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 
 
 
+    connect(action_save_to_csv_format_sheet,
+            SIGNAL(triggered()),
+            this,
+            SLOT(export_csv_file()));
+
+
     connect(actionSet_current_selected_SQL_event_as_filter_and_search,
             SIGNAL(triggered()),
             this,

@@ -86,13 +86,19 @@ public:
         return aStr.replace("'", "''");
     }
 
+    inline static QString getFileNameWithCurrentTime(const QString &fileName)
+    {
+        return QString("%1%2%3")
+        		.arg(fileName,
+                     QDate::currentDate().toString("-yyyyMMdd"),
+                     QTime::currentTime().toString("_HHmmss"));
+    }
+
     inline static QString getFileNameWithDateANDCurrentTime(const QString &fileName)
     {
         return QString("%1%2%3").arg(fileName,
-                                     QDate::
-                                     currentDate().toString("-yyyyMMdd"),
-                                     QTime::
-                                     currentTime().toString("_HHmmss"));
+                                     QDate::currentDate().toString("-yyyyMMdd"),
+                                     QTime::currentTime().toString("_HHmmss"));
     }
 
     static void YEROTH_CREATE_FOLDER(const QString &aFullPathDir);
@@ -180,6 +186,11 @@ public:
 
     static int getNextIdFromTable(const QString &tableName);
 
+    static bool SAVE_AS_csv_file(QMainWindow    &aCallingWindow,
+                                 QTableView     &aTableView,
+                                 const QString 	&csvFileName,
+                                 const QString 	&strMessage);
+
     static bool start_db_transaction();
 
     static bool rollback_db_transaction();
@@ -190,6 +201,8 @@ public:
     {
         return QCryptographicHash::hash(data.toLatin1(), QCryptographicHash::Md5);
     }
+
+    static QString temporaryFilesDir;
 
     static const QString EMPTY_STRING;
 
@@ -205,34 +218,45 @@ public:
     static const QString STOCKS;
     static const QString STOCKS_VENDU;
 
+
     static const QString DATE_FORMAT;
+
+    static const QString DB_DATE_FORMAT;
+
 
     static const QString TIME_FORMAT_WITH_MILLISECONDS;
 
     static const QString TIME_FORMAT;
 
-    static const QString DB_DATE_FORMAT;
 
     static const QString APROPOS_MSG;
 
     static const QString APPLICATION_NAME;
 
+
     static const QString LOCALHOST;
 
     static const QString LOCALHOST_IP_ADDRESS;
+
 
     static const QString STRING_OUI;
 
     static const QString STRING_NON;
 
+
     static const unsigned int FACTURE_PETIT_NOM_ARTICLE_MAX_CHARS;
+
 
     static const unsigned int STRING_MAX_CHARS;
 
+
     static const QString INFERIEUR_OU_EGAL;
+
     static const QString SUPERIEUR;
 
+
     static const QString UTILISATEUR_NON_EXISTANT;
+
 
     static const QString JH_NISSI_CLIENT;
 
@@ -241,6 +265,10 @@ public:
     static const QString JH_NISSI_SERVER;
 
     static const QString JH_NISSI_SERVER_OBJECT;
+
+
+    static const QString CSV_FILE_SEPARATION_SEMI_COLON_STRING_CHAR;
+
 
     static const QChar SLASH_CHAR;
 
@@ -317,7 +345,7 @@ private:
 
 #define CURRENT_TIME QTime::currentTime().toString(YR_DB_RUNTIME_VERIF_Utils::TIME_FORMAT)
 
-#define FILE_NAME_USERID_CURRENT_TIME(F) YR_DB_RUNTIME_VERIF_Utils::getFileNameWithUserIDAndCurrentTime(F)
+#define FILE_NAME_USERID_CURRENT_TIME(F) YR_DB_RUNTIME_VERIF_Utils::getFileNameWithDateANDCurrentTime(F)
 
 #define DATE_TO_STRING(D) D.toString(YR_DB_RUNTIME_VERIF_Utils::DATE_FORMAT)
 

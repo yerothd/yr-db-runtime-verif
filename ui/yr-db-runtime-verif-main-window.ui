@@ -1287,7 +1287,7 @@
      </property>
      <column>
       <property name="text">
-       <string>tIme stamp</string>
+       <string>time stamp</string>
       </property>
       <property name="font">
        <font>

@@ -12,12 +12,14 @@
 #include <QtCore/QBuffer>
 #include <QtCore/QProcess>
 
+#include <QtGui/QPainter>
+
 #include <QtSql/QSqlRecord>
 #include <QtSql/QSqlError>
 #include <QtSql/QSqlQuery>
 
 #include <QtWidgets/QLabel>
-#include <QtGui/QPainter>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QMessageBox>
@@ -29,6 +31,8 @@
 QString YR_DB_RUNTIME_VERIF_Utils::_mainWorkingDirectory("");
 
 QString YR_DB_RUNTIME_VERIF_Utils::_logFileName("yr-db-runtime-verif.log");
+
+QString YR_DB_RUNTIME_VERIF_Utils::temporaryFilesDir("/tmp");
 
 const QString YR_DB_RUNTIME_VERIF_Utils::EMPTY_STRING("");
 
@@ -44,33 +48,40 @@ const QString YR_DB_RUNTIME_VERIF_Utils::COURRIERS_ALERTES("courriers_alertes");
 const QString YR_DB_RUNTIME_VERIF_Utils::STOCKS("stocks");
 const QString YR_DB_RUNTIME_VERIF_Utils::STOCKS_VENDU("stocks_vendu");
 
+
 const QString YR_DB_RUNTIME_VERIF_Utils::DATE_FORMAT("dd.MM.yyyy");
 
-const QString
-YR_DB_RUNTIME_VERIF_Utils::
-TIME_FORMAT_WITH_MILLISECONDS(FORMAT_TIME_WITH_MS);
+const QString YR_DB_RUNTIME_VERIF_Utils::DB_DATE_FORMAT("yyyy-MM-dd");
+
+
+const QString YR_DB_RUNTIME_VERIF_Utils::TIME_FORMAT_WITH_MILLISECONDS(FORMAT_TIME_WITH_MS);
 
 const QString YR_DB_RUNTIME_VERIF_Utils::TIME_FORMAT("HH:mm:ss");
 
-const QString YR_DB_RUNTIME_VERIF_Utils::DB_DATE_FORMAT("yyyy-MM-dd");
 
 const QString YR_DB_RUNTIME_VERIF_Utils::LOCALHOST("localhost");
 
 const QString YR_DB_RUNTIME_VERIF_Utils::LOCALHOST_IP_ADDRESS("127.0.0.1");
 
+
 const QString YR_DB_RUNTIME_VERIF_Utils::STRING_OUI("oui");
 
 const QString YR_DB_RUNTIME_VERIF_Utils::STRING_NON("non");
 
+
 const unsigned int YR_DB_RUNTIME_VERIF_Utils::FACTURE_PETIT_NOM_ARTICLE_MAX_CHARS(12);
 
+
 const unsigned int YR_DB_RUNTIME_VERIF_Utils::STRING_MAX_CHARS(18);
+
 
 const QString YR_DB_RUNTIME_VERIF_Utils::INFERIEUR_OU_EGAL("<=");
 
 const QString YR_DB_RUNTIME_VERIF_Utils::SUPERIEUR(">");
 
+
 const QString YR_DB_RUNTIME_VERIF_Utils::UTILISATEUR_NON_EXISTANT("unknown user");
+
 
 const QString YR_DB_RUNTIME_VERIF_Utils::JH_NISSI_CLIENT("yr.db-runtime.verif");
 
@@ -79,6 +90,10 @@ const QString YR_DB_RUNTIME_VERIF_Utils::JH_NISSI_CLIENT_OBJECT("/");
 const QString YR_DB_RUNTIME_VERIF_Utils::JH_NISSI_SERVER("com.yeroth-erp.server");
 
 const QString YR_DB_RUNTIME_VERIF_Utils::JH_NISSI_SERVER_OBJECT("/");
+
+
+const QString YR_DB_RUNTIME_VERIF_Utils::CSV_FILE_SEPARATION_SEMI_COLON_STRING_CHAR(";");
+
 
 const QChar YR_DB_RUNTIME_VERIF_Utils::SLASH_CHAR('/');
 
@@ -343,6 +358,123 @@ int YR_DB_RUNTIME_VERIF_Utils::getNextIdFromTable(const QString &tableName)
     }
 
     return 0;
+}
+
+
+bool YR_DB_RUNTIME_VERIF_Utils::SAVE_AS_csv_file(QMainWindow    &aCallingWindow,
+                                                 QTableView     &aTableView,
+                                                 const QString  &csvFileName,
+                                                 const QString  &strMessage)
+{
+	QAbstractItemModel *tableModel = aTableView.model();
+
+	if (0 == tableModel)
+	{
+		return false;
+	}
+
+
+	int tableModelRowCount = tableModel->rowCount();
+
+	int tableModelColumnCount = tableModel->columnCount();
+
+
+	if (tableModelRowCount <= 0  ||
+	    tableModelColumnCount <= 0)
+	{
+		QMessageBox::information(&aCallingWindow,
+                                 QObject::tr("No CSV data"),
+                                 QObject::tr("No CSV data to save out !"));
+		return false;
+	}
+
+
+	QString csvFileContent;
+
+	QHeaderView *a_calling_window_qheaderview = aTableView.horizontalHeader();
+
+	if (0 == a_calling_window_qheaderview)
+	{
+		QMessageBox::information(&aCallingWindow,
+                                 QObject::tr("Bad deployment"),
+                                 QObject::tr("Table bad deployment !"));
+
+		return false;
+	}
+
+
+	QVariant anItem;
+
+	QString anItemText;
+
+	for (int k = 0; k < a_calling_window_qheaderview->count(); ++k)
+	{
+		anItem = tableModel->headerData(k, Qt::Horizontal);
+
+		if (anItem.isValid())
+		{
+			anItemText = anItem.toString();
+
+			csvFileContent.append(QString("\"%1\"%2 ")
+                                    .arg(anItemText,
+                                         YR_DB_RUNTIME_VERIF_Utils::CSV_FILE_SEPARATION_SEMI_COLON_STRING_CHAR));
+		}
+	}
+
+
+	csvFileContent.remove(csvFileContent.size() - 2, 2).append("\n");
+
+
+	QMap<int, QVariant> item_data;
+
+	for (unsigned int j = 0; j < tableModelRowCount; ++j)
+	{
+		for (unsigned int k = 0; k < tableModelColumnCount; ++k)
+		{
+			item_data = tableModel->itemData(tableModel->index(j, k));
+
+            anItemText = item_data.value(Qt::DisplayRole).toString();
+
+            csvFileContent
+                .append(QString("\"%1\"%2 ")
+                         .arg(anItemText,
+                              YR_DB_RUNTIME_VERIF_Utils::CSV_FILE_SEPARATION_SEMI_COLON_STRING_CHAR));
+		}
+
+		csvFileContent.remove(csvFileContent.size() - 2, 2).append("\n");
+	}
+
+
+	QString yerothStocksListingCSVFileName
+				(QString("%1/%2")
+					.arg(YR_DB_RUNTIME_VERIF_Utils::temporaryFilesDir,
+						 csvFileName));
+
+
+	yerothStocksListingCSVFileName =
+				FILE_NAME_USERID_CURRENT_TIME(yerothStocksListingCSVFileName);
+
+
+        yerothStocksListingCSVFileName
+            = QFileDialog::getSaveFileName(&aCallingWindow,
+                             	 	 	   "Type in a '.csv' file name ",
+										   yerothStocksListingCSVFileName,
+										   QString("%1 \"*.csv\" (*.csv)")
+                                             .arg(strMessage));
+
+
+    yerothStocksListingCSVFileName.append(".csv");
+
+    QFile tmpFile(yerothStocksListingCSVFileName);
+
+	if (tmpFile.open(QFile::WriteOnly))
+	{
+		tmpFile.write(csvFileContent.toUtf8());
+	}
+
+	tmpFile.close();
+
+	return true;
 }
 
 
