@@ -8871,7 +8871,6 @@ background-color: rgb(0, 0, 0); </string>
     <addaction name="separator"/>
     <addaction name="actionUserGuide_PDF"/>
     <addaction name="separator"/>
-    <addaction name="actionVIEW_RUNTIME_monitor"/>
     <addaction name="separator"/>
     <addaction name="separator"/>
     <addaction name="actionCONFIGURATION_panel_window"/>
@@ -9893,6 +9892,10 @@ background-color: rgb(0, 0, 0); </string>
     <property name="title">
      <string>Tools</string>
     </property>
+    <addaction name="actionVIEW_RUNTIME_monitor"/>
+    <addaction name="separator"/>
+    <addaction name="action_save_to_csv_format_sheet"/>
+    <addaction name="separator"/>
     <addaction name="actionSet_current_selected_SQL_event_as_filter_and_search"/>
    </widget>
    <addaction name="menu_actions"/>
@@ -10421,6 +10424,7 @@ background-color: rgb(0, 0, 0); </string>
    </attribute>
    <addaction name="actionVIEW_RUNTIME_monitor"/>
    <addaction name="actionUserGuide_PDF"/>
+   <addaction name="action_save_to_csv_format_sheet"/>
    <addaction name="actionCONFIGURATION_panel_window"/>
   </widget>
   <action name="actionAbout">
@@ -10498,6 +10502,11 @@ background-color: rgb(0, 0, 0); </string>
    <property name="text">
     <string>VIEW RUNTIME monitor</string>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionSet_current_selected_SQL_event_as_filter_and_search">
    <property name="text">
@@ -10505,6 +10514,24 @@ background-color: rgb(0, 0, 0); </string>
    </property>
    <property name="toolTip">
     <string>Set 'current selected SQL event' as filter and search</string>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </action>
+  <action name="action_save_to_csv_format_sheet">
+   <property name="icon">
+    <iconset>
+     <normalon>:/yr-db-runtime-verif-images/export-csv-data-icon.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Save to CSV format sheet</string>
+   </property>
+   <property name="toolTip">
+    <string>Save to CSV format sheet</string>
    </property>
    <property name="font">
     <font>
