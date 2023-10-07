@@ -15,8 +15,7 @@
 //yr-USER-RUNTIME-MONITOR-RELATED-IMPORTS
 //#######################################################################
 
-
-#include "yr-db-runtime-verif-config.hpp"
+#include "src/utils/yr-db-runtime-verif-CONFIG.hpp"
 
 #include "yr-db-runtime-verif-database.hpp"
 
@@ -90,8 +89,14 @@ int main(int argc, char *argv[])
 
 
 
+    YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_FILE_ABSOLUTEPATH_CONFIGURATION_PROPERTY_FILE =
+        QString(std::getenv("YR_DB_RUNTIME_VERIF_FILE_ABSOLUTEPATH_CONFIGURATION_PROPERTY_FILE")).trimmed();
+
+
     YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_HOME_FOLDER =
-                    QString(std::getenv("YR_DB_RUNTIME_VERIF_HOME_FOLDER")).trimmed();
+        QString(std::getenv("YR_DB_RUNTIME_VERIF_HOME_FOLDER")).trimmed();
+
+
 
 
     qDebug() << "yr-db-runtime-verif.cpp | main | YR-DB-RUNTIME-VERIF HOME FOLDER: "
@@ -122,12 +127,15 @@ int main(int argc, char *argv[])
     qDebug() << "yr-db-runtime-verif.cpp | main | yr-db-runtime-verif home folder: "
     		 << YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_HOME_FOLDER;
 
+
+
     YR_DB_RUNTIME_VERIF_Utils::setLogFileName(logFileName);
 
     qDebug() << "yr-db-runtime-verif.cpp | main | log file name: "
              << logFileName;
 
     YR_DB_RUNTIME_VERIF_Logger logger(YR_DB_RUNTIME_VERIF_Utils::getLogFileName());
+
 
 
     QString initCfg(QString("%1/%2")
@@ -139,9 +147,11 @@ int main(int argc, char *argv[])
              << initCfg << "\n";
 
 
+
     YR_DB_RUNTIME_VERIF_Config::init_YR_DB_RUNTIME_VERIF_Config(initCfg);
 
     YerothERPDatabase database(YR_DB_RUNTIME_VERIF_Config::_db_type);
+
 
     //qDebug() << "++ database.toString(): " << database.toString();
 
@@ -153,7 +163,7 @@ int main(int argc, char *argv[])
 
         errMsg.append(QObject::tr("DATABASE SERVER: %1.\n\n"
                               	  "Last error message (%2).\n\n"
-                              	  "Please contact DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU\n"
+                              	  "Please contact PROF. DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU\n"
                               	  "\t(yeroth.d@gmail.com)\n")
         				.arg(database.db_ip_address(),
         					 database.lastError().text()));
@@ -186,18 +196,23 @@ int main(int argc, char *argv[])
 
     QDBusConnection connection = QDBusConnection::systemBus();
 
-    QString systemYerothService = "yr.db-runtime.verif";
+    QString systemYerothService =
+        YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_SYSTEM_dbus_service_name;
+
 
 
     QString current_RT_Monitor_OBJECT_ID_for_query_RPC_Dbus;
 
     YR_DB_RUNTIME_VERIF_Monitor *A_USER_DEFINED_RT_MONITOR = 0;
 
+
     bool couldRegisterService = false;
 
     bool couldRegisterObject = false;
 
+
     int rt_monitor_Vector_SIZE = user_defined_Runtime_Monitors.size();
+
 
     for (uint k = 0; k < rt_monitor_Vector_SIZE; ++k)
     {

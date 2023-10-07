@@ -12,7 +12,7 @@
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlError>
 
-#include "yr-db-runtime-verif-config.hpp"
+#include "src/utils/yr-db-runtime-verif-CONFIG.hpp"
 
 class QSqlDatabase;
 class QSqlError;

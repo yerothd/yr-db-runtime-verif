@@ -7,7 +7,7 @@
 #include "src/windows/yr-db-runtime-verif-setup-window.hpp"
 
 
-#include "src/yr-db-runtime-verif-config.hpp"
+#include "src/utils/yr-db-runtime-verif-CONFIG.hpp"
 
 #include "src/windows/yr-db-runtime-verif-windows.hpp"
 

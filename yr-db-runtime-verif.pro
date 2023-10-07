@@ -32,7 +32,7 @@ DBUS_ADAPTORS += yr.db-runtime.verif.xml
 
 
 FORMS = ui/yr-db-runtime-verif-setup-window.ui \
-				ui/yr-db-runtime-verif-main-window.ui
+	ui/yr-db-runtime-verif-main-window.ui
 
 
 HEADERS = src/windows/yr-db-runtime-verif-COMMONS-window.hpp \
@@ -51,10 +51,10 @@ HEADERS = src/windows/yr-db-runtime-verif-COMMONS-window.hpp \
 			src/DBUS/YR_DBUS_COMMON.hpp \
 			src/utils/yr-db-runtime-verif-logger.hpp \
 			src/utils/yr-db-runtime-verif-sqltable-model.hpp \
-		  src/utils/yr-db-runtime-verif-utils.hpp \
+		  	src/utils/yr-db-runtime-verif-CONFIG.hpp \
+		  	src/utils/yr-db-runtime-verif-utils.hpp \
 			src/utils/yr-db-runtime-verif-database-table-column.hpp \
-		  src/yr-db-runtime-verif-database.hpp \
-		  src/yr-db-runtime-verif-config.hpp
+		  	src/yr-db-runtime-verif-database.hpp 
 
 SOURCES = src/windows/yr-db-runtime-verif-COMMONS-window.cpp \
 			src/windows/yr-db-runtime-verif-setup-window.cpp \
@@ -66,15 +66,14 @@ SOURCES = src/windows/yr-db-runtime-verif-COMMONS-window.cpp \
 			src/windows/yr-db-runtime-verif-windows.cpp \
 			src/windows/yr-db-runtime-verif-main-window.cpp \
 			src/include/yr-db-runtime-verif-MONITOR.cpp \
-		  src/yr-db-runtime-verif.cpp \
+		  	src/yr-db-runtime-verif.cpp \
 			src/DBUS/YR_DBUS_COMMON.cpp \
 			src/utils/yr-db-runtime-verif-logger.cpp \
 			src/utils/yr-db-runtime-verif-sqltable-model.cpp \
+			src/utils/yr-db-runtime-verif-CONFIG.cpp \
 			src/utils/yr-db-runtime-verif-utils.cpp \
 			src/utils/yr-db-runtime-verif-database-table-column.cpp \
-		  src/yr-db-runtime-verif-database.cpp \
-		  src/yr-db-runtime-verif-config.cpp
-
+		  	src/yr-db-runtime-verif-database.cpp
 
 
 #YR-USER-CODE-INCLUDE

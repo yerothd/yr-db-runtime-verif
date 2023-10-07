@@ -6,10 +6,11 @@
 
 #include "yr-db-runtime-verif-main-window.hpp"
 
+
 //verification related.
 #include "src/include/yr-db-runtime-verif-MONITOR.hpp"
 
-#include "src/yr-db-runtime-verif-config.hpp"
+#include "src/utils/yr-db-runtime-verif-CONFIG.hpp"
 
 #include "src/windows/yr-db-runtime-verif-windows.hpp"
 
