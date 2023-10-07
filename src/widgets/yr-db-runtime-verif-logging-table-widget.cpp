@@ -53,6 +53,8 @@ YRDBRUNTIMEVERIF_TableWidget::YRDBRUNTIMEVERIF_TableWidget(QWidget *parent /* = 
     setMaxSize(MAX_TABLE_WIDGET_ROW_COUNT);
 
 
+    resizeRowsToContents();
+
     resizeColumnsToContents();
 }
 
@@ -69,7 +71,7 @@ void YRDBRUNTIMEVERIF_TableWidget::setQStandardItemFlags(Qt::ItemFlags &flags)
 
             if (0 != curItem)
             {
-            	curItem->setTextAlignment(Qt::AlignHCenter);
+            	curItem->setTextAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
                 curItem->setFlags(flags);
             }
         }
@@ -78,9 +80,9 @@ void YRDBRUNTIMEVERIF_TableWidget::setQStandardItemFlags(Qt::ItemFlags &flags)
 
 
 void YRDBRUNTIMEVERIF_TableWidget::setQStandardItemFlags(QTableWidgetItem &anItem,
-						   	   	   	   	   	   	   	     Qt::ItemFlags 	&flags)
+						   	   	   	   	   	   	   	     Qt::ItemFlags 	  &flags)
 {
-	anItem.setTextAlignment(Qt::AlignHCenter);
+	anItem.setTextAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
 	anItem.setFlags(flags);
 }
 
@@ -140,6 +142,7 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM_3(QString Source_file__line_number)
 
     selectRow(_curRow);
 
+    resizeRowsToContents();
     resizeColumnsToContents();
 
     return _curRow;
@@ -188,7 +191,10 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM_2(QString Source_file__line_number)
 
     selectRow(_curRow);
 
+
     resizeColumnsToContents();
+    resizeRowsToContents();
+
 
     return _curRow;
 }
@@ -223,6 +229,7 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM_1(QString Precondition__Or__POST_COND
     selectRow(_curRow);
 
     resizeColumnsToContents();
+    resizeRowsToContents();
 
     return _curRow;
 }
@@ -271,6 +278,7 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString TIMESTAMPtem,
     selectRow(_curRow);
 
     resizeColumnsToContents();
+    resizeRowsToContents();
 
     int lastCurRow = _curRow;
 
@@ -318,6 +326,10 @@ void YRDBRUNTIMEVERIF_TableWidget::CLEAR_FILTERING()
             current_signal_item_two->setBackground(Qt::black);
         }
     }
+
+    resizeColumnsToContents();
+
+    resizeRowsToContents();
 }
 
 
@@ -398,7 +410,10 @@ uint YRDBRUNTIMEVERIF_TableWidget::FILTER_ITEM(const QString &SIGNALItem_TEXT,
 
     }//for
 
+
     resizeColumnsToContents();
+
+    resizeRowsToContents();
 
 
     return MATCHED_search;
@@ -458,7 +473,10 @@ uint YRDBRUNTIMEVERIF_TableWidget::
 
     }//for
 
+
     resizeColumnsToContents();
+
+    resizeRowsToContents();
 
 
     return MATCHED_search;

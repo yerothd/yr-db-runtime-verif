@@ -19,7 +19,7 @@ YRDBRUNTIMEVERIF_ComboBox::YRDBRUNTIMEVERIF_ComboBox(QWidget *parent)
 
     lineEdit()->setReadOnly(true);
 
-    lineEdit()->setAlignment(Qt::AlignHCenter | Qt::AlignCenter);
+    lineEdit()->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 }
 
 

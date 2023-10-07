@@ -750,7 +750,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <pointsize>9</pointsize>
       <weight>50</weight>
       <bold>false</bold>
      </font>
@@ -1285,6 +1285,9 @@
      <property name="cornerButtonEnabled">
       <bool>true</bool>
      </property>
+     <attribute name="verticalHeaderDefaultSectionSize">
+      <number>25</number>
+     </attribute>
      <column>
       <property name="text">
        <string>time stamp</string>
@@ -1866,7 +1869,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>8</pointsize>
+       <pointsize>7</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -1883,6 +1886,9 @@
      <property name="cornerButtonEnabled">
       <bool>true</bool>
      </property>
+     <attribute name="verticalHeaderDefaultSectionSize">
+      <number>25</number>
+     </attribute>
      <column>
       <property name="text">
        <string>(before) pre-condition on source state</string>
@@ -2408,7 +2414,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <pointsize>7</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -2425,6 +2431,9 @@
      <property name="cornerButtonEnabled">
       <bool>true</bool>
      </property>
+     <attribute name="verticalHeaderDefaultSectionSize">
+      <number>25</number>
+     </attribute>
      <column>
       <property name="text">
        <string>evaluated guarded condition expression</string>
@@ -2964,7 +2973,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <pointsize>7</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -2981,6 +2990,9 @@
      <property name="cornerButtonEnabled">
       <bool>true</bool>
      </property>
+     <attribute name="verticalHeaderDefaultSectionSize">
+      <number>25</number>
+     </attribute>
      <column>
       <property name="text">
        <string>previous state</string>
@@ -3518,7 +3530,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>9</pointsize>
+       <pointsize>7</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -3602,7 +3614,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <pointsize>9</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
@@ -4124,7 +4136,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <pointsize>9</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -4141,6 +4153,9 @@
      <property name="cornerButtonEnabled">
       <bool>true</bool>
      </property>
+     <attribute name="verticalHeaderDefaultSectionSize">
+      <number>25</number>
+     </attribute>
      <column>
       <property name="text">
        <string>source file</string>
@@ -4677,7 +4692,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <pointsize>7</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -5139,7 +5154,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <pointsize>7</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -5612,7 +5627,7 @@ background-color: rgb(0, 0, 0); </string>
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <pointsize>9</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -6077,7 +6092,7 @@ background-color: rgb(0, 0, 0); </string>
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <pointsize>7</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -6553,7 +6568,7 @@ background-color: rgb(0, 0, 0); </string>
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <pointsize>9</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -7072,7 +7087,7 @@ background-color: rgb(0, 0, 0); </string>
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <pointsize>7</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -7591,7 +7606,7 @@ background-color: rgb(0, 0, 0); </string>
      </property>
      <property name="font">
       <font>
-       <pointsize>8</pointsize>
+       <pointsize>7</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -7608,6 +7623,9 @@ background-color: rgb(0, 0, 0); </string>
      <property name="cornerButtonEnabled">
       <bool>true</bool>
      </property>
+     <attribute name="verticalHeaderDefaultSectionSize">
+      <number>25</number>
+     </attribute>
      <column>
       <property name="text">
        <string>(after) post-condition on target state</string>
