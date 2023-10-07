@@ -1,10 +1,9 @@
-### HOW TO COMPILE YOUR PROJECT
+### HOW TO BUILD AND CREATE A DEBIAN '.deb' PACKAGE FOR YOUR PROJECT
 
-You compile this project with the
-bash script '**_yr_compile_j4.sh_**', which
-automatically generates a **_DEBIAN 
-INSTALLATION PACKAGE FILE ('.deb')_** 
-upon successful COMPILATION.
+You compile and build this project with the
+bash script '**_yr_db_runtime_verif_BUILD_DEBIAN_PACKAGE.sh_**',
+which automatically generates a **_DEBIAN 
+INSTALLATION PACKAGE FILE ('.deb')_**.
 
 
 ### HOW TO USE "UNINSTALL SCRIPT"
