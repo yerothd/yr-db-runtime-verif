@@ -37,7 +37,7 @@ QString YR_DB_RUNTIME_VERIF_Config::_db_connection_options("");
 QString YR_DB_RUNTIME_VERIF_Config::pathToPdfReader("/usr/bin/evince");
 
 
-QString YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_CONFIGURATION_FILE_SEPARATION_OPERATOR(";");
+QString YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_CONFIGURATION_FILE_SEPARATION_OPERATOR("=");
 
 
 QString YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_FILE_ABSOLUTEPATH_CONFIGURATION_PROPERTY_FILE("");
@@ -71,38 +71,44 @@ void YR_DB_RUNTIME_VERIF_Config::init_YR_DB_RUNTIME_VERIF_Config(QString initCfg
         line = init_cfg.readLine();
 
         list = line.split(YR_DB_RUNTIME_VERIF_CONFIGURATION_FILE_SEPARATION_OPERATOR);
-        //logger << "++ line: " << line << "\n";
+        //qDebug() << "++ line: " << line << "\n";
 
         if ("db_type" == list.at(0))
         {
             YR_DB_RUNTIME_VERIF_Config::_db_type = list.at(1).trimmed();
-            // logger << "++ db_type = " << db_type << "\n";
+            // qDebug() << "++ db_type = " << db_type << "\n";
         }
         if ("db_name" == list.at(0))
         {
             YR_DB_RUNTIME_VERIF_Config::_db_name = list.at(1).trimmed();
 
-            //logger << "++ db_name = " << db_name << "\n";
+            //qDebug() << "++ db_name = " << db_name << "\n";
         }
         else if ("db_ip_address" == list.at(0))
         {
             YR_DB_RUNTIME_VERIF_Config::_db_ip_address = list.at(1).trimmed();
-            //logger << "++ db_ip_address = " << db_ip_address << "\n";
+            //qDebug() << "++ db_ip_address = " << db_ip_address << "\n";
         }
         else if ("db_user_name" == list.at(0))
         {
             YR_DB_RUNTIME_VERIF_Config::_db_user_name = list.at(1).trimmed();
-            //logger << "++ db_user_name = " << db_user_name << "\n";
+            //qDebug() << "++ db_user_name = " << db_user_name << "\n";
         }
         else if ("db_user_pwd" == list.at(0))
         {
             YR_DB_RUNTIME_VERIF_Config::_db_user_pwd = list.at(1).trimmed();
-            //logger << "++ db_user_pwd = " << db_user_pwd << "\n";
+            //qDebug() << "++ db_user_pwd = " << db_user_pwd << "\n";
         }
         else if ("db_connection_options" == list.at(0))
         {
             YR_DB_RUNTIME_VERIF_Config::_db_connection_options = list.at(1).trimmed();
-            //logger << "++ db_connection_options = " << db_connection_options << "\n";
+            //qDebug() << "++ db_connection_options = " << db_connection_options << "\n";
+        }
+        else if ("parameter_full_path_pdf_reader" == list.at(0))
+        {
+            YR_DB_RUNTIME_VERIF_Config::pathToPdfReader = list.at(1).trimmed();
+            //qDebug() << "++ parameter_full_path_pdf_reader = "
+            //         <<  YR_DB_RUNTIME_VERIF_Config::pathToPdfReader << "\n";
         }
     }
     while (!line.isNull());
@@ -112,6 +118,9 @@ void YR_DB_RUNTIME_VERIF_Config::init_YR_DB_RUNTIME_VERIF_Config(QString initCfg
 void YR_DB_RUNTIME_VERIF_Config::save_YR_DB_RUNTIME_VERIF_Config()
 {
     QFile file (YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_FILE_ABSOLUTEPATH_CONFIGURATION_PROPERTY_FILE);
+
+    QDEBUG_STRINGS_OUTPUT_2("YR_DB_RUNTIME_VERIF_FILE_ABSOLUTEPATH_CONFIGURATION_PROPERTY_FILE",
+                            YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_FILE_ABSOLUTEPATH_CONFIGURATION_PROPERTY_FILE);
 
     if (!file.open(QFile::WriteOnly))
     {

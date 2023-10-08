@@ -31,6 +31,10 @@ public:
     {
     }
 
+
+    virtual void yr_show();
+
+
     inline virtual QToolBar &get_tool_bar()
     {
     	return *toolBar_SetupWindow_YR_DB_RUNTIME_VERIF;
@@ -50,12 +54,6 @@ protected slots:
 
 
 	virtual void ON_pushButton_SAVE_parameters_PRESSED();
-
-
-public:
-
-    static QString YR_LINE_EDIT_PDF_FULL_PATH_READER;
-
 };
 
 #endif /* _YR_DB_RUNTIME_VERIF_SETUP_WINDOW_HPP_ */

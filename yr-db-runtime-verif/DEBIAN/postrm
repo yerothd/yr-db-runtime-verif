@@ -1,5 +1,6 @@
 #!/bin/bash
 
 sed -i '/YR_DB_RUNTIME_VERIF_HOME_FOLDER/d' /etc/environment
+sed -i '/YR_DB_RUNTIME_VERIF_FILE_ABSOLUTEPATH_CONFIGURATION_PROPERTY_FILE/d' /etc/environment
 rm -f /etc/systemd/system/yr-db-runtime-verif.*
 rm -f /lib/systemd/system/yr-db-runtime-verif.*

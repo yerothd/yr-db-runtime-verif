@@ -138,13 +138,22 @@ int main(int argc, char *argv[])
 
 
 
+    qDebug() << "yr-db-runtime-verif.cpp | main | PROPERTY FILE YR-DB-RUNTIME-VERIF.properties absolute file path: "
+             << YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_FILE_ABSOLUTEPATH_CONFIGURATION_PROPERTY_FILE
+             << "\n";
+
+    YR_DB_RUNTIME_VERIF_Config::init_YR_DB_RUNTIME_VERIF_Config
+            (YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_FILE_ABSOLUTEPATH_CONFIGURATION_PROPERTY_FILE);
+
+
+
     QString initCfg(QString("%1/%2")
     				.arg(YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_HOME_FOLDER,
     					 "yr-db-runtime-verif-database-connection.properties"));
 
-
     qDebug() << "yr-db-runtime-verif.cpp | main | yr-db-runtime-verif-database-connection.properties absolute file path: "
-             << initCfg << "\n";
+             << initCfg
+             << "\n";
 
 
 

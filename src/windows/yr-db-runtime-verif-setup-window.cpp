@@ -18,10 +18,6 @@
 
 
 
-QString YRDBRUNTIMEVERIF_SetupWindow::YR_LINE_EDIT_PDF_FULL_PATH_READER("/usr/bin/evince");
-
-
-
 YRDBRUNTIMEVERIF_SetupWindow::YRDBRUNTIMEVERIF_SetupWindow()
 {
 	setupUi(this);
@@ -33,8 +29,9 @@ YRDBRUNTIMEVERIF_SetupWindow::YRDBRUNTIMEVERIF_SetupWindow()
 		->setStyleSheet(YRDBRUNTIMEVERIF_MainWindow::QMESSAGE_BOX_STYLE_SHEET);
 
 
+
 	lineEdit_pdf_reader_full_path
-        ->setText(YRDBRUNTIMEVERIF_SetupWindow::YR_LINE_EDIT_PDF_FULL_PATH_READER);
+        ->setText(YR_DB_RUNTIME_VERIF_Config::pathToPdfReader);
 
 
 
@@ -58,6 +55,22 @@ YRDBRUNTIMEVERIF_SetupWindow::YRDBRUNTIMEVERIF_SetupWindow()
 }
 
 
+void YRDBRUNTIMEVERIF_SetupWindow::yr_show()
+{
+    YR_DB_RUNTIME_VERIF_Config::init_YR_DB_RUNTIME_VERIF_Config
+        (YR_DB_RUNTIME_VERIF_Config::YR_DB_RUNTIME_VERIF_FILE_ABSOLUTEPATH_CONFIGURATION_PROPERTY_FILE);
+
+
+
+    lineEdit_pdf_reader_full_path
+        ->setText(YR_DB_RUNTIME_VERIF_Config::pathToPdfReader);
+
+
+
+    YRDBRUNTIMEVERIF_CommonsWindow::yr_show();
+}
+
+
 void YRDBRUNTIMEVERIF_SetupWindow::
 		set_connection_DBUS_status(QString  message_STATUS,
 								   bool 	error_not_connected /* = false */)
@@ -76,6 +89,8 @@ void YRDBRUNTIMEVERIF_SetupWindow::ON_choose_path_pdfReader()
 
     if (!pdfReaderFilePath.isEmpty())
     {
+        YR_DB_RUNTIME_VERIF_Config::pathToPdfReader = pdfReaderFilePath;
+
         lineEdit_pdf_reader_full_path->setText(pdfReaderFilePath);
     }
 }
@@ -105,8 +120,9 @@ void YRDBRUNTIMEVERIF_SetupWindow::ON_pushButton_SAVE_parameters_PRESSED()
                                   QMessageBox::Cancel,
                                   QMessageBox::Ok))
     {
-        YRDBRUNTIMEVERIF_SetupWindow::YR_LINE_EDIT_PDF_FULL_PATH_READER =
-            lineEdit_pdf_reader_full_path->text();
+        YR_DB_RUNTIME_VERIF_Config::pathToPdfReader = lineEdit_pdf_reader_full_path->text();
+
+        YR_DB_RUNTIME_VERIF_Config::save_YR_DB_RUNTIME_VERIF_Config();
     }
 }
 
