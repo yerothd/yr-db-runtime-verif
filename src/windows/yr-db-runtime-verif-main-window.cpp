@@ -348,11 +348,11 @@ void YRDBRUNTIMEVERIF_MainWindow::VIEW_current_RUNTIME_MONITOR()
 
 void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable_IN_OUT)
 {
-	texTable_IN_OUT.append("\\begin{table*}[!htbp]\n"
-						   //"\\resizebox{\\textwidth}{!}{\n"
-						   "\\centering\n"
-						   "\\begin{tabular}"
-						   "{|c|c|c|c|c|} \\hline");
+    texTable_IN_OUT.append("\\begin{table*}[!htbp]\n"
+                           //"\\resizebox{\\textwidth}{!}{\n"
+                           "\\centering\n"
+                           "\\begin{tabular}"
+                           "{|c|c|c|c|c|} \\hline");
 
     texTable_IN_OUT.append("& & & &				\\\\ \n"
                            "time stamp			& 	 \n"
@@ -370,25 +370,37 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
 	bool color_this_row_grey = true;
 
 
+	static const int LINE_COUNT_PER_PDF_PAGE = 50;
+
+
 	QString cell_text;
 
+
+    int TABLE_COUNT = qFloor(rowCount / LINE_COUNT_PER_PDF_PAGE);
+
+    int current_table_count = 0;
+
+	int current_pdf_page_line_count = 0;
+
 	//Tex table body
-	for (int i = 0; i < rowCount; ++i)
+	for (int i = 0;
+         i < rowCount && current_pdf_page_line_count <= LINE_COUNT_PER_PDF_PAGE;
+         ++i)
 	{
-		color_this_row_grey = (0 == i%2);
+        color_this_row_grey = (0 == i%2);
 
-		if (color_this_row_grey)
-		{
-			texTable_IN_OUT.append(QString("\\rowcolor{yerothColorGray}"));
-		}
-		else
-		{
-			texTable_IN_OUT.append(QString("\\rowcolor{white}"));
-		}
+        if (color_this_row_grey)
+        {
+            texTable_IN_OUT.append(QString("\\rowcolor{yerothColorGray}"));
+        }
+        else
+        {
+            texTable_IN_OUT.append(QString("\\rowcolor{white}"));
+        }
 
-		for (int j = 0; j < columnCount; ++j)
-		{
-			QTableWidgetItem *an_item = 0;
+        for (int j = 0; j < columnCount; ++j)
+        {
+            QTableWidgetItem *an_item = 0;
 
             an_item = tableWidget_LOGGING->item(i, j);
 
@@ -405,22 +417,59 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
                 }
             }
 
-			YR_DB_RUNTIME_VERIF_Utils::handleTexTableItemText(columnCount,
-                                                              texTable_IN_OUT,
-                                                              j,
-                                                              cell_text);
-		}
+            YR_DB_RUNTIME_VERIF_Utils::handleTexTableItemText(columnCount,
+                    texTable_IN_OUT,
+                    j,
+                    cell_text);
+        }
 
-		if (i < rowCount - 1)
-		{
-			texTable_IN_OUT.append("\\hline\n");
-		}
-	}
+        if (i < rowCount - 1)
+        {
+            texTable_IN_OUT.append("\\hline\n");
+        }
 
-	texTable_IN_OUT.append("\\hline\n"
-						   //"\\end{tabular}}\n"
-						   "\\end{tabular}\n"
-						   "\\end{table*}\n");
+        ++current_pdf_page_line_count;
+
+
+        if (LINE_COUNT_PER_PDF_PAGE - 1 == current_pdf_page_line_count)
+        {
+            current_pdf_page_line_count = 0;
+
+            if (current_table_count < TABLE_COUNT)
+            {
+                texTable_IN_OUT.append("\\hline\n"
+                                       //"\\end{tabular}}\n"
+                                       "\\end{tabular}\n"
+                                       "\\end{table*}\n");
+
+                texTable_IN_OUT.append("\\newpage\n");
+
+                texTable_IN_OUT.append("\\begin{table*}[!htbp]\n"
+                                       //"\\resizebox{\\textwidth}{!}{\n"
+                                       "\\centering\n"
+                                       "\\begin{tabular}"
+                                       "{|c|c|c|c|c|} \\hline");
+
+                texTable_IN_OUT.append("& & & &				\\\\ \n"
+                                       "time stamp			& 	 \n"
+                                       "sql event log		& 	 \n"
+                                       "source			    & 	 \n"
+                                       "target 	            & 	 \n"
+                                       "changed qty			\\\\ \n"
+                                       "& &	& &				\\\\ \\hline \\hline \n");
+            }
+
+            ++current_table_count;
+        }
+
+    } //for-i
+
+
+    texTable_IN_OUT.append("\\hline\n"
+                           //"\\end{tabular}}\n"
+                           "\\end{tabular}\n"
+                           "\\end{table*}\n");
+
 }
 
 
