@@ -92,10 +92,35 @@ const QString YR_DB_RUNTIME_VERIF_Utils::JH_NISSI_SERVER("com.yeroth-erp.server"
 const QString YR_DB_RUNTIME_VERIF_Utils::JH_NISSI_SERVER_OBJECT("/");
 
 
+
+QString YR_DB_RUNTIME_VERIF_Utils::EN_template_EVENT_LOG_TEX_document("");
+
+const QString YR_DB_RUNTIME_VERIF_Utils::FILE_YR_DB_RUNTIME_VERIF_EVENT_LOG_PDF_TEMPLATE_EN("EN_template_EVENT_LOG_TEX_document.tex");
+
+
+
 const QString YR_DB_RUNTIME_VERIF_Utils::CSV_FILE_SEPARATION_SEMI_COLON_STRING_CHAR(";");
 
 
 const QChar YR_DB_RUNTIME_VERIF_Utils::SLASH_CHAR('/');
+
+
+
+void YR_DB_RUNTIME_VERIF_Utils::YEROTH_READ_FILE_CONTENT(QFile   &file,
+                                                         QString &fileContentVar)
+{
+	if (file.open(QIODevice::ReadOnly))
+	{
+		QTextStream stream(&file);
+		QString line;
+		do
+		{
+			line = stream.readLine().trimmed();
+			fileContentVar.append(line).append("\n");
+		} while (!line.isNull());
+		file.close();
+	}
+}
 
 
 void YR_DB_RUNTIME_VERIF_Utils::YEROTH_CREATE_FOLDER(const QString &aFullPathDir)

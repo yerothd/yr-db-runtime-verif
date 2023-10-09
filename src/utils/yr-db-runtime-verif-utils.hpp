@@ -101,6 +101,9 @@ public:
                                      QTime::currentTime().toString("_HHmmss"));
     }
 
+    static void YEROTH_READ_FILE_CONTENT(QFile   &file,
+                                         QString &fileContentVar);
+
     static void YEROTH_CREATE_FOLDER(const QString &aFullPathDir);
 
     static int start_PROCESS_AND_GET_PROCESS_output_AS_QSTRING(const QString 		&program_executable_location_full_path,
@@ -265,6 +268,13 @@ public:
     static const QString JH_NISSI_SERVER;
 
     static const QString JH_NISSI_SERVER_OBJECT;
+
+
+
+    static QString EN_template_EVENT_LOG_TEX_document;
+
+    static const QString FILE_YR_DB_RUNTIME_VERIF_EVENT_LOG_PDF_TEMPLATE_EN;
+
 
 
     static const QString CSV_FILE_SEPARATION_SEMI_COLON_STRING_CHAR;

@@ -194,6 +194,14 @@ int main(int argc, char *argv[])
 
 
 
+    QFile file_EN_template_EVENT_LOG_TEX(YR_DB_RUNTIME_VERIF_Utils::FILE_YR_DB_RUNTIME_VERIF_EVENT_LOG_PDF_TEMPLATE_EN);
+
+    YR_DB_RUNTIME_VERIF_Utils::YEROTH_READ_FILE_CONTENT(file_EN_template_EVENT_LOG_TEX,
+                                                        YR_DB_RUNTIME_VERIF_Utils::EN_template_EVENT_LOG_TEX_document);
+
+
+
+
     //##################### RUNTIME MONITOR DECLARATION INSTANTIATION #####################
 
     QVector<YR_DB_RUNTIME_VERIF_Monitor *> user_defined_Runtime_Monitors;

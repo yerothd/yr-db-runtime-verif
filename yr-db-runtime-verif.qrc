@@ -1,10 +1,13 @@
 <RCC>
   <qresource>
-		<file>yr-db-runtime-verif-images/export-csv-data-icon.png</file>
-		<file>yr-db-runtime-verif-images/question.png</file>
-		<file>yr-db-runtime-verif-images/folder-sort.svg.png</file>
-		<file>yr-db-runtime-verif-images/LOGO-icon.png</file>
-		<file>yr-db-runtime-verif-images/printing-setting.png</file>
-		<file>yr-db-runtime-verif-images/pdf-print-icon.svg</file>
+	<file>EN_template_EVENT_LOG_TEX_document.tex</file>
+		
+	<file>yr-db-runtime-verif-images/export-csv-data-icon.png</file>
+	<file>yr-db-runtime-verif-images/question.png</file>
+	<file>yr-db-runtime-verif-images/folder-sort.svg.png</file>
+	<file>yr-db-runtime-verif-images/LOGO-icon.png</file>
+	<file>yr-db-runtime-verif-images/printing-setting.png</file>
+	<file>yr-db-runtime-verif-images/PRINT-event-log.png</file>
+	<file>yr-db-runtime-verif-images/pdf-print-icon.svg</file>
   </qresource>
 </RCC>

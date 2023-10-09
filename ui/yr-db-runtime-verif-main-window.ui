@@ -9939,6 +9939,8 @@ background-color: rgb(0, 0, 0); </string>
     </property>
     <addaction name="actionVIEW_RUNTIME_monitor"/>
     <addaction name="separator"/>
+    <addaction name="actionPRINT_event_log_excerpt"/>
+    <addaction name="separator"/>
     <addaction name="action_save_to_csv_format_sheet"/>
     <addaction name="separator"/>
     <addaction name="actionSet_current_selected_SQL_event_as_filter_and_search"/>
@@ -10468,6 +10470,7 @@ background-color: rgb(0, 0, 0); </string>
     <bool>false</bool>
    </attribute>
    <addaction name="actionVIEW_RUNTIME_monitor"/>
+   <addaction name="actionPRINT_event_log_excerpt"/>
    <addaction name="action_save_to_csv_format_sheet"/>
    <addaction name="actionUserGuide_PDF"/>
    <addaction name="actionCONFIGURATION_panel_window"/>
@@ -10577,6 +10580,24 @@ background-color: rgb(0, 0, 0); </string>
    </property>
    <property name="toolTip">
     <string>Save to CSV format sheet</string>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </action>
+  <action name="actionPRINT_event_log_excerpt">
+   <property name="icon">
+    <iconset resource="../yr-db-runtime-verif.qrc">
+     <normaloff>:/yr-db-runtime-verif-images/PRINT-event-log.png</normaloff>
+     <normalon>:/yr-db-runtime-verif-images/PRINT-event-log.png</normalon>:/yr-db-runtime-verif-images/PRINT-event-log.png</iconset>
+   </property>
+   <property name="text">
+    <string>Print event log excerpt</string>
+   </property>
+   <property name="toolTip">
+    <string>Print event log excerpt</string>
    </property>
    <property name="font">
     <font>

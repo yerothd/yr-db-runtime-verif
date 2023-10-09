@@ -94,6 +94,9 @@ protected slots:
 	virtual void VIEW_current_RUNTIME_MONITOR();
 
 
+    virtual bool PRINT_event_log_excerpt();
+
+
 	virtual void ON_Configfuration_panel_window_trigerred();
 
 
