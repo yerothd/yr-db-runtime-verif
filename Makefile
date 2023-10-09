@@ -633,6 +633,7 @@ qrc_yr-db-runtime-verif.cpp: yr-db-runtime-verif.qrc \
 		yr-db-runtime-verif-images/LOGO-icon.png \
 		yr-db-runtime-verif-images/question.png \
 		yr-db-runtime-verif-images/printing-setting.png \
+		yr-db-runtime-verif-images/SQL-event-partial-log.png \
 		yr-db-runtime-verif-images/PRINT-event-log.png \
 		yr-db-runtime-verif-images/pdf-print-icon.svg \
 		yr-db-runtime-verif-images/folder-sort.svg.png \
