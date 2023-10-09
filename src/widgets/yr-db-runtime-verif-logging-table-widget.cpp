@@ -10,7 +10,7 @@
 #include "src/utils/yr-db-runtime-verif-utils.hpp"
 
 
-const uint YRDBRUNTIMEVERIF_TableWidget::MAX_TABLE_WIDGET_ROW_COUNT = 1000;
+const uint YRDBRUNTIMEVERIF_TableWidget::MAX_TABLE_WIDGET_ROW_COUNT = 666;
 
 
 const unsigned int YRDBRUNTIMEVERIF_TableWidget::TIME_STAMP_COLUMN(0);

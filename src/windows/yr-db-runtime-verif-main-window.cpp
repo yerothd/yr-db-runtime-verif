@@ -42,6 +42,12 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 	toolBar_mainWindow_YR_DB_RUNTIME_VERIF
 		->setStyleSheet(QMESSAGE_BOX_STYLE_SHEET);
 
+    actionVIEW_RUNTIME_monitor->setVisible(false);
+
+    actionPRINT_event_log_excerpt->setVisible(false);
+
+    action_save_to_csv_format_sheet->setVisible(false);
+
 
     comboBox_global_filtering->addItem("");
     comboBox_global_filtering->addItem("sql event log");
@@ -173,6 +179,20 @@ int YRDBRUNTIMEVERIF_MainWindow::
 						 QString changed_OR_modified_database_qty_Item,
 						 YRDBRUNTIMEVERIF_Logging_Info &a_logging_info)
 {
+    static bool first_time_call_ever = true;
+
+    if (first_time_call_ever)
+    {
+        actionVIEW_RUNTIME_monitor->setVisible(true);
+
+        actionPRINT_event_log_excerpt->setVisible(true);
+
+        action_save_to_csv_format_sheet->setVisible(true);
+
+
+        first_time_call_ever = false;
+    }
+
 
 	int last_current_row_nr
 			= tableWidget_LOGGING->ADD_ITEM(TIMESTAMPtem,
@@ -371,7 +391,7 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
 	bool color_this_row_grey = true;
 
 
-	static int LINE_COUNT_PER_PDF_PAGE = 48;
+	int LINE_COUNT_PER_PDF_PAGE = 48;
 
 
 	QString cell_text;
@@ -445,12 +465,6 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
         }
 
 
-        if (current_table_count > 0)
-        {
-            LINE_COUNT_PER_PDF_PAGE = 60;
-        }
-
-
         ++current_pdf_page_line_count;
 
 
@@ -483,6 +497,11 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
             }
 
             ++current_table_count;
+
+            if (current_table_count > 0)
+            {
+                LINE_COUNT_PER_PDF_PAGE = 57;
+            }
         }
 
     } //for-i
@@ -717,7 +736,7 @@ void YRDBRUNTIMEVERIF_MainWindow::
             actionVIEW_RUNTIME_monitor
                 ->setText(QString("NO runtime monitor to visualize in PDF form"));
 
-            actionVIEW_RUNTIME_monitor->setEnabled(false);
+            actionVIEW_RUNTIME_monitor->setVisible(false);
         }
         else
         {
@@ -725,7 +744,7 @@ void YRDBRUNTIMEVERIF_MainWindow::
                 ->setText(QString("view runtime monitor (%1)")
                             .arg(RUNTIME_MONITOR_name_TO_PRINT_DOT));
 
-            actionVIEW_RUNTIME_monitor->setEnabled(true);
+            actionVIEW_RUNTIME_monitor->setVisible(true);
         }
 
 

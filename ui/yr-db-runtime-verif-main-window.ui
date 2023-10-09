@@ -1288,6 +1288,9 @@
      <attribute name="horizontalHeaderStretchLastSection">
       <bool>true</bool>
      </attribute>
+     <attribute name="verticalHeaderMinimumSectionSize">
+      <number>20</number>
+     </attribute>
      <attribute name="verticalHeaderDefaultSectionSize">
       <number>25</number>
      </attribute>
@@ -4176,6 +4179,9 @@
      </property>
      <attribute name="horizontalHeaderStretchLastSection">
       <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderMinimumSectionSize">
+      <number>20</number>
      </attribute>
      <attribute name="verticalHeaderDefaultSectionSize">
       <number>25</number>
