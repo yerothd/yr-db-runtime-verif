@@ -10613,6 +10613,11 @@ background-color: rgb(0, 0, 0); </string>
    </property>
   </action>
   <action name="actionExport_as_CSV_till_selected_SQL_event">
+   <property name="icon">
+    <iconset>
+     <normalon>:/yr-db-runtime-verif-images/SQL-event-partial-log.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Export as CSV till selected SQL event</string>
    </property>

@@ -21,7 +21,7 @@
 
 
 const QPalette YRDBRUNTIMEVERIF_MainWindow::CONTEXT_MENU_PALETTE_QCOLOR
-        = QPalette(QColor(Qt::darkMagenta));
+        = QPalette(QColor(47, 67, 67));
 
 
 const QString YRDBRUNTIMEVERIF_MainWindow::QMESSAGE_BOX_STYLE_SHEET =
@@ -947,7 +947,7 @@ void YRDBRUNTIMEVERIF_MainWindow::
     if (actionPRINT_event_log_excerpt->isVisible())
     {
         QMenu menu(this);
-        //menu.setPalette(YRDBRUNTIMEVERIF_MainWindow::CONTEXT_MENU_PALETTE_QCOLOR);
+        menu.setPalette(YRDBRUNTIMEVERIF_MainWindow::CONTEXT_MENU_PALETTE_QCOLOR);
         menu.addAction(actionExport_as_CSV_till_selected_SQL_event);
         menu.addAction(actionSet_current_selected_SQL_event_as_filter_and_search);
         menu.exec(event->globalPos());
