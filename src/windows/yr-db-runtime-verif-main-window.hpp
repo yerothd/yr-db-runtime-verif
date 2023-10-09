@@ -94,6 +94,8 @@ protected slots:
 	virtual void VIEW_current_RUNTIME_MONITOR();
 
 
+	virtual void get_PRINT_OUT_TexTableString(QString &texTable_IN_OUT);
+
     virtual bool PRINT_event_log_excerpt();
 
 

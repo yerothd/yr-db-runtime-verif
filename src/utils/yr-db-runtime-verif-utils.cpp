@@ -49,6 +49,13 @@ const QString YR_DB_RUNTIME_VERIF_Utils::STOCKS("stocks");
 const QString YR_DB_RUNTIME_VERIF_Utils::STOCKS_VENDU("stocks_vendu");
 
 
+
+const QRegExp YR_DB_RUNTIME_VERIF_Utils::EMPTY_SPACE_REGEXP("\\s");
+
+const QLocale YR_DB_RUNTIME_VERIF_Utils::englishLocale(QLocale(QLocale::English, QLocale::Zambia));
+
+
+
 const QString YR_DB_RUNTIME_VERIF_Utils::DATE_FORMAT("dd.MM.yyyy");
 
 const QString YR_DB_RUNTIME_VERIF_Utils::DB_DATE_FORMAT("yyyy-MM-dd");
@@ -104,6 +111,30 @@ const QString YR_DB_RUNTIME_VERIF_Utils::CSV_FILE_SEPARATION_SEMI_COLON_STRING_C
 
 const QChar YR_DB_RUNTIME_VERIF_Utils::SLASH_CHAR('/');
 
+
+
+void YR_DB_RUNTIME_VERIF_Utils::
+        handleTexTableItemText(int 	           texTableColumnCount,
+                               QString 		   &texTable_IN_OUT,
+                               int 			   itemTextColumnPosition,
+                               const QString   &itemText)
+{
+	QString resultItemText(YR_DB_RUNTIME_VERIF_Utils::LATEX_IN_OUT_handleForeignAccents(itemText));
+
+	if (!resultItemText.isEmpty())
+	{
+		texTable_IN_OUT.append(resultItemText);
+	}
+
+	if (itemTextColumnPosition < texTableColumnCount - 1)
+	{
+		texTable_IN_OUT.append(" &");
+	}
+	else
+	{
+		texTable_IN_OUT.append(" \\\\").append("\n");
+	}
+}
 
 
 void YR_DB_RUNTIME_VERIF_Utils::YEROTH_READ_FILE_CONTENT(QFile   &file,
@@ -500,6 +531,46 @@ bool YR_DB_RUNTIME_VERIF_Utils::SAVE_AS_csv_file(QMainWindow    &aCallingWindow,
 	tmpFile.close();
 
 	return true;
+}
+
+
+QString YR_DB_RUNTIME_VERIF_Utils::LATEX_IN_OUT_handleForeignAccents(const QString &texText_in)
+{
+	if (texText_in.isEmpty())
+	{
+		return YR_DB_RUNTIME_VERIF_Utils::EMPTY_STRING;
+	}
+
+	QString tempText(texText_in);
+
+	tempText = tempText.isEmpty() ? "\"\"" : tempText.replace(EMPTY_SPACE_REGEXP, "\\ ");
+
+	tempText.replace("º", "\\textdegree");
+	tempText.replace("#", "\\#");
+	tempText.replace("_", "\\_");
+	tempText.replace("%", "\\%");
+	tempText.replace("&", "\\&");
+	tempText.replace("$", "\\$");
+
+	tempText.replace(QString::fromUtf8("ç"), "\\c{c}");
+	tempText.replace(QString::fromUtf8("è"), "\\`e");
+	tempText.replace(QString::fromUtf8("é"), "\\'e");
+	tempText.replace(QString::fromUtf8("ê"), "\\^e");
+	tempText.replace(QString::fromUtf8("à"), "\\`a");
+	tempText.replace(QString::fromUtf8("â"), "\\^a");
+	tempText.replace(QString::fromUtf8("ô"), "\\^o");
+	tempText.replace(QString::fromUtf8("î"), "\\^i");
+	tempText.replace(QString::fromUtf8("û"), "\\^u");
+	tempText.replace(QString::fromUtf8("È"), "\\`E");
+	tempText.replace(QString::fromUtf8("É"), "\\'E");
+	tempText.replace(QString::fromUtf8("Ê"), "\\^E");
+	tempText.replace(QString::fromUtf8("À"), "\\`A");
+	tempText.replace(QString::fromUtf8("Â"), "\\^A");
+	tempText.replace(QString::fromUtf8("Ô"), "\\^O");
+	tempText.replace(QString::fromUtf8("Î"), "\\^I");
+	tempText.replace(QString::fromUtf8("Û"), "\\^U");
+
+	return tempText;
 }
 
 

@@ -346,13 +346,91 @@ void YRDBRUNTIMEVERIF_MainWindow::VIEW_current_RUNTIME_MONITOR()
 }
 
 
+void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable_IN_OUT)
+{
+	texTable_IN_OUT.append("\\begin{table*}[!htbp]\n"
+						   //"\\resizebox{\\textwidth}{!}{\n"
+						   "\\centering\n"
+						   "\\begin{tabular}"
+						   "{|c|c|c|c|c|} \\hline");
+
+    texTable_IN_OUT.append("& & & &				\\\\ \n"
+                           "time stamp			& 	 \n"
+                           "sql event log		& 	 \n"
+                           "source			    & 	 \n"
+                           "target 	            & 	 \n"
+                           "changed qty			\\\\ \n"
+                           "& &	& &				\\\\ \\hline \\hline \n");
+
+
+	int rowCount = tableWidget_LOGGING->rowCount();
+
+	int columnCount = tableWidget_LOGGING->columnCount();
+
+	bool color_this_row_grey = true;
+
+
+	QString cell_text;
+
+	//Tex table body
+	for (int i = 0; i < rowCount; ++i)
+	{
+		color_this_row_grey = (0 == i%2);
+
+		if (color_this_row_grey)
+		{
+			texTable_IN_OUT.append(QString("\\rowcolor{yerothColorGray}"));
+		}
+		else
+		{
+			texTable_IN_OUT.append(QString("\\rowcolor{white}"));
+		}
+
+		for (int j = 0; j < columnCount; ++j)
+		{
+			QTableWidgetItem *an_item = 0;
+
+            an_item = tableWidget_LOGGING->item(i, j);
+
+            if (0 != an_item)
+            {
+                if (j != 2)
+                {
+                    cell_text = an_item->text();
+                }
+                else
+                {
+                    cell_text = GET_NUM_STRING(an_item->text().toDouble());
+
+                }
+            }
+
+			YR_DB_RUNTIME_VERIF_Utils::handleTexTableItemText(columnCount,
+                                                              texTable_IN_OUT,
+                                                              j,
+                                                              cell_text);
+		}
+
+		if (i < rowCount - 1)
+		{
+			texTable_IN_OUT.append("\\hline\n");
+		}
+	}
+
+	texTable_IN_OUT.append("\\hline\n"
+						   //"\\end{tabular}}\n"
+						   "\\end{tabular}\n"
+						   "\\end{table*}\n");
+}
+
+
 bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt()
 {
 //	QDEBUG_STRING_OUTPUT_1("YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt");
 
-	/*if (tableWidget_LOGGING->rowCount() <= 0)
+	if (tableWidget_LOGGING->rowCount() <= 0)
 	{
-		YerothQMessageBox::information(this,
+		QMessageBox::information(this,
 				QObject::tr("Event log printing"),
 				QObject::tr("No event log data to print out !"));
 
@@ -360,27 +438,26 @@ bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt()
 	}
 
 
-	QString GROUPES_DUN_client__tex_table;
-
-	//int pageNumber = qCeil(tableWidget_LOGGING->rowCount() / 20);
+	QString EN_template_EVENT_LOG__tex_table;
 
 
-	YerothPOSUser *yerothUser = _allWindows->getUser();
+	QString EN_template_EVENT_LOG__TexDocument;
 
-	YerothInfoEntreprise &infoEntreprise = _allWindows->getInfoEntreprise();
+	//QString factureDate(infoEntreprise.getVille_LATEX());
 
-	QString GROUPES_DUN_CLIENT__TexDocument;
+	//YerothUtils::getCurrentSimplifiedDate(factureDate);
 
-	QString factureDate(infoEntreprise.getVille_LATEX());
+	get_PRINT_OUT_TexTableString(EN_template_EVENT_LOG__tex_table);
 
-	YerothUtils::getCurrentSimplifiedDate(factureDate);
 
-	get_PRINT_OUT_TexTableString(GROUPES_DUN_client__tex_table);
+	//qDebug() << EN_template_EVENT_LOG__tex_table;
 
-	emit SIGNAL_INCREMENT_PROGRESS_BAR(18);
 
-	YerothUtils::get_GROUPES_DUN_client_TexDocumentString(GROUPES_DUN_CLIENT__TexDocument,
-														  GROUPES_DUN_client__tex_table);
+	/*emit SIGNAL_INCREMENT_PROGRESS_BAR(18);
+
+
+	YerothUtils::get_GROUPES_DUN_client_TexDocumentString(EN_template_EVENT_LOG__TexDocument,
+														  EN_template_EVENT_LOG__tex_table);
 
 	emit SIGNAL_INCREMENT_PROGRESS_BAR(50);
 
@@ -388,58 +465,58 @@ bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt()
 
 	if (YerothMainWindow::LANGUE_ANGLAISE)
 	{
-		GROUPES_DUN_CLIENT__TexDocument
+		EN_template_EVENT_LOG__TexDocument
 		.replace("YEROTHSUBJECT",
 				QString("client '%1' belonging GROUPS")
 				.arg(YerothUtils::LATEX_IN_OUT_handleForeignAccents(NOM_Client)));
 	}
 	else
 	{
-		GROUPES_DUN_CLIENT__TexDocument
+		EN_template_EVENT_LOG__TexDocument
 		.replace("YEROTHSUBJECT",
 				QString("Groupes d'appartenance du CLIENT '%1'")
 				.arg(YerothUtils::LATEX_IN_OUT_handleForeignAccents(NOM_Client)));
 	}
 
-	GROUPES_DUN_CLIENT__TexDocument.replace("YEROTHPAPERSPEC",
+	EN_template_EVENT_LOG__TexDocument.replace("YEROTHPAPERSPEC",
 											get_PRINTING_PARAMETER_printing_position());
 
-	GROUPES_DUN_CLIENT__TexDocument.replace("YEROTHENTREPRISE", infoEntreprise.getNomCommercial_LATEX());
+	EN_template_EVENT_LOG__TexDocument.replace("YEROTHENTREPRISE", infoEntreprise.getNomCommercial_LATEX());
 
-	GROUPES_DUN_CLIENT__TexDocument.replace("YEROTHACTIVITESENTREPRISE", infoEntreprise.getSecteursActivitesTex());
+	EN_template_EVENT_LOG__TexDocument.replace("YEROTHACTIVITESENTREPRISE", infoEntreprise.getSecteursActivitesTex());
 
-	GROUPES_DUN_CLIENT__TexDocument.replace("YEROTHBOITEPOSTALE", infoEntreprise.getBoitePostal());
+	EN_template_EVENT_LOG__TexDocument.replace("YEROTHBOITEPOSTALE", infoEntreprise.getBoitePostal());
 
-	GROUPES_DUN_CLIENT__TexDocument.replace("YEROTHVILLE", infoEntreprise.getVille_LATEX());
+	EN_template_EVENT_LOG__TexDocument.replace("YEROTHVILLE", infoEntreprise.getVille_LATEX());
 
-	GROUPES_DUN_CLIENT__TexDocument.replace("YEROTHPAYS", infoEntreprise.getPaysTex());
+	EN_template_EVENT_LOG__TexDocument.replace("YEROTHPAYS", infoEntreprise.getPaysTex());
 
-	GROUPES_DUN_CLIENT__TexDocument.replace("YEROTHEMAIL", infoEntreprise.getEmail_LATEX());
+	EN_template_EVENT_LOG__TexDocument.replace("YEROTHEMAIL", infoEntreprise.getEmail_LATEX());
 
-	GROUPES_DUN_CLIENT__TexDocument.replace("YEROTHTELEPHONE", infoEntreprise.getTelephone());
+	EN_template_EVENT_LOG__TexDocument.replace("YEROTHTELEPHONE", infoEntreprise.getTelephone());
 
-	GROUPES_DUN_CLIENT__TexDocument.replace("YEROTHDATE", factureDate);
+	EN_template_EVENT_LOG__TexDocument.replace("YEROTHDATE", factureDate);
 
-	GROUPES_DUN_CLIENT__TexDocument.replace("YEROTHHEUREVENTE", CURRENT_TIME);
+	EN_template_EVENT_LOG__TexDocument.replace("YEROTHHEUREVENTE", CURRENT_TIME);
 
-	GROUPES_DUN_CLIENT__TexDocument.replace("YEROTHCOMPTEBANCAIRENR", infoEntreprise.getNumeroCompteBancaire());
+	EN_template_EVENT_LOG__TexDocument.replace("YEROTHCOMPTEBANCAIRENR", infoEntreprise.getNumeroCompteBancaire());
 
-	GROUPES_DUN_CLIENT__TexDocument.replace("YEROTHCONTRIBUABLENR", infoEntreprise.getNumeroDeContribuable());
+	EN_template_EVENT_LOG__TexDocument.replace("YEROTHCONTRIBUABLENR", infoEntreprise.getNumeroDeContribuable());
 
-	GROUPES_DUN_CLIENT__TexDocument.replace("YEROTHAGENCECOMPTEBANCAIRE", infoEntreprise.getAgenceCompteBancaireTex());
+	EN_template_EVENT_LOG__TexDocument.replace("YEROTHAGENCECOMPTEBANCAIRE", infoEntreprise.getAgenceCompteBancaireTex());
 
 
-	GROUPES_DUN_CLIENT__TexDocument.replace("YEROTHNOMUTILISATEUR",
+	EN_template_EVENT_LOG__TexDocument.replace("YEROTHNOMUTILISATEUR",
 			QString("%1 %2")
 			.arg(YerothUtils::getAllWindows()->getUser()->titre(),
 					YerothUtils::getAllWindows()->getUser()->nom_completTex()));
 
-	GROUPES_DUN_CLIENT__TexDocument
+	EN_template_EVENT_LOG__TexDocument
 	.replace("YEROTHSUCCURSALE",
 			YerothUtils::LATEX_IN_OUT_handleForeignAccents
 			(YerothERPConfig::THIS_SITE_LOCALISATION_NAME));
 
-	GROUPES_DUN_CLIENT__TexDocument.replace("YEROTHHEUREDIMPRESSION", CURRENT_TIME);
+	EN_template_EVENT_LOG__TexDocument.replace("YEROTHHEUREDIMPRESSION", CURRENT_TIME);
 
 
 	emit SIGNAL_INCREMENT_PROGRESS_BAR(70);
@@ -452,7 +529,7 @@ bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt()
 			.arg(YerothDatabaseTableColumn::NOM_ENTREPRISE,
 					NOM_Client));
 
-	GROUPES_DUN_CLIENT__TexDocument.replace("YEROTHCLIENT",
+	EN_template_EVENT_LOG__TexDocument.replace("YEROTHCLIENT",
 			YerothUtils::LATEX_IN_OUT_handleForeignAccents(NOM_Client));
 
 	if (CLIENT_TableModel.easySelect("src/windows/crm/yeroth-erp-groupes-dun-client-window.cpp", 894) > 0)
@@ -476,43 +553,43 @@ bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt()
 
 		if (!Client_Ville.isEmpty())
 		{
-			GROUPES_DUN_CLIENT__TexDocument
+			EN_template_EVENT_LOG__TexDocument
 			.replace("CLIENTYEROTHCITY",
 					YerothUtils::LATEX_IN_OUT_handleForeignAccents(Client_Ville));
 		}
 		else
 		{
-			GROUPES_DUN_CLIENT__TexDocument.replace("CLIENTYEROTHCITY", "");
+			EN_template_EVENT_LOG__TexDocument.replace("CLIENTYEROTHCITY", "");
 		}
 
 		if (!Client_POBox.isEmpty())
 		{
-			GROUPES_DUN_CLIENT__TexDocument.replace("CLIENTYEROTHPOBOX", Client_POBox);
+			EN_template_EVENT_LOG__TexDocument.replace("CLIENTYEROTHPOBOX", Client_POBox);
 		}
 		else
 		{
-			GROUPES_DUN_CLIENT__TexDocument.replace("CLIENTYEROTHPOBOX", "N/a");
+			EN_template_EVENT_LOG__TexDocument.replace("CLIENTYEROTHPOBOX", "N/a");
 		}
 
 		if (!Client_Email.isEmpty())
 		{
-			GROUPES_DUN_CLIENT__TexDocument.replace("CLIENTYEROTHMAIL",
+			EN_template_EVENT_LOG__TexDocument.replace("CLIENTYEROTHMAIL",
 					YerothUtils::LATEX_IN_OUT_handleForeignAccents(Client_Email));
 		}
 		else
 		{
-			GROUPES_DUN_CLIENT__TexDocument.replace("CLIENTYEROTHMAIL", "");
+			EN_template_EVENT_LOG__TexDocument.replace("CLIENTYEROTHMAIL", "");
 		}
 
 		if (!Client_Tel.isEmpty())
 		{
-			GROUPES_DUN_CLIENT__TexDocument
+			EN_template_EVENT_LOG__TexDocument
 			.replace("CLIENTYEROTHPHONE",
 					YerothUtils::LATEX_IN_OUT_handleForeignAccents(Client_Tel));
 		}
 		else
 		{
-			GROUPES_DUN_CLIENT__TexDocument.replace("CLIENTYEROTHPHONE", "");
+			EN_template_EVENT_LOG__TexDocument.replace("CLIENTYEROTHPHONE", "");
 		}
 
 		CLIENT_TableModel.resetFilter();
@@ -531,13 +608,13 @@ bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt()
 				YerothUtils::getUniquePrefixFileInTemporaryFilesDir("yeroth-erp-GROUPES-DUN-client-HR"));
 	}
 
-	//qDebug() << "++\n" << GROUPES_DUN_CLIENT__TexDocument;
+	//qDebug() << "++\n" << EN_template_EVENT_LOG__TexDocument;
 
 	QFile tmpLatexFile(prefixFileName + "tex");
 
 	if (tmpLatexFile.open(QFile::WriteOnly))
 	{
-		tmpLatexFile.write(GROUPES_DUN_CLIENT__TexDocument.toUtf8());
+		tmpLatexFile.write(EN_template_EVENT_LOG__TexDocument.toUtf8());
 	}
 
 	tmpLatexFile.close();

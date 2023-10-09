@@ -101,10 +101,19 @@ public:
                                      QTime::currentTime().toString("_HHmmss"));
     }
 
+
+    static void handleTexTableItemText(int 				texTableColumnCount,
+                                       QString 			&texTable_IN_OUT,
+                                       int 				itemTextColumnPosition,
+                                       const QString 	&itemText);
+
+
     static void YEROTH_READ_FILE_CONTENT(QFile   &file,
                                          QString &fileContentVar);
 
+
     static void YEROTH_CREATE_FOLDER(const QString &aFullPathDir);
+
 
     static int start_PROCESS_AND_GET_PROCESS_output_AS_QSTRING(const QString 		&program_executable_location_full_path,
                                                                const QStringList 	&program_executable_args,
@@ -194,6 +203,42 @@ public:
                                  const QString 	&csvFileName,
                                  const QString 	&strMessage);
 
+
+
+    static QString LATEX_IN_OUT_handleForeignAccents(const QString &texText_in_out);
+
+
+
+    static inline QString localized_string__get_number_string(int INT_NUMBER)
+    {
+        return YR_DB_RUNTIME_VERIF_Utils::englishLocale.toString(INT_NUMBER);
+    }
+
+
+    static inline QString localized_string__get_double_string(double DOUBLE_NUMBER)
+    {
+        return YR_DB_RUNTIME_VERIF_Utils::englishLocale.toString(DOUBLE_NUMBER,
+                                                                 'f',
+                                                                 2);
+    }
+
+
+    static inline QString localized_string__get_double_string_P(double DOUBLE_NUMBER,
+                                                                int    NUMBER_OF_DECIMALS_after)
+    {
+        return YR_DB_RUNTIME_VERIF_Utils::englishLocale.toString(DOUBLE_NUMBER,
+                                                                 'f',
+                                                                 NUMBER_OF_DECIMALS_after);
+    }
+
+
+    static inline QString localized_string__get_MONTH_NAME_LOCALIZED(int month_name)
+    {
+        return YR_DB_RUNTIME_VERIF_Utils::englishLocale.monthName(month_name);
+    }
+
+
+
     static bool start_db_transaction();
 
     static bool rollback_db_transaction();
@@ -220,6 +265,11 @@ public:
     static const QString COURRIERS_ALERTES;
     static const QString STOCKS;
     static const QString STOCKS_VENDU;
+
+
+    static const QRegExp EMPTY_SPACE_REGEXP;
+
+    static const QLocale englishLocale;
 
 
     static const QString DATE_FORMAT;
@@ -299,6 +349,24 @@ private:
 /**
  * Macros to facilitate the use of YR_DB_RUNTIME_VERIF_Utils static methods
  */
+
+ /*
+ * LOCALIZATION DEFINE METHODS
+ */
+#define DOUBLE_FROM_LOCALIZED_STRING(NUM) YR_DB_RUNTIME_VERIF_Utils::localized_string__get_double_FROM_LOCALIZED_STRING(NUM)
+
+#define GET_NUM_STRING(NUM) YR_DB_RUNTIME_VERIF_Utils::localized_string__get_number_string(NUM)
+
+#define GET_DOUBLE_STRING(NUM) YR_DB_RUNTIME_VERIF_Utils::localized_string__get_double_string(NUM)
+
+#define GET_DOUBLE_STRING_P(NUM, P) YR_DB_RUNTIME_VERIF_Utils::localized_string__get_double_string_P(NUM, P)
+
+#define GET_MONTH_NAME_LOCALIZED(M) YR_DB_RUNTIME_VERIF_Utils::localized_string__get_MONTH_NAME_LOCALIZED(M)
+
+
+#define GET_CURRENCY_STRING_NUM_FOR_LATEX(NUM) YR_DB_RUNTIME_VERIF_Utils::LATEX_IN_OUT_handleForeignAccents(GET_CURRENCY_STRING_NUM(NUM))
+
+
 
 #define FILE_NAME_WITH_CURRENT_DATE_AND_TIME(F) YR_DB_RUNTIME_VERIF_Utils::getFileNameWithDateANDCurrentTime(F)
 
