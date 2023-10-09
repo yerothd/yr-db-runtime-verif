@@ -50,6 +50,7 @@ public:
 			->find_AND_SET_CURRENT_INDEX(A_RUNTIME_MONITOR_name);
     }
 
+
 	virtual int ADD_ITEM(QString TIMESTAMPtem,
 						 QString SIGNALItem,
 						 QString SOURCEItem,
@@ -57,8 +58,10 @@ public:
 						 QString changed_OR_modified_database_qty_Item,
 						 YRDBRUNTIMEVERIF_Logging_Info &a_logging_info);
 
+
 	virtual void SET__CURRENT__RUNTIME__MONITOR
 		(YR_DB_RUNTIME_VERIF_Monitor *a_current_runtime_monitor_INSTANCE);
+
 
 	inline virtual YR_DB_RUNTIME_VERIF_Monitor *GET__CURRENT__RUNTIME__MONITOR()
 	{
@@ -81,20 +84,29 @@ protected slots:
 
     inline bool export_csv_file()
     {
-        return YR_DB_RUNTIME_VERIF_Utils::
-                    SAVE_AS_csv_file(*this,
-                                     *tableWidget_LOGGING,
-                                     "sql-event-log-listing-csv-format",
-                                     "SQL event log csv export");
+        return
+            YR_DB_RUNTIME_VERIF_Utils::SAVE_AS_csv_file(*this,
+                                                        *tableWidget_LOGGING,
+                                                        "sql-event-log-listing-csv-format",
+                                                        "SQL event log csv export");
     }
+
 
 	static void SET__foregroundcolor__ON__accepting_state(uint 			row_number,
 														  QTableWidget 	*a_table_widget);
 
+
 	virtual void VIEW_current_RUNTIME_MONITOR();
 
 
+    virtual inline void setLast_SelectedRow_Row_ID(const QModelIndex &a_model_CELL_index)
+    {
+        _Last_SelectedRow_Row_INDEX = &a_model_CELL_index;
+    }
+
+
 	virtual void get_PRINT_OUT_TexTableString(QString &texTable_IN_OUT);
+
 
     virtual bool PRINT_event_log_excerpt();
 
@@ -102,11 +114,17 @@ protected slots:
 	virtual void ON_Configfuration_panel_window_trigerred();
 
 
-	virtual void action_set_current_selected_SQL_event_as_filter_and_search();
+    virtual bool ON_action_export_as_CSV_till_selected_SQL_event();
+
+
+	virtual void ON_action_set_current_selected_SQL_event_as_filter_and_search();
+
 
 	virtual void SOFT_Reset_selected();
 
+
 	virtual void ON_BUTON_Reset_pressed();
+
 
 	virtual inline void ON_BUTON_Filter_pressed()
 	{
@@ -120,6 +138,7 @@ protected slots:
     //for combobox "comboBox_global_filtering"
     virtual void RESET_comboBox_SQL_event_filtering();
 
+
     virtual void RESET_comboBox_SQL_event_filtering(const QString &a_SQL_event_item);
 
 
@@ -129,10 +148,12 @@ protected slots:
         comboBox_global_filtering->setCurrentIndex(0);
     }
 
+
     virtual inline void RESET_comboBox_global_filtering(const QString &a_SQL_event_item)
     {
         comboBox_global_filtering->setCurrentIndex(0);
     }
+
 
     //for combobox "comboBox_SQL_event_filtering"
 	virtual void ON_QTABLEWIDGET_FILTER_ITEM_selected(const QString &a_SQL_event_item);
@@ -176,7 +197,10 @@ public:
 
 private:
 
-    QString RUNTIME_MONITOR_name_TO_PRINT_DOT;
+
+    QString                     RUNTIME_MONITOR_name_TO_PRINT_DOT;
+
+    const QModelIndex           *_Last_SelectedRow_Row_INDEX;
 
     YR_DB_RUNTIME_VERIF_Monitor	*_current_runtime_monitor_INSTANCE;
 

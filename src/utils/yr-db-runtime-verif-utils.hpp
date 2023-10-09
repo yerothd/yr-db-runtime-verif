@@ -174,14 +174,18 @@ public:
                                                                const QString 		&output_file_full_path,
                                                                const QStringList 	&program_executable_args);
 
+
     static bool GZIP_YEROTH_FILE(const QString &program_working_directory_full_path,
                                  const QString &file_full_path);
+
 
     static QString generateSqlLike__AS_IS(QString sqlTableColumn,
                                           QString searchStr);
 
+
     static QString generateSqlLike(QString sqlTableColumn,
     							   QString searchStr);
+
 
     inline static QString generateSqlLike(const char 	*sqlTableColumn,
                                           QString 		searchStr)
@@ -190,12 +194,14 @@ public:
         												  searchStr);
     }
 
+
     inline static QString generateSqlIs(QString sqlTableColumn,
                                         QString searchStr)
     {
         return QString("%1 = \'%2\'").arg(sqlTableColumn,
                                           searchStr.replace("'", "''"));
     }
+
 
     inline static QString generateSqlIs(const char *sqlTableColumn,
                                         QString 	searchStr)
@@ -204,11 +210,13 @@ public:
                                                         searchStr);
     }
 
+
     inline static void qDebugStrings(const QString 		&firstString,
                                      const QStringList 	&aStringList)
     {
         qDebug() << QString("++ %1: ").arg(firstString) << aStringList;
     }
+
 
     inline static void qDebugStrings(const QString &firstString,
                                      const QString &secondString = "")
@@ -216,24 +224,31 @@ public:
         qDebug() << QString("++ %1: %2").arg(firstString, secondString);
     }
 
+
     static bool execQuery(const QString &strQuery,
                           YR_DB_RUNTIME_VERIF_Logger *logger = 0);
+
 
     static int execQuery(QSqlQuery &query,
     					 const QString &strQuery,
                          YR_DB_RUNTIME_VERIF_Logger *logger = 0);
 
+
     static int execQuery(QSqlQuery &query,
                          YR_DB_RUNTIME_VERIF_Logger *logger = 0);
 
+
     static QString get_text(const QVariant &qv);
 
+
     static int getNextIdFromTable(const QString &tableName);
+
 
     static bool SAVE_AS_csv_file(QMainWindow    &aCallingWindow,
                                  QTableView     &aTableView,
                                  const QString 	&csvFileName,
-                                 const QString 	&strMessage);
+                                 const QString 	&strMessage,
+                                 int            row_MAX_TO_GO_export = -1);
 
 
 

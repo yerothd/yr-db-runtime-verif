@@ -486,7 +486,8 @@ int YR_DB_RUNTIME_VERIF_Utils::getNextIdFromTable(const QString &tableName)
 bool YR_DB_RUNTIME_VERIF_Utils::SAVE_AS_csv_file(QMainWindow    &aCallingWindow,
                                                  QTableView     &aTableView,
                                                  const QString  &csvFileName,
-                                                 const QString  &strMessage)
+                                                 const QString  &strMessage,
+                                                 int            row_MAX_TO_GO_export /* = -1 */)
 {
 	QAbstractItemModel *tableModel = aTableView.model();
 
@@ -547,9 +548,19 @@ bool YR_DB_RUNTIME_VERIF_Utils::SAVE_AS_csv_file(QMainWindow    &aCallingWindow,
 	csvFileContent.remove(csvFileContent.size() - 2, 2).append("\n");
 
 
+
+	int MAX_TABLE_MODDEL_ROW_COUNT__to_export = tableModelRowCount;
+
+
+	if (row_MAX_TO_GO_export > -1)
+	{
+        MAX_TABLE_MODDEL_ROW_COUNT__to_export = row_MAX_TO_GO_export;
+	}
+
+
 	QMap<int, QVariant> item_data;
 
-	for (unsigned int j = 0; j < tableModelRowCount; ++j)
+	for (unsigned int j = 0; j < MAX_TABLE_MODDEL_ROW_COUNT__to_export; ++j)
 	{
 		for (unsigned int k = 0; k < tableModelColumnCount; ++k)
 		{

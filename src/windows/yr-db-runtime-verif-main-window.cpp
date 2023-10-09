@@ -32,7 +32,8 @@ const QString YRDBRUNTIMEVERIF_MainWindow::QMESSAGE_BOX_STYLE_SHEET =
 
 
 YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
-:_current_runtime_monitor_INSTANCE(0)
+:_Last_SelectedRow_Row_INDEX(0),
+ _current_runtime_monitor_INSTANCE(0)
 {
     setupUi(this);
 
@@ -98,10 +99,18 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
             SLOT(export_csv_file()));
 
 
+    connect(actionExport_as_CSV_till_selected_SQL_event,
+            SIGNAL(triggered()),
+            this,
+            SLOT(ON_action_export_as_CSV_till_selected_SQL_event()));
+
+
     connect(actionSet_current_selected_SQL_event_as_filter_and_search,
             SIGNAL(triggered()),
             this,
-            SLOT(action_set_current_selected_SQL_event_as_filter_and_search()));
+            SLOT(ON_action_set_current_selected_SQL_event_as_filter_and_search()));
+
+
 
     connect(pushButton_reset_filtering,
     		SIGNAL(clicked()),
@@ -133,6 +142,20 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     		SIGNAL(triggered()),
 			this,
             SLOT(PRINT_event_log_excerpt()));
+
+
+    // USEFUL TO UPDATE sql event information WHEN
+    // actions from context menu are called from a cell.
+    connect(tableWidget_LOGGING,
+            SIGNAL(clicked(const QModelIndex &)),
+            this,
+            SLOT(setLast_SelectedRow_Row_ID(const QModelIndex &)));
+
+    connect(tableWidget_LOGGING,
+            SIGNAL(pressed(const QModelIndex &)),
+            this,
+            SLOT(setLast_SelectedRow_Row_ID(const QModelIndex &)));
+
 
     /*
      * USEFUL TO UPDATE sql event information WHEN
@@ -625,8 +648,30 @@ void YRDBRUNTIMEVERIF_MainWindow::ON_Configfuration_panel_window_trigerred()
 }
 
 
+bool YRDBRUNTIMEVERIF_MainWindow::ON_action_export_as_CSV_till_selected_SQL_event()
+{
+    int a_row = -1;
+
+    if (0 != _Last_SelectedRow_Row_INDEX)
+    {
+        a_row = _Last_SelectedRow_Row_INDEX->row() + 1;
+    }
+    else
+    {
+        a_row = -1;
+    }
+
+    return
+        YR_DB_RUNTIME_VERIF_Utils::SAVE_AS_csv_file(*this,
+                                                    *tableWidget_LOGGING,
+                                                    "sql-event-log-listing-csv-format",
+                                                    "SQL event log csv export",
+                                                    a_row);
+}
+
+
 void YRDBRUNTIMEVERIF_MainWindow::
-        action_set_current_selected_SQL_event_as_filter_and_search()
+        ON_action_set_current_selected_SQL_event_as_filter_and_search()
 {
     if (tableWidget_LOGGING->rowCount() <= 0)
     {
