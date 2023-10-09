@@ -352,15 +352,16 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
                            //"\\resizebox{\\textwidth}{!}{\n"
                            "\\centering\n"
                            "\\begin{tabular}"
-                           "{|c|c|c|c|c|} \\hline");
+                           "{|l|c|c|c|c|c|} \\hline");
 
-    texTable_IN_OUT.append("& & & &				\\\\ \n"
+    texTable_IN_OUT.append("& & & & &			\\\\ \n"
+                           "ID			        & 	 \n"
                            "time stamp			& 	 \n"
                            "sql event log		& 	 \n"
                            "source			    & 	 \n"
                            "target 	            & 	 \n"
                            "changed qty			\\\\ \n"
-                           "& &	& &				\\\\ \\hline \\hline \n");
+                           "& & & & &				\\\\ \\hline \\hline \n");
 
 
 	int rowCount = tableWidget_LOGGING->rowCount();
@@ -398,6 +399,21 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
             texTable_IN_OUT.append(QString("\\rowcolor{white}"));
         }
 
+
+        //We add a cell for row numbering wioth an ID number.
+        {
+            QTableWidgetItem *an_item_ID = new QTableWidgetItem(QString::number(i));
+
+            if (0 != an_item_ID)
+            {
+                YR_DB_RUNTIME_VERIF_Utils::handleTexTableItemText(columnCount,
+                                                                  texTable_IN_OUT,
+                                                                  0,
+                                                                  an_item_ID->text());
+            }
+        }
+
+
         for (int j = 0; j < columnCount; ++j)
         {
             QTableWidgetItem *an_item = 0;
@@ -406,7 +422,7 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
 
             if (0 != an_item)
             {
-                if (j != 2)
+                if (j != 4)
                 {
                     cell_text = an_item->text();
                 }
@@ -418,9 +434,9 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
             }
 
             YR_DB_RUNTIME_VERIF_Utils::handleTexTableItemText(columnCount,
-                    texTable_IN_OUT,
-                    j,
-                    cell_text);
+                                                              texTable_IN_OUT,
+                                                              j,
+                                                              cell_text);
         }
 
         if (i < rowCount - 1)
@@ -448,15 +464,16 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
                                        //"\\resizebox{\\textwidth}{!}{\n"
                                        "\\centering\n"
                                        "\\begin{tabular}"
-                                       "{|c|c|c|c|c|} \\hline");
+                                       "{|l|c|c|c|c|c|} \\hline");
 
-                texTable_IN_OUT.append("& & & &				\\\\ \n"
+                texTable_IN_OUT.append("& & & & &		    \\\ \n"
+                                       "ID			        & 	 \n"
                                        "time stamp			& 	 \n"
                                        "sql event log		& 	 \n"
                                        "source			    & 	 \n"
                                        "target 	            & 	 \n"
                                        "changed qty			\\\\ \n"
-                                       "& &	& &				\\\\ \\hline \\hline \n");
+                                       "& & & & &			\\\\ \\hline \\hline \n");
             }
 
             ++current_table_count;
