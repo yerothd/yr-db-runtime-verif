@@ -7,10 +7,12 @@
 #include "yr-db-runtime-verif-utils.hpp"
 
 
+#include "src/process/yr-db-runtime-verif-PROCESS.hpp"
+
+
 #include <QtCore/QDebug>
 #include <QtCore/QDate>
 #include <QtCore/QBuffer>
-#include <QtCore/QProcess>
 
 #include <QtGui/QPainter>
 
@@ -113,6 +115,39 @@ const QChar YR_DB_RUNTIME_VERIF_Utils::SLASH_CHAR('/');
 
 
 
+void YR_DB_RUNTIME_VERIF_Utils::getCurrentSimplifiedDate(QString 		&date_IN_OUT,
+                                                         const QDate 	&aDate)
+{
+    date_IN_OUT.append(QString("%1 at %2")
+                        .arg(aDate.toString("dd-MM-yyyy"),
+                             CURRENT_TIME));
+
+    date_IN_OUT = YR_DB_RUNTIME_VERIF_Utils::LATEX_IN_OUT_handleForeignAccents(date_IN_OUT);
+}
+
+
+void YR_DB_RUNTIME_VERIF_Utils::getCurrentLocaleDate(QString 		&date_IN_OUT,
+                                                     const QDate 	&aDate)
+{
+    QString d(YR_DB_RUNTIME_VERIF_Utils::englishLocale.toString(aDate));
+
+    int firstCommaIndex = d.indexOf(",", 0);
+
+    d.replace(firstCommaIndex, 1, " ");
+
+    date_IN_OUT.append(", ").append(d);
+
+    date_IN_OUT = YR_DB_RUNTIME_VERIF_Utils::LATEX_IN_OUT_handleForeignAccents(date_IN_OUT);
+}
+
+
+QString YR_DB_RUNTIME_VERIF_Utils::getUniquePrefixFileInTemporaryFilesDir(QString aPrefixFileName)
+{
+    return QString("%1/%2.").arg(YR_DB_RUNTIME_VERIF_Config::temporaryFilesDir,
+                                 FILE_NAME_WITH_CURRENT_DATE_AND_TIME(aPrefixFileName));
+}
+
+
 void YR_DB_RUNTIME_VERIF_Utils::
         handleTexTableItemText(int 	           texTableColumnCount,
                                QString 		   &texTable_IN_OUT,
@@ -134,6 +169,36 @@ void YR_DB_RUNTIME_VERIF_Utils::
 	{
 		texTable_IN_OUT.append(" \\\\").append("\n");
 	}
+}
+
+
+bool YR_DB_RUNTIME_VERIF_Utils::GREP_YEROTH_FILE_CONTENT(const QString &file_full_path,
+                                                         const QString &EXECUTABLE_full_path,
+                                                         const QString &keyword_IN)
+{
+	QStringList progArguments;
+
+	progArguments << keyword_IN << file_full_path;
+
+	QProcess GREP_PROCESS;
+
+
+	bool checkProcessFinished =
+            YRDBRUNTIMEVERIF_Process::startAndWaitForFinished(
+                                    GREP_PROCESS,
+                                    "/bin/grep",
+                                    progArguments,
+                                    1000);
+
+	if (checkProcessFinished)
+	{
+		QString checkAlertDeamonProcessOutput(
+				GREP_PROCESS.readAllStandardOutput().trimmed());
+
+		return checkAlertDeamonProcessOutput.contains(EXECUTABLE_full_path);
+	}
+
+	return false;
 }
 
 

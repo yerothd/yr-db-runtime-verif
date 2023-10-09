@@ -9,6 +9,9 @@
 
 #include "yr-db-runtime-verif-definition-format-date-time.hpp"
 
+
+#include "yr-db-runtime-verif-CONFIG.hpp"
+
 #include <QtCore/QRegExp>
 #include <QtCore/QCryptographicHash>
 #include <QtCore/QLocale>
@@ -86,6 +89,30 @@ public:
         return aStr.replace("'", "''");
     }
 
+
+
+    static void getCurrentSimplifiedDate(QString 		&date_IN_OUT,
+                                         const QDate 	&aDate);
+
+    inline static void getCurrentSimplifiedDate(QString &date_IN_OUT)
+    {
+        YR_DB_RUNTIME_VERIF_Utils::getCurrentSimplifiedDate(date_IN_OUT,
+                                              QDate::currentDate());
+    }
+
+    static void getCurrentLocaleDate(QString 		&date_IN_OUT,
+                                     const QDate 	&aDate);
+
+    inline static void getCurrentLocaleDate(QString &date_IN_OUT)
+    {
+        YR_DB_RUNTIME_VERIF_Utils::getCurrentLocaleDate(date_IN_OUT, QDate::currentDate());
+    }
+
+
+
+    static QString getUniquePrefixFileInTemporaryFilesDir(QString aPrefixFileName);
+
+
     inline static QString getFileNameWithCurrentTime(const QString &fileName)
     {
         return QString("%1%2%3")
@@ -93,6 +120,7 @@ public:
                      QDate::currentDate().toString("-yyyyMMdd"),
                      QTime::currentTime().toString("_HHmmss"));
     }
+
 
     inline static QString getFileNameWithDateANDCurrentTime(const QString &fileName)
     {
@@ -106,6 +134,11 @@ public:
                                        QString 			&texTable_IN_OUT,
                                        int 				itemTextColumnPosition,
                                        const QString 	&itemText);
+
+
+    static bool GREP_YEROTH_FILE_CONTENT(const QString &file_full_path,
+    									 const QString &EXECUTABLE_full_path,
+                                         const QString &keyword_IN);
 
 
     static void YEROTH_READ_FILE_CONTENT(QFile   &file,

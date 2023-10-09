@@ -16,7 +16,7 @@
 
 #include "src/utils/yr-db-runtime-verif-utils.hpp"
 
-#include <QtCore/QProcess>
+#include "src/process/yr-db-runtime-verif-PROCESS.hpp"
 
 
 
@@ -441,11 +441,12 @@ bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt()
 	QString EN_template_EVENT_LOG__tex_table;
 
 
-	QString EN_template_EVENT_LOG__TexDocument;
+	QString EN_template_EVENT_LOG__TexDocument =
+        YR_DB_RUNTIME_VERIF_Utils::EN_template_EVENT_LOG_TEX_document;
 
 	//QString factureDate(infoEntreprise.getVille_LATEX());
 
-	//YerothUtils::getCurrentSimplifiedDate(factureDate);
+	//YR_DB_RUNTIME_VERIF_Utils::getCurrentSimplifiedDate(factureDate);
 
 	get_PRINT_OUT_TexTableString(EN_template_EVENT_LOG__tex_table);
 
@@ -453,161 +454,41 @@ bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt()
 	//qDebug() << EN_template_EVENT_LOG__tex_table;
 
 
-	/*emit SIGNAL_INCREMENT_PROGRESS_BAR(18);
+	emit SIGNAL_INCREMENT_PROGRESS_BAR(18);
 
 
-	YerothUtils::get_GROUPES_DUN_client_TexDocumentString(EN_template_EVENT_LOG__TexDocument,
-														  EN_template_EVENT_LOG__tex_table);
+    EN_template_EVENT_LOG__TexDocument.append(EN_template_EVENT_LOG__tex_table)
+                                      .append("\n")
+                                      .append("\\end{document}");
+
 
 	emit SIGNAL_INCREMENT_PROGRESS_BAR(50);
 
-	QString NOM_Client(_curClient_NOM_ENTREPRISE);
 
-	if (YerothMainWindow::LANGUE_ANGLAISE)
-	{
-		EN_template_EVENT_LOG__TexDocument
-		.replace("YEROTHSUBJECT",
-				QString("client '%1' belonging GROUPS")
-				.arg(YerothUtils::LATEX_IN_OUT_handleForeignAccents(NOM_Client)));
-	}
-	else
-	{
-		EN_template_EVENT_LOG__TexDocument
-		.replace("YEROTHSUBJECT",
-				QString("Groupes d'appartenance du CLIENT '%1'")
-				.arg(YerothUtils::LATEX_IN_OUT_handleForeignAccents(NOM_Client)));
-	}
-
-	EN_template_EVENT_LOG__TexDocument.replace("YEROTHPAPERSPEC",
-											get_PRINTING_PARAMETER_printing_position());
-
-	EN_template_EVENT_LOG__TexDocument.replace("YEROTHENTREPRISE", infoEntreprise.getNomCommercial_LATEX());
-
-	EN_template_EVENT_LOG__TexDocument.replace("YEROTHACTIVITESENTREPRISE", infoEntreprise.getSecteursActivitesTex());
-
-	EN_template_EVENT_LOG__TexDocument.replace("YEROTHBOITEPOSTALE", infoEntreprise.getBoitePostal());
-
-	EN_template_EVENT_LOG__TexDocument.replace("YEROTHVILLE", infoEntreprise.getVille_LATEX());
-
-	EN_template_EVENT_LOG__TexDocument.replace("YEROTHPAYS", infoEntreprise.getPaysTex());
-
-	EN_template_EVENT_LOG__TexDocument.replace("YEROTHEMAIL", infoEntreprise.getEmail_LATEX());
-
-	EN_template_EVENT_LOG__TexDocument.replace("YEROTHTELEPHONE", infoEntreprise.getTelephone());
-
-	EN_template_EVENT_LOG__TexDocument.replace("YEROTHDATE", factureDate);
-
-	EN_template_EVENT_LOG__TexDocument.replace("YEROTHHEUREVENTE", CURRENT_TIME);
-
-	EN_template_EVENT_LOG__TexDocument.replace("YEROTHCOMPTEBANCAIRENR", infoEntreprise.getNumeroCompteBancaire());
-
-	EN_template_EVENT_LOG__TexDocument.replace("YEROTHCONTRIBUABLENR", infoEntreprise.getNumeroDeContribuable());
-
-	EN_template_EVENT_LOG__TexDocument.replace("YEROTHAGENCECOMPTEBANCAIRE", infoEntreprise.getAgenceCompteBancaireTex());
+    EN_template_EVENT_LOG__TexDocument
+        .replace("YRDBRUNTIMEVERIFSUBJECT",
+                 "SQL Event log Excerpt");
 
 
-	EN_template_EVENT_LOG__TexDocument.replace("YEROTHNOMUTILISATEUR",
-			QString("%1 %2")
-			.arg(YerothUtils::getAllWindows()->getUser()->titre(),
-					YerothUtils::getAllWindows()->getUser()->nom_completTex()));
 
-	EN_template_EVENT_LOG__TexDocument
-	.replace("YEROTHSUCCURSALE",
-			YerothUtils::LATEX_IN_OUT_handleForeignAccents
-			(YerothERPConfig::THIS_SITE_LOCALISATION_NAME));
+    QString current_date;
 
-	EN_template_EVENT_LOG__TexDocument.replace("YEROTHHEUREDIMPRESSION", CURRENT_TIME);
+
+    YR_DB_RUNTIME_VERIF_Utils::getCurrentSimplifiedDate(current_date);
+
+
+    EN_template_EVENT_LOG__TexDocument.replace("YRDBRUNTIMEVERIFPAPERSPEC", "a4paper");
+    EN_template_EVENT_LOG__TexDocument.replace("YRDBRUNTIMEVERIFDATE", current_date);
+    EN_template_EVENT_LOG__TexDocument.replace("YRDBRUNTIMEVERIFPRINTTIME", CURRENT_TIME);
+
 
 
 	emit SIGNAL_INCREMENT_PROGRESS_BAR(70);
 
 
-	YerothSqlTableModel &CLIENT_TableModel = _allWindows->getSqlTableModel_clients();
+    QString prefixFileName;
 
-	CLIENT_TableModel.yerothSetFilter_WITH_where_clause(
-			QString("%1 = '%2'")
-			.arg(YerothDatabaseTableColumn::NOM_ENTREPRISE,
-					NOM_Client));
-
-	EN_template_EVENT_LOG__TexDocument.replace("YEROTHCLIENT",
-			YerothUtils::LATEX_IN_OUT_handleForeignAccents(NOM_Client));
-
-	if (CLIENT_TableModel.easySelect("src/windows/crm/yeroth-erp-groupes-dun-client-window.cpp", 894) > 0)
-	{
-		QSqlRecord record = CLIENT_TableModel.record(0);
-
-		QString Client_Ville(GET_SQL_RECORD_DATA(record, YerothDatabaseTableColumn::VILLE));
-
-		QString Client_POBox(GET_SQL_RECORD_DATA(record, YerothDatabaseTableColumn::BOITE_POSTALE));
-
-		QString Client_Email(GET_SQL_RECORD_DATA(record, YerothDatabaseTableColumn::EMAIL));
-
-		QString Client_Tel(GET_SQL_RECORD_DATA(record, YerothDatabaseTableColumn::NUMERO_TELEPHONE_1));
-
-		if (Client_Tel.isEmpty())
-		{
-			Client_Tel.append(GET_SQL_RECORD_DATA(record, YerothDatabaseTableColumn::NUMERO_TELEPHONE_2));
-		}
-
-		//qDebug() << "++ Client_Email: " << Client_Email;
-
-		if (!Client_Ville.isEmpty())
-		{
-			EN_template_EVENT_LOG__TexDocument
-			.replace("CLIENTYEROTHCITY",
-					YerothUtils::LATEX_IN_OUT_handleForeignAccents(Client_Ville));
-		}
-		else
-		{
-			EN_template_EVENT_LOG__TexDocument.replace("CLIENTYEROTHCITY", "");
-		}
-
-		if (!Client_POBox.isEmpty())
-		{
-			EN_template_EVENT_LOG__TexDocument.replace("CLIENTYEROTHPOBOX", Client_POBox);
-		}
-		else
-		{
-			EN_template_EVENT_LOG__TexDocument.replace("CLIENTYEROTHPOBOX", "N/a");
-		}
-
-		if (!Client_Email.isEmpty())
-		{
-			EN_template_EVENT_LOG__TexDocument.replace("CLIENTYEROTHMAIL",
-					YerothUtils::LATEX_IN_OUT_handleForeignAccents(Client_Email));
-		}
-		else
-		{
-			EN_template_EVENT_LOG__TexDocument.replace("CLIENTYEROTHMAIL", "");
-		}
-
-		if (!Client_Tel.isEmpty())
-		{
-			EN_template_EVENT_LOG__TexDocument
-			.replace("CLIENTYEROTHPHONE",
-					YerothUtils::LATEX_IN_OUT_handleForeignAccents(Client_Tel));
-		}
-		else
-		{
-			EN_template_EVENT_LOG__TexDocument.replace("CLIENTYEROTHPHONE", "");
-		}
-
-		CLIENT_TableModel.resetFilter();
-	}
-
-
-	QString prefixFileName;
-
-	if (YerothMainWindow::LANGUE_ANGLAISE)
-	{
-		prefixFileName.append(YerothUtils::getUniquePrefixFileInTemporaryFilesDir("yeroth-erp-CLIENT-group-hr"));
-	}
-	else
-	{
-		prefixFileName.append(
-				YerothUtils::getUniquePrefixFileInTemporaryFilesDir("yeroth-erp-GROUPES-DUN-client-HR"));
-	}
-
+    prefixFileName.append(YR_DB_RUNTIME_VERIF_Utils::getUniquePrefixFileInTemporaryFilesDir("yr-db-runtime-verif-EVENT-LOG-"));
 	//qDebug() << "++\n" << EN_template_EVENT_LOG__TexDocument;
 
 	QFile tmpLatexFile(prefixFileName + "tex");
@@ -619,14 +500,14 @@ bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt()
 
 	tmpLatexFile.close();
 
-	QString pdfReceiptFileName = YerothERPProcess::compileLatex(prefixFileName);
+	QString pdfReceiptFileName = YRDBRUNTIMEVERIF_Process::compileLatex(prefixFileName);
 
 	if (!pdfReceiptFileName.isEmpty())
 	{
-		YerothERPProcess::startPdfViewerProcess(pdfReceiptFileName);
+		YRDBRUNTIMEVERIF_Process::startPdfViewerProcess(pdfReceiptFileName);
 	}
 
-	emit SIGNAL_INCREMENT_PROGRESS_BAR(98);*/
+	emit SIGNAL_INCREMENT_PROGRESS_BAR(98);
 
 	return false;
 }
@@ -909,9 +790,10 @@ void YRDBRUNTIMEVERIF_MainWindow::ACTION_USER_GUIDE_method()
 
 	progArguments << "/usr/share/doc/yr-db-runtime-verif/YEROTH_QVGE.pdf";
 
-
-	aProcess.startDetached(YR_DB_RUNTIME_VERIF_Config::pathToPdfReader,
-						   progArguments);
+    YRDBRUNTIMEVERIF_Process::startDetached
+            (aProcess,
+             YR_DB_RUNTIME_VERIF_Config::pathToPdfReader,
+             progArguments);
 }
 
 

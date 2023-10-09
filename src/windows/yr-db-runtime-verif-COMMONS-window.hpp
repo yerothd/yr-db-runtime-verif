@@ -33,6 +33,11 @@ public:
     virtual QToolBar &get_tool_bar() = 0;
 
 
+signals:
+
+    void SIGNAL_INCREMENT_PROGRESS_BAR(int countSuccess);
+
+
 public slots:
 
 	inline virtual void yr_show()

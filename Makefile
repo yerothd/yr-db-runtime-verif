@@ -63,6 +63,8 @@ SOURCES       = src/windows/yr-db-runtime-verif-COMMONS-window.cpp \
 		src/windows/yr-db-runtime-verif-main-window.cpp \
 		src/include/yr-db-runtime-verif-MONITOR.cpp \
 		src/yr-db-runtime-verif.cpp \
+		src/process/yr-db-runtime-verif-PROCESS.cpp \
+		src/process/yr-db-runtime-verif-PROCESS-info.cpp \
 		src/DBUS/YR_DBUS_COMMON.cpp \
 		src/utils/yr-db-runtime-verif-logger.cpp \
 		src/utils/yr-db-runtime-verif-sqltable-model.cpp \
@@ -93,6 +95,8 @@ OBJECTS       = obj/yr-db-runtime-verif-COMMONS-window.o \
 		obj/yr-db-runtime-verif-main-window.o \
 		obj/yr-db-runtime-verif-MONITOR.o \
 		obj/yr-db-runtime-verif.o \
+		obj/yr-db-runtime-verif-PROCESS.o \
+		obj/yr-db-runtime-verif-PROCESS-info.o \
 		obj/YR_DBUS_COMMON.o \
 		obj/yr-db-runtime-verif-logger.o \
 		obj/yr-db-runtime-verif-sqltable-model.o \
@@ -220,6 +224,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
 		src/include/yr-db-runtime-verif-software-text-configuration.hpp \
+		src/process/yr-db-runtime-verif-PROCESS.hpp \
+		src/process/yr-db-runtime-verif-PROCESS-info.hpp \
 		src/DBUS/YR_DBUS_COMMON.hpp \
 		src/utils/yr-db-runtime-verif-logger.hpp \
 		src/utils/yr-db-runtime-verif-sqltable-model.hpp \
@@ -237,6 +243,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		src/windows/yr-db-runtime-verif-main-window.cpp \
 		src/include/yr-db-runtime-verif-MONITOR.cpp \
 		src/yr-db-runtime-verif.cpp \
+		src/process/yr-db-runtime-verif-PROCESS.cpp \
+		src/process/yr-db-runtime-verif-PROCESS-info.cpp \
 		src/DBUS/YR_DBUS_COMMON.cpp \
 		src/utils/yr-db-runtime-verif-logger.cpp \
 		src/utils/yr-db-runtime-verif-sqltable-model.cpp \
@@ -464,10 +472,10 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents src/windows/yr-db-runtime-verif-COMMONS-window.hpp src/windows/yr-db-runtime-verif-setup-window.hpp src/utils/yr-db-runtime-verif-LOGGING-INFO.hpp src/widgets/yr-db-runtime-verif-combo-box.hpp src/utils/yr-db-runtime-verif-qmap.hpp src/widgets/yr-db-runtime-verif-push-button.hpp src/widgets/yr-db-runtime-verif-logging-table-widget.hpp src/windows/yr-db-runtime-verif-windows.hpp src/windows/yr-db-runtime-verif-main-window.hpp src/include/yr-db-runtime-verif-MONITOR.hpp src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp src/utils/yr-db-runtime-verif-definition-format-date-time.hpp src/include/yr-db-runtime-verif-software-text-configuration.hpp src/DBUS/YR_DBUS_COMMON.hpp src/utils/yr-db-runtime-verif-logger.hpp src/utils/yr-db-runtime-verif-sqltable-model.hpp src/utils/yr-db-runtime-verif-CONFIG.hpp src/utils/yr-db-runtime-verif-utils.hpp src/utils/yr-db-runtime-verif-database-table-column.hpp src/yr-db-runtime-verif-database.hpp $(DISTDIR)/
+	$(COPY_FILE) --parents src/windows/yr-db-runtime-verif-COMMONS-window.hpp src/windows/yr-db-runtime-verif-setup-window.hpp src/utils/yr-db-runtime-verif-LOGGING-INFO.hpp src/widgets/yr-db-runtime-verif-combo-box.hpp src/utils/yr-db-runtime-verif-qmap.hpp src/widgets/yr-db-runtime-verif-push-button.hpp src/widgets/yr-db-runtime-verif-logging-table-widget.hpp src/windows/yr-db-runtime-verif-windows.hpp src/windows/yr-db-runtime-verif-main-window.hpp src/include/yr-db-runtime-verif-MONITOR.hpp src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp src/utils/yr-db-runtime-verif-definition-format-date-time.hpp src/include/yr-db-runtime-verif-software-text-configuration.hpp src/process/yr-db-runtime-verif-PROCESS.hpp src/process/yr-db-runtime-verif-PROCESS-info.hpp src/DBUS/YR_DBUS_COMMON.hpp src/utils/yr-db-runtime-verif-logger.hpp src/utils/yr-db-runtime-verif-sqltable-model.hpp src/utils/yr-db-runtime-verif-CONFIG.hpp src/utils/yr-db-runtime-verif-utils.hpp src/utils/yr-db-runtime-verif-database-table-column.hpp src/yr-db-runtime-verif-database.hpp $(DISTDIR)/
 	$(COPY_FILE) --parents yr-db-runtime-verif.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents yr.db-runtime.verif.xml $(DISTDIR)/
-	$(COPY_FILE) --parents src/windows/yr-db-runtime-verif-COMMONS-window.cpp src/windows/yr-db-runtime-verif-setup-window.cpp src/utils/yr-db-runtime-verif-LOGGING-INFO.cpp src/widgets/yr-db-runtime-verif-combo-box.cpp src/utils/yr-db-runtime-verif-qmap.cpp src/widgets/yr-db-runtime-verif-push-button.cpp src/widgets/yr-db-runtime-verif-logging-table-widget.cpp src/windows/yr-db-runtime-verif-windows.cpp src/windows/yr-db-runtime-verif-main-window.cpp src/include/yr-db-runtime-verif-MONITOR.cpp src/yr-db-runtime-verif.cpp src/DBUS/YR_DBUS_COMMON.cpp src/utils/yr-db-runtime-verif-logger.cpp src/utils/yr-db-runtime-verif-sqltable-model.cpp src/utils/yr-db-runtime-verif-CONFIG.cpp src/utils/yr-db-runtime-verif-utils.cpp src/utils/yr-db-runtime-verif-database-table-column.cpp src/yr-db-runtime-verif-database.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents src/windows/yr-db-runtime-verif-COMMONS-window.cpp src/windows/yr-db-runtime-verif-setup-window.cpp src/utils/yr-db-runtime-verif-LOGGING-INFO.cpp src/widgets/yr-db-runtime-verif-combo-box.cpp src/utils/yr-db-runtime-verif-qmap.cpp src/widgets/yr-db-runtime-verif-push-button.cpp src/widgets/yr-db-runtime-verif-logging-table-widget.cpp src/windows/yr-db-runtime-verif-windows.cpp src/windows/yr-db-runtime-verif-main-window.cpp src/include/yr-db-runtime-verif-MONITOR.cpp src/yr-db-runtime-verif.cpp src/process/yr-db-runtime-verif-PROCESS.cpp src/process/yr-db-runtime-verif-PROCESS-info.cpp src/DBUS/YR_DBUS_COMMON.cpp src/utils/yr-db-runtime-verif-logger.cpp src/utils/yr-db-runtime-verif-sqltable-model.cpp src/utils/yr-db-runtime-verif-CONFIG.cpp src/utils/yr-db-runtime-verif-utils.cpp src/utils/yr-db-runtime-verif-database-table-column.cpp src/yr-db-runtime-verif-database.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents yr.db-runtime.verif.xml $(DISTDIR)/
 	$(COPY_FILE) --parents verif_adaptor.h $(DISTDIR)/
 	$(COPY_FILE) --parents ui/yr-db-runtime-verif-setup-window.ui ui/yr-db-runtime-verif-main-window.ui $(DISTDIR)/
@@ -532,6 +540,7 @@ moc/moc_yr-db-runtime-verif-setup-window.cpp: src/windows/yr-db-runtime-verif-se
 moc/moc_yr-db-runtime-verif-combo-box.cpp: src/widgets/yr-db-runtime-verif-combo-box.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/utils/yr-db-runtime-verif-CONFIG.hpp \
 		moc/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/yeroth-nissi/yr-db-runtime-verif/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/yeroth-nissi/yr-db-runtime-verif -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include src/widgets/yr-db-runtime-verif-combo-box.hpp -o moc/moc_yr-db-runtime-verif-combo-box.cpp
@@ -558,6 +567,7 @@ moc/moc_yr-db-runtime-verif-windows.cpp: src/windows/yr-db-runtime-verif-windows
 		src/widgets/yr-db-runtime-verif-combo-box.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/utils/yr-db-runtime-verif-CONFIG.hpp \
 		src/widgets/yr-db-runtime-verif-logging-table-widget.hpp \
 		src/utils/yr-db-runtime-verif-qmap.hpp \
 		moc/moc_predefs.h \
@@ -569,6 +579,7 @@ moc/moc_yr-db-runtime-verif-main-window.cpp: src/windows/yr-db-runtime-verif-mai
 		src/widgets/yr-db-runtime-verif-combo-box.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/utils/yr-db-runtime-verif-CONFIG.hpp \
 		src/widgets/yr-db-runtime-verif-logging-table-widget.hpp \
 		src/utils/yr-db-runtime-verif-qmap.hpp \
 		src/windows/yr-db-runtime-verif-COMMONS-window.hpp \
@@ -581,6 +592,7 @@ moc/moc_yr-db-runtime-verif-MONITOR.cpp: src/include/yr-db-runtime-verif-MONITOR
 		src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/utils/yr-db-runtime-verif-CONFIG.hpp \
 		src/DBUS/YR_DBUS_COMMON.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
 		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
@@ -605,6 +617,7 @@ moc/moc_YR_DBUS_COMMON.cpp: src/DBUS/YR_DBUS_COMMON.hpp \
 
 moc/moc_yr-db-runtime-verif-utils.cpp: src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/utils/yr-db-runtime-verif-CONFIG.hpp \
 		moc/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/yeroth-nissi/yr-db-runtime-verif/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/yeroth-nissi/yr-db-runtime-verif -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include src/utils/yr-db-runtime-verif-utils.hpp -o moc/moc_yr-db-runtime-verif-utils.cpp
@@ -664,7 +677,8 @@ ui_yr-db-runtime-verif-main-window.h: ui/yr-db-runtime-verif-main-window.ui \
 		src/widgets/yr-db-runtime-verif-combo-box.hpp \
 		src/utils/yr-db-runtime-verif-qmap.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
-		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp
+		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/utils/yr-db-runtime-verif-CONFIG.hpp
 	/usr/lib/qt5/bin/uic ui/yr-db-runtime-verif-main-window.ui -o ui_yr-db-runtime-verif-main-window.h
 
 compiler_no_pch_compiler_make_all:
@@ -720,12 +734,14 @@ obj/yr-db-runtime-verif-LOGGING-INFO.o: src/utils/yr-db-runtime-verif-LOGGING-IN
 obj/yr-db-runtime-verif-combo-box.o: src/widgets/yr-db-runtime-verif-combo-box.cpp src/widgets/yr-db-runtime-verif-combo-box.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/utils/yr-db-runtime-verif-CONFIG.hpp \
 		obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif-combo-box.o src/widgets/yr-db-runtime-verif-combo-box.cpp
 
 obj/yr-db-runtime-verif-qmap.o: src/utils/yr-db-runtime-verif-qmap.cpp src/utils/yr-db-runtime-verif-qmap.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/utils/yr-db-runtime-verif-CONFIG.hpp \
 		obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif-qmap.o src/utils/yr-db-runtime-verif-qmap.cpp
 
@@ -737,6 +753,7 @@ obj/yr-db-runtime-verif-logging-table-widget.o: src/widgets/yr-db-runtime-verif-
 		src/utils/yr-db-runtime-verif-qmap.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/utils/yr-db-runtime-verif-CONFIG.hpp \
 		obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif-logging-table-widget.o src/widgets/yr-db-runtime-verif-logging-table-widget.cpp
 
@@ -751,6 +768,7 @@ obj/yr-db-runtime-verif-windows.o: src/windows/yr-db-runtime-verif-windows.cpp s
 		src/widgets/yr-db-runtime-verif-combo-box.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/utils/yr-db-runtime-verif-CONFIG.hpp \
 		src/widgets/yr-db-runtime-verif-logging-table-widget.hpp \
 		src/utils/yr-db-runtime-verif-qmap.hpp \
 		obj/yr-db-runtime-verif.gch/c++
@@ -761,6 +779,7 @@ obj/yr-db-runtime-verif-main-window.o: src/windows/yr-db-runtime-verif-main-wind
 		src/widgets/yr-db-runtime-verif-combo-box.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/utils/yr-db-runtime-verif-CONFIG.hpp \
 		src/widgets/yr-db-runtime-verif-logging-table-widget.hpp \
 		src/utils/yr-db-runtime-verif-qmap.hpp \
 		src/windows/yr-db-runtime-verif-COMMONS-window.hpp \
@@ -774,11 +793,11 @@ obj/yr-db-runtime-verif-main-window.o: src/windows/yr-db-runtime-verif-main-wind
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
-		src/utils/yr-db-runtime-verif-CONFIG.hpp \
 		src/windows/yr-db-runtime-verif-windows.hpp \
 		src/windows/yr-db-runtime-verif-setup-window.hpp \
 		ui_yr-db-runtime-verif-setup-window.h \
 		src/widgets/yr-db-runtime-verif-push-button.hpp \
+		src/process/yr-db-runtime-verif-PROCESS.hpp \
 		obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif-main-window.o src/windows/yr-db-runtime-verif-main-window.cpp
 
@@ -786,6 +805,7 @@ obj/yr-db-runtime-verif-MONITOR.o: src/include/yr-db-runtime-verif-MONITOR.cpp s
 		src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/utils/yr-db-runtime-verif-CONFIG.hpp \
 		src/DBUS/YR_DBUS_COMMON.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
 		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
@@ -802,6 +822,7 @@ obj/yr-db-runtime-verif.o: src/yr-db-runtime-verif.cpp src/YRruntimeverification
 		src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/utils/yr-db-runtime-verif-CONFIG.hpp \
 		src/DBUS/YR_DBUS_COMMON.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
 		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
@@ -809,7 +830,6 @@ obj/yr-db-runtime-verif.o: src/yr-db-runtime-verif.cpp src/YRruntimeverification
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
-		src/utils/yr-db-runtime-verif-CONFIG.hpp \
 		src/yr-db-runtime-verif-database.hpp \
 		src/windows/yr-db-runtime-verif-windows.hpp \
 		src/windows/yr-db-runtime-verif-setup-window.hpp \
@@ -825,6 +845,34 @@ obj/yr-db-runtime-verif.o: src/yr-db-runtime-verif.cpp src/YRruntimeverification
 		src/utils/yr-db-runtime-verif-logger.hpp \
 		obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif.o src/yr-db-runtime-verif.cpp
+
+obj/yr-db-runtime-verif-PROCESS.o: src/process/yr-db-runtime-verif-PROCESS.cpp src/process/yr-db-runtime-verif-PROCESS.hpp \
+		src/utils/yr-db-runtime-verif-CONFIG.hpp \
+		src/utils/yr-db-runtime-verif-utils.hpp \
+		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/windows/yr-db-runtime-verif-windows.hpp \
+		src/windows/yr-db-runtime-verif-setup-window.hpp \
+		ui_yr-db-runtime-verif-setup-window.h \
+		src/widgets/yr-db-runtime-verif-push-button.hpp \
+		src/windows/yr-db-runtime-verif-COMMONS-window.hpp \
+		src/utils/yr-db-runtime-verif-LOGGING-INFO.hpp \
+		src/windows/yr-db-runtime-verif-main-window.hpp \
+		ui_yr-db-runtime-verif-main-window.h \
+		src/widgets/yr-db-runtime-verif-combo-box.hpp \
+		src/widgets/yr-db-runtime-verif-logging-table-widget.hpp \
+		src/utils/yr-db-runtime-verif-qmap.hpp \
+		src/process/yr-db-runtime-verif-PROCESS-info.hpp \
+		obj/yr-db-runtime-verif.gch/c++
+	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif-PROCESS.o src/process/yr-db-runtime-verif-PROCESS.cpp
+
+obj/yr-db-runtime-verif-PROCESS-info.o: src/process/yr-db-runtime-verif-PROCESS-info.cpp src/process/yr-db-runtime-verif-PROCESS-info.hpp \
+		src/process/yr-db-runtime-verif-PROCESS.hpp \
+		src/utils/yr-db-runtime-verif-CONFIG.hpp \
+		src/utils/yr-db-runtime-verif-utils.hpp \
+		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/utils/yr-db-runtime-verif-logger.hpp \
+		obj/yr-db-runtime-verif.gch/c++
+	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif-PROCESS-info.o src/process/yr-db-runtime-verif-PROCESS-info.cpp
 
 obj/YR_DBUS_COMMON.o: src/DBUS/YR_DBUS_COMMON.cpp src/DBUS/YR_DBUS_COMMON.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
@@ -855,6 +903,7 @@ obj/YR_DBUS_COMMON.o: src/DBUS/YR_DBUS_COMMON.cpp src/DBUS/YR_DBUS_COMMON.hpp \
 obj/yr-db-runtime-verif-logger.o: src/utils/yr-db-runtime-verif-logger.cpp src/utils/yr-db-runtime-verif-logger.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/utils/yr-db-runtime-verif-CONFIG.hpp \
 		obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif-logger.o src/utils/yr-db-runtime-verif-logger.cpp
 
@@ -863,6 +912,7 @@ obj/yr-db-runtime-verif-sqltable-model.o: src/utils/yr-db-runtime-verif-sqltable
 		src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/utils/yr-db-runtime-verif-CONFIG.hpp \
 		src/utils/yr-db-runtime-verif-logger.hpp \
 		obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif-sqltable-model.o src/utils/yr-db-runtime-verif-sqltable-model.cpp
@@ -886,6 +936,8 @@ obj/yr-db-runtime-verif-CONFIG.o: src/utils/yr-db-runtime-verif-CONFIG.cpp src/u
 
 obj/yr-db-runtime-verif-utils.o: src/utils/yr-db-runtime-verif-utils.cpp src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+		src/utils/yr-db-runtime-verif-CONFIG.hpp \
+		src/process/yr-db-runtime-verif-PROCESS.hpp \
 		src/utils/yr-db-runtime-verif-logger.hpp \
 		obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif-utils.o src/utils/yr-db-runtime-verif-utils.cpp
@@ -965,6 +1017,8 @@ install_sources: first FORCE
 	$(QINSTALL) /home/yeroth-nissi/yr-db-runtime-verif/src/windows/yr-db-runtime-verif-main-window.cpp $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-main-window.cpp
 	$(QINSTALL) /home/yeroth-nissi/yr-db-runtime-verif/src/include/yr-db-runtime-verif-MONITOR.cpp $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-MONITOR.cpp
 	$(QINSTALL) /home/yeroth-nissi/yr-db-runtime-verif/src/yr-db-runtime-verif.cpp $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif.cpp
+	$(QINSTALL) /home/yeroth-nissi/yr-db-runtime-verif/src/process/yr-db-runtime-verif-PROCESS.cpp $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-PROCESS.cpp
+	$(QINSTALL) /home/yeroth-nissi/yr-db-runtime-verif/src/process/yr-db-runtime-verif-PROCESS-info.cpp $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-PROCESS-info.cpp
 	$(QINSTALL) /home/yeroth-nissi/yr-db-runtime-verif/src/DBUS/YR_DBUS_COMMON.cpp $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./YR_DBUS_COMMON.cpp
 	$(QINSTALL) /home/yeroth-nissi/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-logger.cpp $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-logger.cpp
 	$(QINSTALL) /home/yeroth-nissi/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-sqltable-model.cpp $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-sqltable-model.cpp
@@ -985,6 +1039,8 @@ install_sources: first FORCE
 	$(QINSTALL) /home/yeroth-nissi/yr-db-runtime-verif/src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-definition-oo-class-operators.hpp
 	$(QINSTALL) /home/yeroth-nissi/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-definition-format-date-time.hpp $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-definition-format-date-time.hpp
 	$(QINSTALL) /home/yeroth-nissi/yr-db-runtime-verif/src/include/yr-db-runtime-verif-software-text-configuration.hpp $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-software-text-configuration.hpp
+	$(QINSTALL) /home/yeroth-nissi/yr-db-runtime-verif/src/process/yr-db-runtime-verif-PROCESS.hpp $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-PROCESS.hpp
+	$(QINSTALL) /home/yeroth-nissi/yr-db-runtime-verif/src/process/yr-db-runtime-verif-PROCESS-info.hpp $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-PROCESS-info.hpp
 	$(QINSTALL) /home/yeroth-nissi/yr-db-runtime-verif/src/DBUS/YR_DBUS_COMMON.hpp $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./YR_DBUS_COMMON.hpp
 	$(QINSTALL) /home/yeroth-nissi/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-logger.hpp $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-logger.hpp
 	$(QINSTALL) /home/yeroth-nissi/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-sqltable-model.hpp $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-sqltable-model.hpp
@@ -1005,6 +1061,8 @@ uninstall_sources: FORCE
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-sqltable-model.hpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-logger.hpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./YR_DBUS_COMMON.hpp
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-PROCESS-info.hpp
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-PROCESS.hpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-software-text-configuration.hpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-definition-format-date-time.hpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-definition-oo-class-operators.hpp
@@ -1025,6 +1083,8 @@ uninstall_sources: FORCE
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-sqltable-model.cpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-logger.cpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./YR_DBUS_COMMON.cpp
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-PROCESS-info.cpp
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-PROCESS.cpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif.cpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-MONITOR.cpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yeroth-nissi/yr-db-runtime-verif/./yr-db-runtime-verif-main-window.cpp

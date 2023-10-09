@@ -34,6 +34,11 @@ QString YR_DB_RUNTIME_VERIF_Config::_db_user_pwd("");
 QString YR_DB_RUNTIME_VERIF_Config::_db_connection_options("");
 
 
+QString YR_DB_RUNTIME_VERIF_Config::temporaryFilesDir("/tmp");
+
+
+QString YR_DB_RUNTIME_VERIF_Config::pathToLatexSystemRootFolder("/usr/bin");
+
 QString YR_DB_RUNTIME_VERIF_Config::pathToPdfReader("/usr/bin/evince");
 
 

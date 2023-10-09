@@ -37,6 +37,34 @@ public:
     }
 
 
+
+    inline static QString pathToPs2Pdf()
+    {
+        return QString("%1/ps2pdf").arg(pathToLatexSystemRootFolder);
+    }
+
+    inline static QString pathToDvips()
+    {
+        return QString("%1/dvips").arg(pathToLatexSystemRootFolder);
+    }
+
+    inline static QString pathToLatex()
+    {
+        return QString("%1/latex").arg(pathToLatexSystemRootFolder);
+    }
+
+    inline static QString pathToPdfLatex()
+    {
+        return QString("%1/pdflatex").arg(pathToLatexSystemRootFolder);
+    }
+
+    inline static QString pathToLualatex()
+    {
+        return QString("%1/lualatex").arg(pathToLatexSystemRootFolder);
+    }
+
+
+
     static void init_YR_DB_RUNTIME_VERIF_Config(QString initCfg);
 
     static void save_YR_DB_RUNTIME_VERIF_Config();
@@ -55,6 +83,11 @@ public:
 
     static QString _db_connection_options;
 
+
+    static QString temporaryFilesDir;
+
+
+    static QString pathToLatexSystemRootFolder;
 
     static QString pathToPdfReader;
 
