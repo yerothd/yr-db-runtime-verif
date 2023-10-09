@@ -42,11 +42,16 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 	toolBar_mainWindow_YR_DB_RUNTIME_VERIF
 		->setStyleSheet(QMESSAGE_BOX_STYLE_SHEET);
 
+
     actionVIEW_RUNTIME_monitor->setVisible(false);
 
     actionPRINT_event_log_excerpt->setVisible(false);
 
     action_save_to_csv_format_sheet->setVisible(false);
+
+    actionExport_as_CSV_till_selected_SQL_event->setVisible(false);
+
+    actionSet_current_selected_SQL_event_as_filter_and_search->setVisible(false);
 
 
     comboBox_global_filtering->addItem("");
@@ -188,6 +193,10 @@ int YRDBRUNTIMEVERIF_MainWindow::
         actionPRINT_event_log_excerpt->setVisible(true);
 
         action_save_to_csv_format_sheet->setVisible(true);
+
+        actionExport_as_CSV_till_selected_SQL_event->setVisible(true);
+
+        actionSet_current_selected_SQL_event_as_filter_and_search->setVisible(true);
 
 
         first_time_call_ever = false;
@@ -890,10 +899,11 @@ void YRDBRUNTIMEVERIF_MainWindow::ACTION_USER_GUIDE_method()
 void YRDBRUNTIMEVERIF_MainWindow::
         contextMenuEvent(QContextMenuEvent *event)
 {
-    if (tableWidget_LOGGING->rowCount() > 0)
+    if (actionPRINT_event_log_excerpt->isVisible())
     {
         QMenu menu(this);
-        menu.setPalette(YRDBRUNTIMEVERIF_MainWindow::CONTEXT_MENU_PALETTE_QCOLOR);
+        //menu.setPalette(YRDBRUNTIMEVERIF_MainWindow::CONTEXT_MENU_PALETTE_QCOLOR);
+        menu.addAction(actionExport_as_CSV_till_selected_SQL_event);
         menu.addAction(actionSet_current_selected_SQL_event_as_filter_and_search);
         menu.exec(event->globalPos());
     }
