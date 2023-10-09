@@ -374,13 +374,13 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
                            "\\begin{tabular}"
                            "{|l|c|c|c|c|c|} \\hline");
 
-    texTable_IN_OUT.append(" & & & & &			\\\\ \n"
-                           "ID			        & 	 \n"
-                           "time stamp			& 	 \n"
-                           "sql event log		& 	 \n"
-                           "source			    & 	 \n"
-                           "target 	            & 	 \n"
-                           "changed qty			\\\\ \n"
+    texTable_IN_OUT.append(" & & & & &			    \\\\ \n"
+                           "\\textbf{ID}	        & 	 \n"
+                           "\\textbf{time stamp}	& 	 \n"
+                           "\\textbf{sql event log}	& 	 \n"
+                           "\\textbf{source}	    & 	 \n"
+                           "\\textbf{target} 	    & 	 \n"
+                           "\\textbf{changed qty}   \\\\ \n"
                            "& & & & &				\\\\ \\hline \\hline \n");
 
 
@@ -486,13 +486,13 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
                                        "\\begin{tabular}"
                                        "{|l|c|c|c|c|c|} \\hline");
 
-                texTable_IN_OUT.append(" & & & & &		    \\\\ \n"
-                                       "ID			        & 	 \n"
-                                       "time stamp			& 	 \n"
-                                       "sql event log		& 	 \n"
-                                       "source			    & 	 \n"
-                                       "target 	            & 	 \n"
-                                       "changed qty			\\\\ \n"
+                texTable_IN_OUT.append(" & & & & &		            \\\\ \n"
+                                       "\\textbf{ID}			    & 	 \n"
+                                       "\\textbf{time stamp}        & 	 \n"
+                                       "\\textbf{sql event log}	    & 	 \n"
+                                       "\\textbf{source}	        & 	 \n"
+                                       "\\textbf{target} 	        & 	 \n"
+                                       "\\textbf{changed qty}		\\\\ \n"
                                        "& & & & &			\\\\ \\hline \\hline \n");
             }
 
