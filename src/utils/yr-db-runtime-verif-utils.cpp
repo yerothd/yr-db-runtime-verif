@@ -115,12 +115,13 @@ const QChar YR_DB_RUNTIME_VERIF_Utils::SLASH_CHAR('/');
 
 
 
-void YR_DB_RUNTIME_VERIF_Utils::getCurrentSimplifiedDate(QString 		&date_IN_OUT,
-                                                         const QDate 	&aDate)
+void YR_DB_RUNTIME_VERIF_Utils::
+        getCurrentSimplifiedDateWITHmilliseconds(QString 	 &date_IN_OUT,
+                                                 const QDate &aDate)
 {
     date_IN_OUT.append(QString("%1 at %2")
                         .arg(aDate.toString("dd-MM-yyyy"),
-                             CURRENT_TIME));
+                             CURRENT_TIME_WITH_MILLISECONDS));
 
     date_IN_OUT = YR_DB_RUNTIME_VERIF_Utils::LATEX_IN_OUT_handleForeignAccents(date_IN_OUT);
 }

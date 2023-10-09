@@ -370,7 +370,7 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
 	bool color_this_row_grey = true;
 
 
-	static const int LINE_COUNT_PER_PDF_PAGE = 50;
+	static const int LINE_COUNT_PER_PDF_PAGE = 42;
 
 
 	QString cell_text;
@@ -523,12 +523,12 @@ bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt()
     QString current_date;
 
 
-    YR_DB_RUNTIME_VERIF_Utils::getCurrentSimplifiedDate(current_date);
+    YR_DB_RUNTIME_VERIF_Utils::getCurrentSimplifiedDateWITHmilliseconds(current_date);
 
 
     EN_template_EVENT_LOG__TexDocument.replace("YRDBRUNTIMEVERIFPAPERSPEC", "a4paper");
     EN_template_EVENT_LOG__TexDocument.replace("YRDBRUNTIMEVERIFDATE", current_date);
-    EN_template_EVENT_LOG__TexDocument.replace("YRDBRUNTIMEVERIFPRINTTIME", CURRENT_TIME);
+    EN_template_EVENT_LOG__TexDocument.replace("YRDBRUNTIMEVERIFPRINTTIME", CURRENT_TIME_WITH_MILLISECONDS);
 
 
 

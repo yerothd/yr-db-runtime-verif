@@ -7,7 +7,7 @@
 #ifndef _SRC_YR_DB_RUNTIME_VERIF_UTILS_HPP_
 #define _SRC_YR_DB_RUNTIME_VERIF_UTILS_HPP_
 
-#include "yr-db-runtime-verif-definition-format-date-time.hpp"
+#include "src/include/yr-db-runtime-verif-definition-format-date-time.hpp"
 
 
 #include "yr-db-runtime-verif-CONFIG.hpp"
@@ -90,14 +90,13 @@ public:
     }
 
 
+    static void getCurrentSimplifiedDateWITHmilliseconds(QString 	 &date_IN_OUT,
+                                                         const QDate &aDate);
 
-    static void getCurrentSimplifiedDate(QString 		&date_IN_OUT,
-                                         const QDate 	&aDate);
-
-    inline static void getCurrentSimplifiedDate(QString &date_IN_OUT)
+    inline static void getCurrentSimplifiedDateWITHmilliseconds(QString &date_IN_OUT)
     {
-        YR_DB_RUNTIME_VERIF_Utils::getCurrentSimplifiedDate(date_IN_OUT,
-                                              QDate::currentDate());
+        YR_DB_RUNTIME_VERIF_Utils::getCurrentSimplifiedDateWITHmilliseconds(date_IN_OUT,
+                                                                            QDate::currentDate());
     }
 
     static void getCurrentLocaleDate(QString 		&date_IN_OUT,
@@ -126,7 +125,7 @@ public:
     {
         return QString("%1%2%3").arg(fileName,
                                      QDate::currentDate().toString("-yyyyMMdd"),
-                                     QTime::currentTime().toString("_HHmmss"));
+                                     QTime::currentTime().toString("_HHmmss_zzz"));
     }
 
 
@@ -400,6 +399,7 @@ private:
 #define GET_CURRENCY_STRING_NUM_FOR_LATEX(NUM) YR_DB_RUNTIME_VERIF_Utils::LATEX_IN_OUT_handleForeignAccents(GET_CURRENCY_STRING_NUM(NUM))
 
 
+#define CURRENT_TIME_WITH_MILLISECONDS QTime::currentTime().toString(YR_DB_RUNTIME_VERIF_Utils::TIME_FORMAT_WITH_MILLISECONDS)
 
 #define FILE_NAME_WITH_CURRENT_DATE_AND_TIME(F) YR_DB_RUNTIME_VERIF_Utils::getFileNameWithDateANDCurrentTime(F)
 

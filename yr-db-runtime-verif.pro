@@ -46,7 +46,7 @@ HEADERS = src/windows/yr-db-runtime-verif-COMMONS-window.hpp \
 			src/windows/yr-db-runtime-verif-main-window.hpp \
 			src/include/yr-db-runtime-verif-MONITOR.hpp \
 			src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
-			src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+			src/include/yr-db-runtime-verif-definition-format-date-time.hpp \
 			src/include/yr-db-runtime-verif-software-text-configuration.hpp \
 			src/process/yr-db-runtime-verif-PROCESS.hpp \
 			src/process/yr-db-runtime-verif-PROCESS-info.hpp \

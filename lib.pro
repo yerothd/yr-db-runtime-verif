@@ -28,7 +28,7 @@ OBJECTS_DIR = obj
 
 PRECOMPILED_HEADER  = src/include/yr-db-runtime-verif-precompiled-header.hpp
  
-HEADERS = src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+HEADERS = src/include/yr-db-runtime-verif-definition-format-date-time.hpp \
 			src/DBUS/yr-db-runtime-verif-DBUS-CLIENT-ADAPTOR.h \
 			src/yr-db-runtime-verif-interface.h \
 			src/utils/yr-db-runtime-verif-logger.hpp \
@@ -36,7 +36,7 @@ HEADERS = src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
 		  src/utils/yr-db-runtime-verif-utils.hpp \
 			src/utils/yr-db-runtime-verif-database-table-column.hpp
 
-SOURCES = src/utils/yr-db-runtime-verif-definition-format-date-time.hpp \
+SOURCES = src/include/yr-db-runtime-verif-definition-format-date-time.hpp \
 			src/DBUS/yr-db-runtime-verif-DBUS-CLIENT-ADAPTOR.cpp \
 			src/yr-db-runtime-verif-interface.cpp \
 			src/utils/yr-db-runtime-verif-logger.cpp \
