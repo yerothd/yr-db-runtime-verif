@@ -349,12 +349,12 @@ void YRDBRUNTIMEVERIF_MainWindow::VIEW_current_RUNTIME_MONITOR()
 void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable_IN_OUT)
 {
     texTable_IN_OUT.append("\\begin{table*}[!htbp]\n"
-                           //"\\resizebox{\\textwidth}{!}{\n"
                            "\\centering\n"
+                           "\\resizebox{\\textwidth}{!}{\n"
                            "\\begin{tabular}"
                            "{|l|c|c|c|c|c|} \\hline");
 
-    texTable_IN_OUT.append("& & & & &			\\\\ \n"
+    texTable_IN_OUT.append(" & & & & &			\\\\ \n"
                            "ID			        & 	 \n"
                            "time stamp			& 	 \n"
                            "sql event log		& 	 \n"
@@ -454,19 +454,18 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
             if (current_table_count < TABLE_COUNT)
             {
                 texTable_IN_OUT.append("\\hline\n"
-                                       //"\\end{tabular}}\n"
-                                       "\\end{tabular}\n"
+                                       "\\end{tabular}}\n"
                                        "\\end{table*}\n");
 
                 texTable_IN_OUT.append("\\newpage\n");
 
                 texTable_IN_OUT.append("\\begin{table*}[!htbp]\n"
-                                       //"\\resizebox{\\textwidth}{!}{\n"
                                        "\\centering\n"
+                                       "\\resizebox{\\textwidth}{!}{\n"
                                        "\\begin{tabular}"
                                        "{|l|c|c|c|c|c|} \\hline");
 
-                texTable_IN_OUT.append("& & & & &		    \\\ \n"
+                texTable_IN_OUT.append(" & & & & &		    \\\\ \n"
                                        "ID			        & 	 \n"
                                        "time stamp			& 	 \n"
                                        "sql event log		& 	 \n"
@@ -483,8 +482,7 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
 
 
     texTable_IN_OUT.append("\\hline\n"
-                           //"\\end{tabular}}\n"
-                           "\\end{tabular}\n"
+                           "\\end{tabular}}\n"
                            "\\end{table*}\n");
 
 }
