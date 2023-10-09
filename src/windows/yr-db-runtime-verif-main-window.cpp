@@ -371,7 +371,7 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
 	bool color_this_row_grey = true;
 
 
-	static const int LINE_COUNT_PER_PDF_PAGE = 42;
+	static int LINE_COUNT_PER_PDF_PAGE = 48;
 
 
 	QString cell_text;
@@ -443,6 +443,13 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
         {
             texTable_IN_OUT.append("\\hline\n");
         }
+
+
+        if (current_table_count > 0)
+        {
+            LINE_COUNT_PER_PDF_PAGE = 60;
+        }
+
 
         ++current_pdf_page_line_count;
 
