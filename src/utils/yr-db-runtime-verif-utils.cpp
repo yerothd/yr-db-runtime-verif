@@ -104,7 +104,7 @@ const QString YR_DB_RUNTIME_VERIF_Utils::JH_NISSI_SERVER_OBJECT("/");
 
 QString YR_DB_RUNTIME_VERIF_Utils::EN_template_EVENT_LOG_TEX_document("");
 
-const QString YR_DB_RUNTIME_VERIF_Utils::FILE_YR_DB_RUNTIME_VERIF_EVENT_LOG_PDF_TEMPLATE_EN("EN_template_EVENT_LOG_TEX_document.tex");
+const QString YR_DB_RUNTIME_VERIF_Utils::FILE_YR_DB_RUNTIME_VERIF_EVENT_LOG_PDF_TEMPLATE_EN(":EN_template_EVENT_LOG_TEX_document.tex");
 
 
 
