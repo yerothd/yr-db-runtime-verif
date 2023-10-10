@@ -65,6 +65,9 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     comboBox_SQL_event_filtering->addItem("INSERT");
 
 
+    setCurrentRuntimeMonitorNameVisible(false);
+
+
     comboBox_RUNTIME_MONITOR_NAME->yr__setEditable(false);
 
 
@@ -89,6 +92,7 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     tableWidget_LOGGING_postconditions->setVisible(false);
     tableWidget_LOGGING_guarded_condition_expression->setVisible(false);
 
+    setCurrentRuntimeMonitorNameVisible(false);
 
 
     connect(action_save_to_csv_format_sheet,
@@ -301,6 +305,8 @@ void YRDBRUNTIMEVERIF_MainWindow::
     tableWidget_LOGGING_postconditions->setVisible(true);
     tableWidget_LOGGING_guarded_condition_expression->setVisible(true);
 
+    setCurrentRuntimeMonitorNameVisible(true);
+
 
 	tableWidget_LOGGING_4
 		->ADD_ITEM_3(QString("%1:%2:%3")
@@ -403,6 +409,14 @@ void YRDBRUNTIMEVERIF_MainWindow::VIEW_current_RUNTIME_MONITOR()
 		QString DOT_FORMAT =
 				a_to_print_DOT_FORMAT_runtime_monitor->print_TO_dot_FILE(true);
 	}
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::setCurrentRuntimeMonitorNameVisible(bool aVisibleValue)
+{
+    label_RUNTIME_MONITOR_VERIFIER_TESTER->setVisible(aVisibleValue);
+
+    comboBox_RUNTIME_MONITOR_NAME->setVisible(aVisibleValue);
 }
 
 
@@ -795,6 +809,8 @@ void YRDBRUNTIMEVERIF_MainWindow::
 		    tableWidget_LOGGING_postconditions->setVisible(true);
             tableWidget_LOGGING_guarded_condition_expression->setVisible(true);
 
+            setCurrentRuntimeMonitorNameVisible(true);
+
 
             // 3. Runtime monitor name is set on the main window
             // only for SQL events that lead to an accepting
@@ -821,6 +837,8 @@ void YRDBRUNTIMEVERIF_MainWindow::
 		    tableWidget_LOGGING_PRECONDITIONS->setVisible(false);
 		    tableWidget_LOGGING_postconditions->setVisible(false);
 		    tableWidget_LOGGING_guarded_condition_expression->setVisible(false);
+
+		    setCurrentRuntimeMonitorNameVisible(false);
 		}
 
 

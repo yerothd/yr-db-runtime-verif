@@ -98,6 +98,7 @@ protected slots:
 
 	virtual void VIEW_current_RUNTIME_MONITOR();
 
+    virtual void setCurrentRuntimeMonitorNameVisible(bool aVisibleValue);
 
     virtual inline void setLast_SelectedRow_Row_ID(const QModelIndex &a_model_CELL_index)
     {
