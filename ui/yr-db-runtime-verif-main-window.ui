@@ -9946,6 +9946,7 @@ background-color: rgb(0, 0, 0); </string>
     <addaction name="actionVIEW_RUNTIME_monitor"/>
     <addaction name="separator"/>
     <addaction name="actionPRINT_event_log_excerpt"/>
+    <addaction name="actionPRINT_event_log_excerpt_till_selected_SQL_event"/>
     <addaction name="separator"/>
     <addaction name="actionExport_as_CSV_till_selected_SQL_event"/>
     <addaction name="action_save_to_csv_format_sheet"/>
@@ -10623,6 +10624,24 @@ background-color: rgb(0, 0, 0); </string>
    </property>
    <property name="toolTip">
     <string>Export as CSV till selected SQL event</string>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </action>
+  <action name="actionPRINT_event_log_excerpt_till_selected_SQL_event">
+   <property name="icon">
+    <iconset resource="../yr-db-runtime-verif.qrc">
+     <normaloff>:/yr-db-runtime-verif-images/print-selected-event-log-sequences.png</normaloff>
+     <normalon>:/yr-db-runtime-verif-images/print-selected-event-log-sequences.png</normalon>:/yr-db-runtime-verif-images/print-selected-event-log-sequences.png</iconset>
+   </property>
+   <property name="text">
+    <string>Print event log excerpt till selected SQL event</string>
+   </property>
+   <property name="toolTip">
+    <string>Print event log excerpt till selected SQL event</string>
    </property>
    <property name="font">
     <font>

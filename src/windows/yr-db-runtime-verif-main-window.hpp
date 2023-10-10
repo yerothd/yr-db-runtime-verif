@@ -105,7 +105,8 @@ protected slots:
     }
 
 
-	virtual void get_PRINT_OUT_TexTableString(QString &texTable_IN_OUT);
+	virtual void get_PRINT_OUT_TexTableString(QString &texTable_IN_OUT,
+                                              int     row_MAX_TO_GO_export = -1);
 
 
     virtual bool PRINT_event_log_excerpt();

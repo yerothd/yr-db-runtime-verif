@@ -46,6 +46,8 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 
     actionVIEW_RUNTIME_monitor->setVisible(false);
 
+    actionPRINT_event_log_excerpt_till_selected_SQL_event->setVisible(false);
+
     actionPRINT_event_log_excerpt->setVisible(false);
 
     action_save_to_csv_format_sheet->setVisible(false);
@@ -138,10 +140,17 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
             SLOT(VIEW_current_RUNTIME_MONITOR()));
 
 
+
+    connect(actionPRINT_event_log_excerpt_till_selected_SQL_event,
+    		SIGNAL(triggered()),
+			this,
+            SLOT(PRINT_event_log_excerpt()));
+
     connect(actionPRINT_event_log_excerpt,
     		SIGNAL(triggered()),
 			this,
             SLOT(PRINT_event_log_excerpt()));
+
 
 
     // USEFUL TO UPDATE sql event information WHEN
@@ -212,6 +221,8 @@ int YRDBRUNTIMEVERIF_MainWindow::
     if (first_time_call_ever)
     {
         actionVIEW_RUNTIME_monitor->setVisible(true);
+
+        actionPRINT_event_log_excerpt_till_selected_SQL_event->setVisible(true);
 
         actionPRINT_event_log_excerpt->setVisible(true);
 
@@ -398,7 +409,8 @@ void YRDBRUNTIMEVERIF_MainWindow::VIEW_current_RUNTIME_MONITOR()
 }
 
 
-void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable_IN_OUT)
+void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable_IN_OUT,
+                                                               int     row_MAX_TO_GO_export /* = -1 */)
 {
     texTable_IN_OUT.append("\\begin{table*}[!htbp]\n"
                            "\\centering\n"
@@ -420,10 +432,21 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
 
 	int columnCount = tableWidget_LOGGING->columnCount();
 
+
+
+    int MAX_TABLE_MODDEL_ROW_COUNT__to_export = rowCount;
+
+	if (row_MAX_TO_GO_export > -1)
+	{
+        MAX_TABLE_MODDEL_ROW_COUNT__to_export = row_MAX_TO_GO_export;
+	}
+
+
+
 	bool color_this_row_grey = true;
 
 
-	int LINE_COUNT_PER_PDF_PAGE = 48;
+	int LINE_COUNT_PER_PDF_PAGE = 45;
 
 
 	QString cell_text;
@@ -435,9 +458,11 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
 
 	int current_pdf_page_line_count = 0;
 
+	uint Visual_ID_counter = 0;
+
 	//Tex table body
 	for (int i = 0;
-         i < rowCount && current_pdf_page_line_count <= LINE_COUNT_PER_PDF_PAGE;
+         i < MAX_TABLE_MODDEL_ROW_COUNT__to_export && current_pdf_page_line_count <= LINE_COUNT_PER_PDF_PAGE;
          ++i)
 	{
         color_this_row_grey = (0 == i%2);
@@ -454,7 +479,9 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
 
         //We add a cell for row numbering wioth an ID number.
         {
-            QTableWidgetItem *an_item_ID = new QTableWidgetItem(QString::number(i));
+            ++Visual_ID_counter;
+
+            QTableWidgetItem *an_item_ID = new QTableWidgetItem(QString::number(Visual_ID_counter));
 
             if (0 != an_item_ID)
             {
@@ -570,7 +597,21 @@ bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt()
 
 	//YR_DB_RUNTIME_VERIF_Utils::getCurrentSimplifiedDate(factureDate);
 
-	get_PRINT_OUT_TexTableString(EN_template_EVENT_LOG__tex_table);
+
+    int a_row_FOR_pdf_printing_max = -1;
+
+    if (0 != _Last_SelectedRow_Row_INDEX)
+    {
+        a_row_FOR_pdf_printing_max = _Last_SelectedRow_Row_INDEX->row() + 1;
+    }
+    else
+    {
+        a_row_FOR_pdf_printing_max = -1;
+    }
+
+
+	get_PRINT_OUT_TexTableString(EN_template_EVENT_LOG__tex_table,
+                                 a_row_FOR_pdf_printing_max);
 
 
 	//qDebug() << EN_template_EVENT_LOG__tex_table;
@@ -947,9 +988,15 @@ void YRDBRUNTIMEVERIF_MainWindow::
     if (actionPRINT_event_log_excerpt->isVisible())
     {
         QMenu menu(this);
+
         menu.setPalette(YRDBRUNTIMEVERIF_MainWindow::CONTEXT_MENU_PALETTE_QCOLOR);
+
         menu.addAction(actionExport_as_CSV_till_selected_SQL_event);
+
+        menu.addAction(actionPRINT_event_log_excerpt_till_selected_SQL_event);
+
         menu.addAction(actionSet_current_selected_SQL_event_as_filter_and_search);
+
         menu.exec(event->globalPos());
     }
 }

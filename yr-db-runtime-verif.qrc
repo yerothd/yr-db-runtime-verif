@@ -9,6 +9,7 @@
 	<file>yr-db-runtime-verif-images/printing-setting.png</file>
 	<file>yr-db-runtime-verif-images/SQL-event-partial-log.png</file>
 	<file>yr-db-runtime-verif-images/PRINT-event-log.png</file>
+	<file>yr-db-runtime-verif-images/print-selected-event-log-sequences.png</file>
 	<file>yr-db-runtime-verif-images/pdf-print-icon.svg</file>
   </qresource>
 </RCC>
