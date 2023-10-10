@@ -48,7 +48,7 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 
     actionPRINT_event_log_excerpt_till_selected_SQL_event->setVisible(false);
 
-    actionPRINT_event_log_excerpt->setVisible(false);
+    actionPRINT_event_log_FULL->setVisible(false);
 
     action_save_to_csv_format_sheet->setVisible(false);
 
@@ -147,7 +147,7 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
             SLOT(PRINT_event_log_excerpt_till_selected_SQL_event()));
 
 
-    connect(actionPRINT_event_log_excerpt,
+    connect(actionPRINT_event_log_FULL,
     		SIGNAL(triggered()),
 			this,
             SLOT(PRINT_event_log_excerpt()));
@@ -225,7 +225,7 @@ int YRDBRUNTIMEVERIF_MainWindow::
 
         actionPRINT_event_log_excerpt_till_selected_SQL_event->setVisible(true);
 
-        actionPRINT_event_log_excerpt->setVisible(true);
+        actionPRINT_event_log_FULL->setVisible(true);
 
         action_save_to_csv_format_sheet->setVisible(true);
 
@@ -991,7 +991,7 @@ void YRDBRUNTIMEVERIF_MainWindow::ACTION_USER_GUIDE_method()
 void YRDBRUNTIMEVERIF_MainWindow::
         contextMenuEvent(QContextMenuEvent *event)
 {
-    if (actionPRINT_event_log_excerpt->isVisible())
+    if (actionPRINT_event_log_FULL->isVisible())
     {
         QMenu menu(this);
 
@@ -999,7 +999,7 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
         menu.addAction(actionExport_as_CSV_till_selected_SQL_event);
 
-        menu.addAction(actionPRINT_event_log_excerpt);
+        menu.addAction(actionPRINT_event_log_FULL);
 
         menu.addAction(actionPRINT_event_log_excerpt_till_selected_SQL_event);
 
