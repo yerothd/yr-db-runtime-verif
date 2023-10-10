@@ -631,6 +631,7 @@ qrc_yr-db-runtime-verif.cpp: yr-db-runtime-verif.qrc \
 		/usr/lib/qt5/bin/rcc \
 		EN_template_EVENT_LOG_TEX_document.tex \
 		yr-db-runtime-verif-images/LOGO-icon.png \
+		yr-db-runtime-verif-images/print-selected-event-log-sequences.png \
 		yr-db-runtime-verif-images/question.png \
 		yr-db-runtime-verif-images/printing-setting.png \
 		yr-db-runtime-verif-images/SQL-event-partial-log.png \
