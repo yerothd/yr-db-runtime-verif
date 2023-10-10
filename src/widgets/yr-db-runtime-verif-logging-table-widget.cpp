@@ -35,7 +35,7 @@ YRDBRUNTIMEVERIF_TableWidget::YRDBRUNTIMEVERIF_TableWidget(QWidget *parent /* = 
 {
     _curRow = 0;
 
-    _myQStandardItemFlags = Qt::ItemIsSelectable | Qt::ItemIsEnabled;
+    _myQStandardItemFlags = Qt::ItemIsEditable | Qt::ItemIsSelectable | Qt::ItemIsEnabled;
 
 
     setQStandardItemFlags(_myQStandardItemFlags);
@@ -47,7 +47,7 @@ YRDBRUNTIMEVERIF_TableWidget::YRDBRUNTIMEVERIF_TableWidget(QWidget *parent /* = 
 
     setSelectionMode(QAbstractItemView::SingleSelection);
 
-    setEditTriggers(QAbstractItemView::NoEditTriggers);
+    setEditTriggers(QAbstractItemView::DoubleClicked);
 
 
     setMaxSize(MAX_TABLE_WIDGET_ROW_COUNT);
