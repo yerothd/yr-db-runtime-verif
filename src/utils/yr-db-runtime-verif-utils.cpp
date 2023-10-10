@@ -150,16 +150,52 @@ QString YR_DB_RUNTIME_VERIF_Utils::getUniquePrefixFileInTemporaryFilesDir(QStrin
 
 
 void YR_DB_RUNTIME_VERIF_Utils::
-        handleTexTableItemText(int 	           texTableColumnCount,
-                               QString 		   &texTable_IN_OUT,
-                               int 			   itemTextColumnPosition,
-                               const QString   &itemText)
+        handleTexTableItemText(int 	            texTableColumnCount,
+                               QString 		    &texTable_IN_OUT,
+                               int 			    itemTextColumnPosition,
+                               const QString    &itemText,
+                               QTableWidgetItem *an_item_widget /* = 0 */)
 {
 	QString resultItemText(YR_DB_RUNTIME_VERIF_Utils::LATEX_IN_OUT_handleForeignAccents(itemText));
 
 	if (!resultItemText.isEmpty())
 	{
-		texTable_IN_OUT.append(resultItemText);
+        if (0 != an_item_widget)
+        {
+            QString result_item_text_COLORED = resultItemText;
+
+            if (an_item_widget->background().color() == Qt::darkMagenta)
+            {
+                result_item_text_COLORED = QString("\\colorbox{purplish}{%1}")
+                                             .arg(result_item_text_COLORED);
+            }
+
+            if (an_item_widget->foreground().color() == Qt::green)
+            {
+                result_item_text_COLORED = QString("\\textcolor{yerothColorGreen}{%1}")
+                                             .arg(result_item_text_COLORED);
+            }
+            else
+            {
+                if (an_item_widget->background().color() == Qt::darkMagenta)
+                {
+                    result_item_text_COLORED = QString("\\textcolor{white}{%1}")
+                                                 .arg(result_item_text_COLORED);
+                }
+                else
+                {
+                    result_item_text_COLORED = QString("\\textcolor{black}{%1}")
+                                                 .arg(result_item_text_COLORED);
+                }
+            }
+
+            texTable_IN_OUT.append(result_item_text_COLORED);
+
+        }
+        else
+        {
+            texTable_IN_OUT.append(resultItemText);
+        }
 	}
 
 	if (itemTextColumnPosition < texTableColumnCount - 1)

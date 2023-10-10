@@ -516,7 +516,8 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
             YR_DB_RUNTIME_VERIF_Utils::handleTexTableItemText(columnCount,
                                                               texTable_IN_OUT,
                                                               j,
-                                                              cell_text);
+                                                              cell_text,
+                                                              an_item);
         }
 
         if (i < rowCount - 1)

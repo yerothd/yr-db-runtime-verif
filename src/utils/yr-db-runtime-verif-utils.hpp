@@ -132,7 +132,8 @@ public:
     static void handleTexTableItemText(int 				texTableColumnCount,
                                        QString 			&texTable_IN_OUT,
                                        int 				itemTextColumnPosition,
-                                       const QString 	&itemText);
+                                       const QString 	&itemText,
+                                       QTableWidgetItem *an_item_widget = 0);
 
 
     static bool GREP_YEROTH_FILE_CONTENT(const QString &file_full_path,
