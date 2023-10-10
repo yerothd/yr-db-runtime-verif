@@ -10565,6 +10565,11 @@ background-color: rgb(0, 0, 0); </string>
    </property>
   </action>
   <action name="actionSet_current_selected_SQL_event_as_filter_and_search">
+   <property name="icon">
+    <iconset>
+     <normalon>:/yr-db-runtime-verif-images/select-SQL-event-for-search-filtering.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Set 'current selected SQL event' as filter and search</string>
    </property>

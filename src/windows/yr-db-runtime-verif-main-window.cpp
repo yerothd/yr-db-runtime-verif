@@ -144,7 +144,8 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     connect(actionPRINT_event_log_excerpt_till_selected_SQL_event,
     		SIGNAL(triggered()),
 			this,
-            SLOT(PRINT_event_log_excerpt()));
+            SLOT(PRINT_event_log_excerpt_till_selected_SQL_event()));
+
 
     connect(actionPRINT_event_log_excerpt,
     		SIGNAL(triggered()),
@@ -573,7 +574,24 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
 }
 
 
-bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt()
+bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt_till_selected_SQL_event()
+{
+    int a_row_FOR_pdf_printing_max = -1;
+
+    if (0 != _Last_SelectedRow_Row_INDEX)
+    {
+        a_row_FOR_pdf_printing_max = _Last_SelectedRow_Row_INDEX->row() + 1;
+    }
+    else
+    {
+        a_row_FOR_pdf_printing_max = -1;
+    }
+
+    PRINT_event_log_excerpt(a_row_FOR_pdf_printing_max);
+}
+
+
+bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt(int a_row_FOR_pdf_printing_max /* = -1 */)
 {
 //	QDEBUG_STRING_OUTPUT_1("YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt");
 
@@ -596,18 +614,6 @@ bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt()
 	//QString factureDate(infoEntreprise.getVille_LATEX());
 
 	//YR_DB_RUNTIME_VERIF_Utils::getCurrentSimplifiedDate(factureDate);
-
-
-    int a_row_FOR_pdf_printing_max = -1;
-
-    if (0 != _Last_SelectedRow_Row_INDEX)
-    {
-        a_row_FOR_pdf_printing_max = _Last_SelectedRow_Row_INDEX->row() + 1;
-    }
-    else
-    {
-        a_row_FOR_pdf_printing_max = -1;
-    }
 
 
 	get_PRINT_OUT_TexTableString(EN_template_EVENT_LOG__tex_table,
@@ -993,7 +999,11 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
         menu.addAction(actionExport_as_CSV_till_selected_SQL_event);
 
+        menu.addAction(actionPRINT_event_log_excerpt);
+
         menu.addAction(actionPRINT_event_log_excerpt_till_selected_SQL_event);
+
+        menu.addAction(action_save_to_csv_format_sheet);
 
         menu.addAction(actionSet_current_selected_SQL_event_as_filter_and_search);
 

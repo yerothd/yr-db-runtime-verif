@@ -109,7 +109,10 @@ protected slots:
                                               int     row_MAX_TO_GO_export = -1);
 
 
-    virtual bool PRINT_event_log_excerpt();
+    virtual bool PRINT_event_log_excerpt_till_selected_SQL_event();
+
+
+    virtual bool PRINT_event_log_excerpt(int a_row_FOR_pdf_printing_max = -1);
 
 
 	virtual void ON_Configfuration_panel_window_trigerred();
