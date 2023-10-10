@@ -414,6 +414,8 @@ void YRDBRUNTIMEVERIF_MainWindow::VIEW_current_RUNTIME_MONITOR()
 
 void YRDBRUNTIMEVERIF_MainWindow::setCurrentRuntimeMonitorNameVisible(bool aVisibleValue)
 {
+    tableWidget_LOGGING_2->setVisible(aVisibleValue);
+
     label_RUNTIME_MONITOR_VERIFIER_TESTER->setVisible(aVisibleValue);
 
     comboBox_RUNTIME_MONITOR_NAME->setVisible(aVisibleValue);
@@ -457,7 +459,7 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
 	bool color_this_row_grey = true;
 
 
-	int LINE_COUNT_PER_PDF_PAGE = 45;
+	int LINE_COUNT_PER_PDF_PAGE = 41;
 
 
 	QString cell_text;
