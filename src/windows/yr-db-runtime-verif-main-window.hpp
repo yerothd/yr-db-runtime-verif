@@ -191,10 +191,7 @@ protected:
 
 public:
 
-    static const QPalette CONTEXT_MENU_PALETTE_QCOLOR;
-
     static const QString QMESSAGE_BOX_STYLE_SHEET;
-
 
     QMap<QString, YR_DB_RUNTIME_VERIF_Monitor *> user_defined_Runtime_Monitors_NAME__TO__RUNTIME_INSTANCES;
 

@@ -20,10 +20,6 @@
 
 
 
-const QPalette YRDBRUNTIMEVERIF_MainWindow::CONTEXT_MENU_PALETTE_QCOLOR
-        = QPalette(QColor(47, 67, 67));
-
-
 const QString YRDBRUNTIMEVERIF_MainWindow::QMESSAGE_BOX_STYLE_SHEET =
 		QString("QMessageBox {background-color: rgb(%1);}"
                 "QMessageBox QLabel {color: rgb(%2);}")
@@ -995,8 +991,6 @@ void YRDBRUNTIMEVERIF_MainWindow::
     if (actionPRINT_event_log_FULL->isVisible())
     {
         QMenu menu(this);
-
-        menu.setPalette(YRDBRUNTIMEVERIF_MainWindow::CONTEXT_MENU_PALETTE_QCOLOR);
 
         menu.addAction(actionExport_as_CSV_till_selected_SQL_event);
 
