@@ -28,7 +28,8 @@ const QString YRDBRUNTIMEVERIF_MainWindow::QMESSAGE_BOX_STYLE_SHEET =
 
 
 YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
-:_Last_SelectedRow_Row_INDEX(0),
+:_SHOW_ONLY_SQL_EVENT_ERRORS(true),
+ _Last_SelectedRow_Row_INDEX(0),
  _current_runtime_monitor_INSTANCE(0)
 {
     setupUi(this);
@@ -52,10 +53,14 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 
     actionSet_current_selected_SQL_event_as_filter_and_search->setVisible(false);
 
+    actionStop_logging_only_error_SQL_events_shown->setVisible(true);
+
+
 
     comboBox_global_filtering->addItem("");
     comboBox_global_filtering->addItem("sql event log");
     comboBox_global_filtering->addItem("source");
+
 
 
     comboBox_SQL_event_filtering->addItem("");
@@ -113,6 +118,12 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
             SLOT(ON_action_set_current_selected_SQL_event_as_filter_and_search()));
 
 
+    connect(actionStop_logging_only_error_SQL_events_shown,
+            SIGNAL(triggered()),
+            this,
+            SLOT(ON_actionStop_logging_only_error_SQL_events_shown()));
+
+
 
     connect(pushButton_reset_filtering,
     		SIGNAL(clicked()),
@@ -144,7 +155,7 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     connect(actionPRINT_event_log_excerpt_till_selected_SQL_event,
     		SIGNAL(triggered()),
 			this,
-            SLOT(PRINT_event_log_excerpt_till_selected_SQL_event()));
+            SLOT(yr_PRINT_with_PROGRESS_BAR_ON__event_log_excerpt_till_selected_SQL_event()));
 
 
     connect(actionPRINT_event_log_FULL,
@@ -210,12 +221,13 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 
 
 int YRDBRUNTIMEVERIF_MainWindow::
-				ADD_ITEM(QString TIMESTAMPtem,
-						 QString SIGNALItem,
-						 QString SOURCEItem,
-						 QString TARGETItem,
-						 QString changed_OR_modified_database_qty_Item,
-						 YRDBRUNTIMEVERIF_Logging_Info &a_logging_info)
+				ADD_ITEM(QString                        TIMESTAMPtem,
+						 QString                        SIGNALItem,
+						 QString                        SOURCEItem,
+						 QString                        TARGETItem,
+						 QString                        changed_OR_modified_database_qty_Item,
+						 YRDBRUNTIMEVERIF_Logging_Info  &a_logging_info,
+						 bool                           SHOW_ERROR_FIRST_events_NOT_SHOWN_ALREADY /* = true */)
 {
     static bool first_time_call_ever = true;
 
@@ -238,12 +250,19 @@ int YRDBRUNTIMEVERIF_MainWindow::
     }
 
 
-	int last_current_row_nr
-			= tableWidget_LOGGING->ADD_ITEM(TIMESTAMPtem,
-										 	SIGNALItem,
-											SOURCEItem,
-											TARGETItem,
-											changed_OR_modified_database_qty_Item);
+    int last_current_row_nr = 0;
+
+    if (SHOW_ERROR_FIRST_events_NOT_SHOWN_ALREADY ||
+        !_SHOW_ONLY_SQL_EVENT_ERRORS)
+    {
+        last_current_row_nr =
+            tableWidget_LOGGING->ADD_ITEM(TIMESTAMPtem,
+                                          SIGNALItem,
+                                          SOURCEItem,
+                                          TARGETItem,
+                                          changed_OR_modified_database_qty_Item);
+    }
+
 
 	QString logging_info = a_logging_info.toString();
 
@@ -251,11 +270,14 @@ int YRDBRUNTIMEVERIF_MainWindow::
 	_MAP_dbsqlevent__TO__cppfileinfo.yr_insert_item(last_current_row_nr,
 												  	logging_info);
 
-
-	tableWidget_LOGGING_2
-		->ADD_ITEM_2(QString("%1:%2")
-						.arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
-							 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
+    if (SHOW_ERROR_FIRST_events_NOT_SHOWN_ALREADY ||
+        !_SHOW_ONLY_SQL_EVENT_ERRORS)
+    {
+        tableWidget_LOGGING_2
+            ->ADD_ITEM_2(QString("%1:%2")
+                            .arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
+                                 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
+    }
 
 
 	return last_current_row_nr;
@@ -291,6 +313,8 @@ void YRDBRUNTIMEVERIF_MainWindow::
 	if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive
 			("True", a_logging_info.AN_ACCEPTING_STATE_is_error_state_VALUE))
 	{
+        //TODO: Call ADD_ITEM here so to complement logging information
+        //on an accepting error state.
 		QTableWidgetItem *a_qtable_widget_item = tableWidget_LOGGING_4->item(0, 1);
 
 		if (0 != a_qtable_widget_item)
@@ -761,6 +785,12 @@ void YRDBRUNTIMEVERIF_MainWindow::
 }
 
 
+void YRDBRUNTIMEVERIF_MainWindow::
+        ON_actionStop_logging_only_error_SQL_events_shown()
+{
+}
+
+
 void YRDBRUNTIMEVERIF_MainWindow::SOFT_Reset_selected()
 {
     lineEdit_SQL_event_filtering->clear();
@@ -1021,6 +1051,8 @@ void YRDBRUNTIMEVERIF_MainWindow::
         menu.addAction(action_save_to_csv_format_sheet);
 
         menu.addAction(actionSet_current_selected_SQL_event_as_filter_and_search);
+
+        menu.addAction(actionStop_logging_only_error_SQL_events_shown);
 
         menu.exec(event->globalPos());
     }

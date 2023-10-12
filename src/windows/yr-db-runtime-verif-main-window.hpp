@@ -10,6 +10,8 @@
 #include "../../ui_yr-db-runtime-verif-main-window.h"
 
 
+#include "src/widgets/yr-db-runtime-verif-progress-bar.hpp"
+
 #include "src/windows/yr-db-runtime-verif-COMMONS-window.hpp"
 
 #include "src/utils/yr-db-runtime-verif-qmap.hpp"
@@ -51,12 +53,13 @@ public:
     }
 
 
-	virtual int ADD_ITEM(QString TIMESTAMPtem,
-						 QString SIGNALItem,
-						 QString SOURCEItem,
-						 QString TARGETItem,
-						 QString changed_OR_modified_database_qty_Item,
-						 YRDBRUNTIMEVERIF_Logging_Info &a_logging_info);
+	virtual int ADD_ITEM(QString                        TIMESTAMPtem,
+						 QString                        SIGNALItem,
+						 QString                        SOURCEItem,
+						 QString                        TARGETItem,
+						 QString                        changed_OR_modified_database_qty_Item,
+						 YRDBRUNTIMEVERIF_Logging_Info  &a_logging_info,
+						 bool                           SHOW_ERROR_FIRST_events_NOT_SHOWN_ALREADY = true);
 
 
 	virtual void SET__CURRENT__RUNTIME__MONITOR
@@ -110,6 +113,13 @@ protected slots:
                                               int     row_MAX_TO_GO_export = -1);
 
 
+    inline virtual void yr_PRINT_with_PROGRESS_BAR_ON__event_log_excerpt_till_selected_SQL_event()
+    {
+        YR_DB_RUNTIME_VERIF_ProgressBar(this)(this,
+                                              &YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt_till_selected_SQL_event);
+    }
+
+
     virtual bool PRINT_event_log_excerpt_till_selected_SQL_event();
 
 
@@ -123,6 +133,9 @@ protected slots:
 
 
 	virtual void ON_action_set_current_selected_SQL_event_as_filter_and_search();
+
+
+	virtual void ON_actionStop_logging_only_error_SQL_events_shown();
 
 
 	virtual void SOFT_Reset_selected();
@@ -199,6 +212,8 @@ public:
 
 private:
 
+
+    bool                        _SHOW_ONLY_SQL_EVENT_ERRORS;
 
     QString                     RUNTIME_MONITOR_name_TO_PRINT_DOT;
 
