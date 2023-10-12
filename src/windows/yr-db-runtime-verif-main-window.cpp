@@ -28,7 +28,8 @@ const QString YRDBRUNTIMEVERIF_MainWindow::QMESSAGE_BOX_STYLE_SHEET =
 
 
 YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
-:_SHOW_ONLY_SQL_EVENT_ERRORS(true),
+:_visible_row_counter(0),
+ _SHOW_ONLY_SQL_EVENT_ERRORS(true),
  _Last_SelectedRow_Row_INDEX(0),
  _current_runtime_monitor_INSTANCE(0)
 {
@@ -237,9 +238,7 @@ int YRDBRUNTIMEVERIF_MainWindow::
 						 YRDBRUNTIMEVERIF_Logging_Info  &a_logging_info,
 						 bool                           SHOW_ERROR_FIRST_events_NOT_SHOWN_ALREADY /* = false */)
 {
-    static bool first_time_call_ever = true;
-
-    if (first_time_call_ever)
+    if (_visible_row_counter > 0)
     {
         actionVIEW_RUNTIME_monitor->setVisible(true);
 
@@ -252,9 +251,20 @@ int YRDBRUNTIMEVERIF_MainWindow::
         actionExport_as_CSV_till_selected_SQL_event->setVisible(true);
 
         actionSet_current_selected_SQL_event_as_filter_and_search->setVisible(true);
+    }
+    else
+    {
+        actionVIEW_RUNTIME_monitor->setVisible(false);
 
+        actionPRINT_event_log_excerpt_till_selected_SQL_event->setVisible(false);
 
-        first_time_call_ever = false;
+        actionPRINT_event_log_FULL->setVisible(false);
+
+        action_save_to_csv_format_sheet->setVisible(false);
+
+        actionExport_as_CSV_till_selected_SQL_event->setVisible(false);
+
+        actionSet_current_selected_SQL_event_as_filter_and_search->setVisible(false);
     }
 
 
@@ -263,6 +273,8 @@ int YRDBRUNTIMEVERIF_MainWindow::
     if (SHOW_ERROR_FIRST_events_NOT_SHOWN_ALREADY ||
         !_SHOW_ONLY_SQL_EVENT_ERRORS)
     {
+        ++_visible_row_counter;
+
         last_current_row_nr =
             tableWidget_LOGGING->ADD_ITEM(TIMESTAMPtem,
                                           SIGNALItem,
@@ -1062,10 +1074,11 @@ void YRDBRUNTIMEVERIF_MainWindow::ACTION_USER_GUIDE_method()
 void YRDBRUNTIMEVERIF_MainWindow::
         contextMenuEvent(QContextMenuEvent *event)
 {
-    if (actionPRINT_event_log_FULL->isVisible())
-    {
-        QMenu menu(this);
+    QMenu menu(this);
 
+
+    if (_visible_row_counter > 0)
+    {
         menu.addAction(actionExport_as_CSV_till_selected_SQL_event);
 
         menu.addAction(actionPRINT_event_log_FULL);
@@ -1075,13 +1088,14 @@ void YRDBRUNTIMEVERIF_MainWindow::
         menu.addAction(action_save_to_csv_format_sheet);
 
         menu.addAction(actionSet_current_selected_SQL_event_as_filter_and_search);
-
-        menu.addAction(actionStart_log_of_ONLY_error_SQL_events);
-
-        menu.addAction(actionStop_logging_only_error_SQL_events_shown);
-
-        menu.exec(event->globalPos());
     }
+
+
+    menu.addAction(actionStop_logging_only_error_SQL_events_shown);
+
+    menu.addAction(actionStart_log_of_ONLY_error_SQL_events);
+
+    menu.exec(event->globalPos());
 }
 
 

@@ -216,6 +216,8 @@ public:
 private:
 
 
+    uint                        _visible_row_counter;
+
     bool                        _SHOW_ONLY_SQL_EVENT_ERRORS;
 
     QString                     RUNTIME_MONITOR_name_TO_PRINT_DOT;
