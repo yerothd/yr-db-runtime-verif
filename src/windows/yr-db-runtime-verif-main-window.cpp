@@ -53,6 +53,8 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 
     actionSet_current_selected_SQL_event_as_filter_and_search->setVisible(false);
 
+    actionStart_log_of_ONLY_error_SQL_events->setVisible(false);;
+
     actionStop_logging_only_error_SQL_events_shown->setVisible(true);
 
 
@@ -116,6 +118,12 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
             SIGNAL(triggered()),
             this,
             SLOT(ON_action_set_current_selected_SQL_event_as_filter_and_search()));
+
+
+    connect(actionStart_log_of_ONLY_error_SQL_events,
+            SIGNAL(triggered()),
+            this,
+            SLOT(ON_actionStart_log_of_ONLY_error_SQL_events()));
 
 
     connect(actionStop_logging_only_error_SQL_events_shown,
@@ -227,7 +235,7 @@ int YRDBRUNTIMEVERIF_MainWindow::
 						 QString                        TARGETItem,
 						 QString                        changed_OR_modified_database_qty_Item,
 						 YRDBRUNTIMEVERIF_Logging_Info  &a_logging_info,
-						 bool                           SHOW_ERROR_FIRST_events_NOT_SHOWN_ALREADY /* = true */)
+						 bool                           SHOW_ERROR_FIRST_events_NOT_SHOWN_ALREADY /* = false */)
 {
     static bool first_time_call_ever = true;
 
@@ -786,8 +794,24 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
 
 void YRDBRUNTIMEVERIF_MainWindow::
+        ON_actionStart_log_of_ONLY_error_SQL_events()
+{
+    _SHOW_ONLY_SQL_EVENT_ERRORS = true;
+
+    actionStart_log_of_ONLY_error_SQL_events->setVisible(false);
+
+    actionStop_logging_only_error_SQL_events_shown->setVisible(true);
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::
         ON_actionStop_logging_only_error_SQL_events_shown()
 {
+    _SHOW_ONLY_SQL_EVENT_ERRORS = false;
+
+    actionStart_log_of_ONLY_error_SQL_events->setVisible(true);
+
+    actionStop_logging_only_error_SQL_events_shown->setVisible(false);
 }
 
 
@@ -1051,6 +1075,8 @@ void YRDBRUNTIMEVERIF_MainWindow::
         menu.addAction(action_save_to_csv_format_sheet);
 
         menu.addAction(actionSet_current_selected_SQL_event_as_filter_and_search);
+
+        menu.addAction(actionStart_log_of_ONLY_error_SQL_events);
 
         menu.addAction(actionStop_logging_only_error_SQL_events_shown);
 

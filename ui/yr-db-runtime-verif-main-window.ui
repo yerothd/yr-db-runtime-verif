@@ -10657,11 +10657,34 @@ background-color: rgb(0, 0, 0); </string>
    </property>
   </action>
   <action name="actionStop_logging_only_error_SQL_events_shown">
+   <property name="icon">
+    <iconset>
+     <normalon>:/yr-db-runtime-verif-images/Start-logging.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Stop logging (only error SQL events shown)</string>
    </property>
    <property name="toolTip">
     <string>Stop logging (only error SQL events shown)</string>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </action>
+  <action name="actionStart_log_of_ONLY_error_SQL_events">
+   <property name="icon">
+    <iconset resource="../yr-db-runtime-verif.qrc">
+     <normaloff>:/yr-db-runtime-verif-images/Stop-logging.png</normaloff>
+     <normalon>:/yr-db-runtime-verif-images/Start-logging.png</normalon>:/yr-db-runtime-verif-images/Stop-logging.png</iconset>
+   </property>
+   <property name="text">
+    <string>Start logging of only error SQL events</string>
+   </property>
+   <property name="toolTip">
+    <string>Start logging of only error SQL events</string>
    </property>
   </action>
  </widget>

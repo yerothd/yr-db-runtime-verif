@@ -59,7 +59,7 @@ public:
 						 QString                        TARGETItem,
 						 QString                        changed_OR_modified_database_qty_Item,
 						 YRDBRUNTIMEVERIF_Logging_Info  &a_logging_info,
-						 bool                           SHOW_ERROR_FIRST_events_NOT_SHOWN_ALREADY = true);
+						 bool                           SHOW_ERROR_FIRST_events_NOT_SHOWN_ALREADY = false);
 
 
 	virtual void SET__CURRENT__RUNTIME__MONITOR
@@ -133,6 +133,9 @@ protected slots:
 
 
 	virtual void ON_action_set_current_selected_SQL_event_as_filter_and_search();
+
+
+	virtual void ON_actionStart_log_of_ONLY_error_SQL_events();
 
 
 	virtual void ON_actionStop_logging_only_error_SQL_events_shown();
