@@ -9442,6 +9442,7 @@ background-color: rgb(0, 0, 0); </string>
     <addaction name="separator"/>
     <addaction name="separator"/>
     <addaction name="actionStop_logging_only_error_SQL_events_shown"/>
+    <addaction name="actionStart_log_of_ONLY_error_SQL_events"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
