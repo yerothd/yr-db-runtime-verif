@@ -135,7 +135,7 @@ protected slots:
 	virtual void ON_action_set_current_selected_SQL_event_as_filter_and_search();
 
 
-	virtual void ON_actionStart_log_of_ONLY_error_SQL_events();
+	virtual void ON_actionStart_log_of_ALL_SQL_events();
 
 
 	virtual void ON_actionStop_logging_only_error_SQL_events_shown();
