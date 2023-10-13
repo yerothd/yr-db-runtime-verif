@@ -275,6 +275,11 @@ int YRDBRUNTIMEVERIF_MainWindow::
     {
         ++_visible_row_counter;
 
+        if (_visible_row_counter >= 2999)
+        {
+            _visible_row_counter = 1;
+        }
+
         last_current_row_nr =
             tableWidget_LOGGING->ADD_ITEM(TIMESTAMPtem,
                                           SIGNALItem,
