@@ -346,9 +346,6 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
         if (0 != ALL_WINDOWS_INSTANCE)
         {
-            QDEBUG_STRINGS_OUTPUT_2("a_logging_info.A_SUT_string_unique_ID",
-                                    a_logging_info.A_SUT_string_unique_ID);
-
             bool show_error_since_not_already_SHOWN_on_first_QTABLEVIEW = true;
 
             ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
