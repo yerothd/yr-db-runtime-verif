@@ -157,6 +157,9 @@ protected slots:
 	virtual void ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *aQTable_widget_item);
 
 
+	virtual void ON_QTABLEWIDGET_ERROR_ITEM_pressed(QTableWidgetItem *aQTable_widget_item);
+
+
     //for combobox "comboBox_global_filtering"
     virtual void RESET_comboBox_SQL_event_filtering();
 

@@ -187,6 +187,8 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
             this,
             SLOT(setLast_SelectedRow_Row_ID(const QModelIndex &)));
 
+
+
     connect(tableWidget_LOGGING,
             SIGNAL(clicked(const QModelIndex &)),
             this,
@@ -205,12 +207,25 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     connect(tableWidget_LOGGING_ERROR_EVENT,
     		SIGNAL(itemChanged(QTableWidgetItem *)),
 			this,
-            SLOT(ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *)));
+            SLOT(ON_QTABLEWIDGET_ERROR_ITEM_pressed(QTableWidgetItem *)));
 
     connect(tableWidget_LOGGING_ERROR_EVENT,
     		SIGNAL(itemPressed(QTableWidgetItem *)),
 			this,
+            SLOT(ON_QTABLEWIDGET_ERROR_ITEM_pressed(QTableWidgetItem *)));
+
+
+
+    connect(tableWidget_LOGGING,
+    		SIGNAL(itemChanged(QTableWidgetItem *)),
+			this,
             SLOT(ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *)));
+
+    connect(tableWidget_LOGGING,
+    		SIGNAL(itemPressed(QTableWidgetItem *)),
+			this,
+            SLOT(ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *)));
+
 
 
     connect(comboBox_global_filtering,
@@ -972,6 +987,28 @@ void YRDBRUNTIMEVERIF_MainWindow::ON_BUTON_Reset_pressed()
 
 void YRDBRUNTIMEVERIF_MainWindow::
 		ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *aQTable_widget_item)
+{
+	if (0 != aQTable_widget_item                            &&
+        1 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
+	{
+		QString LOGGING_INFO = _MAP_dbsqlevent__TO__cppfileinfo.value(aQTable_widget_item->row());
+
+		YRDBRUNTIMEVERIF_Logging_Info a_logging_info(LOGGING_INFO);
+
+		tableWidget_LOGGING_2
+			->ADD_ITEM_2(QString("%1:%2")
+							.arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
+								 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
+	}
+	else
+	{
+		tableWidget_LOGGING_2->ADD_ITEM_2(QString("no source file info:-1"));
+	}
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::
+		ON_QTABLEWIDGET_ERROR_ITEM_pressed(QTableWidgetItem *aQTable_widget_item)
 {
 	if (0 != aQTable_widget_item                            &&
         tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex() == 0)
