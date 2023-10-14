@@ -28,8 +28,9 @@ const QString YRDBRUNTIMEVERIF_MainWindow::QMESSAGE_BOX_STYLE_SHEET =
 
 
 YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
-:_visible_row_counter(0),
- _SHOW_ONLY_SQL_EVENT_ERRORS(true),
+:_visible_ERROR_row_counter(0),
+ _SHOW_ONLY_SQL_EVENT_ERRORS(false),
+ _visible_row_counter(0),
  _Last_SelectedRow_Row_INDEX(0),
  _current_runtime_monitor_INSTANCE(0)
 {
@@ -230,14 +231,59 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 
 
 int YRDBRUNTIMEVERIF_MainWindow::
+				ADD_ERROR_ITEM(QString                        TIMESTAMPtem,
+                               QString                        SIGNALItem,
+                               QString                        SOURCEItem,
+                               QString                        TARGETItem,
+                               QString                        changed_OR_modified_database_qty_Item,
+                               YRDBRUNTIMEVERIF_Logging_Info  &a_logging_info)
+{
+    ++_visible_ERROR_row_counter;
+
+    if (_visible_ERROR_row_counter >= 2999)
+    {
+        _visible_ERROR_row_counter = 1;
+    }
+
+
+    int last_ERROR_current_row_nr =
+        tableWidget_LOGGING_ERROR_EVENT
+            ->ADD_ITEM(TIMESTAMPtem,
+                       SIGNALItem,
+                       SOURCEItem,
+                       TARGETItem,
+                       changed_OR_modified_database_qty_Item);
+
+
+	QString logging_info = a_logging_info.toString();
+
+
+	_MAP_dbsqlERRORevent__TO__cppfileinfo.yr_insert_item(last_ERROR_current_row_nr,
+                                                         logging_info);
+
+    tableWidget_LOGGING_ERROR_SOURCE_LOCATION
+        ->ADD_ITEM_2(QString("%1:%2")
+                     .arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
+                          a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
+
+
+	return last_ERROR_current_row_nr;
+}
+
+
+int YRDBRUNTIMEVERIF_MainWindow::
 				ADD_ITEM(QString                        TIMESTAMPtem,
 						 QString                        SIGNALItem,
 						 QString                        SOURCEItem,
 						 QString                        TARGETItem,
 						 QString                        changed_OR_modified_database_qty_Item,
-						 YRDBRUNTIMEVERIF_Logging_Info  &a_logging_info,
-						 bool                           SHOW_ERROR_FIRST_events_NOT_SHOWN_ALREADY /* = false */)
+						 YRDBRUNTIMEVERIF_Logging_Info  &a_logging_info)
 {
+    if (_SHOW_ONLY_SQL_EVENT_ERRORS)
+    {
+        return -1;
+    }
+
     if (_visible_row_counter > 0)
     {
         actionVIEW_RUNTIME_monitor->setVisible(true);
@@ -268,25 +314,19 @@ int YRDBRUNTIMEVERIF_MainWindow::
     }
 
 
-    int last_current_row_nr = 0;
+    ++_visible_row_counter;
 
-    if (SHOW_ERROR_FIRST_events_NOT_SHOWN_ALREADY ||
-        !_SHOW_ONLY_SQL_EVENT_ERRORS)
+    if (_visible_row_counter >= 2999)
     {
-        ++_visible_row_counter;
-
-        if (_visible_row_counter >= 2999)
-        {
-            _visible_row_counter = 1;
-        }
-
-        last_current_row_nr =
-            tableWidget_LOGGING->ADD_ITEM(TIMESTAMPtem,
-                                          SIGNALItem,
-                                          SOURCEItem,
-                                          TARGETItem,
-                                          changed_OR_modified_database_qty_Item);
+        _visible_row_counter = 1;
     }
+
+    int last_current_row_nr =
+        tableWidget_LOGGING->ADD_ITEM(TIMESTAMPtem,
+                                      SIGNALItem,
+                                      SOURCEItem,
+                                      TARGETItem,
+                                      changed_OR_modified_database_qty_Item);
 
 
 	QString logging_info = a_logging_info.toString();
@@ -295,14 +335,10 @@ int YRDBRUNTIMEVERIF_MainWindow::
 	_MAP_dbsqlevent__TO__cppfileinfo.yr_insert_item(last_current_row_nr,
 												  	logging_info);
 
-    if (SHOW_ERROR_FIRST_events_NOT_SHOWN_ALREADY ||
-        !_SHOW_ONLY_SQL_EVENT_ERRORS)
-    {
-        tableWidget_LOGGING_2
-            ->ADD_ITEM_2(QString("%1:%2")
-                            .arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
-                                 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
-    }
+    tableWidget_LOGGING_2
+        ->ADD_ITEM_2(QString("%1:%2")
+                      .arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
+                           a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
 
 
 	return last_current_row_nr;
@@ -328,15 +364,14 @@ void YRDBRUNTIMEVERIF_MainWindow
 
 
 void YRDBRUNTIMEVERIF_MainWindow::
-	Set_YRDBRUNTIMEVERIF_Logging_Info(uint row_number,
-									  QString logging_info)
+	Set_YRDBRUNTIMEVERIF_Logging_Info(uint      row_number,
+									  QString   logging_info)
 {
-	_MAP_dbsqlevent__TO__cppfileinfo.insert(row_number, logging_info);
+	_MAP_dbsqlERRORevent__TO__cppfileinfo.insert(row_number, logging_info);
 
 	YRDBRUNTIMEVERIF_Logging_Info a_logging_info(logging_info);
 
-	if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive
-			("True", a_logging_info.AN_ACCEPTING_STATE_is_error_state_VALUE))
+	if (a_logging_info.IS_ERROR_EVENT_LOGGING())
 	{
         //Call ADD_ITEM here so to complement logging information
         //on an accepting error state.
@@ -346,16 +381,13 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
         if (0 != ALL_WINDOWS_INSTANCE)
         {
-            bool show_error_since_not_already_SHOWN_on_first_QTABLEVIEW = true;
-
             ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
-                ->ADD_ITEM(a_logging_info.timestamp,
-                           a_logging_info.an_SQL_event_TOKEN,
-                           a_logging_info.A_SUT_string_unique_ID,
-                           "YR-DB-RUNTIME-VERIF",
-                           a_logging_info.changed_record_db_quantity,
-                           a_logging_info,
-                           show_error_since_not_already_SHOWN_on_first_QTABLEVIEW);
+                ->ADD_ERROR_ITEM(a_logging_info.timestamp,
+                                 a_logging_info.an_SQL_event_TOKEN,
+                                 a_logging_info.A_SUT_string_unique_ID,
+                                 "YR-DB-RUNTIME-VERIF",
+                                 a_logging_info.changed_record_db_quantity,
+                                 a_logging_info);
         }
 
 
@@ -482,7 +514,7 @@ void YRDBRUNTIMEVERIF_MainWindow::VIEW_current_RUNTIME_MONITOR()
 
 void YRDBRUNTIMEVERIF_MainWindow::setCurrentRuntimeMonitorNameVisible(bool aVisibleValue)
 {
-    tableWidget_LOGGING_2->setVisible(aVisibleValue);
+    tableWidget_LOGGING_ERROR_SOURCE_LOCATION->setVisible(aVisibleValue);
 
     label_RUNTIME_MONITOR_VERIFIER_TESTER->setVisible(aVisibleValue);
 
@@ -490,8 +522,9 @@ void YRDBRUNTIMEVERIF_MainWindow::setCurrentRuntimeMonitorNameVisible(bool aVisi
 }
 
 
-void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable_IN_OUT,
-                                                               int     row_MAX_TO_GO_export /* = -1 */)
+void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QTableWidget  &current_QTable_Widget_Item,
+                                                               QString       &texTable_IN_OUT,
+                                                               int           row_MAX_TO_GO_export /* = -1 */)
 {
     texTable_IN_OUT.append("\\begin{table*}[!htbp]\n"
                            "\\centering\n"
@@ -509,9 +542,9 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
                            "& & & & &				\\\\ \\hline \\hline \n");
 
 
-	int rowCount = tableWidget_LOGGING->rowCount();
+	int rowCount = current_QTable_Widget_Item.rowCount();
 
-	int columnCount = tableWidget_LOGGING->columnCount();
+	int columnCount = current_QTable_Widget_Item.columnCount();
 
 
 
@@ -578,7 +611,7 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QString &texTable
         {
             QTableWidgetItem *an_item = 0;
 
-            an_item = tableWidget_LOGGING->item(i, j);
+            an_item = current_QTable_Widget_Item.item(i, j);
 
             if (0 != an_item)
             {
@@ -676,7 +709,30 @@ bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt(int a_row_FOR_pdf_prin
 {
 //	QDEBUG_STRING_OUTPUT_1("YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt");
 
-	if (tableWidget_LOGGING->rowCount() <= 0)
+    QTableWidget *current_QTable_Widget_Item = 0;
+
+
+    if (0 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
+    {
+        current_QTable_Widget_Item = tableWidget_LOGGING_ERROR_EVENT;
+    }
+    else if (1 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
+    {
+        current_QTable_Widget_Item = tableWidget_LOGGING;
+    }
+
+
+    if (0 == current_QTable_Widget_Item)
+    {
+        QMessageBox::information(this,
+                                 QObject::tr("NO QTABLEWIDGET existing now"),
+                                 QObject::tr("No event log data to print out !"));
+
+        return false;
+    }
+
+
+	if (current_QTable_Widget_Item->rowCount() <= 0)
 	{
 		QMessageBox::information(this,
 				QObject::tr("Event log printing"),
@@ -697,7 +753,8 @@ bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt(int a_row_FOR_pdf_prin
 	//YR_DB_RUNTIME_VERIF_Utils::getCurrentSimplifiedDate(factureDate);
 
 
-	get_PRINT_OUT_TexTableString(EN_template_EVENT_LOG__tex_table,
+	get_PRINT_OUT_TexTableString(*current_QTable_Widget_Item,
+                                 EN_template_EVENT_LOG__tex_table,
                                  a_row_FOR_pdf_printing_max);
 
 
@@ -878,9 +935,10 @@ void YRDBRUNTIMEVERIF_MainWindow::ON_BUTON_Reset_pressed()
 void YRDBRUNTIMEVERIF_MainWindow::
 		ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *aQTable_widget_item)
 {
-	if (0 != aQTable_widget_item)
+	if (0 != aQTable_widget_item                            &&
+        tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex() == 0)
 	{
-		QString LOGGING_INFO = _MAP_dbsqlevent__TO__cppfileinfo.value(aQTable_widget_item->row());
+		QString LOGGING_INFO = _MAP_dbsqlERRORevent__TO__cppfileinfo.value(aQTable_widget_item->row());
 
 		YRDBRUNTIMEVERIF_Logging_Info a_logging_info(LOGGING_INFO);
 
@@ -893,8 +951,7 @@ void YRDBRUNTIMEVERIF_MainWindow::
         QString CURRENT_RUNTIME_MONITOR_name__to__display_Now;
 
 
-		if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive
-				("True", a_logging_info.A_SQL_EVENT_LOG_guarded_condition_expression_VALUE))
+		if (a_logging_info.IS_ERROR_EVENT_LOGGING())
 		{
 		    tableWidget_LOGGING_4->setVisible(true);
 		    tableWidget_LOGGING_PRECONDITIONS->setVisible(true);

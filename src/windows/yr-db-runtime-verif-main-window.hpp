@@ -53,13 +53,20 @@ public:
     }
 
 
+	virtual int ADD_ERROR_ITEM(QString                        TIMESTAMPtem,
+                               QString                        SIGNALItem,
+                               QString                        SOURCEItem,
+                               QString                        TARGETItem,
+                               QString                        changed_OR_modified_database_qty_Item,
+                               YRDBRUNTIMEVERIF_Logging_Info  &a_logging_info);
+
+
 	virtual int ADD_ITEM(QString                        TIMESTAMPtem,
 						 QString                        SIGNALItem,
 						 QString                        SOURCEItem,
 						 QString                        TARGETItem,
 						 QString                        changed_OR_modified_database_qty_Item,
-						 YRDBRUNTIMEVERIF_Logging_Info  &a_logging_info,
-						 bool                           SHOW_ERROR_FIRST_events_NOT_SHOWN_ALREADY = false);
+						 YRDBRUNTIMEVERIF_Logging_Info  &a_logging_info);
 
 
 	virtual void SET__CURRENT__RUNTIME__MONITOR
@@ -74,8 +81,8 @@ public:
 
 public slots:
 
-	virtual void Set_YRDBRUNTIMEVERIF_Logging_Info(uint row_number,
-												   QString logging_info);
+	virtual void Set_YRDBRUNTIMEVERIF_Logging_Info(uint     row_number,
+												   QString  logging_info);
 
 	virtual YRDBRUNTIMEVERIF_Logging_Info *Get_YRDBRUNTIMEVERIF_Logging_Info(uint row_number);
 
@@ -109,8 +116,9 @@ protected slots:
     }
 
 
-	virtual void get_PRINT_OUT_TexTableString(QString &texTable_IN_OUT,
-                                              int     row_MAX_TO_GO_export = -1);
+	virtual void get_PRINT_OUT_TexTableString(QTableWidget  &current_QTable_Widget_Item,
+                                              QString       &texTable_IN_OUT,
+                                              int           row_MAX_TO_GO_export = -1);
 
 
     inline virtual void yr_PRINT_with_PROGRESS_BAR_ON__event_log_excerpt_till_selected_SQL_event()
@@ -216,6 +224,8 @@ public:
 private:
 
 
+    uint                        _visible_ERROR_row_counter;
+
     uint                        _visible_row_counter;
 
     bool                        _SHOW_ONLY_SQL_EVENT_ERRORS;
@@ -227,6 +237,8 @@ private:
     YR_DB_RUNTIME_VERIF_Monitor	*_current_runtime_monitor_INSTANCE;
 
     YRDBRUNTIMEVERIF_QMap 		_MAP_dbsqlevent__TO__cppfileinfo;
+
+    YRDBRUNTIMEVERIF_QMap 		_MAP_dbsqlERRORevent__TO__cppfileinfo;
 };
 
 #endif /* _YR_DB_RUNTIME_VERIF_MAIN_WINDOW_HPP_ */

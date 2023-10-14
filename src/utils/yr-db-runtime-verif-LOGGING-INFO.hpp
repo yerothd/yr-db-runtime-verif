@@ -8,6 +8,9 @@
 #define _YR_DB_RUNTIME_VERIF_LOGGING_INFO_HPP_
 
 
+#include "src/utils/yr-db-runtime-verif-utils.hpp"
+
+
 #include <cstdlib>
 
 #include <QtCore/QStringList>
@@ -26,6 +29,12 @@ public:
 
 	inline virtual ~YRDBRUNTIMEVERIF_Logging_Info()
 	{
+	}
+
+	inline virtual bool IS_ERROR_EVENT_LOGGING()
+	{
+		return (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive
+                    ("True", A_SQL_EVENT_LOG_guarded_condition_expression_VALUE));
 	}
 
 	virtual QString toString();
