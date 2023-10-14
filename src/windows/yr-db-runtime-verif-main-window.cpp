@@ -338,9 +338,31 @@ void YRDBRUNTIMEVERIF_MainWindow::
 	if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive
 			("True", a_logging_info.AN_ACCEPTING_STATE_is_error_state_VALUE))
 	{
-        //TODO: Call ADD_ITEM here so to complement logging information
+        //Call ADD_ITEM here so to complement logging information
         //on an accepting error state.
-		QTableWidgetItem *a_qtable_widget_item = tableWidget_LOGGING_4->item(0, 1);
+
+        YRDBRUNTIMEVERIF_Windows *ALL_WINDOWS_INSTANCE =
+            YR_DB_RUNTIME_VERIF_Config::GET_ALL_WINDOWS_instance();
+
+        if (0 != ALL_WINDOWS_INSTANCE)
+        {
+            QDEBUG_STRINGS_OUTPUT_2("a_logging_info.A_SUT_string_unique_ID",
+                                    a_logging_info.A_SUT_string_unique_ID);
+
+            bool show_error_since_not_already_SHOWN_on_first_QTABLEVIEW = true;
+
+            ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
+                ->ADD_ITEM(a_logging_info.timestamp,
+                           a_logging_info.an_SQL_event_TOKEN,
+                           a_logging_info.A_SUT_string_unique_ID,
+                           "YR-DB-RUNTIME-VERIF",
+                           a_logging_info.changed_record_db_quantity,
+                           a_logging_info,
+                           show_error_since_not_already_SHOWN_on_first_QTABLEVIEW);
+        }
+
+
+        QTableWidgetItem *a_qtable_widget_item = tableWidget_LOGGING_4->item(0, 1);
 
 		if (0 != a_qtable_widget_item)
 		{

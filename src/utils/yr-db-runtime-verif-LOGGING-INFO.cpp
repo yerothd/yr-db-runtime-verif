@@ -36,7 +36,15 @@ YRDBRUNTIMEVERIF_Logging_Info::YRDBRUNTIMEVERIF_Logging_Info(QString LOGGING_INF
 
 	AN_ACCEPTING_STATE = string_logging_info_LIST.value(8);
 
-	AN_ACCEPTING_STATE_is_error_state_VALUE = string_logging_info_LIST.value(9);
+	A_SUT_string_unique_ID = string_logging_info_LIST.value(9);
+
+    AN_ACCEPTING_STATE_is_error_state_VALUE = string_logging_info_LIST.value(10);
+
+    an_SQL_event_TOKEN= string_logging_info_LIST.value(11);
+
+    changed_record_db_quantity = string_logging_info_LIST.value(12);
+
+    timestamp = string_logging_info_LIST.value(13);
 }
 
 
@@ -55,9 +63,13 @@ QString YRDBRUNTIMEVERIF_Logging_Info::toString()
 					 AN_ACCEPTING_STATE);
 
 	return
-		QString("%1*%2")
+		QString("%1*%2*%3*%4*%5*%6")
 			.arg(result1,
-				 AN_ACCEPTING_STATE_is_error_state_VALUE);
+                 A_SUT_string_unique_ID,
+				 AN_ACCEPTING_STATE_is_error_state_VALUE,
+				 an_SQL_event_TOKEN,
+				 changed_record_db_quantity,
+                 timestamp);
 }
 
 

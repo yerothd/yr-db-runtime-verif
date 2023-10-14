@@ -53,6 +53,11 @@ public:
 
 	QString AN_ACCEPTING_STATE_is_error_state_VALUE;
 
+	QString an_SQL_event_TOKEN;
+
+	QString changed_record_db_quantity;
+
+    QString timestamp;
 };
 
 

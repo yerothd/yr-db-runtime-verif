@@ -122,8 +122,9 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_
 		a_logging_info.A_SUT_string_unique_ID = SUT_string_unique_ID;
 		a_logging_info.A_CPP_SOURCE_FILE_NAME = CPP_FILE_NAME;
 		a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER = cpp_line_number;
-
-
+        a_logging_info.an_SQL_event_TOKEN = a_trace_log_EVENT_TOKEN;
+        a_logging_info.changed_record_db_quantity = CHANGED_RECORD_DB_QTY;
+        a_logging_info.timestamp = DBUS_CURRENT_TIME_WITH_MILLISECONDS;
 
         // 2. Runtime monitor name is set on the main window
         // only for SQL events that lead to an accepting
@@ -134,11 +135,11 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_
 
     	_LAST_trace_SQL_event_log_GUI_row_number =
     			ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
-									->ADD_ITEM(DBUS_CURRENT_TIME_WITH_MILLISECONDS,
-											   a_trace_log_EVENT_TOKEN,
+									->ADD_ITEM(a_logging_info.timestamp,
+											   a_logging_info.an_SQL_event_TOKEN,
 											   a_logging_info.A_SUT_string_unique_ID,
 											   "YR-DB-RUNTIME-VERIF",
-											   CHANGED_RECORD_DB_QTY,
+											   a_logging_info.changed_record_db_quantity,
 											   a_logging_info);
     }
     //###########################################################################################
