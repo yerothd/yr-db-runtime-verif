@@ -92,14 +92,7 @@ public slots:
 
 protected slots:
 
-    inline bool export_csv_file()
-    {
-        return
-            YR_DB_RUNTIME_VERIF_Utils::SAVE_AS_csv_file(*this,
-                                                        *tableWidget_LOGGING,
-                                                        "sql-event-log-listing-csv-format",
-                                                        "SQL event log csv export");
-    }
+    bool export_csv_file();
 
 
 	static void SET__foregroundcolor__ON__accepting_state(uint 			row_number,

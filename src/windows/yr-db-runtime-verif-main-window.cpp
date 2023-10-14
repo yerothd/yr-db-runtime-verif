@@ -177,6 +177,16 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 
     // USEFUL TO UPDATE sql event information WHEN
     // actions from context menu are called from a cell.
+    connect(tableWidget_LOGGING_ERROR_EVENT,
+            SIGNAL(clicked(const QModelIndex &)),
+            this,
+            SLOT(setLast_SelectedRow_Row_ID(const QModelIndex &)));
+
+    connect(tableWidget_LOGGING_ERROR_EVENT,
+            SIGNAL(pressed(const QModelIndex &)),
+            this,
+            SLOT(setLast_SelectedRow_Row_ID(const QModelIndex &)));
+
     connect(tableWidget_LOGGING,
             SIGNAL(clicked(const QModelIndex &)),
             this,
@@ -192,12 +202,12 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
      * USEFUL TO UPDATE sql event information WHEN
      * 'QtableWidget::selectRow' IS CALLED.
      */
-    connect(tableWidget_LOGGING,
+    connect(tableWidget_LOGGING_ERROR_EVENT,
     		SIGNAL(itemChanged(QTableWidgetItem *)),
 			this,
             SLOT(ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *)));
 
-    connect(tableWidget_LOGGING,
+    connect(tableWidget_LOGGING_ERROR_EVENT,
     		SIGNAL(itemPressed(QTableWidgetItem *)),
 			this,
             SLOT(ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *)));
@@ -473,6 +483,34 @@ void YRDBRUNTIMEVERIF_MainWindow::set_connection_DBUS_status(QString message_STA
 
 	label_display_yr_db_runtime_verifier_connection_STATUS
 		->setText(message_STATUS);
+}
+
+
+bool YRDBRUNTIMEVERIF_MainWindow::export_csv_file()
+{
+    QTableWidget *current_QTable_Widget_Item = 0;
+
+    if (0 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
+    {
+        current_QTable_Widget_Item = tableWidget_LOGGING_ERROR_EVENT;
+    }
+    else if (1 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
+    {
+        current_QTable_Widget_Item = tableWidget_LOGGING;
+    }
+
+
+    if (0 == current_QTable_Widget_Item)
+    {
+        return false;
+    }
+
+
+    return
+        YR_DB_RUNTIME_VERIF_Utils::SAVE_AS_csv_file(*this,
+                                                    *current_QTable_Widget_Item,
+                                                    "sql-event-log-listing-csv-format",
+                                                    "SQL event log csv export");
 }
 
 
@@ -942,7 +980,7 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
 		YRDBRUNTIMEVERIF_Logging_Info a_logging_info(LOGGING_INFO);
 
-		tableWidget_LOGGING_2
+		tableWidget_LOGGING_ERROR_SOURCE_LOCATION
 			->ADD_ITEM_2(QString("%1:%2")
 							.arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
 								 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
