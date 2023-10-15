@@ -103,7 +103,13 @@ protected slots:
 														  QColor        a_color_to_SET = Qt::green);
 
 
-	virtual void VIEW_current_RUNTIME_MONITOR();
+    virtual inline void YR_on_progress_bar__VIEW_current_RUNTIME_MONITOR()
+    {
+        YR_DB_RUNTIME_VERIF_ProgressBar(this)(this,
+                                              &YRDBRUNTIMEVERIF_MainWindow::VIEW_current_RUNTIME_MONITOR);
+    }
+
+	virtual void *VIEW_current_RUNTIME_MONITOR();
 
     virtual void setCurrentRuntimeMonitorNameVisible(bool aVisibleValue);
 
@@ -131,10 +137,9 @@ protected slots:
     virtual void yr_PRINT_with_PROGRESS_BAR_ON__event_log_excerpt(int a_row_FOR_pdf_printing_max = -1);
 
 
-    inline virtual bool PRINT_event_log_excerpt__POINTER_PARAMETER(int *a_row_FOR_pdf_printing_max)
+    inline virtual void *PRINT_event_log_excerpt__POINTER_PARAMETER(int *a_row_FOR_pdf_printing_max)
     {
-        return
-            (0 != a_row_FOR_pdf_printing_max) ?
+        (0 != a_row_FOR_pdf_printing_max) ?
                 PRINT_event_log_excerpt(*a_row_FOR_pdf_printing_max) :
                 PRINT_event_log_excerpt();
     }

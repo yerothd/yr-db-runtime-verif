@@ -148,7 +148,7 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     connect(actionVIEW_RUNTIME_monitor,
     		SIGNAL(triggered()),
 			this,
-            SLOT(VIEW_current_RUNTIME_MONITOR()));
+            SLOT(YR_on_progress_bar__VIEW_current_RUNTIME_MONITOR()));
 
 
 
@@ -526,6 +526,11 @@ void YRDBRUNTIMEVERIF_MainWindow::set_CURRENT_TABWIDGET_ACTION_visible(bool a_va
 {
     actionVIEW_RUNTIME_monitor->setVisible(a_value);
 
+    if (1 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
+    {
+        actionVIEW_RUNTIME_monitor->setVisible(false);
+    }
+
     actionPRINT_event_log_excerpt_till_selected_SQL_event->setVisible(a_value);
 
     actionPRINT_event_log_FULL->setVisible(a_value);
@@ -594,11 +599,13 @@ void YRDBRUNTIMEVERIF_MainWindow::
 }
 
 
-void YRDBRUNTIMEVERIF_MainWindow::VIEW_current_RUNTIME_MONITOR()
+void *YRDBRUNTIMEVERIF_MainWindow::VIEW_current_RUNTIME_MONITOR()
 {
     YR_DB_RUNTIME_VERIF_Monitor *a_to_print_DOT_FORMAT_runtime_monitor =
         user_defined_Runtime_Monitors_NAME__TO__RUNTIME_INSTANCES
             .value(RUNTIME_MONITOR_name_TO_PRINT_DOT);
+
+    emit SIGNAL_INCREMENT_PROGRESS_BAR(30);
 
 	if (0 != a_to_print_DOT_FORMAT_runtime_monitor)
 	{
@@ -609,6 +616,8 @@ void YRDBRUNTIMEVERIF_MainWindow::VIEW_current_RUNTIME_MONITOR()
                                         true,
                                         true,
                                         true);
+
+        emit SIGNAL_INCREMENT_PROGRESS_BAR(90);
 	}
 }
 
@@ -789,8 +798,7 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QTableWidget  &cu
 }
 
 
-void YRDBRUNTIMEVERIF_MainWindow::
-        yr_PRINT_with_PROGRESS_BAR_ON__event_log_excerpt(int a_row_FOR_pdf_printing_max /* = -1*/)
+void YRDBRUNTIMEVERIF_MainWindow::yr_PRINT_with_PROGRESS_BAR_ON__event_log_excerpt(int a_row_FOR_pdf_printing_max /* = -1*/)
 {
     int p = a_row_FOR_pdf_printing_max;
 
@@ -813,7 +821,7 @@ bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt_till_selected_SQL_even
         a_row_FOR_pdf_printing_max = -1;
     }
 
-    PRINT_event_log_excerpt(a_row_FOR_pdf_printing_max);
+    return PRINT_event_log_excerpt(a_row_FOR_pdf_printing_max);
 }
 
 
@@ -928,7 +936,7 @@ bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt(int a_row_FOR_pdf_prin
 
 	emit SIGNAL_INCREMENT_PROGRESS_BAR(98);
 
-	return false;
+	return true;
 }
 
 
