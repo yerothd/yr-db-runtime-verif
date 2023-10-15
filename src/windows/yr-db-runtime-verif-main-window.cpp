@@ -303,11 +303,6 @@ int YRDBRUNTIMEVERIF_MainWindow::
                           a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
 
 
-    // 3. Runtime monitor name is set on the main window
-    // only for SQL events that lead to an accepting
-    // error state.
-    SET_CURRENT_RUNTIME_MONITOR_name(a_logging_info.A_RUNTIME_MONITOR_name);
-
 	return last_ERROR_current_row_nr;
 }
 
@@ -447,14 +442,32 @@ void YRDBRUNTIMEVERIF_MainWindow::
     tableWidget_LOGGING_guarded_condition_expression->setVisible(true);
 
 
+    RUNTIME_MONITOR_name_TO_PRINT_DOT = a_logging_info.A_RUNTIME_MONITOR_name;
 
-    setCurrentRuntimeMonitorNameVisible(true);
 
+    if (RUNTIME_MONITOR_name_TO_PRINT_DOT.isEmpty())
+    {
+        actionVIEW_RUNTIME_monitor
+        ->setText(QString("NO runtime monitor to visualize in PDF form"));
 
-    // 4. Runtime monitor name is set on the main window
+        actionVIEW_RUNTIME_monitor->setVisible(false);
+    }
+    else
+    {
+        actionVIEW_RUNTIME_monitor
+        ->setText(QString("view runtime monitor (%1)")
+                  .arg(RUNTIME_MONITOR_name_TO_PRINT_DOT));
+
+        actionVIEW_RUNTIME_monitor->setVisible(true);
+    }
+
+    // 3. Runtime monitor name is set on the main window
     // only for SQL events that lead to an accepting
     // error state.
     SET_CURRENT_RUNTIME_MONITOR_name(a_logging_info.A_RUNTIME_MONITOR_name);
+
+
+    setCurrentRuntimeMonitorNameVisible(true);
 
 
 	tableWidget_LOGGING_4
