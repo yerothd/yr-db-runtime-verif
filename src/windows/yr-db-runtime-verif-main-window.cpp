@@ -29,7 +29,6 @@ const QString YRDBRUNTIMEVERIF_MainWindow::QMESSAGE_BOX_STYLE_SHEET =
 
 YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 :_visible_ERROR_row_counter(0),
- _SHOW_ONLY_SQL_EVENT_ERRORS(false),
  _visible_row_counter(0),
  _Last_SelectedRow_Row_INDEX(0),
  _current_runtime_monitor_INSTANCE(0)
@@ -54,10 +53,6 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     actionExport_as_CSV_till_selected_SQL_event->setVisible(false);
 
     actionSet_current_selected_SQL_event_as_filter_and_search->setVisible(false);
-
-    actionStop_logging_only_error_SQL_events_shown->setVisible(false);
-
-    actionStart_log_of_ALL_SQL_events->setVisible(true);;
 
 
 
@@ -121,18 +116,6 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
             SIGNAL(triggered()),
             this,
             SLOT(ON_action_set_current_selected_SQL_event_as_filter_and_search()));
-
-
-    connect(actionStart_log_of_ALL_SQL_events,
-            SIGNAL(triggered()),
-            this,
-            SLOT(ON_actionStart_log_of_ALL_SQL_events()));
-
-
-    connect(actionStop_logging_only_error_SQL_events_shown,
-            SIGNAL(triggered()),
-            this,
-            SLOT(ON_actionStop_logging_only_error_SQL_events_shown()));
 
 
 
@@ -315,11 +298,6 @@ int YRDBRUNTIMEVERIF_MainWindow::
 						 QString                        changed_OR_modified_database_qty_Item,
 						 YRDBRUNTIMEVERIF_Logging_Info  &a_logging_info)
 {
-    if (_SHOW_ONLY_SQL_EVENT_ERRORS)
-    {
-        return -1;
-    }
-
     if (_visible_row_counter > 0)
     {
         actionVIEW_RUNTIME_monitor->setVisible(true);
@@ -568,7 +546,8 @@ bool YRDBRUNTIMEVERIF_MainWindow::export_csv_file()
 
 void YRDBRUNTIMEVERIF_MainWindow::
 		SET__foregroundcolor__ON__accepting_state(uint 			row_number,
-												  QTableWidget 	*a_table_widget)
+												  QTableWidget 	*a_table_widget,
+												  QColor        a_color_to_SET /* = Qt::green */)
 {
 	if (0 != a_table_widget)
 	{
@@ -580,7 +559,7 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
 			if (0 != a_qwidget_item)
 			{
-				a_qwidget_item->setForeground(Qt::green);
+				a_qwidget_item->setForeground(a_color_to_SET);
 			}
 		}
 	}
@@ -976,28 +955,6 @@ void YRDBRUNTIMEVERIF_MainWindow::
 }
 
 
-void YRDBRUNTIMEVERIF_MainWindow::
-        ON_actionStart_log_of_ALL_SQL_events()
-{
-    _SHOW_ONLY_SQL_EVENT_ERRORS = false;
-
-    actionStart_log_of_ALL_SQL_events->setVisible(false);
-
-    actionStop_logging_only_error_SQL_events_shown->setVisible(true);
-}
-
-
-void YRDBRUNTIMEVERIF_MainWindow::
-        ON_actionStop_logging_only_error_SQL_events_shown()
-{
-    _SHOW_ONLY_SQL_EVENT_ERRORS = true;
-
-    actionStart_log_of_ALL_SQL_events->setVisible(true);
-
-    actionStop_logging_only_error_SQL_events_shown->setVisible(false);
-}
-
-
 void YRDBRUNTIMEVERIF_MainWindow::SOFT_Reset_selected()
 {
     lineEdit_SQL_event_filtering->clear();
@@ -1071,7 +1028,8 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
         YRDBRUNTIMEVERIF_MainWindow::
             SET__foregroundcolor__ON__accepting_state(aQTable_widget_item->row(),
-                                                      tableWidget_LOGGING_ERROR_EVENT);
+                                                      tableWidget_LOGGING_ERROR_EVENT,
+                                                      Qt::white);
 
         //tableWidget_LOGGING_2 ONLY HAS A SINGLE ROW !
         YRDBRUNTIMEVERIF_MainWindow::
@@ -1240,28 +1198,29 @@ void YRDBRUNTIMEVERIF_MainWindow::ACTION_USER_GUIDE_method()
 void YRDBRUNTIMEVERIF_MainWindow::
         contextMenuEvent(QContextMenuEvent *event)
 {
-    QMenu menu(this);
+    uint VISIBLE_unique_row_count = 0;
 
 
-    if (_visible_row_counter > 0)
+    if (0 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
     {
-        menu.addAction(actionExport_as_CSV_till_selected_SQL_event);
-
-        menu.addAction(actionPRINT_event_log_FULL);
-
-        menu.addAction(actionPRINT_event_log_excerpt_till_selected_SQL_event);
-
-        menu.addAction(action_save_to_csv_format_sheet);
-
-        menu.addAction(actionSet_current_selected_SQL_event_as_filter_and_search);
+        VISIBLE_unique_row_count = _visible_ERROR_row_counter;
+    }
+    else if (1 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
+    {
+        VISIBLE_unique_row_count = _visible_row_counter;
     }
 
 
-    menu.addAction(actionStop_logging_only_error_SQL_events_shown);
-
-    menu.addAction(actionStart_log_of_ALL_SQL_events);
-
-    menu.exec(event->globalPos());
+    if (VISIBLE_unique_row_count > 0)
+    {
+        QMenu menu(this);
+        menu.addAction(actionExport_as_CSV_till_selected_SQL_event);
+        menu.addAction(actionPRINT_event_log_FULL);
+        menu.addAction(actionPRINT_event_log_excerpt_till_selected_SQL_event);
+        menu.addAction(action_save_to_csv_format_sheet);
+        menu.addAction(actionSet_current_selected_SQL_event_as_filter_and_search);
+        menu.exec(event->globalPos());
+    }
 }
 
 

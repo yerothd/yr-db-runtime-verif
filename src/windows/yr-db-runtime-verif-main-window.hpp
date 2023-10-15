@@ -93,7 +93,8 @@ protected slots:
 
 
 	static void SET__foregroundcolor__ON__accepting_state(uint 			row_number,
-														  QTableWidget 	*a_table_widget);
+														  QTableWidget 	*a_table_widget,
+														  QColor        a_color_to_SET = Qt::green);
 
 
 	virtual void VIEW_current_RUNTIME_MONITOR();
@@ -131,12 +132,6 @@ protected slots:
 
 
 	virtual void ON_action_set_current_selected_SQL_event_as_filter_and_search();
-
-
-	virtual void ON_actionStart_log_of_ALL_SQL_events();
-
-
-	virtual void ON_actionStop_logging_only_error_SQL_events_shown();
 
 
 	virtual void SOFT_Reset_selected();
@@ -220,8 +215,6 @@ private:
     uint                        _visible_ERROR_row_counter;
 
     uint                        _visible_row_counter;
-
-    bool                        _SHOW_ONLY_SQL_EVENT_ERRORS;
 
     QString                     RUNTIME_MONITOR_name_TO_PRINT_DOT;
 
