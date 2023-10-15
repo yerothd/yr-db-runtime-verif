@@ -72,7 +72,12 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     setCurrentRuntimeMonitorNameVisible(false);
 
 
+
+    checkBox_ALL_STATE_SAFETY_PROPRTIES->setVisible(false);
+
+
     comboBox_RUNTIME_MONITOR_NAME->yr__setEditable(false);
+
 
 
     lineEdit_SQL_event_filtering

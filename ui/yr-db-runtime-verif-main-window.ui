@@ -5063,7 +5063,7 @@
        <rect>
         <x>4</x>
         <y>406</y>
-        <width>267</width>
+        <width>239</width>
         <height>25</height>
        </rect>
       </property>
@@ -5187,6 +5187,15 @@
            </color>
           </brush>
          </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>26</red>
+            <green>95</green>
+            <blue>180</blue>
+           </color>
+          </brush>
+         </colorrole>
          <colorrole role="AlternateBase">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
@@ -5215,7 +5224,7 @@
           </brush>
          </colorrole>
          <colorrole role="PlaceholderText">
-          <brush brushstyle="NoBrush">
+          <brush brushstyle="SolidPattern">
            <color alpha="128">
             <red>255</red>
             <green>255</green>
@@ -5342,6 +5351,15 @@
            </color>
           </brush>
          </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>26</red>
+            <green>95</green>
+            <blue>180</blue>
+           </color>
+          </brush>
+         </colorrole>
          <colorrole role="AlternateBase">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
@@ -5370,7 +5388,7 @@
           </brush>
          </colorrole>
          <colorrole role="PlaceholderText">
-          <brush brushstyle="NoBrush">
+          <brush brushstyle="SolidPattern">
            <color alpha="128">
             <red>255</red>
             <green>255</green>
@@ -5497,6 +5515,15 @@
            </color>
           </brush>
          </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>26</red>
+            <green>95</green>
+            <blue>180</blue>
+           </color>
+          </brush>
+         </colorrole>
          <colorrole role="AlternateBase">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
@@ -5525,7 +5552,7 @@
           </brush>
          </colorrole>
          <colorrole role="PlaceholderText">
-          <brush brushstyle="NoBrush">
+          <brush brushstyle="SolidPattern">
            <color alpha="128">
             <red>255</red>
             <green>255</green>
@@ -5562,9 +5589,9 @@
          <colorrole role="WindowText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>2</red>
-            <green>160</green>
-            <blue>70</blue>
+            <red>26</red>
+            <green>95</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
@@ -5574,6 +5601,15 @@
             <red>0</red>
             <green>0</green>
             <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>26</red>
+            <green>95</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
@@ -5582,9 +5618,9 @@
          <colorrole role="WindowText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>2</red>
-            <green>160</green>
-            <blue>70</blue>
+            <red>26</red>
+            <green>95</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
@@ -5594,6 +5630,15 @@
             <red>0</red>
             <green>0</green>
             <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>26</red>
+            <green>95</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
@@ -5617,6 +5662,15 @@
            </color>
           </brush>
          </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>26</red>
+            <green>95</green>
+            <blue>180</blue>
+           </color>
+          </brush>
+         </colorrole>
         </disabled>
        </palette>
       </property>
@@ -5632,6 +5686,22 @@
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_ALL_STATE_SAFETY_PROPRTIES">
+      <property name="geometry">
+       <rect>
+        <x>246</x>
+        <y>408</y>
+        <width>16</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
