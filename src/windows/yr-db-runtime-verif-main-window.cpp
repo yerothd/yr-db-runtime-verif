@@ -101,6 +101,7 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     tableWidget_LOGGING_postconditions->setVisible(false);
     tableWidget_LOGGING_guarded_condition_expression->setVisible(false);
 
+
     setCurrentRuntimeMonitorNameVisible(false);
 
 
@@ -255,6 +256,16 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 }
 
 
+void YRDBRUNTIMEVERIF_MainWindow::SET_CURRENT_RUNTIME_MONITOR_name(QString A_RUNTIME_MONITOR_name)
+{
+    if (!A_RUNTIME_MONITOR_name.isEmpty())
+    {
+        comboBox_RUNTIME_MONITOR_NAME
+            ->find_AND_SET_CURRENT_INDEX(A_RUNTIME_MONITOR_name.trimmed());
+    }
+}
+
+
 int YRDBRUNTIMEVERIF_MainWindow::
 				ADD_ERROR_ITEM(QString                        TIMESTAMPtem,
                                QString                        SIGNALItem,
@@ -291,6 +302,11 @@ int YRDBRUNTIMEVERIF_MainWindow::
                      .arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
                           a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
 
+
+    // 3. Runtime monitor name is set on the main window
+    // only for SQL events that lead to an accepting
+    // error state.
+    SET_CURRENT_RUNTIME_MONITOR_name(a_logging_info.A_RUNTIME_MONITOR_name);
 
 	return last_ERROR_current_row_nr;
 }
@@ -430,7 +446,15 @@ void YRDBRUNTIMEVERIF_MainWindow::
     tableWidget_LOGGING_postconditions->setVisible(true);
     tableWidget_LOGGING_guarded_condition_expression->setVisible(true);
 
+
+
     setCurrentRuntimeMonitorNameVisible(true);
+
+
+    // 4. Runtime monitor name is set on the main window
+    // only for SQL events that lead to an accepting
+    // error state.
+    SET_CURRENT_RUNTIME_MONITOR_name(a_logging_info.A_RUNTIME_MONITOR_name);
 
 
 	tableWidget_LOGGING_4
@@ -1011,7 +1035,7 @@ void YRDBRUNTIMEVERIF_MainWindow::
 		ON_QTABLEWIDGET_ERROR_ITEM_pressed(QTableWidgetItem *aQTable_widget_item)
 {
 	if (0 != aQTable_widget_item                            &&
-        tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex() == 0)
+        0 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
 	{
 		QString LOGGING_INFO = _MAP_dbsqlERRORevent__TO__cppfileinfo.value(aQTable_widget_item->row());
 
@@ -1023,52 +1047,26 @@ void YRDBRUNTIMEVERIF_MainWindow::
 								 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
 
 
-        QString CURRENT_RUNTIME_MONITOR_name__to__display_Now;
+        tableWidget_LOGGING_4->setVisible(true);
+        tableWidget_LOGGING_PRECONDITIONS->setVisible(true);
+        tableWidget_LOGGING_postconditions->setVisible(true);
+        tableWidget_LOGGING_guarded_condition_expression->setVisible(true);
 
 
-		if (a_logging_info.IS_ERROR_EVENT_LOGGING())
-		{
-		    tableWidget_LOGGING_4->setVisible(true);
-		    tableWidget_LOGGING_PRECONDITIONS->setVisible(true);
-		    tableWidget_LOGGING_postconditions->setVisible(true);
-            tableWidget_LOGGING_guarded_condition_expression->setVisible(true);
-
-            setCurrentRuntimeMonitorNameVisible(true);
+        setCurrentRuntimeMonitorNameVisible(true);
 
 
-            // 3. Runtime monitor name is set on the main window
-            // only for SQL events that lead to an accepting
-            // error state.
-            CURRENT_RUNTIME_MONITOR_name__to__display_Now =
-                a_logging_info.A_RUNTIME_MONITOR_name;
+        YRDBRUNTIMEVERIF_MainWindow::
+            SET__foregroundcolor__ON__accepting_state(aQTable_widget_item->row(),
+                                                      tableWidget_LOGGING_ERROR_EVENT);
+
+        //tableWidget_LOGGING_2 ONLY HAS A SINGLE ROW !
+        YRDBRUNTIMEVERIF_MainWindow::
+            SET__foregroundcolor__ON__accepting_state(tableWidget_LOGGING_ERROR_SOURCE_LOCATION->currentRow(),
+                                                      tableWidget_LOGGING_ERROR_SOURCE_LOCATION);
 
 
-			YRDBRUNTIMEVERIF_MainWindow::
-				SET__foregroundcolor__ON__accepting_state(aQTable_widget_item->row(),
-														  tableWidget_LOGGING);
-
-			//tableWidget_LOGGING_2 ONLY HAS A SINGLE ROW !
-			YRDBRUNTIMEVERIF_MainWindow::
-				SET__foregroundcolor__ON__accepting_state(tableWidget_LOGGING_2->currentRow(),
-														  tableWidget_LOGGING_2);
-		}
-		else
-		{
-            CURRENT_RUNTIME_MONITOR_name__to__display_Now.clear();
-
-
-		    tableWidget_LOGGING_4->setVisible(false);
-		    tableWidget_LOGGING_PRECONDITIONS->setVisible(false);
-		    tableWidget_LOGGING_postconditions->setVisible(false);
-		    tableWidget_LOGGING_guarded_condition_expression->setVisible(false);
-
-		    setCurrentRuntimeMonitorNameVisible(false);
-		}
-
-
-
-        RUNTIME_MONITOR_name_TO_PRINT_DOT = CURRENT_RUNTIME_MONITOR_name__to__display_Now;
-
+        RUNTIME_MONITOR_name_TO_PRINT_DOT = a_logging_info.A_RUNTIME_MONITOR_name;
 
 
         if (RUNTIME_MONITOR_name_TO_PRINT_DOT.isEmpty())
@@ -1088,12 +1086,10 @@ void YRDBRUNTIMEVERIF_MainWindow::
         }
 
 
-
-        // 4. Runtime monitor name is set on the main window
+        // 5. Runtime monitor name is set on the main window
         // only for SQL events that lead to an accepting
         // error state.
-        SET_CURRENT_RUNTIME_MONITOR_name(CURRENT_RUNTIME_MONITOR_name__to__display_Now);
-
+        SET_CURRENT_RUNTIME_MONITOR_name(RUNTIME_MONITOR_name_TO_PRINT_DOT);
 
 
 		tableWidget_LOGGING_4
@@ -1118,7 +1114,8 @@ void YRDBRUNTIMEVERIF_MainWindow::
 	}
 	else
 	{
-		tableWidget_LOGGING_2->ADD_ITEM_2(QString("no source file info:-1"));
+		tableWidget_LOGGING_ERROR_SOURCE_LOCATION
+            ->ADD_ITEM_2(QString("no source file info:-1"));
 	}
 }
 

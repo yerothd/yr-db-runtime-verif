@@ -46,11 +46,8 @@ public:
     	return *toolBar_mainWindow_YR_DB_RUNTIME_VERIF;
     }
 
-    inline virtual void SET_CURRENT_RUNTIME_MONITOR_name(QString A_RUNTIME_MONITOR_name)
-    {
-    	comboBox_RUNTIME_MONITOR_NAME
-			->find_AND_SET_CURRENT_INDEX(A_RUNTIME_MONITOR_name);
-    }
+
+    virtual void SET_CURRENT_RUNTIME_MONITOR_name(QString A_RUNTIME_MONITOR_name);
 
 
 	virtual int ADD_ERROR_ITEM(QString                        TIMESTAMPtem,
