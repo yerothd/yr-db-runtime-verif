@@ -92,6 +92,12 @@ protected slots:
     bool export_csv_file();
 
 
+    void set_CURRENT_TABWIDGET_ACTION_visible(bool a_value);
+
+
+    void handle_current_tab_changed(int current_index);
+
+
 	static void SET__foregroundcolor__ON__accepting_state(uint 			row_number,
 														  QTableWidget 	*a_table_widget,
 														  QColor        a_color_to_SET = Qt::green);

@@ -100,6 +100,12 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     setCurrentRuntimeMonitorNameVisible(false);
 
 
+    connect(tabWidget_SQL_ERROR_EVENT_LOGGING,
+            SIGNAL(currentChanged(int)),
+            this,
+            SLOT(handle_current_tab_changed(int)));
+
+
     connect(action_save_to_csv_format_sheet,
             SIGNAL(triggered()),
             this,
@@ -298,35 +304,7 @@ int YRDBRUNTIMEVERIF_MainWindow::
 						 QString                        changed_OR_modified_database_qty_Item,
 						 YRDBRUNTIMEVERIF_Logging_Info  &a_logging_info)
 {
-    if (_visible_row_counter > 0)
-    {
-        actionVIEW_RUNTIME_monitor->setVisible(true);
-
-        actionPRINT_event_log_excerpt_till_selected_SQL_event->setVisible(true);
-
-        actionPRINT_event_log_FULL->setVisible(true);
-
-        action_save_to_csv_format_sheet->setVisible(true);
-
-        actionExport_as_CSV_till_selected_SQL_event->setVisible(true);
-
-        actionSet_current_selected_SQL_event_as_filter_and_search->setVisible(true);
-    }
-    else
-    {
-        actionVIEW_RUNTIME_monitor->setVisible(false);
-
-        actionPRINT_event_log_excerpt_till_selected_SQL_event->setVisible(false);
-
-        actionPRINT_event_log_FULL->setVisible(false);
-
-        action_save_to_csv_format_sheet->setVisible(false);
-
-        actionExport_as_CSV_till_selected_SQL_event->setVisible(false);
-
-        actionSet_current_selected_SQL_event_as_filter_and_search->setVisible(false);
-    }
-
+    handle_current_tab_changed(tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex());
 
     ++_visible_row_counter;
 
@@ -544,6 +522,56 @@ bool YRDBRUNTIMEVERIF_MainWindow::export_csv_file()
 }
 
 
+void YRDBRUNTIMEVERIF_MainWindow::set_CURRENT_TABWIDGET_ACTION_visible(bool a_value)
+{
+    actionVIEW_RUNTIME_monitor->setVisible(a_value);
+
+    actionPRINT_event_log_excerpt_till_selected_SQL_event->setVisible(a_value);
+
+    actionPRINT_event_log_FULL->setVisible(a_value);
+
+    action_save_to_csv_format_sheet->setVisible(a_value);
+
+    actionExport_as_CSV_till_selected_SQL_event->setVisible(a_value);
+
+    actionSet_current_selected_SQL_event_as_filter_and_search->setVisible(a_value);
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::handle_current_tab_changed(int current_index)
+{
+    switch (current_index)
+    {
+    case 0:
+        if (_visible_ERROR_row_counter > 0)
+        {
+            set_CURRENT_TABWIDGET_ACTION_visible(true);
+        }
+        else
+        {
+            set_CURRENT_TABWIDGET_ACTION_visible(false);
+        }
+        break;
+
+
+    case 1:
+        if (_visible_row_counter > 0)
+        {
+            set_CURRENT_TABWIDGET_ACTION_visible(true);
+        }
+        else
+        {
+            set_CURRENT_TABWIDGET_ACTION_visible(false);
+        }
+        break;
+
+
+    default:
+        break;
+    }
+}
+
+
 void YRDBRUNTIMEVERIF_MainWindow::
 		SET__foregroundcolor__ON__accepting_state(uint 			row_number,
 												  QTableWidget 	*a_table_widget,
@@ -572,11 +600,15 @@ void YRDBRUNTIMEVERIF_MainWindow::VIEW_current_RUNTIME_MONITOR()
         user_defined_Runtime_Monitors_NAME__TO__RUNTIME_INSTANCES
             .value(RUNTIME_MONITOR_name_TO_PRINT_DOT);
 
-
 	if (0 != a_to_print_DOT_FORMAT_runtime_monitor)
 	{
 		QString DOT_FORMAT =
-				a_to_print_DOT_FORMAT_runtime_monitor->print_TO_dot_FILE(true);
+				a_to_print_DOT_FORMAT_runtime_monitor
+                    ->print_TO_dot_FILE(YR_DB_RUNTIME_VERIF_Config::temporaryFilesDir,
+                                        RUNTIME_MONITOR_name_TO_PRINT_DOT,
+                                        true,
+                                        true,
+                                        true);
 	}
 }
 
