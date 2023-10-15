@@ -128,6 +128,17 @@ protected slots:
     virtual bool PRINT_event_log_excerpt_till_selected_SQL_event();
 
 
+    virtual void yr_PRINT_with_PROGRESS_BAR_ON__event_log_excerpt(int a_row_FOR_pdf_printing_max = -1);
+
+
+    inline virtual bool PRINT_event_log_excerpt__POINTER_PARAMETER(int *a_row_FOR_pdf_printing_max)
+    {
+        return
+            (0 != a_row_FOR_pdf_printing_max) ?
+                PRINT_event_log_excerpt(*a_row_FOR_pdf_printing_max) :
+                PRINT_event_log_excerpt();
+    }
+
     virtual bool PRINT_event_log_excerpt(int a_row_FOR_pdf_printing_max = -1);
 
 

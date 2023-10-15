@@ -161,7 +161,7 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     connect(actionPRINT_event_log_FULL,
     		SIGNAL(triggered()),
 			this,
-            SLOT(PRINT_event_log_excerpt()));
+            SLOT(yr_PRINT_with_PROGRESS_BAR_ON__event_log_excerpt()));
 
 
 
@@ -786,6 +786,17 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QTableWidget  &cu
                            "\\end{tabular}}\n"
                            "\\end{table*}\n");
 
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::
+        yr_PRINT_with_PROGRESS_BAR_ON__event_log_excerpt(int a_row_FOR_pdf_printing_max /* = -1*/)
+{
+    int p = a_row_FOR_pdf_printing_max;
+
+    YR_DB_RUNTIME_VERIF_ProgressBar(this)(this,
+                                          &p,
+                                          &YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt__POINTER_PARAMETER);
 }
 
 
