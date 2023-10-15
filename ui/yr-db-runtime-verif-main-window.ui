@@ -10452,8 +10452,6 @@ background-color: rgb(0, 0, 0); </string>
     <addaction name="separator"/>
     <addaction name="actionUserGuide_PDF"/>
     <addaction name="separator"/>
-    <addaction name="separator"/>
-    <addaction name="separator"/>
     <addaction name="actionCONFIGURATION_panel_window"/>
     <addaction name="separator"/>
     <addaction name="actionAbout"/>
@@ -10969,10 +10967,6 @@ background-color: rgb(0, 0, 0); </string>
     <property name="title">
      <string>Actions</string>
     </property>
-    <addaction name="separator"/>
-    <addaction name="separator"/>
-    <addaction name="actionStop_logging_only_error_SQL_events_shown"/>
-    <addaction name="actionStart_log_of_ALL_SQL_events"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
@@ -12185,37 +12179,6 @@ background-color: rgb(0, 0, 0); </string>
     <font>
      <pointsize>10</pointsize>
     </font>
-   </property>
-  </action>
-  <action name="actionStop_logging_only_error_SQL_events_shown">
-   <property name="icon">
-    <iconset>
-     <normalon>:/yr-db-runtime-verif-images/Stop-logging.png</normalon>
-    </iconset>
-   </property>
-   <property name="text">
-    <string>Stop logging (only error SQL events shown)</string>
-   </property>
-   <property name="toolTip">
-    <string>Stop logging (only error SQL events shown)</string>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-  </action>
-  <action name="actionStart_log_of_ALL_SQL_events">
-   <property name="icon">
-    <iconset resource="../yr-db-runtime-verif.qrc">
-     <normaloff>:/yr-db-runtime-verif-images/Start-logging.png</normaloff>
-     <normalon>:/yr-db-runtime-verif-images/Start-logging.png</normalon>:/yr-db-runtime-verif-images/Start-logging.png</iconset>
-   </property>
-   <property name="text">
-    <string>Start logging of all SQL events</string>
-   </property>
-   <property name="toolTip">
-    <string>Start logging of all SQL events</string>
    </property>
   </action>
  </widget>
