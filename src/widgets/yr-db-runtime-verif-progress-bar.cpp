@@ -36,10 +36,10 @@ YR_DB_RUNTIME_VERIF_ProgressBar::YR_DB_RUNTIME_VERIF_ProgressBar(YRDBRUNTIMEVERI
     setStyleSheet(QString("QProgressBar "
                           "{text-align: center; "
                           "border: 2px solid white; "
-                          "border-radius: 1px;}"
+                          "border-radius: 1px; color: rgb(2, 160, 70);}"
                           "QProgressBar::chunk {"
                           "background-color: rgb(%1); "
-                          "color: rgb(47, 67, 67); "
+                          "color: rgb(2, 160, 70); "
                           "width: 3px;}")
     				.arg(RGB_COLOR_TO_DISPLAY_AT_YEROTH_PROGRESS_BAR_BACKGROUND));
 
