@@ -21,7 +21,7 @@ public:
 	inline YRDBRUNTIMEVERIF_QMap()
 	:QMap<uint, QString>(),
 	 _current_IDX(0),
-	 _max_elements_SIZE(70)
+	 _max_elements_SIZE(70000)
 	{
 	}
 
