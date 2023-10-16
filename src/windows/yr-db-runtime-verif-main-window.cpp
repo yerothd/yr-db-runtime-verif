@@ -531,10 +531,32 @@ void YRDBRUNTIMEVERIF_MainWindow::set_CURRENT_TABWIDGET_ACTION_visible(bool a_va
 {
     actionVIEW_RUNTIME_monitor->setVisible(a_value);
 
+    if (0 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
+    {
+        tableWidget_LOGGING_ERROR_EVENT->resize_columns_AND_rows_to_contents();
+
+        tableWidget_LOGGING_ERROR_SOURCE_LOCATION->resize_columns_AND_rows_to_contents();
+
+        tableWidget_LOGGING_PRECONDITIONS->resize_columns_AND_rows_to_contents();
+
+        tableWidget_LOGGING_postconditions->resize_columns_AND_rows_to_contents();
+
+        tableWidget_LOGGING_guarded_condition_expression->resize_columns_AND_rows_to_contents();
+
+        tableWidget_LOGGING_4->resize_columns_AND_rows_to_contents();
+    }
+
+
     if (1 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
     {
+        tableWidget_LOGGING->resize_columns_AND_rows_to_contents();
+
+        tableWidget_LOGGING_2->resize_columns_AND_rows_to_contents();
+
+
         actionVIEW_RUNTIME_monitor->setVisible(false);
     }
+
 
     actionPRINT_event_log_excerpt_till_selected_SQL_event->setVisible(a_value);
 

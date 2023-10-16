@@ -37,6 +37,8 @@ public:
 
 	void setMaxSize(uint MAX_SIZE);
 
+	virtual void resize_columns_AND_rows_to_contents();
+
 	int ADD_ITEM_3(QString Source_file__line_number);
 
 	int ADD_ITEM_2(QString Source_file__line_number);

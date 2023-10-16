@@ -53,9 +53,7 @@ YRDBRUNTIMEVERIF_TableWidget::YRDBRUNTIMEVERIF_TableWidget(QWidget *parent /* = 
     setMaxSize(MAX_TABLE_WIDGET_ROW_COUNT);
 
 
-    resizeRowsToContents();
-
-    resizeColumnsToContents();
+    resize_columns_AND_rows_to_contents();
 }
 
 
@@ -92,6 +90,14 @@ void YRDBRUNTIMEVERIF_TableWidget::setMaxSize(uint MAX_SIZE)
 	setRowCount(MAX_SIZE);
 
 	_mapListIdxToElement_db_ID.setMaxSize(MAX_SIZE);
+}
+
+
+void YRDBRUNTIMEVERIF_TableWidget::resize_columns_AND_rows_to_contents()
+{
+    resizeColumnsToContents();
+
+    resizeRowsToContents();
 }
 
 
@@ -142,8 +148,7 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM_3(QString Source_file__line_number)
 
     selectRow(_curRow);
 
-    resizeRowsToContents();
-    resizeColumnsToContents();
+    resize_columns_AND_rows_to_contents();
 
     return _curRow;
 }
@@ -192,8 +197,7 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM_2(QString Source_file__line_number)
     selectRow(_curRow);
 
 
-    resizeColumnsToContents();
-    resizeRowsToContents();
+    resize_columns_AND_rows_to_contents();
 
 
     return _curRow;
@@ -228,8 +232,7 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM_1(QString Precondition__Or__POST_COND
 
     selectRow(_curRow);
 
-    resizeColumnsToContents();
-    resizeRowsToContents();
+    resize_columns_AND_rows_to_contents();
 
     return _curRow;
 }
@@ -277,8 +280,7 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString TIMESTAMPtem,
 
     selectRow(_curRow);
 
-    resizeColumnsToContents();
-    resizeRowsToContents();
+    resize_columns_AND_rows_to_contents();
 
     int lastCurRow = _curRow;
 
@@ -327,9 +329,7 @@ void YRDBRUNTIMEVERIF_TableWidget::CLEAR_FILTERING()
         }
     }
 
-    resizeColumnsToContents();
-
-    resizeRowsToContents();
+    resize_columns_AND_rows_to_contents();
 }
 
 
@@ -411,9 +411,7 @@ uint YRDBRUNTIMEVERIF_TableWidget::FILTER_ITEM(const QString &SIGNALItem_TEXT,
     }//for
 
 
-    resizeColumnsToContents();
-
-    resizeRowsToContents();
+    resize_columns_AND_rows_to_contents();
 
 
     return MATCHED_search;
@@ -474,9 +472,7 @@ uint YRDBRUNTIMEVERIF_TableWidget::
     }//for
 
 
-    resizeColumnsToContents();
-
-    resizeRowsToContents();
+    resize_columns_AND_rows_to_contents();
 
 
     return MATCHED_search;
