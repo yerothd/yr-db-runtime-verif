@@ -54,6 +54,18 @@ public:
 
 public slots:
 
+    virtual inline void Set_CURRENTLY_filtered(bool is_currently_filtered)
+    {
+        _IS_CURRENTLY_FILTERED = is_currently_filtered;
+    }
+
+
+    virtual inline bool  IS_CURRENTLY_filtered()
+    {
+        return _IS_CURRENTLY_FILTERED;
+    }
+
+
     virtual void CLEAR_FILTERING();
 
 
@@ -87,6 +99,10 @@ public:
 private:
 
 	static const uint MAX_TABLE_WIDGET_ROW_COUNT;
+
+
+	bool    _IS_CURRENTLY_FILTERED;
+
 
     int _curRow;
 

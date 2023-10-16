@@ -27,6 +27,7 @@ const unsigned int YRDBRUNTIMEVERIF_TableWidget::changed_or_MODIFIED_database_QT
 
 YRDBRUNTIMEVERIF_TableWidget::YRDBRUNTIMEVERIF_TableWidget(QWidget *parent /* = 0 */)
 :QTableWidget(parent),
+ _IS_CURRENTLY_FILTERED(false),
  _TIMESTAMPtem(0),
  _SIGNALItem(0),
  _SOURCEItem(0),
@@ -329,6 +330,10 @@ void YRDBRUNTIMEVERIF_TableWidget::CLEAR_FILTERING()
         }
     }
 
+
+    Set_CURRENTLY_filtered(false);
+
+
     resize_columns_AND_rows_to_contents();
 }
 
@@ -414,6 +419,16 @@ uint YRDBRUNTIMEVERIF_TableWidget::FILTER_ITEM(const QString &SIGNALItem_TEXT,
     resize_columns_AND_rows_to_contents();
 
 
+    if (MATCHED_search > 0)
+    {
+        Set_CURRENTLY_filtered(true);
+    }
+    else
+    {
+        Set_CURRENTLY_filtered(false);
+    }
+
+
     return MATCHED_search;
 }
 
@@ -473,6 +488,16 @@ uint YRDBRUNTIMEVERIF_TableWidget::
 
 
     resize_columns_AND_rows_to_contents();
+
+
+    if (MATCHED_search > 0)
+    {
+        Set_CURRENTLY_filtered(true);
+    }
+    else
+    {
+        Set_CURRENTLY_filtered(false);
+    }
 
 
     return MATCHED_search;

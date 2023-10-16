@@ -499,9 +499,9 @@ void YRDBRUNTIMEVERIF_MainWindow::set_connection_DBUS_status(QString message_STA
 }
 
 
-bool YRDBRUNTIMEVERIF_MainWindow::export_csv_file()
+YRDBRUNTIMEVERIF_TableWidget* YRDBRUNTIMEVERIF_MainWindow::Get_CURRENT_QTable_WIDGET()
 {
-    QTableWidget *current_QTable_Widget_Item = 0;
+    YRDBRUNTIMEVERIF_TableWidget *current_QTable_Widget_Item = 0;
 
     if (0 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
     {
@@ -512,6 +512,15 @@ bool YRDBRUNTIMEVERIF_MainWindow::export_csv_file()
         current_QTable_Widget_Item = tableWidget_LOGGING;
     }
 
+
+    return current_QTable_Widget_Item;
+}
+
+
+bool YRDBRUNTIMEVERIF_MainWindow::export_csv_file()
+{
+    YRDBRUNTIMEVERIF_TableWidget *current_QTable_Widget_Item =
+                                    Get_CURRENT_QTable_WIDGET();
 
     if (0 == current_QTable_Widget_Item)
     {
@@ -575,6 +584,11 @@ void YRDBRUNTIMEVERIF_MainWindow::handle_current_tab_changed(int current_index)
     switch (current_index)
     {
     case 0:
+
+        tableWidget_LOGGING->CLEAR_FILTERING();
+
+        ON_BUTON_Reset_pressed();
+
         if (_visible_ERROR_row_counter > 0)
         {
             set_CURRENT_TABWIDGET_ACTION_visible(true);
@@ -587,6 +601,11 @@ void YRDBRUNTIMEVERIF_MainWindow::handle_current_tab_changed(int current_index)
 
 
     case 1:
+
+        tableWidget_LOGGING_ERROR_EVENT->CLEAR_FILTERING();
+
+        ON_BUTON_Reset_pressed();
+
         if (_visible_row_counter > 0)
         {
             set_CURRENT_TABWIDGET_ACTION_visible(true);
@@ -856,17 +875,8 @@ bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt(int a_row_FOR_pdf_prin
 {
 //	QDEBUG_STRING_OUTPUT_1("YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt");
 
-    QTableWidget *current_QTable_Widget_Item = 0;
-
-
-    if (0 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
-    {
-        current_QTable_Widget_Item = tableWidget_LOGGING_ERROR_EVENT;
-    }
-    else if (1 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
-    {
-        current_QTable_Widget_Item = tableWidget_LOGGING;
-    }
+    YRDBRUNTIMEVERIF_TableWidget *current_QTable_Widget_Item =
+                                    Get_CURRENT_QTable_WIDGET();
 
 
     if (0 == current_QTable_Widget_Item)
@@ -1005,20 +1015,34 @@ bool YRDBRUNTIMEVERIF_MainWindow::ON_action_export_as_CSV_till_selected_SQL_even
 void YRDBRUNTIMEVERIF_MainWindow::
         ON_action_set_current_selected_SQL_event_as_filter_and_search()
 {
-    if (tableWidget_LOGGING->rowCount() <= 0)
+    YRDBRUNTIMEVERIF_TableWidget *current_QTable_Widget_Item =
+                                    Get_CURRENT_QTable_WIDGET();
+
+
+    if (0 == current_QTable_Widget_Item)
+    {
+        return;
+    }
+
+
+    if (current_QTable_Widget_Item->rowCount() <= 0)
     {
         return ;
     }
 
-    int current_row = tableWidget_LOGGING->currentRow();
+
+    int current_row = current_QTable_Widget_Item->currentRow();
+
 
     static const uint SIGNALItem_COLUMN = 1;
 
+
     QString current_selected_SQL_event_text;
 
+
     QTableWidgetItem *an_item =
-        tableWidget_LOGGING->item(current_row,
-                                  SIGNALItem_COLUMN);
+        current_QTable_Widget_Item->item(current_row,
+                                         SIGNALItem_COLUMN);
 
     if (0 != an_item)
     {
@@ -1035,25 +1059,38 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
 void YRDBRUNTIMEVERIF_MainWindow::SOFT_Reset_selected()
 {
-    lineEdit_SQL_event_filtering->clear();
+    YRDBRUNTIMEVERIF_TableWidget *current_QTable_Widget_Item = Get_CURRENT_QTable_WIDGET();
 
-    lineEdit_FILTERING_COUNT->clear();
+    if (0 != current_QTable_Widget_Item)
+    {
+        lineEdit_SQL_event_filtering->clear();
 
-    tableWidget_LOGGING->CLEAR_FILTERING();
+        lineEdit_FILTERING_COUNT->clear();
+
+
+        current_QTable_Widget_Item->CLEAR_FILTERING();
+    }
 }
 
 
 void YRDBRUNTIMEVERIF_MainWindow::ON_BUTON_Reset_pressed()
 {
-    comboBox_global_filtering->setCurrentIndex(0);
+    YRDBRUNTIMEVERIF_TableWidget *current_QTable_Widget_Item =
+                                        Get_CURRENT_QTable_WIDGET();
 
-    comboBox_SQL_event_filtering->setCurrentIndex(0);
+    if (0 != current_QTable_Widget_Item)
+    {
+        comboBox_global_filtering->setCurrentIndex(0);
 
-    lineEdit_SQL_event_filtering->clear();
+        comboBox_SQL_event_filtering->setCurrentIndex(0);
 
-    lineEdit_FILTERING_COUNT->clear();
+        lineEdit_SQL_event_filtering->clear();
 
-    tableWidget_LOGGING->CLEAR_FILTERING();
+        lineEdit_FILTERING_COUNT->clear();
+
+
+        current_QTable_Widget_Item->CLEAR_FILTERING();
+    }
 }
 
 
@@ -1211,12 +1248,24 @@ void YRDBRUNTIMEVERIF_MainWindow::
         return ;
     }
 
+
+    YRDBRUNTIMEVERIF_TableWidget *current_QTable_Widget_Item = Get_CURRENT_QTable_WIDGET();
+
+    if (0 == current_QTable_Widget_Item)
+    {
+        return;
+    }
+
+
     RESET_comboBox_global_filtering();
+
 
     //PREVIOUS COMMAND CLEARS resets of "comboBox_SQL_event_filtering"
     comboBox_SQL_event_filtering->find_AND_SET_CURRENT_INDEX(a_SQL_event_item);
 
-    uint MATCHED_search = tableWidget_LOGGING->FILTER_ITEM(a_SQL_event_item);
+
+    uint MATCHED_search = current_QTable_Widget_Item->FILTER_ITEM(a_SQL_event_item);
+
 
     lineEdit_FILTERING_COUNT->setText(QString::number(MATCHED_search));
 }
@@ -1231,9 +1280,20 @@ void YRDBRUNTIMEVERIF_MainWindow::
     }
 
 
-    tableWidget_LOGGING->CLEAR_FILTERING();
+    YRDBRUNTIMEVERIF_TableWidget *current_QTable_Widget_Item =
+                                        Get_CURRENT_QTable_WIDGET();
+
+    if (0 == current_QTable_Widget_Item)
+    {
+        return;
+    }
+
+
+    current_QTable_Widget_Item->CLEAR_FILTERING();
+
 
     RESET_comboBox_SQL_event_filtering();
+
 
     //THE PREVIOUS COMMAND CLEARS content of "lineEdit_SQL_event_filtering"
     lineEdit_SQL_event_filtering->setText(a_SourceSUT__OR__SQLEvent__Text);
@@ -1244,13 +1304,13 @@ void YRDBRUNTIMEVERIF_MainWindow::
     if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive(comboBox_global_filtering->currentText(),
                                                            QString("source")))
     {
-        MATCHED_search = tableWidget_LOGGING->FILTER__SUT_SOURCE__ITEM(a_SourceSUT__OR__SQLEvent__Text);
+        MATCHED_search = current_QTable_Widget_Item->FILTER__SUT_SOURCE__ITEM(a_SourceSUT__OR__SQLEvent__Text);
     }
     else if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive(comboBox_global_filtering->currentText(),
                                                                 QString("sql event log")))
     {
-        MATCHED_search = tableWidget_LOGGING->FILTER_ITEM(a_SourceSUT__OR__SQLEvent__Text,
-                                                          true);
+        MATCHED_search = current_QTable_Widget_Item->FILTER_ITEM(a_SourceSUT__OR__SQLEvent__Text,
+                                                                 true);
     }
 
 

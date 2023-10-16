@@ -89,6 +89,9 @@ public slots:
 
 protected slots:
 
+    YRDBRUNTIMEVERIF_TableWidget *Get_CURRENT_QTable_WIDGET();
+
+
     bool export_csv_file();
 
 
@@ -109,9 +112,12 @@ protected slots:
                                               &YRDBRUNTIMEVERIF_MainWindow::VIEW_current_RUNTIME_MONITOR);
     }
 
+
 	virtual void *VIEW_current_RUNTIME_MONITOR();
 
+
     virtual void setCurrentRuntimeMonitorNameVisible(bool aVisibleValue);
+
 
     virtual inline void setLast_SelectedRow_Row_ID(const QModelIndex &a_model_CELL_index)
     {
@@ -143,6 +149,7 @@ protected slots:
                 PRINT_event_log_excerpt(*a_row_FOR_pdf_printing_max) :
                 PRINT_event_log_excerpt();
     }
+
 
     virtual bool PRINT_event_log_excerpt(int a_row_FOR_pdf_printing_max = -1);
 
@@ -190,7 +197,7 @@ protected slots:
 
     virtual inline void RESET_comboBox_global_filtering(const QString &a_SQL_event_item)
     {
-        comboBox_global_filtering->setCurrentIndex(0);
+        RESET_comboBox_global_filtering();
     }
 
 
@@ -232,7 +239,6 @@ public:
 
 
 private:
-
 
     uint                        _visible_ERROR_row_counter;
 
