@@ -90,7 +90,7 @@ void YRDBRUNTIMEVERIF_TableWidget::setMaxSize(uint MAX_SIZE)
 {
 	setRowCount(MAX_SIZE);
 
-	_mapListIdxToElement_db_ID.setMaxSize(MAX_SIZE);
+	//_mapListIdxToElement_db_ID.setMaxSize(MAX_SIZE);
 }
 
 
