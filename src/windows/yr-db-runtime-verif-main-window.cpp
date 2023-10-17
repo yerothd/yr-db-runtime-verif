@@ -972,7 +972,7 @@ bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt(int a_row_FOR_pdf_prin
 
     if (0 == current_QTable_Widget_Item)
     {
-        QMessageBox::information(this,
+        QMessageBox::information(toolBar_mainWindow_YR_DB_RUNTIME_VERIF,
                                  QObject::tr("NO QTABLEWIDGET existing now"),
                                  QObject::tr("No event log data to print out !"));
 
@@ -982,7 +982,7 @@ bool YRDBRUNTIMEVERIF_MainWindow::PRINT_event_log_excerpt(int a_row_FOR_pdf_prin
 
 	if (current_QTable_Widget_Item->rowCount() <= 0)
 	{
-		QMessageBox::information(this,
+		QMessageBox::information(toolBar_mainWindow_YR_DB_RUNTIME_VERIF,
 				QObject::tr("Event log printing"),
 				QObject::tr("No event log data to print out !"));
 
@@ -1106,6 +1106,21 @@ bool YRDBRUNTIMEVERIF_MainWindow::ON_action_export_as_CSV_till_selected_SQL_even
 void YRDBRUNTIMEVERIF_MainWindow::
         ON_action_set_current_selected_SQL_event_as_filter_and_search()
 {
+    //THE USER MUST MANUALLY UNCHECKED "checkBox_ALL_STATE_SAFETY_PROPERTIES"
+    //before any other search filtering could occur here.
+    if (0 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex() &&
+        checkBox_ALL_STATE_SAFETY_PROPERTIES->isChecked())
+    {
+        QMessageBox::warning(toolBar_mainWindow_YR_DB_RUNTIME_VERIF,
+                             QObject::tr("(1) A RUNTIME MONITOR is selected"),
+                             QObject::tr("FIRST UNCHECKED checkbox near combobox \"runtime monitor name\" !"));
+
+        ON_BUTON_Reset_pressed(true);
+
+        return ;
+    }
+
+
     YRDBRUNTIMEVERIF_TableWidget *current_QTable_Widget_Item =
                                     Get_CURRENT_QTable_WIDGET();
 
@@ -1150,38 +1165,61 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
 void YRDBRUNTIMEVERIF_MainWindow::SOFT_Reset_selected()
 {
+    lineEdit_SQL_event_filtering->clear();
+
+    lineEdit_FILTERING_COUNT->clear();
+
+
     YRDBRUNTIMEVERIF_TableWidget *current_QTable_Widget_Item = Get_CURRENT_QTable_WIDGET();
 
     if (0 != current_QTable_Widget_Item)
     {
-        lineEdit_SQL_event_filtering->clear();
-
-        lineEdit_FILTERING_COUNT->clear();
-
-
         current_QTable_Widget_Item->CLEAR_FILTERING();
     }
 }
 
 
-void YRDBRUNTIMEVERIF_MainWindow::ON_BUTON_Reset_pressed()
+void YRDBRUNTIMEVERIF_MainWindow::ON_BUTON_Reset_pressed(bool soft /* = false */)
 {
     YRDBRUNTIMEVERIF_TableWidget *current_QTable_Widget_Item =
                                         Get_CURRENT_QTable_WIDGET();
 
-    if (0 != current_QTable_Widget_Item)
+    comboBox_global_filtering->setCurrentIndex(0);
+
+    comboBox_SQL_event_filtering->setCurrentIndex(0);
+
+    lineEdit_SQL_event_filtering->clear();
+
+    lineEdit_FILTERING_COUNT->clear();
+
+    if (!soft)
     {
-        comboBox_global_filtering->setCurrentIndex(0);
-
-        comboBox_SQL_event_filtering->setCurrentIndex(0);
-
-        lineEdit_SQL_event_filtering->clear();
-
-        lineEdit_FILTERING_COUNT->clear();
-
-
-        current_QTable_Widget_Item->CLEAR_FILTERING();
+        if (0 != current_QTable_Widget_Item)
+        {
+            current_QTable_Widget_Item->CLEAR_FILTERING();
+        }
     }
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::ON_BUTON_Filter_pressed()
+{
+    //THE USER MUST MANUALLY UNCHECKED "checkBox_ALL_STATE_SAFETY_PROPERTIES"
+    //before any other search filtering could occur here.
+    if (0 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex() &&
+        checkBox_ALL_STATE_SAFETY_PROPERTIES->isChecked())
+    {
+        QMessageBox::warning(toolBar_mainWindow_YR_DB_RUNTIME_VERIF,
+                             QObject::tr("(2) A RUNTIME MONITOR is selected"),
+                             QObject::tr("FIRST UNCHECKED checkbox near combobox \"runtime monitor name\" !"));
+
+        ON_BUTON_Reset_pressed(true);
+
+        return ;
+    }
+
+
+    ON_QTABLEWIDGET_FILTER_ITEM_Exact_GIVEN(lineEdit_SQL_event_filtering->text().trimmed());
 }
 
 
@@ -1343,6 +1381,21 @@ void YRDBRUNTIMEVERIF_MainWindow::
 void YRDBRUNTIMEVERIF_MainWindow::
         ON_QTABLEWIDGET_FILTER_ITEM_selected(const QString &a_SQL_event_item)
 {
+    //THE USER MUST MANUALLY UNCHECKED "checkBox_ALL_STATE_SAFETY_PROPERTIES"
+    //before any other search filtering could occur here.
+    if (0 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex() &&
+        checkBox_ALL_STATE_SAFETY_PROPERTIES->isChecked())
+    {
+        QMessageBox::warning(toolBar_mainWindow_YR_DB_RUNTIME_VERIF,
+                             QObject::tr("A RUNTIME MONITOR is selected"),
+                             QObject::tr("FIRST UNCHECKED checkbox near combobox \"runtime monitor name\" !"));
+
+        ON_BUTON_Reset_pressed(true);
+
+        return ;
+    }
+
+
     lineEdit_SQL_event_filtering->clear();
 
     if (a_SQL_event_item.isEmpty())
