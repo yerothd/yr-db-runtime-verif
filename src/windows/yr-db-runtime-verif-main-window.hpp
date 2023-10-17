@@ -87,16 +87,15 @@ public slots:
 	virtual void Set_YRDBRUNTIMEVERIF_Logging_Info(uint     row_number,
 												   QString  logging_info);
 
+
 	virtual YRDBRUNTIMEVERIF_Logging_Info *Get_YRDBRUNTIMEVERIF_Logging_Info(uint row_number);
+
 
 	virtual void set_connection_DBUS_status(QString	message_STATUS,
 											bool 	error_not_connected = false);
 
 
 protected slots:
-
-    YRDBRUNTIMEVERIF_TableWidget *Get_CURRENT_QTable_WIDGET();
-
 
     bool export_csv_file();
 
@@ -107,16 +106,10 @@ protected slots:
     virtual void filter_All_RUNTIME_monitor__ERROR__SQL__EVENTS();
 
 
-    virtual inline void UN__filter_All_RUNTIME_monitor__ERROR__SQL__EVENTS()
-    {
-        tableWidget_LOGGING_ERROR_EVENT->CLEAR_FILTERING();
-    }
+    virtual void UN__filter_All_RUNTIME_monitor__ERROR__SQL__EVENTS();
 
 
     void handle_checkBox_ALL_STATE_SAFETY_PROPERTIES_State_CHANGED(int aState);
-
-
-    void handle_current_QTABLEWIDGET_Clear_Filtering();
 
 
     void handle_current_tab_changed(int current_index);
@@ -245,6 +238,9 @@ protected slots:
 
 
 protected:
+
+    virtual YRDBRUNTIMEVERIF_TableWidget *Get_CURRENT_QTable_WIDGET();
+
 
     virtual void setCurrentRuntimeMonitorNameVisible(bool aVisibleValue);
 

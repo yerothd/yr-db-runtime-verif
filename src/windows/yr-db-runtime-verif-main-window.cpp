@@ -216,12 +216,6 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
             SLOT(ON_QTABLEWIDGET_ERROR_ITEM_pressed(QTableWidgetItem *)));
 
 
-    connect(tableWidget_LOGGING_ERROR_EVENT,
-    		SIGNAL(yeroth_signal_QTABLEWidget_CLEAR_FILTERING()),
-			this,
-            SLOT(handle_current_QTABLEWIDGET_Clear_Filtering()));
-
-
 
     connect(tableWidget_LOGGING,
     		SIGNAL(itemChanged(QTableWidgetItem *)),
@@ -511,24 +505,6 @@ void YRDBRUNTIMEVERIF_MainWindow::set_connection_DBUS_status(QString message_STA
 }
 
 
-YRDBRUNTIMEVERIF_TableWidget* YRDBRUNTIMEVERIF_MainWindow::Get_CURRENT_QTable_WIDGET()
-{
-    YRDBRUNTIMEVERIF_TableWidget *current_QTable_Widget_Item = 0;
-
-    if (0 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
-    {
-        current_QTable_Widget_Item = tableWidget_LOGGING_ERROR_EVENT;
-    }
-    else if (1 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
-    {
-        current_QTable_Widget_Item = tableWidget_LOGGING;
-    }
-
-
-    return current_QTable_Widget_Item;
-}
-
-
 bool YRDBRUNTIMEVERIF_MainWindow::export_csv_file()
 {
     YRDBRUNTIMEVERIF_TableWidget *current_QTable_Widget_Item =
@@ -648,6 +624,48 @@ void YRDBRUNTIMEVERIF_MainWindow::filter_All_RUNTIME_monitor__ERROR__SQL__EVENTS
 }
 
 
+void YRDBRUNTIMEVERIF_MainWindow::UN__filter_All_RUNTIME_monitor__ERROR__SQL__EVENTS()
+{
+    QString A_Current_RUNTIME_monitor_Name = GET_CURRENT_RUNTIME_MONITOR_name();
+
+
+    QString a_CURRENT_LOGGING_INFO;
+
+
+    uint TIMESTAMP_column_number = 0;
+
+
+    QTableWidgetItem *a_qwidget_item = 0;
+
+
+    for (int row_number = 0;
+         row_number < tableWidget_LOGGING_ERROR_EVENT->rowCount();
+         ++row_number)
+    {
+        a_qwidget_item =
+            tableWidget_LOGGING_ERROR_EVENT->item(row_number,
+                                                  TIMESTAMP_column_number);
+
+        if (0 != a_qwidget_item)
+        {
+            a_CURRENT_LOGGING_INFO = _MAP_dbsqlERRORevent__TO__cppfileinfo
+                                                .value(a_qwidget_item->row());
+
+            YRDBRUNTIMEVERIF_Logging_Info a_CURRENT_logging_info(a_CURRENT_LOGGING_INFO);
+
+            if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseSensitive(a_CURRENT_logging_info.A_RUNTIME_MONITOR_name,
+                                                                 A_Current_RUNTIME_monitor_Name))
+            {
+                a_qwidget_item->setBackground(Qt::black);
+            }
+        }
+    }
+
+
+    set_CURRENT_runtime_monitor_name_Filtered(false);
+}
+
+
 void YRDBRUNTIMEVERIF_MainWindow::
         handle_checkBox_ALL_STATE_SAFETY_PROPERTIES_State_CHANGED(int a_state)
 {
@@ -659,14 +677,6 @@ void YRDBRUNTIMEVERIF_MainWindow::
     {
         UN__filter_All_RUNTIME_monitor__ERROR__SQL__EVENTS();
     }
-}
-
-
-void YRDBRUNTIMEVERIF_MainWindow::handle_current_QTABLEWIDGET_Clear_Filtering()
-{
-    checkBox_ALL_STATE_SAFETY_PROPERTIES->setChecked(false);
-
-    set_CURRENT_runtime_monitor_name_Filtered(false);
 }
 
 
@@ -1170,9 +1180,6 @@ void YRDBRUNTIMEVERIF_MainWindow::ON_BUTON_Reset_pressed()
         lineEdit_FILTERING_COUNT->clear();
 
 
-        set_CURRENT_runtime_monitor_name_Filtered(false);
-
-
         current_QTable_Widget_Item->CLEAR_FILTERING();
     }
 }
@@ -1427,6 +1434,24 @@ void YRDBRUNTIMEVERIF_MainWindow::ACTION_USER_GUIDE_method()
             (aProcess,
              YR_DB_RUNTIME_VERIF_Config::pathToPdfReader,
              progArguments);
+}
+
+
+YRDBRUNTIMEVERIF_TableWidget* YRDBRUNTIMEVERIF_MainWindow::Get_CURRENT_QTable_WIDGET()
+{
+    YRDBRUNTIMEVERIF_TableWidget *current_QTable_Widget_Item = 0;
+
+    if (0 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
+    {
+        current_QTable_Widget_Item = tableWidget_LOGGING_ERROR_EVENT;
+    }
+    else if (1 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
+    {
+        current_QTable_Widget_Item = tableWidget_LOGGING;
+    }
+
+
+    return current_QTable_Widget_Item;
 }
 
 
