@@ -73,7 +73,7 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 
 
 
-    checkBox_ALL_STATE_SAFETY_PROPRTIES->setVisible(false);
+    checkBox_ALL_STATE_SAFETY_PROPERTIES->setVisible(false);
 
 
     comboBox_RUNTIME_MONITOR_NAME->yr__setEditable(false);
@@ -105,10 +105,10 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     setCurrentRuntimeMonitorNameVisible(false);
 
 
-    connect(checkBox_ALL_STATE_SAFETY_PROPRTIES,
+    connect(checkBox_ALL_STATE_SAFETY_PROPERTIES,
             SIGNAL(stateChanged(int)),
             this,
-            SLOT(handle_checkBox_ALL_STATE_SAFETY_PROPRTIES_State_CHANGED(int)));
+            SLOT(handle_checkBox_ALL_STATE_SAFETY_PROPERTIES_State_CHANGED(int)));
 
 
     connect(tabWidget_SQL_ERROR_EVENT_LOGGING,
@@ -554,7 +554,7 @@ void YRDBRUNTIMEVERIF_MainWindow::set_CURRENT_TABWIDGET_ACTION_visible(bool a_va
 
     if (0 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
     {
-        checkBox_ALL_STATE_SAFETY_PROPRTIES->setVisible(a_value);
+        checkBox_ALL_STATE_SAFETY_PROPERTIES->setVisible(a_value);
 
 
         tableWidget_LOGGING_ERROR_EVENT->resize_columns_AND_rows_to_contents();
@@ -649,7 +649,7 @@ void YRDBRUNTIMEVERIF_MainWindow::filter_All_RUNTIME_monitor__ERROR__SQL__EVENTS
 
 
 void YRDBRUNTIMEVERIF_MainWindow::
-        handle_checkBox_ALL_STATE_SAFETY_PROPRTIES_State_CHANGED(int a_state)
+        handle_checkBox_ALL_STATE_SAFETY_PROPERTIES_State_CHANGED(int a_state)
 {
     if (Qt::Checked == a_state)
     {
@@ -664,7 +664,7 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
 void YRDBRUNTIMEVERIF_MainWindow::handle_current_QTABLEWIDGET_Clear_Filtering()
 {
-    checkBox_ALL_STATE_SAFETY_PROPRTIES->setChecked(false);
+    checkBox_ALL_STATE_SAFETY_PROPERTIES->setChecked(false);
 
     set_CURRENT_runtime_monitor_name_Filtered(false);
 }

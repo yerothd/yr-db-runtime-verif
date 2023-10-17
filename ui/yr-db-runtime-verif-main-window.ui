@@ -5688,7 +5688,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_ALL_STATE_SAFETY_PROPRTIES">
+     <widget class="QCheckBox" name="checkBox_ALL_STATE_SAFETY_PROPERTIES">
       <property name="geometry">
        <rect>
         <x>246</x>

@@ -113,7 +113,7 @@ protected slots:
     }
 
 
-    void handle_checkBox_ALL_STATE_SAFETY_PROPRTIES_State_CHANGED(int aState);
+    void handle_checkBox_ALL_STATE_SAFETY_PROPERTIES_State_CHANGED(int aState);
 
 
     void handle_current_QTABLEWIDGET_Clear_Filtering();
