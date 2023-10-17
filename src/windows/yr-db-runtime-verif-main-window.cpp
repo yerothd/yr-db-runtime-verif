@@ -28,7 +28,8 @@ const QString YRDBRUNTIMEVERIF_MainWindow::QMESSAGE_BOX_STYLE_SHEET =
 
 
 YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
-:_visible_ERROR_row_counter(0),
+:_CURRENT_runtime_monitor_name_Filtered(false),
+ _visible_ERROR_row_counter(0),
  _visible_row_counter(0),
  _Last_SelectedRow_Row_INDEX(0),
  _current_runtime_monitor_INSTANCE(0)
