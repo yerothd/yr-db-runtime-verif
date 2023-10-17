@@ -81,6 +81,9 @@ public slots:
         FILTER_ITEM(SIGNALItem_TEXT, false);
     }
 
+signals:
+
+    void yeroth_signal_QTABLEWidget_CLEAR_FILTERING();
 
 
 public:

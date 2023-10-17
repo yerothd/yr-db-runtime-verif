@@ -303,10 +303,14 @@ void YRDBRUNTIMEVERIF_TableWidget::CLEAR_FILTERING()
     int row_size = rowCount();
 
 
+    static const uint TIME_STAMP_COLUMN = 0;
+
     static const uint SIGNALItem_COLUMN = 1;
 
     static const uint SUT_SOURCEItem_COLUMN = 2;
 
+
+    QTableWidgetItem *current_TimeStamp_item = 0;
 
     QTableWidgetItem *current_signal_item = 0;
 
@@ -315,9 +319,16 @@ void YRDBRUNTIMEVERIF_TableWidget::CLEAR_FILTERING()
 
     for (uint row = 0; row < row_size; ++row)
     {
+        current_TimeStamp_item = item(row, TIME_STAMP_COLUMN);
+
         current_signal_item = item(row, SIGNALItem_COLUMN);
 
         current_signal_item_two = item(row, SUT_SOURCEItem_COLUMN);
+
+        if (0 != current_TimeStamp_item)
+        {
+            current_TimeStamp_item->setBackground(Qt::black);
+        }
 
         if (0 != current_signal_item)
         {
@@ -332,6 +343,9 @@ void YRDBRUNTIMEVERIF_TableWidget::CLEAR_FILTERING()
 
 
     Set_CURRENTLY_filtered(false);
+
+
+    emit yeroth_signal_QTABLEWidget_CLEAR_FILTERING();
 
 
     resize_columns_AND_rows_to_contents();

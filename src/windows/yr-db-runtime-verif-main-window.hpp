@@ -50,6 +50,12 @@ public:
     virtual void SET_CURRENT_RUNTIME_MONITOR_name(QString A_RUNTIME_MONITOR_name);
 
 
+    virtual inline QString GET_CURRENT_RUNTIME_MONITOR_name()
+    {
+        return comboBox_RUNTIME_MONITOR_NAME->currentText();
+    }
+
+
 	virtual int ADD_ERROR_ITEM(QString                        TIMESTAMPtem,
                                QString                        SIGNALItem,
                                QString                        SOURCEItem,
@@ -98,6 +104,21 @@ protected slots:
     void set_CURRENT_TABWIDGET_ACTION_visible(bool a_value);
 
 
+    virtual void filter_All_RUNTIME_monitor__ERROR__SQL__EVENTS();
+
+
+    virtual inline void UN__filter_All_RUNTIME_monitor__ERROR__SQL__EVENTS()
+    {
+        tableWidget_LOGGING_ERROR_EVENT->CLEAR_FILTERING();
+    }
+
+
+    void handle_checkBox_ALL_STATE_SAFETY_PROPRTIES_State_CHANGED(int aState);
+
+
+    void handle_current_QTABLEWIDGET_Clear_Filtering();
+
+
     void handle_current_tab_changed(int current_index);
 
 
@@ -114,9 +135,6 @@ protected slots:
 
 
 	virtual void *VIEW_current_RUNTIME_MONITOR();
-
-
-    virtual void setCurrentRuntimeMonitorNameVisible(bool aVisibleValue);
 
 
     virtual inline void setLast_SelectedRow_Row_ID(const QModelIndex &a_model_CELL_index)
@@ -228,6 +246,20 @@ protected slots:
 
 protected:
 
+    virtual void setCurrentRuntimeMonitorNameVisible(bool aVisibleValue);
+
+
+    virtual inline void set_CURRENT_runtime_monitor_name_Filtered(bool a_bool_value)
+    {
+        _CURRENT_runtime_monitor_name_Filtered = a_bool_value;
+    }
+
+    virtual inline bool is_CURRENT_runtime_monitor_name_Filtered()
+    {
+        return _CURRENT_runtime_monitor_name_Filtered;
+    }
+
+
     virtual void contextMenuEvent(QContextMenuEvent *event);
 
 
@@ -239,6 +271,8 @@ public:
 
 
 private:
+
+    bool                        _CURRENT_runtime_monitor_name_Filtered;
 
     uint                        _visible_ERROR_row_counter;
 

@@ -105,6 +105,12 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     setCurrentRuntimeMonitorNameVisible(false);
 
 
+    connect(checkBox_ALL_STATE_SAFETY_PROPRTIES,
+            SIGNAL(stateChanged(int)),
+            this,
+            SLOT(handle_checkBox_ALL_STATE_SAFETY_PROPRTIES_State_CHANGED(int)));
+
+
     connect(tabWidget_SQL_ERROR_EVENT_LOGGING,
             SIGNAL(currentChanged(int)),
             this,
@@ -208,6 +214,12 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     		SIGNAL(itemPressed(QTableWidgetItem *)),
 			this,
             SLOT(ON_QTABLEWIDGET_ERROR_ITEM_pressed(QTableWidgetItem *)));
+
+
+    connect(tableWidget_LOGGING_ERROR_EVENT,
+    		SIGNAL(yeroth_signal_QTABLEWidget_CLEAR_FILTERING()),
+			this,
+            SLOT(handle_current_QTABLEWIDGET_Clear_Filtering()));
 
 
 
@@ -542,6 +554,9 @@ void YRDBRUNTIMEVERIF_MainWindow::set_CURRENT_TABWIDGET_ACTION_visible(bool a_va
 
     if (0 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
     {
+        checkBox_ALL_STATE_SAFETY_PROPRTIES->setVisible(a_value);
+
+
         tableWidget_LOGGING_ERROR_EVENT->resize_columns_AND_rows_to_contents();
 
         tableWidget_LOGGING_ERROR_SOURCE_LOCATION->resize_columns_AND_rows_to_contents();
@@ -576,6 +591,82 @@ void YRDBRUNTIMEVERIF_MainWindow::set_CURRENT_TABWIDGET_ACTION_visible(bool a_va
     actionExport_as_CSV_till_selected_SQL_event->setVisible(a_value);
 
     actionSet_current_selected_SQL_event_as_filter_and_search->setVisible(a_value);
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::filter_All_RUNTIME_monitor__ERROR__SQL__EVENTS()
+{
+    ON_BUTON_Reset_pressed();
+
+
+    uint Filtered_Cell_Count = 0;
+
+
+    QString A_Current_RUNTIME_monitor_Name = GET_CURRENT_RUNTIME_MONITOR_name();
+
+
+    QString a_CURRENT_LOGGING_INFO;
+
+
+    uint TIMESTAMP_column_number = 0;
+
+
+    QTableWidgetItem *a_qwidget_item = 0;
+
+
+    for (int row_number = 0;
+         row_number < tableWidget_LOGGING_ERROR_EVENT->rowCount();
+         ++row_number)
+    {
+        a_qwidget_item =
+            tableWidget_LOGGING_ERROR_EVENT->item(row_number,
+                                                  TIMESTAMP_column_number);
+
+        if (0 != a_qwidget_item)
+        {
+            a_CURRENT_LOGGING_INFO = _MAP_dbsqlERRORevent__TO__cppfileinfo
+                                                .value(a_qwidget_item->row());
+
+            YRDBRUNTIMEVERIF_Logging_Info a_CURRENT_logging_info(a_CURRENT_LOGGING_INFO);
+
+            if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseSensitive(a_CURRENT_logging_info.A_RUNTIME_MONITOR_name,
+                                                                 A_Current_RUNTIME_monitor_Name))
+            {
+                ++Filtered_Cell_Count;
+
+                a_qwidget_item->setBackground(Qt::darkMagenta);
+            }
+        }
+    }
+
+    if (Filtered_Cell_Count > 0)
+    {
+        set_CURRENT_runtime_monitor_name_Filtered(true);
+
+        tableWidget_LOGGING_ERROR_EVENT->Set_CURRENTLY_filtered(true);
+    }
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::
+        handle_checkBox_ALL_STATE_SAFETY_PROPRTIES_State_CHANGED(int a_state)
+{
+    if (Qt::Checked == a_state)
+    {
+        filter_All_RUNTIME_monitor__ERROR__SQL__EVENTS();
+    }
+    else
+    {
+        UN__filter_All_RUNTIME_monitor__ERROR__SQL__EVENTS();
+    }
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::handle_current_QTABLEWIDGET_Clear_Filtering()
+{
+    checkBox_ALL_STATE_SAFETY_PROPRTIES->setChecked(false);
+
+    set_CURRENT_runtime_monitor_name_Filtered(false);
 }
 
 
@@ -665,16 +756,6 @@ void *YRDBRUNTIMEVERIF_MainWindow::VIEW_current_RUNTIME_MONITOR()
 
         emit SIGNAL_INCREMENT_PROGRESS_BAR(90);
 	}
-}
-
-
-void YRDBRUNTIMEVERIF_MainWindow::setCurrentRuntimeMonitorNameVisible(bool aVisibleValue)
-{
-    tableWidget_LOGGING_ERROR_SOURCE_LOCATION->setVisible(aVisibleValue);
-
-    label_RUNTIME_MONITOR_VERIFIER_TESTER->setVisible(aVisibleValue);
-
-    comboBox_RUNTIME_MONITOR_NAME->setVisible(aVisibleValue);
 }
 
 
@@ -1089,6 +1170,9 @@ void YRDBRUNTIMEVERIF_MainWindow::ON_BUTON_Reset_pressed()
         lineEdit_FILTERING_COUNT->clear();
 
 
+        set_CURRENT_runtime_monitor_name_Filtered(false);
+
+
         current_QTable_Widget_Item->CLEAR_FILTERING();
     }
 }
@@ -1125,6 +1209,19 @@ void YRDBRUNTIMEVERIF_MainWindow::
 		QString LOGGING_INFO = _MAP_dbsqlERRORevent__TO__cppfileinfo.value(aQTable_widget_item->row());
 
 		YRDBRUNTIMEVERIF_Logging_Info a_logging_info(LOGGING_INFO);
+
+
+
+		if (is_CURRENT_runtime_monitor_name_Filtered())
+		{
+            if (!YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseSensitive(a_logging_info.A_RUNTIME_MONITOR_name,
+                                                                  GET_CURRENT_RUNTIME_MONITOR_name()))
+            {
+                return ;
+            }
+		}
+
+
 
 		tableWidget_LOGGING_ERROR_SOURCE_LOCATION
 			->ADD_ITEM_2(QString("%1:%2")
@@ -1330,6 +1427,16 @@ void YRDBRUNTIMEVERIF_MainWindow::ACTION_USER_GUIDE_method()
             (aProcess,
              YR_DB_RUNTIME_VERIF_Config::pathToPdfReader,
              progArguments);
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::setCurrentRuntimeMonitorNameVisible(bool aVisibleValue)
+{
+    tableWidget_LOGGING_ERROR_SOURCE_LOCATION->setVisible(aVisibleValue);
+
+    label_RUNTIME_MONITOR_VERIFIER_TESTER->setVisible(aVisibleValue);
+
+    comboBox_RUNTIME_MONITOR_NAME->setVisible(aVisibleValue);
 }
 
 
