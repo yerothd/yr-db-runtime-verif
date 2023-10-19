@@ -50,7 +50,11 @@ protected slots:
 
     virtual void ON_choose_path_pdfReader();
 
+
     virtual void ON_actionRETURN_TO_console_trigerred();
+
+
+    virtual void ON_pushButton_Reset_parameters_PRESSED();
 
 
 	virtual void ON_pushButton_SAVE_parameters_PRESSED();

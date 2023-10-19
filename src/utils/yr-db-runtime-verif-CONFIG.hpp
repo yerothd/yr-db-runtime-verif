@@ -89,6 +89,9 @@ public:
 
     static QString pathToLatexSystemRootFolder;
 
+
+    static const QString __pathToPdfReader;
+
     static QString pathToPdfReader;
 
 

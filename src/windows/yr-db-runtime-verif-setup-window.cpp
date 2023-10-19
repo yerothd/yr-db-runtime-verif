@@ -38,7 +38,12 @@ YRDBRUNTIMEVERIF_SetupWindow::YRDBRUNTIMEVERIF_SetupWindow()
     pushButton_choose_pdfReader->enable(this, SLOT(ON_choose_path_pdfReader()));
 
 
-	pushButton_SAVE_parameters->enable(this, SLOT(ON_pushButton_SAVE_parameters_PRESSED()));
+
+    pushButton_RESET_parameters_change
+        ->enable(this, SLOT(ON_pushButton_Reset_parameters_PRESSED()));
+
+	pushButton_SAVE_parameters
+        ->enable(this, SLOT(ON_pushButton_SAVE_parameters_PRESSED()));
 
 
 
@@ -105,6 +110,30 @@ void YRDBRUNTIMEVERIF_SetupWindow::ON_actionRETURN_TO_console_trigerred()
     {
     	ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window->yr_show();
     	ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_setup_Window->yr_close();
+    }
+}
+
+
+void YRDBRUNTIMEVERIF_SetupWindow::ON_pushButton_Reset_parameters_PRESSED()
+{
+    QString msgEnregistrer = QObject::tr("RESET current settings ?");
+
+    if (QMessageBox::Ok ==
+            QMessageBox::question(toolBar_SetupWindow_YR_DB_RUNTIME_VERIF,
+                                  QObject::tr("RESET current YR-DB-RUNTIME-VERIF APPLICATIONS parameters"),
+                                  msgEnregistrer,
+                                  QMessageBox::Cancel,
+                                  QMessageBox::Ok))
+    {
+        YR_DB_RUNTIME_VERIF_Config::pathToPdfReader =
+            YR_DB_RUNTIME_VERIF_Config::__pathToPdfReader;
+
+
+        lineEdit_pdf_reader_full_path
+            ->setText(YR_DB_RUNTIME_VERIF_Config::pathToPdfReader);
+
+
+        YR_DB_RUNTIME_VERIF_Config::save_YR_DB_RUNTIME_VERIF_Config();
     }
 }
 

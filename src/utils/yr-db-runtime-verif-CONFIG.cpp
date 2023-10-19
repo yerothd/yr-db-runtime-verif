@@ -39,6 +39,9 @@ QString YR_DB_RUNTIME_VERIF_Config::temporaryFilesDir("/tmp");
 
 QString YR_DB_RUNTIME_VERIF_Config::pathToLatexSystemRootFolder("/usr/bin");
 
+
+const QString YR_DB_RUNTIME_VERIF_Config::__pathToPdfReader("/usr/bin/evince");
+
 QString YR_DB_RUNTIME_VERIF_Config::pathToPdfReader("/usr/bin/evince");
 
 
