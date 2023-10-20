@@ -1,9 +1,9 @@
 /*
-* A_YR_runtime_monitor_SECOND.cpp
+* YEROTH_QVGE_sample_SAFETY_PROPERY_one.cpp
 *
 */
 
-#include "A_YR_runtime_monitor_SECOND.hpp"
+#include "YEROTH_QVGE_sample_SAFETY_PROPERY_one.hpp"
 
 
 #include <QtSql/QSqlRecord>
@@ -20,7 +20,7 @@
 #include "yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp"
 
 
-void A_YR_runtime_monitor_SECOND::YR_CALL_BACK_final_state(YR_CPP_MONITOR 			*a_runtime_monitor,
+void YEROTH_QVGE_sample_SAFETY_PROPERY_one::YR_CALL_BACK_final_state(YR_CPP_MONITOR 			*a_runtime_monitor,
         YR_CPP_MONITOR_EDGE 	*an_EDGE_leading_TO_error_FINAL_state)
 {
     if (0 != a_runtime_monitor)
@@ -32,23 +32,21 @@ void A_YR_runtime_monitor_SECOND::YR_CALL_BACK_final_state(YR_CPP_MONITOR 			*a_
 
 
 
-A_YR_runtime_monitor_SECOND::A_YR_runtime_monitor_SECOND()
+YEROTH_QVGE_sample_SAFETY_PROPERY_one::YEROTH_QVGE_sample_SAFETY_PROPERY_one()
     :YR_DB_RUNTIME_VERIF_Monitor()
 {
-    set_RUNTIME_MONITOR_NAME("A_YR_runtime_monitor_SECOND");
+    set_RUNTIME_MONITOR_NAME("YEROTH_QVGE_sample_SAFETY_PROPERY_one");
 
 
-    YR_CPP_MONITOR_EDGE *a_last_edge_1 = create_yr_monitor_edge ("a", "e");
-    a_last_edge_1->get_SOURCE_STATE()->set_START_STATE(*this, true);
+    YR_CPP_MONITOR_EDGE *a_last_edge_1 = create_yr_monitor_edge ("E", "E");
     a_last_edge_1->get_TARGET_STATE()->set_ERROR_STATE(true);
-    a_last_edge_1->get_SOURCE_STATE()->set_PRE_CONDITION_notIN("YR_ASSET_cat", "categories.nom_categorie");
-    a_last_edge_1->get_TARGET_STATE()->set_POST_CONDITION_IN("YR_ASSET_cat", "stocks.categorie");
+    a_last_edge_1->get_TARGET_STATE()->set_POST_CONDITION_IN("YR_ASSET_cat", "stocks.nom_categorie");
 
 
     YR_CPP_notinset_inset_TRACE_expression *a_last_edge_1_GUARDED_CONDITION
         = new YR_CPP_notinset_inset_TRACE_expression(true,
                 "'DELETE.categories.YR_ASSET_cat'",
-                "a");
+                "E");
 
     a_last_edge_1->set_GUARDED_CONDITION(a_last_edge_1_GUARDED_CONDITION);
 
@@ -61,23 +59,21 @@ A_YR_runtime_monitor_SECOND::A_YR_runtime_monitor_SECOND()
 }
 
 
-A_YR_runtime_monitor_SECOND::A_YR_runtime_monitor_SECOND(YR_DB_RUNTIME_VERIF_Logger *logger)
+YEROTH_QVGE_sample_SAFETY_PROPERY_one::YEROTH_QVGE_sample_SAFETY_PROPERY_one(YR_DB_RUNTIME_VERIF_Logger *logger)
     :YR_DB_RUNTIME_VERIF_Monitor(logger)
 {
-    set_RUNTIME_MONITOR_NAME("A_YR_runtime_monitor_SECOND");
+    set_RUNTIME_MONITOR_NAME("YEROTH_QVGE_sample_SAFETY_PROPERY_one");
 
 
-    YR_CPP_MONITOR_EDGE *a_last_edge_1 = create_yr_monitor_edge ("a", "e");
-    a_last_edge_1->get_SOURCE_STATE()->set_START_STATE(*this, true);
+    YR_CPP_MONITOR_EDGE *a_last_edge_1 = create_yr_monitor_edge ("E", "E");
     a_last_edge_1->get_TARGET_STATE()->set_ERROR_STATE(true);
-    a_last_edge_1->get_SOURCE_STATE()->set_PRE_CONDITION_notIN("YR_ASSET_cat", "categories.nom_categorie");
-    a_last_edge_1->get_TARGET_STATE()->set_POST_CONDITION_IN("YR_ASSET_cat", "stocks.categorie");
+    a_last_edge_1->get_TARGET_STATE()->set_POST_CONDITION_IN("YR_ASSET_cat", "stocks.nom_categorie");
 
 
     YR_CPP_notinset_inset_TRACE_expression *a_last_edge_1_GUARDED_CONDITION
         = new YR_CPP_notinset_inset_TRACE_expression(true,
                 "'DELETE.categories.YR_ASSET_cat'",
-                "a");
+                "E");
 
     a_last_edge_1->set_GUARDED_CONDITION(a_last_edge_1_GUARDED_CONDITION);
 
@@ -98,7 +94,7 @@ A_YR_runtime_monitor_SECOND::A_YR_runtime_monitor_SECOND(YR_DB_RUNTIME_VERIF_Log
 * A SERIOUS VERIFICATION CLIENT MUST OVERRIDE THIS
 * METHOD !
 */
-bool A_YR_runtime_monitor_SECOND::DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(
+bool YEROTH_QVGE_sample_SAFETY_PROPERY_one::DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(
     QString sql_table_ADDED_with_file_AND_line_number,
     uint	sql_record_qty_MODIFIED,
     YR_CPP_UTILS::SQL_CONSTANT_IDENTIFIER cur_SQL_command
@@ -152,7 +148,7 @@ bool A_YR_runtime_monitor_SECOND::DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(
 }
 
 
-bool A_YR_runtime_monitor_SECOND::YR_SQL_SELECT_stocks()
+bool YEROTH_QVGE_sample_SAFETY_PROPERY_one::YR_SQL_SELECT_stocks()
 {
     return YR_trigger_an_edge_event("'SELECT.stocks'");
 }

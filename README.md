@@ -8,6 +8,11 @@
 ### MIT SOFTWARE LICENSED
 
 
+### SAMPLE INPUT state diagram mealy machine FILE
+
+src/YEROTH_QVGE_sample_SAFETY_PROPERY_one.XGR (yeroth_qvge input file)
+
+
 ### ENVIRONMENT VARIABLES
   *  **YR_DB_RUNTIME_VERIF_HOME_FOLDER**
  

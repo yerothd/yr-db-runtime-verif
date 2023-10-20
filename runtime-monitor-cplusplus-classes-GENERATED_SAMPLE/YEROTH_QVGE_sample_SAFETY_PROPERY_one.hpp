@@ -1,10 +1,10 @@
 /*
-* A_YR_runtime_monitor_SECOND.hpp
+* YEROTH_QVGE_sample_SAFETY_PROPERY_one.hpp
 *
 */
 
-#ifndef _YR_DB_VERIF_RUNTIME_MONITOR_A_YR_runtime_monitor_SECOND_HPP_
-#define _YR_DB_VERIF_RUNTIME_MONITOR_A_YR_runtime_monitor_SECOND_HPP_
+#ifndef _YR_DB_VERIF_RUNTIME_MONITOR_YEROTH_QVGE_sample_SAFETY_PROPERY_one_HPP_
+#define _YR_DB_VERIF_RUNTIME_MONITOR_YEROTH_QVGE_sample_SAFETY_PROPERY_one_HPP_
 
 #include "include/yr-db-runtime-verif-MONITOR.hpp"
 
@@ -20,7 +20,7 @@ class YR_CPP_MONITOR_EDGE;
 class YR_CPP_MONITOR;
 
 
-class A_YR_runtime_monitor_SECOND : public YR_DB_RUNTIME_VERIF_Monitor
+class YEROTH_QVGE_sample_SAFETY_PROPERY_one : public YR_DB_RUNTIME_VERIF_Monitor
 {
     Q_OBJECT
 
@@ -29,11 +29,11 @@ public:
     static void YR_CALL_BACK_final_state(YR_CPP_MONITOR 			*a_runtime_monitor,
                                          YR_CPP_MONITOR_EDGE 	*an_EDGE_leading_TO_error_FINAL_state);
 
-    A_YR_runtime_monitor_SECOND();
+    YEROTH_QVGE_sample_SAFETY_PROPERY_one();
 
-    A_YR_runtime_monitor_SECOND(YR_DB_RUNTIME_VERIF_Logger *logger);
+    YEROTH_QVGE_sample_SAFETY_PROPERY_one(YR_DB_RUNTIME_VERIF_Logger *logger);
 
-    inline virtual ~A_YR_runtime_monitor_SECOND()
+    inline virtual ~YEROTH_QVGE_sample_SAFETY_PROPERY_one()
     {
     }
 
@@ -59,5 +59,5 @@ public slots:
 };
 
 
-#endif /* _YR_DB_VERIF_RUNTIME_MONITOR_A_YR_runtime_monitor_SECOND_HPP_ */
+#endif /* _YR_DB_VERIF_RUNTIME_MONITOR_YEROTH_QVGE_sample_SAFETY_PROPERY_one_HPP_ */
 
