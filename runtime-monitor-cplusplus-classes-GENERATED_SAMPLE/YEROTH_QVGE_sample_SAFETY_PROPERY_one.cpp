@@ -38,15 +38,17 @@ YEROTH_QVGE_sample_SAFETY_PROPERY_one::YEROTH_QVGE_sample_SAFETY_PROPERY_one()
     set_RUNTIME_MONITOR_NAME("YEROTH_QVGE_sample_SAFETY_PROPERY_one");
 
 
-    YR_CPP_MONITOR_EDGE *a_last_edge_1 = create_yr_monitor_edge ("E", "E");
+    YR_CPP_MONITOR_EDGE *a_last_edge_1 = create_yr_monitor_edge ("YR", "E");
+    a_last_edge_1->get_SOURCE_STATE()->set_START_STATE(*this, true);
     a_last_edge_1->get_TARGET_STATE()->set_ERROR_STATE(true);
-    a_last_edge_1->get_TARGET_STATE()->set_POST_CONDITION_IN("YR_ASSET_cat", "stocks.nom_categorie");
+    a_last_edge_1->get_SOURCE_STATE()->set_PRE_CONDITION_notIN("YR_ASSET_cat", "categories.nom_categorie");
+    a_last_edge_1->get_TARGET_STATE()->set_POST_CONDITION_IN("YR_ASSET_cat", "stocks.categorie");
 
 
     YR_CPP_notinset_inset_TRACE_expression *a_last_edge_1_GUARDED_CONDITION
         = new YR_CPP_notinset_inset_TRACE_expression(true,
                 "'DELETE.categories.YR_ASSET_cat'",
-                "E");
+                "YR");
 
     a_last_edge_1->set_GUARDED_CONDITION(a_last_edge_1_GUARDED_CONDITION);
 
@@ -65,15 +67,17 @@ YEROTH_QVGE_sample_SAFETY_PROPERY_one::YEROTH_QVGE_sample_SAFETY_PROPERY_one(YR_
     set_RUNTIME_MONITOR_NAME("YEROTH_QVGE_sample_SAFETY_PROPERY_one");
 
 
-    YR_CPP_MONITOR_EDGE *a_last_edge_1 = create_yr_monitor_edge ("E", "E");
+    YR_CPP_MONITOR_EDGE *a_last_edge_1 = create_yr_monitor_edge ("YR", "E");
+    a_last_edge_1->get_SOURCE_STATE()->set_START_STATE(*this, true);
     a_last_edge_1->get_TARGET_STATE()->set_ERROR_STATE(true);
-    a_last_edge_1->get_TARGET_STATE()->set_POST_CONDITION_IN("YR_ASSET_cat", "stocks.nom_categorie");
+    a_last_edge_1->get_SOURCE_STATE()->set_PRE_CONDITION_notIN("YR_ASSET_cat", "categories.nom_categorie");
+    a_last_edge_1->get_TARGET_STATE()->set_POST_CONDITION_IN("YR_ASSET_cat", "stocks.categorie");
 
 
     YR_CPP_notinset_inset_TRACE_expression *a_last_edge_1_GUARDED_CONDITION
         = new YR_CPP_notinset_inset_TRACE_expression(true,
                 "'DELETE.categories.YR_ASSET_cat'",
-                "E");
+                "YR");
 
     a_last_edge_1->set_GUARDED_CONDITION(a_last_edge_1_GUARDED_CONDITION);
 
@@ -128,7 +132,7 @@ bool YEROTH_QVGE_sample_SAFETY_PROPERY_one::DO_VERIFY_AND_or_CHECK_ltl_PROPERTY(
 
         if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive(sql_table_name, "stocks"))
         {
-            YR_SQL_SELECT_stocks();
+            return YR_SQL_SELECT_stocks();
         }
 
         break;

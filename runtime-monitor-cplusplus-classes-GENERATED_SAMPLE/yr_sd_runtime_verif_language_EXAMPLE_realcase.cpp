@@ -132,7 +132,7 @@ bool yr_sd_runtime_verif_language_EXAMPLE_realcase::DO_VERIFY_AND_or_CHECK_ltl_P
 
         if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive(sql_table_name, "departements_produits"))
         {
-            YR_SQL_SELECT_departements_produits();
+            return YR_SQL_SELECT_departements_produits();
         }
 
         break;
