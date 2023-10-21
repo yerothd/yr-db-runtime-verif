@@ -5679,7 +5679,7 @@
        <rect>
         <x>366</x>
         <y>408</y>
-        <width>16</width>
+        <width>18</width>
         <height>21</height>
        </rect>
       </property>
@@ -5783,9 +5783,9 @@
          <colorrole role="ButtonText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>2</red>
-            <green>160</green>
-            <blue>70</blue>
+            <red>245</red>
+            <green>194</green>
+            <blue>17</blue>
            </color>
           </brush>
          </colorrole>
@@ -5828,9 +5828,9 @@
          <colorrole role="HighlightedText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>255</green>
-            <blue>0</blue>
+            <red>245</red>
+            <green>194</green>
+            <blue>17</blue>
            </color>
           </brush>
          </colorrole>
@@ -5947,9 +5947,9 @@
          <colorrole role="ButtonText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>2</red>
-            <green>160</green>
-            <blue>70</blue>
+            <red>245</red>
+            <green>194</green>
+            <blue>17</blue>
            </color>
           </brush>
          </colorrole>
@@ -5992,9 +5992,9 @@
          <colorrole role="HighlightedText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>255</green>
-            <blue>0</blue>
+            <red>245</red>
+            <green>194</green>
+            <blue>17</blue>
            </color>
           </brush>
          </colorrole>
@@ -6156,9 +6156,9 @@
          <colorrole role="HighlightedText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>255</green>
-            <blue>0</blue>
+            <red>245</red>
+            <green>194</green>
+            <blue>17</blue>
            </color>
           </brush>
          </colorrole>
