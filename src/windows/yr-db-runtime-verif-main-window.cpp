@@ -95,12 +95,14 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     tableWidget_LOGGING_PRECONDITIONS->setMaxSize(1);
     tableWidget_LOGGING_postconditions->setMaxSize(1);
     tableWidget_LOGGING_guarded_condition_expression->setMaxSize(1);
+    tableWidget_LOGGING_SQL_recovery_executed_query->setMaxSize(1);
 
 
     tableWidget_LOGGING_4->setVisible(false);
     tableWidget_LOGGING_PRECONDITIONS->setVisible(false);
     tableWidget_LOGGING_postconditions->setVisible(false);
     tableWidget_LOGGING_guarded_condition_expression->setVisible(false);
+    tableWidget_LOGGING_SQL_recovery_executed_query->setVisible(false);
 
 
     setCurrentRuntimeMonitorNameVisible(false);
@@ -408,6 +410,7 @@ void YRDBRUNTIMEVERIF_MainWindow::
     tableWidget_LOGGING_PRECONDITIONS->setVisible(true);
     tableWidget_LOGGING_postconditions->setVisible(true);
     tableWidget_LOGGING_guarded_condition_expression->setVisible(true);
+    tableWidget_LOGGING_SQL_recovery_executed_query->setVisible(true);
 
 
     RUNTIME_MONITOR_name_TO_PRINT_DOT = a_logging_info.A_RUNTIME_MONITOR_name;
@@ -543,6 +546,8 @@ void YRDBRUNTIMEVERIF_MainWindow::set_CURRENT_TABWIDGET_ACTION_visible(bool a_va
         tableWidget_LOGGING_postconditions->resize_columns_AND_rows_to_contents();
 
         tableWidget_LOGGING_guarded_condition_expression->resize_columns_AND_rows_to_contents();
+
+        tableWidget_LOGGING_SQL_recovery_executed_query->resize_columns_AND_rows_to_contents();
 
         tableWidget_LOGGING_4->resize_columns_AND_rows_to_contents();
     }
@@ -1279,6 +1284,7 @@ void YRDBRUNTIMEVERIF_MainWindow::
         tableWidget_LOGGING_PRECONDITIONS->setVisible(true);
         tableWidget_LOGGING_postconditions->setVisible(true);
         tableWidget_LOGGING_guarded_condition_expression->setVisible(true);
+        tableWidget_LOGGING_SQL_recovery_executed_query->setVisible(true);
 
 
         setCurrentRuntimeMonitorNameVisible(true);
