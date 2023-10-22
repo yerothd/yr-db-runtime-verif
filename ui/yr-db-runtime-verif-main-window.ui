@@ -3311,7 +3311,7 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>8</pointsize>
+        <pointsize>7</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -3859,7 +3859,7 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>8</pointsize>
+        <pointsize>7</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -3908,7 +3908,7 @@
        <rect>
         <x>4</x>
         <y>318</y>
-        <width>481</width>
+        <width>381</width>
         <height>55</height>
        </rect>
       </property>
@@ -4410,7 +4410,7 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>8</pointsize>
+        <pointsize>7</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -4475,7 +4475,7 @@
       <property name="geometry">
        <rect>
         <x>389</x>
-        <y>380</y>
+        <y>318</y>
         <width>381</width>
         <height>55</height>
        </rect>
@@ -4978,7 +4978,7 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>8</pointsize>
+        <pointsize>7</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -5049,7 +5049,7 @@
        <rect>
         <x>4</x>
         <y>406</y>
-        <width>359</width>
+        <width>270</width>
         <height>25</height>
        </rect>
       </property>
@@ -5551,7 +5551,7 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>8</pointsize>
+        <pointsize>7</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -5565,7 +5565,7 @@
        <rect>
         <x>4</x>
         <y>380</y>
-        <width>359</width>
+        <width>270</width>
         <height>21</height>
        </rect>
       </property>
@@ -5662,7 +5662,7 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
+        <pointsize>9</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -5677,7 +5677,7 @@
      <widget class="QCheckBox" name="checkBox_ALL_STATE_SAFETY_PROPERTIES">
       <property name="geometry">
        <rect>
-        <x>366</x>
+        <x>276</x>
         <y>408</y>
         <width>18</width>
         <height>21</height>
@@ -5699,9 +5699,9 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>489</x>
-        <y>318</y>
-        <width>281</width>
+        <x>298</x>
+        <y>380</y>
+        <width>472</width>
         <height>55</height>
        </rect>
       </property>
@@ -6203,7 +6203,7 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>8</pointsize>
+        <pointsize>7</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
