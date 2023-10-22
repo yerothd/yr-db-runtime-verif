@@ -300,6 +300,9 @@ int YRDBRUNTIMEVERIF_MainWindow::
 	_MAP_dbsqlERRORevent__TO__cppfileinfo.yr_insert_item(last_ERROR_current_row_nr,
                                                          logging_info);
 
+    tableWidget_LOGGING_SQL_recovery_executed_query
+        ->ADD_ITEM_1(a_logging_info.RECOVERY_SQL_string__ON_ERROR__accepting_state);
+
     tableWidget_LOGGING_ERROR_SOURCE_LOCATION
         ->ADD_ITEM_2(QString("%1:%2")
                      .arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
@@ -1243,6 +1246,9 @@ void YRDBRUNTIMEVERIF_MainWindow::
 			->ADD_ITEM_2(QString("%1:%2")
 							.arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
 								 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
+
+        tableWidget_LOGGING_SQL_recovery_executed_query
+            ->ADD_ITEM_1(a_logging_info.RECOVERY_SQL_string__ON_ERROR__accepting_state);
 	}
 	else
 	{
@@ -1273,11 +1279,13 @@ void YRDBRUNTIMEVERIF_MainWindow::
 		}
 
 
-
 		tableWidget_LOGGING_ERROR_SOURCE_LOCATION
 			->ADD_ITEM_2(QString("%1:%2")
 							.arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
 								 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
+
+        tableWidget_LOGGING_SQL_recovery_executed_query
+            ->ADD_ITEM_1(a_logging_info.RECOVERY_SQL_string__ON_ERROR__accepting_state);
 
 
         tableWidget_LOGGING_4->setVisible(true);

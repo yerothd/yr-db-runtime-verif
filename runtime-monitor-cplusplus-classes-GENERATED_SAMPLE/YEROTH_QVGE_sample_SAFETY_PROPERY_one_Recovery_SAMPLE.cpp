@@ -44,8 +44,11 @@ YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE::YEROTH_QVGE_sample_SAFETY
     a_last_edge_1->get_SOURCE_STATE()->set_PRE_CONDITION_notIN("YR_ASSET_cat", "categories.nom_categorie");
     a_last_edge_1->get_TARGET_STATE()->set_POST_CONDITION_IN("YR_ASSET_cat", "stocks.categorie");
 
+    a_last_edge_1->get_TARGET_STATE()->Set_SQL_RECOVERY_QUERY_STRING("'INSERT INTO categories (id, nom_categorie, nom_departement_produit) values (yr_id, `YR_ASSET_cat`, `YR_ASSET`)'");
+
     set_Recovery_action(a_last_edge_1->get_SOURCE_STATE(),
                         a_last_edge_1->get_TARGET_STATE());
+
 
     YR_CPP_notinset_inset_TRACE_expression *a_last_edge_1_GUARDED_CONDITION
         = new YR_CPP_notinset_inset_TRACE_expression(true,
@@ -75,8 +78,11 @@ YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE::YEROTH_QVGE_sample_SAFETY
     a_last_edge_1->get_SOURCE_STATE()->set_PRE_CONDITION_notIN("YR_ASSET_cat", "categories.nom_categorie");
     a_last_edge_1->get_TARGET_STATE()->set_POST_CONDITION_IN("YR_ASSET_cat", "stocks.categorie");
 
+    a_last_edge_1->get_TARGET_STATE()->Set_SQL_RECOVERY_QUERY_STRING("'INSERT INTO categories (id, nom_categorie, nom_departement_produit) values (yr_id, `YR_ASSET_cat`, `YR_ASSET`)'");
+
     set_Recovery_action(a_last_edge_1->get_SOURCE_STATE(),
                         a_last_edge_1->get_TARGET_STATE());
+
 
     YR_CPP_notinset_inset_TRACE_expression *a_last_edge_1_GUARDED_CONDITION
         = new YR_CPP_notinset_inset_TRACE_expression(true,
@@ -133,12 +139,12 @@ bool YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE::DO_VERIFY_AND_or_CHE
         break;
 
     case YR_CPP_UTILS::SELECT:
-    
+
         if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive(sql_table_name, "stocks"))
         {
             return YR_SQL_SELECT_stocks();
         }
-            
+
         break;
 
     case YR_CPP_UTILS::UPDATE:

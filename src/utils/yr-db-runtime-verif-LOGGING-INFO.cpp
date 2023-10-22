@@ -45,6 +45,9 @@ YRDBRUNTIMEVERIF_Logging_Info::YRDBRUNTIMEVERIF_Logging_Info(QString LOGGING_INF
     changed_record_db_quantity = string_logging_info_LIST.value(12);
 
     timestamp = string_logging_info_LIST.value(13);
+
+    RECOVERY_SQL_string__ON_ERROR__accepting_state
+        = string_logging_info_LIST.value(14);
 }
 
 
@@ -63,13 +66,14 @@ QString YRDBRUNTIMEVERIF_Logging_Info::toString()
 					 AN_ACCEPTING_STATE);
 
 	return
-		QString("%1*%2*%3*%4*%5*%6")
+		QString("%1*%2*%3*%4*%5*%6*%7")
 			.arg(result1,
                  A_SUT_string_unique_ID,
 				 AN_ACCEPTING_STATE_is_error_state_VALUE,
 				 an_SQL_event_TOKEN,
 				 changed_record_db_quantity,
-                 timestamp);
+                 timestamp,
+                 RECOVERY_SQL_string__ON_ERROR__accepting_state);
 }
 
 

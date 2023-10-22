@@ -67,6 +67,8 @@ public:
 	QString changed_record_db_quantity;
 
     QString timestamp;
+
+    QString RECOVERY_SQL_string__ON_ERROR__accepting_state;
 };
 
 

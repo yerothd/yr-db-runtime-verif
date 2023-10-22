@@ -64,6 +64,11 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT_complement_info_ON_ACCEPTING_STATE
     		a_logging_info->AN_ACCEPTING_STATE_is_error_state_VALUE
 				= BOOL_TO_STRING(true);
 
+    		a_logging_info->RECOVERY_SQL_string__ON_ERROR__accepting_state
+				= an_EDGE_leading_TO_error_FINAL_state
+                    .get_Recovery_SQL_query_string_ON_ERROR_ACCEPTING_target_state();
+
+
     		ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
 				->Set_YRDBRUNTIMEVERIF_Logging_Info
 					(_LAST_trace_SQL_event_log_GUI_row_number,
