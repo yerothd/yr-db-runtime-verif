@@ -100,6 +100,9 @@ protected slots:
     bool export_csv_file();
 
 
+    virtual bool set_SQL_current_recovered_query_string(QString SQL_QUERY_STRING);
+
+
     void set_CURRENT_TABWIDGET_ACTION_visible(bool a_value);
 
 

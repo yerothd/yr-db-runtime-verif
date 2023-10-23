@@ -300,8 +300,9 @@ int YRDBRUNTIMEVERIF_MainWindow::
 	_MAP_dbsqlERRORevent__TO__cppfileinfo.yr_insert_item(last_ERROR_current_row_nr,
                                                          logging_info);
 
-    tableWidget_LOGGING_SQL_recovery_executed_query
-        ->ADD_ITEM_1(a_logging_info.RECOVERY_SQL_string__ON_ERROR__accepting_state);
+    set_SQL_current_recovered_query_string
+        (a_logging_info.RECOVERY_SQL_string__ON_ERROR__accepting_state);
+
 
     tableWidget_LOGGING_ERROR_SOURCE_LOCATION
         ->ADD_ITEM_2(QString("%1:%2")
@@ -413,7 +414,6 @@ void YRDBRUNTIMEVERIF_MainWindow::
     tableWidget_LOGGING_PRECONDITIONS->setVisible(true);
     tableWidget_LOGGING_postconditions->setVisible(true);
     tableWidget_LOGGING_guarded_condition_expression->setVisible(true);
-    tableWidget_LOGGING_SQL_recovery_executed_query->setVisible(true);
 
 
     RUNTIME_MONITOR_name_TO_PRINT_DOT = a_logging_info.A_RUNTIME_MONITOR_name;
@@ -528,6 +528,21 @@ bool YRDBRUNTIMEVERIF_MainWindow::export_csv_file()
                                                     *current_QTable_Widget_Item,
                                                     "sql-event-log-listing-csv-format",
                                                     "SQL event log csv export");
+}
+
+
+bool YRDBRUNTIMEVERIF_MainWindow::
+        set_SQL_current_recovered_query_string(QString SQL_QUERY_STRING)
+{
+    bool result = !SQL_QUERY_STRING.isEmpty();
+
+    tableWidget_LOGGING_SQL_recovery_executed_query
+        ->setVisible(result);
+
+    tableWidget_LOGGING_SQL_recovery_executed_query
+        ->ADD_ITEM_1(SQL_QUERY_STRING);
+
+    return result;
 }
 
 
@@ -1247,8 +1262,8 @@ void YRDBRUNTIMEVERIF_MainWindow::
 							.arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
 								 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
 
-        tableWidget_LOGGING_SQL_recovery_executed_query
-            ->ADD_ITEM_1(a_logging_info.RECOVERY_SQL_string__ON_ERROR__accepting_state);
+        set_SQL_current_recovered_query_string
+            (a_logging_info.RECOVERY_SQL_string__ON_ERROR__accepting_state);
 	}
 	else
 	{
@@ -1284,15 +1299,14 @@ void YRDBRUNTIMEVERIF_MainWindow::
 							.arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
 								 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
 
-        tableWidget_LOGGING_SQL_recovery_executed_query
-            ->ADD_ITEM_1(a_logging_info.RECOVERY_SQL_string__ON_ERROR__accepting_state);
+        set_SQL_current_recovered_query_string
+            (a_logging_info.RECOVERY_SQL_string__ON_ERROR__accepting_state);
 
 
         tableWidget_LOGGING_4->setVisible(true);
         tableWidget_LOGGING_PRECONDITIONS->setVisible(true);
         tableWidget_LOGGING_postconditions->setVisible(true);
         tableWidget_LOGGING_guarded_condition_expression->setVisible(true);
-        tableWidget_LOGGING_SQL_recovery_executed_query->setVisible(true);
 
 
         setCurrentRuntimeMonitorNameVisible(true);
