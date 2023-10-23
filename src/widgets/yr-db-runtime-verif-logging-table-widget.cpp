@@ -96,7 +96,10 @@ void YRDBRUNTIMEVERIF_TableWidget::setMaxSize(uint MAX_SIZE)
 
 void YRDBRUNTIMEVERIF_TableWidget::resize_columns_AND_rows_to_contents()
 {
-    resizeColumnsToContents();
+    if (columnCount() > 1)
+    {
+        resizeColumnsToContents();
+    }
 
     resizeRowsToContents();
 }
