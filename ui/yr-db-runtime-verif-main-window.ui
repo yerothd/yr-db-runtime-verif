@@ -5021,6 +5021,11 @@
       </attribute>
       <column>
        <property name="text">
+        <string>TIME STAMP</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
         <string>SQL recovered executed query</string>
        </property>
        <property name="font">

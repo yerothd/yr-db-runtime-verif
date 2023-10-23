@@ -532,15 +532,19 @@ bool YRDBRUNTIMEVERIF_MainWindow::export_csv_file()
 
 
 bool YRDBRUNTIMEVERIF_MainWindow::
-        set_SQL_current_recovered_query_string(QString SQL_QUERY_STRING)
+        set_SQL_current_recovered_query_string(QString SQL_QUERY_STRING,
+                                               QString TIMESTAMP /* = "" */)
 {
     bool result = !SQL_QUERY_STRING.isEmpty();
 
     tableWidget_LOGGING_SQL_recovery_executed_query
         ->setVisible(result);
 
+    //TODO: switch 'CURRENT_TIME_WITH_MILLISECONDS' with
+    //passed "TIMESTAMP" parameter later when implemented.
     tableWidget_LOGGING_SQL_recovery_executed_query
-        ->ADD_ITEM_1(SQL_QUERY_STRING);
+		->ADD_ITEM_2(SQL_QUERY_STRING,
+                     CURRENT_TIME_WITH_MILLISECONDS);
 
     return result;
 }

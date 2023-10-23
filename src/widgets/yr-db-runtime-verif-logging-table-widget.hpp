@@ -41,6 +41,9 @@ public:
 
 	int ADD_ITEM_3(QString Source_file__line_number);
 
+    int ADD_ITEM_2(QString SQL_QUERY_STRING,
+                   QString TIMESTAMP);
+
 	int ADD_ITEM_2(QString Source_file__line_number);
 
 	int ADD_ITEM_1(QString Precondition__Or__POST_CONDITION);

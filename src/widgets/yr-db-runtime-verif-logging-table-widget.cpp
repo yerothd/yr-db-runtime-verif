@@ -158,6 +158,48 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM_3(QString Source_file__line_number)
 }
 
 
+int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM_2(QString SQL_QUERY_STRING,
+                                             QString TIMESTAMP)
+{
+	static bool first_time_call = true;
+
+	if (first_time_call)
+	{
+		setMaxSize(1);
+
+		first_time_call = false;
+	}
+
+	_curRow = 0;
+
+    setRowCount(1);
+
+
+    _TIMESTAMPtem = new QTableWidgetItem(TIMESTAMP);
+    _SIGNALItem = new QTableWidgetItem(SQL_QUERY_STRING);
+
+
+    _mapListIdxToElement_db_ID.yr_insert_item(_curRow, SQL_QUERY_STRING);
+
+    unsigned idx = 0;
+
+    //Each call to setItem triggers a call to YerothPointDeVenteWindow::handleQteChange
+    setItem(_curRow, idx++, _TIMESTAMPtem);
+    setItem(_curRow, idx++, _SIGNALItem);
+
+    setQStandardItemFlags(*_TIMESTAMPtem, _myQStandardItemFlags);
+    setQStandardItemFlags(*_SIGNALItem, _myQStandardItemFlags);
+
+    selectRow(_curRow);
+
+
+    resize_columns_AND_rows_to_contents();
+
+
+    return _curRow;
+}
+
+
 /*
  * THIS METHOS IS meant to be only called by
  * class 'YRDBRUNTIMEVERIF_MainWindow.tableWidget_LOGGING_2'.
