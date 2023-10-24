@@ -19,7 +19,6 @@
 #include "src/process/yr-db-runtime-verif-PROCESS.hpp"
 
 
-
 const QString YRDBRUNTIMEVERIF_MainWindow::QMESSAGE_BOX_STYLE_SHEET =
 		QString("QMessageBox {background-color: rgb(%1);}"
                 "QMessageBox QLabel {color: rgb(%2);}")
@@ -37,6 +36,15 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     setupUi(this);
 
     setFixedSize(width(), height());
+
+
+    _qtabwidget_logging__To__LAST_SELECTED_row_INDEX
+        .insert(tableWidget_LOGGING,
+                0);
+
+    _qtabwidget_logging__To__LAST_SELECTED_row_INDEX
+        .insert(tableWidget_LOGGING_ERROR_EVENT,
+                0);
 
 
 	toolBar_mainWindow_YR_DB_RUNTIME_VERIF
@@ -214,6 +222,11 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
             SLOT(ON_QTABLEWIDGET_ERROR_ITEM_pressed(QTableWidgetItem *)));
 
     connect(tableWidget_LOGGING_ERROR_EVENT,
+    		SIGNAL(itemClicked(QTableWidgetItem *)),
+			this,
+            SLOT(ON_QTABLEWIDGET_ERROR_ITEM_pressed(QTableWidgetItem *)));
+
+    connect(tableWidget_LOGGING_ERROR_EVENT,
     		SIGNAL(itemPressed(QTableWidgetItem *)),
 			this,
             SLOT(ON_QTABLEWIDGET_ERROR_ITEM_pressed(QTableWidgetItem *)));
@@ -222,6 +235,11 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 
     connect(tableWidget_LOGGING,
     		SIGNAL(itemChanged(QTableWidgetItem *)),
+			this,
+            SLOT(ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *)));
+
+    connect(tableWidget_LOGGING,
+    		SIGNAL(itemClicked(QTableWidgetItem *)),
 			this,
             SLOT(ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *)));
 
@@ -708,19 +726,67 @@ void YRDBRUNTIMEVERIF_MainWindow::
 }
 
 
-void YRDBRUNTIMEVERIF_MainWindow::handle_current_tab_changed(int current_index)
+int YRDBRUNTIMEVERIF_MainWindow::
+        GET_QTABLEWIDGET_CURRENT_ROW_TO_Select(int current_index)
 {
+    int current_row_TO_SELECT = 0;
+
+    const QModelIndex *a_Last_SelectedRow_Row_INDEX = 0;
+
     switch (current_index)
     {
     case 0:
 
-        tableWidget_LOGGING->CLEAR_FILTERING();
+        a_Last_SelectedRow_Row_INDEX =
+            _qtabwidget_logging__To__LAST_SELECTED_row_INDEX
+                .value(tableWidget_LOGGING_ERROR_EVENT);
 
+        if (0 != a_Last_SelectedRow_Row_INDEX)
+        {
+            current_row_TO_SELECT = a_Last_SelectedRow_Row_INDEX->row();
+        }
+
+        break;
+
+    case 1:
+
+        a_Last_SelectedRow_Row_INDEX =
+            _qtabwidget_logging__To__LAST_SELECTED_row_INDEX
+                .value(tableWidget_LOGGING);
+
+        if (0 != a_Last_SelectedRow_Row_INDEX)
+        {
+            current_row_TO_SELECT = a_Last_SelectedRow_Row_INDEX->row();
+        }
+
+        break;
+
+    default:
+        break;
+    }
+
+    return current_row_TO_SELECT;
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::handle_current_tab_changed(int current_index)
+{
+    int current_row_TO_SELECT =
+        GET_QTABLEWIDGET_CURRENT_ROW_TO_Select(current_index);
+
+    switch (current_index)
+    {
+    case 0:
+
+        //also clears qtablewidget filtering
         ON_BUTON_Reset_pressed();
 
         if (_visible_ERROR_row_counter > 0)
         {
             set_CURRENT_TABWIDGET_ACTION_visible(true);
+
+            tableWidget_LOGGING_ERROR_EVENT
+                ->selectRow(current_row_TO_SELECT);
         }
         else
         {
@@ -731,13 +797,14 @@ void YRDBRUNTIMEVERIF_MainWindow::handle_current_tab_changed(int current_index)
 
     case 1:
 
-        tableWidget_LOGGING_ERROR_EVENT->CLEAR_FILTERING();
-
+        //also clears qtablewidget filtering
         ON_BUTON_Reset_pressed();
 
         if (_visible_row_counter > 0)
         {
             set_CURRENT_TABWIDGET_ACTION_visible(true);
+
+            tableWidget_LOGGING->selectRow(current_row_TO_SELECT);
         }
         else
         {
@@ -794,6 +861,30 @@ void *YRDBRUNTIMEVERIF_MainWindow::VIEW_current_RUNTIME_MONITOR()
 
         emit SIGNAL_INCREMENT_PROGRESS_BAR(90);
 	}
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::
+        setLast_SelectedRow_Row_ID(const QModelIndex &a_model_CELL_index)
+{
+    _Last_SelectedRow_Row_INDEX = &a_model_CELL_index;
+
+    switch(tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
+    {
+        case 0:
+
+            _qtabwidget_logging__To__LAST_SELECTED_row_INDEX
+                .insert(tableWidget_LOGGING_ERROR_EVENT,
+                        &a_model_CELL_index);
+            break;
+
+
+        case 1:
+            _qtabwidget_logging__To__LAST_SELECTED_row_INDEX
+                .insert(tableWidget_LOGGING,
+                        &a_model_CELL_index);
+            break;
+    }
 }
 
 
@@ -1265,9 +1356,6 @@ void YRDBRUNTIMEVERIF_MainWindow::
 			->ADD_ITEM_2(QString("%1:%2")
 							.arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
 								 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
-
-        set_SQL_current_recovered_query_string
-            (a_logging_info.RECOVERY_SQL_string__ON_ERROR__accepting_state);
 	}
 	else
 	{

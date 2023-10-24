@@ -116,6 +116,9 @@ protected slots:
     void handle_checkBox_ALL_STATE_SAFETY_PROPERTIES_State_CHANGED(int aState);
 
 
+    int GET_QTABLEWIDGET_CURRENT_ROW_TO_Select(int current_index);
+
+
     void handle_current_tab_changed(int current_index);
 
 
@@ -134,10 +137,7 @@ protected slots:
 	virtual void *VIEW_current_RUNTIME_MONITOR();
 
 
-    virtual inline void setLast_SelectedRow_Row_ID(const QModelIndex &a_model_CELL_index)
-    {
-        _Last_SelectedRow_Row_INDEX = &a_model_CELL_index;
-    }
+    virtual void setLast_SelectedRow_Row_ID(const QModelIndex &a_model_CELL_index);
 
 
 	virtual void get_PRINT_OUT_TexTableString(QTableWidget  &current_QTable_Widget_Item,
@@ -280,6 +280,13 @@ private:
     const QModelIndex           *_Last_SelectedRow_Row_INDEX;
 
     YR_DB_RUNTIME_VERIF_Monitor	*_current_runtime_monitor_INSTANCE;
+
+    /**
+     * This is  used to keep selected row acroos
+     * "tabWidget_SQL_ERROR_EVENT_LOGGING" QTABLEWIDGET.
+     */
+    QMap<YRDBRUNTIMEVERIF_TableWidget *, const QModelIndex *>
+        _qtabwidget_logging__To__LAST_SELECTED_row_INDEX;
 
     YRDBRUNTIMEVERIF_QMap 		_MAP_dbsqlevent__TO__cppfileinfo;
 
