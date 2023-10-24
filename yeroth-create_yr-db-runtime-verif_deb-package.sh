@@ -22,6 +22,10 @@ cp YR-DB-RUNTIME-VERIF-GUI-ELEMENTS-SETUP/yr-db-runtime-verif-BIN.SH \
 	yr-db-runtime-verif/opt/yr-db-runtime-verif/bin
 
 
+cp YR-DB-RUNTIME-VERIF-GUI-ELEMENTS-SETUP/yr-sd-db-runtime-verif.pdf \
+	yr-db-runtime-verif/usr/share/doc/yr-db-runtime-verif
+
+
 cp YR-DB-RUNTIME-VERIF-GUI-ELEMENTS-SETUP/YEROTH_QVGE.pdf \
 	yr-db-runtime-verif/usr/share/doc/yr-db-runtime-verif
 
