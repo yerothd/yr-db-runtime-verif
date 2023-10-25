@@ -27,7 +27,8 @@ const QString YRDBRUNTIMEVERIF_MainWindow::QMESSAGE_BOX_STYLE_SHEET =
 
 
 YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
-:_CURRENT_runtime_monitor_name_Filtered(false),
+:_pushButton_lecteur_de_code_barres_JUST_CLICKED(false),
+ _CURRENT_runtime_monitor_name_Filtered(false),
  _visible_ERROR_row_counter(0),
  _visible_row_counter(0),
  _Last_SelectedRow_Row_INDEX(0),
@@ -36,6 +37,10 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     setupUi(this);
 
     setFixedSize(width(), height());
+
+
+    pushButton_lecteur_de_code_barres
+        ->setVisible(false);
 
 
     _qtabwidget_logging__To__LAST_SELECTED_row_INDEX
@@ -145,6 +150,11 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
             this,
             SLOT(ON_action_set_current_selected_SQL_event_as_filter_and_search()));
 
+
+    connect(pushButton_lecteur_de_code_barres,
+    		SIGNAL(clicked()),
+			this,
+            SLOT(ON_QTABLEWIDGET_ERROR_ITEM_pressed()));
 
 
     connect(pushButton_reset_filtering,
@@ -277,6 +287,16 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 }
 
 
+void YRDBRUNTIMEVERIF_MainWindow::SELECT_row(uint a_row_selected)
+{
+    tableWidget_LOGGING_ERROR_EVENT->selectRow(a_row_selected);
+
+    _pushButton_lecteur_de_code_barres_JUST_CLICKED = true;
+
+    pushButton_lecteur_de_code_barres->click();
+}
+
+
 void YRDBRUNTIMEVERIF_MainWindow::SET_CURRENT_RUNTIME_MONITOR_name(QString A_RUNTIME_MONITOR_name)
 {
     if (!A_RUNTIME_MONITOR_name.isEmpty())
@@ -319,7 +339,8 @@ int YRDBRUNTIMEVERIF_MainWindow::
                                                          logging_info);
 
     set_SQL_current_recovered_query_string
-        (a_logging_info.RECOVERY_SQL_string__ON_ERROR__accepting_state);
+        (a_logging_info.RECOVERY_SQL_string__ON_ERROR__accepting_state,
+         a_logging_info.timestamp);
 
 
     tableWidget_LOGGING_ERROR_SOURCE_LOCATION
@@ -562,7 +583,7 @@ bool YRDBRUNTIMEVERIF_MainWindow::
     //passed "TIMESTAMP" parameter later when implemented.
     tableWidget_LOGGING_SQL_recovery_executed_query
 		->ADD_ITEM_2(SQL_QUERY_STRING,
-                     CURRENT_TIME_WITH_MILLISECONDS);
+                     TIMESTAMP);
 
     return result;
 }
@@ -785,8 +806,7 @@ void YRDBRUNTIMEVERIF_MainWindow::handle_current_tab_changed(int current_index)
         {
             set_CURRENT_TABWIDGET_ACTION_visible(true);
 
-            tableWidget_LOGGING_ERROR_EVENT
-                ->selectRow(current_row_TO_SELECT);
+            SELECT_row(current_row_TO_SELECT);
         }
         else
         {
@@ -1365,8 +1385,35 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
 
 void YRDBRUNTIMEVERIF_MainWindow::
-		ON_QTABLEWIDGET_ERROR_ITEM_pressed(QTableWidgetItem *aQTable_widget_item)
+		ON_QTABLEWIDGET_ERROR_ITEM_pressed(QTableWidgetItem *aQTable_widget_item /* = 0 */)
 {
+    if (0 == aQTable_widget_item &&
+        _pushButton_lecteur_de_code_barres_JUST_CLICKED)
+    {
+        _pushButton_lecteur_de_code_barres_JUST_CLICKED = false;
+
+        int current_row_BE_PRESSED_with_a_hidden_button =
+            GET_QTABLEWIDGET_CURRENT_ROW_TO_Select(0);
+
+
+		QString LOGGING_INFO =
+            _MAP_dbsqlERRORevent__TO__cppfileinfo
+                .value(current_row_BE_PRESSED_with_a_hidden_button);
+
+
+		YRDBRUNTIMEVERIF_Logging_Info a_logging_info(LOGGING_INFO);
+
+
+        set_SQL_current_recovered_query_string
+            (a_logging_info.RECOVERY_SQL_string__ON_ERROR__accepting_state,
+             a_logging_info.timestamp);
+    }
+    else
+    {
+        set_SQL_current_recovered_query_string("", "");
+    }
+
+
 	if (0 != aQTable_widget_item                            &&
         0 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
 	{
@@ -1392,7 +1439,8 @@ void YRDBRUNTIMEVERIF_MainWindow::
 								 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
 
         set_SQL_current_recovered_query_string
-            (a_logging_info.RECOVERY_SQL_string__ON_ERROR__accepting_state);
+            (a_logging_info.RECOVERY_SQL_string__ON_ERROR__accepting_state,
+             a_logging_info.timestamp);
 
 
         tableWidget_LOGGING_4->setVisible(true);

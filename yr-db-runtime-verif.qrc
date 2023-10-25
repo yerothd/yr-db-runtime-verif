@@ -14,5 +14,6 @@
 	<file>yr-db-runtime-verif-images/Stop-logging.png</file>
 	<file>yr-db-runtime-verif-images/select-SQL-event-for-search-filtering.png</file>
 	<file>yr-db-runtime-verif-images/pdf-print-icon.svg</file>
+	<file>yr-db-runtime-verif-images/YR-DB-RUNTIME-VERIF-hidden-button-SQL-QUERY-RECOVERY-show-view.png</file>
   </qresource>
 </RCC>

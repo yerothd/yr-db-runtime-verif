@@ -47,6 +47,9 @@ public:
     }
 
 
+    virtual void SELECT_row(uint a_row_selected);
+
+
     virtual void SET_CURRENT_RUNTIME_MONITOR_name(QString A_RUNTIME_MONITOR_name);
 
 
@@ -190,7 +193,13 @@ protected slots:
 	virtual void ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *aQTable_widget_item);
 
 
-	virtual void ON_QTABLEWIDGET_ERROR_ITEM_pressed(QTableWidgetItem *aQTable_widget_item);
+	/*
+	 * aQTable_widget_item is set to zero ('0') when the
+	 * hidden button "pushButton_lecteur_de_code_barres"
+	 * for showing SQL recovered query string
+	 * is only shown by now.
+     */
+	virtual void ON_QTABLEWIDGET_ERROR_ITEM_pressed(QTableWidgetItem *aQTable_widget_item = 0);
 
 
     //for combobox "comboBox_global_filtering"
@@ -268,6 +277,8 @@ public:
 
 
 private:
+
+    bool                        _pushButton_lecteur_de_code_barres_JUST_CLICKED;
 
     bool                        _CURRENT_runtime_monitor_name_Filtered;
 
