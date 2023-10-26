@@ -298,6 +298,11 @@ public:
         return QCryptographicHash::hash(data.toLatin1(), QCryptographicHash::Md5);
     }
 
+    static inline void NO_OPERATION()
+    {
+        return ;
+    }
+
     static QString temporaryFilesDir;
 
     static const QString EMPTY_STRING;
@@ -455,6 +460,8 @@ private:
     YR_DB_RUNTIME_VERIF_Utils::generateSqlIsEmpty(COLUMN)
 
 #define GET_CURRENT_DATE QDate::currentDate()
+
+#define NO_OPERATION YR_DB_RUNTIME_VERIF_Utils::NO_OPERATION();
 
 #define YEROTH_ERP_3_0_START_DATABASE_TRANSACTION YR_DB_RUNTIME_VERIF_Utils::start_db_transaction()
 

@@ -50,7 +50,12 @@ public:
     virtual void SELECT_row(uint a_row_selected);
 
 
-    virtual void SET_CURRENT_RUNTIME_MONITOR_name(QString A_RUNTIME_MONITOR_name);
+    virtual inline void SET_CURRENT_RUNTIME_MONITOR_name(QString A_RUNTIME_MONITOR_name)
+    {
+        (!A_RUNTIME_MONITOR_name.isEmpty()) ?
+            comboBox_RUNTIME_MONITOR_NAME->find_AND_SET_CURRENT_INDEX(A_RUNTIME_MONITOR_name.trimmed()) :
+            NO_OPERATION;
+    }
 
 
     virtual inline QString GET_CURRENT_RUNTIME_MONITOR_name()
