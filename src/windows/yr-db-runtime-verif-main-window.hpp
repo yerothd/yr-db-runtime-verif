@@ -255,7 +255,7 @@ protected:
     virtual YRDBRUNTIMEVERIF_TableWidget *Get_CURRENT_QTable_WIDGET();
 
 
-    virtual void setCurrentRuntimeMonitorNameVisible(bool aVisibleValue);
+    virtual void set_runtime_monitor_name_ERROR_LOGGING_visible(bool aVisibleValue);
 
 
     virtual inline void set_CURRENT_runtime_monitor_name_Filtered(bool a_bool_value)

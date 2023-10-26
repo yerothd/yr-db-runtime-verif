@@ -83,7 +83,7 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     comboBox_SQL_event_filtering->addItem("INSERT");
 
 
-    setCurrentRuntimeMonitorNameVisible(false);
+    set_runtime_monitor_name_ERROR_LOGGING_visible(false);
 
 
 
@@ -118,7 +118,7 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     tableWidget_LOGGING_SQL_recovery_executed_query->setVisible(false);
 
 
-    setCurrentRuntimeMonitorNameVisible(false);
+    set_runtime_monitor_name_ERROR_LOGGING_visible(false);
 
 
     connect(checkBox_ALL_STATE_SAFETY_PROPERTIES,
@@ -515,7 +515,7 @@ void YRDBRUNTIMEVERIF_MainWindow::
     SET_CURRENT_RUNTIME_MONITOR_name_ERROR_Logging(a_logging_info.A_RUNTIME_MONITOR_name);
 
 
-    setCurrentRuntimeMonitorNameVisible(true);
+    set_runtime_monitor_name_ERROR_LOGGING_visible(true);
 
 
 	tableWidget_LOGGING_4
@@ -1495,7 +1495,7 @@ void YRDBRUNTIMEVERIF_MainWindow::
             tableWidget_LOGGING_guarded_condition_expression->setVisible(true);
 
 
-            setCurrentRuntimeMonitorNameVisible(true);
+            set_runtime_monitor_name_ERROR_LOGGING_visible(true);
 
 
             YRDBRUNTIMEVERIF_MainWindow::
@@ -1725,7 +1725,7 @@ YRDBRUNTIMEVERIF_TableWidget* YRDBRUNTIMEVERIF_MainWindow::Get_CURRENT_QTable_WI
 }
 
 
-void YRDBRUNTIMEVERIF_MainWindow::setCurrentRuntimeMonitorNameVisible(bool aVisibleValue)
+void YRDBRUNTIMEVERIF_MainWindow::set_runtime_monitor_name_ERROR_LOGGING_visible(bool aVisibleValue)
 {
     tableWidget_LOGGING_ERROR_SOURCE_LOCATION->setVisible(aVisibleValue);
 
