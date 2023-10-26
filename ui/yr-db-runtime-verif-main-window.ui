@@ -3945,7 +3945,7 @@
        </property>
       </column>
      </widget>
-     <widget class="YRDBRUNTIMEVERIF_ComboBox" name="comboBox_RUNTIME_MONITOR_NAME">
+     <widget class="YRDBRUNTIMEVERIF_ComboBox" name="comboBox_RUNTIME_MONITOR_NAME_Error_LOGGING">
       <property name="geometry">
        <rect>
         <x>294</x>
