@@ -53,7 +53,7 @@ public:
     virtual inline void SET_CURRENT_RUNTIME_MONITOR_name(QString A_RUNTIME_MONITOR_name)
     {
         (!A_RUNTIME_MONITOR_name.isEmpty()) ?
-            comboBox_RUNTIME_MONITOR_NAME->find_AND_SET_CURRENT_INDEX(A_RUNTIME_MONITOR_name.trimmed()) :
+            comboBox_RUNTIME_MONITOR_NAME_Logging->find_AND_SET_CURRENT_INDEX(A_RUNTIME_MONITOR_name.trimmed()) :
             NO_OPERATION;
     }
 
