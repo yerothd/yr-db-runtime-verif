@@ -297,6 +297,26 @@ void YRDBRUNTIMEVERIF_MainWindow::SELECT_row(uint a_row_selected)
 }
 
 
+void YRDBRUNTIMEVERIF_MainWindow::SET_CURRENT_RUNTIME_MONITOR_name(QString A_RUNTIME_MONITOR_name)
+{
+    if (!A_RUNTIME_MONITOR_name.isEmpty())
+    {
+        comboBox_RUNTIME_MONITOR_NAME_Logging
+            ->find_AND_SET_CURRENT_INDEX(A_RUNTIME_MONITOR_name.trimmed());
+    }
+}
+
+
+void YRDBRUNTIMEVERIF_MainWindow::SET_CURRENT_RUNTIME_MONITOR_name_ERROR_Logging(QString A_RUNTIME_MONITOR_name)
+{
+    if (!A_RUNTIME_MONITOR_name.isEmpty())
+    {
+        comboBox_RUNTIME_MONITOR_NAME
+            ->find_AND_SET_CURRENT_INDEX(A_RUNTIME_MONITOR_name.trimmed());
+    }
+}
+
+
 int YRDBRUNTIMEVERIF_MainWindow::
 				ADD_ERROR_ITEM(QString                        TIMESTAMPtem,
                                QString                        SIGNALItem,
@@ -490,7 +510,7 @@ void YRDBRUNTIMEVERIF_MainWindow::
     // 3. Runtime monitor name is set on the main window
     // only for SQL events that lead to an accepting
     // error state.
-    SET_CURRENT_RUNTIME_MONITOR_name(a_logging_info.A_RUNTIME_MONITOR_name);
+    SET_CURRENT_RUNTIME_MONITOR_name_ERROR_Logging(a_logging_info.A_RUNTIME_MONITOR_name);
 
 
     setCurrentRuntimeMonitorNameVisible(true);
@@ -1510,7 +1530,7 @@ void YRDBRUNTIMEVERIF_MainWindow::
             // 5. Runtime monitor name is set on the main window
             // only for SQL events that lead to an accepting
             // error state.
-            SET_CURRENT_RUNTIME_MONITOR_name(RUNTIME_MONITOR_name_TO_PRINT_DOT);
+            SET_CURRENT_RUNTIME_MONITOR_name_ERROR_Logging(RUNTIME_MONITOR_name_TO_PRINT_DOT);
 
 
             tableWidget_LOGGING_4
