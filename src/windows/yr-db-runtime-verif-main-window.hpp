@@ -50,15 +50,15 @@ public:
     virtual void SELECT_row(uint a_row_selected);
 
 
-    virtual void SET_CURRENT_RUNTIME_MONITOR_name(QString A_RUNTIME_MONITOR_name);
+    virtual void SET_CURRENT_RUNTIME_MONITOR_name_Logging(QString A_RUNTIME_MONITOR_name);
 
 
     virtual void SET_CURRENT_RUNTIME_MONITOR_name_ERROR_Logging(QString A_RUNTIME_MONITOR_name);
 
 
-    virtual inline QString GET_CURRENT_RUNTIME_MONITOR_name()
+    virtual inline QString GET_CURRENT_RUNTIME_MONITOR_name_Error_LOGGING()
     {
-        return comboBox_RUNTIME_MONITOR_NAME->currentText();
+        return comboBox_RUNTIME_MONITOR_NAME_Error_LOGGING->currentText();
     }
 
 

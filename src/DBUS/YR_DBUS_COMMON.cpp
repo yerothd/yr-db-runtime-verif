@@ -78,7 +78,7 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT_complement_info_ON_ACCEPTING_STATE
             // only for SQL events that lead to an accepting
             // error state.
             ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
-			->SET_CURRENT_RUNTIME_MONITOR_name
+			->SET_CURRENT_RUNTIME_MONITOR_name_ERROR_Logging
 				(a_logging_info->A_RUNTIME_MONITOR_name);
 
 
@@ -135,7 +135,7 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_
         // only for SQL events that lead to an accepting
         // error state.
         ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
-            ->SET_CURRENT_RUNTIME_MONITOR_name(QString(""));
+            ->SET_CURRENT_RUNTIME_MONITOR_name_ERROR_Logging(QString(""));
 
 
     	_LAST_trace_SQL_event_log_GUI_row_number =

@@ -90,7 +90,7 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     checkBox_ALL_STATE_SAFETY_PROPERTIES->setVisible(false);
 
 
-    comboBox_RUNTIME_MONITOR_NAME->yr__setEditable(false);
+    comboBox_RUNTIME_MONITOR_NAME_Error_LOGGING->yr__setEditable(false);
 
 
 
@@ -297,7 +297,8 @@ void YRDBRUNTIMEVERIF_MainWindow::SELECT_row(uint a_row_selected)
 }
 
 
-void YRDBRUNTIMEVERIF_MainWindow::SET_CURRENT_RUNTIME_MONITOR_name(QString A_RUNTIME_MONITOR_name)
+void YRDBRUNTIMEVERIF_MainWindow::
+        SET_CURRENT_RUNTIME_MONITOR_name_Logging(QString A_RUNTIME_MONITOR_name)
 {
     if (!A_RUNTIME_MONITOR_name.isEmpty())
     {
@@ -307,11 +308,12 @@ void YRDBRUNTIMEVERIF_MainWindow::SET_CURRENT_RUNTIME_MONITOR_name(QString A_RUN
 }
 
 
-void YRDBRUNTIMEVERIF_MainWindow::SET_CURRENT_RUNTIME_MONITOR_name_ERROR_Logging(QString A_RUNTIME_MONITOR_name)
+void YRDBRUNTIMEVERIF_MainWindow::
+        SET_CURRENT_RUNTIME_MONITOR_name_ERROR_Logging(QString A_RUNTIME_MONITOR_name)
 {
     if (!A_RUNTIME_MONITOR_name.isEmpty())
     {
-        comboBox_RUNTIME_MONITOR_NAME
+        comboBox_RUNTIME_MONITOR_NAME_Error_LOGGING
             ->find_AND_SET_CURRENT_INDEX(A_RUNTIME_MONITOR_name.trimmed());
     }
 }
@@ -678,7 +680,7 @@ void YRDBRUNTIMEVERIF_MainWindow::filter_All_RUNTIME_monitor__ERROR__SQL__EVENTS
     uint Filtered_Cell_Count = 0;
 
 
-    QString A_Current_RUNTIME_monitor_Name = GET_CURRENT_RUNTIME_MONITOR_name();
+    QString A_Current_RUNTIME_monitor_Name = GET_CURRENT_RUNTIME_MONITOR_name_Error_LOGGING();
 
 
     QString a_CURRENT_LOGGING_INFO;
@@ -726,7 +728,7 @@ void YRDBRUNTIMEVERIF_MainWindow::filter_All_RUNTIME_monitor__ERROR__SQL__EVENTS
 
 void YRDBRUNTIMEVERIF_MainWindow::UN__filter_All_RUNTIME_monitor__ERROR__SQL__EVENTS()
 {
-    QString A_Current_RUNTIME_monitor_Name = GET_CURRENT_RUNTIME_MONITOR_name();
+    QString A_Current_RUNTIME_monitor_Name = GET_CURRENT_RUNTIME_MONITOR_name_Error_LOGGING();
 
 
     QString a_CURRENT_LOGGING_INFO;
@@ -1421,7 +1423,7 @@ void YRDBRUNTIMEVERIF_MainWindow::
         }
 
 
-        SET_CURRENT_RUNTIME_MONITOR_name(a_logging_info.A_RUNTIME_MONITOR_name);
+        SET_CURRENT_RUNTIME_MONITOR_name_Logging(a_logging_info.A_RUNTIME_MONITOR_name);
 	}
 	else
 	{
@@ -1470,7 +1472,7 @@ void YRDBRUNTIMEVERIF_MainWindow::
             if (is_CURRENT_runtime_monitor_name_Filtered())
             {
                 if (!YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseSensitive(a_logging_info.A_RUNTIME_MONITOR_name,
-                                                                      GET_CURRENT_RUNTIME_MONITOR_name()))
+                                                                      GET_CURRENT_RUNTIME_MONITOR_name_Error_LOGGING()))
                 {
                     return ;
                 }
@@ -1729,7 +1731,7 @@ void YRDBRUNTIMEVERIF_MainWindow::setCurrentRuntimeMonitorNameVisible(bool aVisi
 
     label_RUNTIME_MONITOR_VERIFIER_TESTER->setVisible(aVisibleValue);
 
-    comboBox_RUNTIME_MONITOR_NAME->setVisible(aVisibleValue);
+    comboBox_RUNTIME_MONITOR_NAME_Error_LOGGING->setVisible(aVisibleValue);
 }
 
 
