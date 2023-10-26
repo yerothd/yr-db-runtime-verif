@@ -27,14 +27,21 @@ public:
 
 	YRDBRUNTIMEVERIF_Logging_Info(QString LOGGING_INFO);
 
-	inline virtual ~YRDBRUNTIMEVERIF_Logging_Info()
+	virtual inline ~YRDBRUNTIMEVERIF_Logging_Info()
 	{
 	}
 
-	inline virtual bool IS_ERROR_EVENT_LOGGING()
+	virtual inline QString SET_IS_ERROR_EVENT(bool a_boolean_value)
+	{
+        return
+            a_boolean_value ? AN_ACCEPTING_STATE_is_error_state_VALUE = "True"
+                            : AN_ACCEPTING_STATE_is_error_state_VALUE = "False";
+	}
+
+	virtual inline bool IS_ERROR_EVENT_LOGGING()
 	{
 		return (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive
-                    ("True", A_SQL_EVENT_LOG_guarded_condition_expression_VALUE));
+                    ("True", AN_ACCEPTING_STATE_is_error_state_VALUE));
 	}
 
 	virtual QString toString();
