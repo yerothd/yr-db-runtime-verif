@@ -441,7 +441,8 @@ void YRDBRUNTIMEVERIF_MainWindow::
 	Set_YRDBRUNTIMEVERIF_Logging_Info(uint      row_number,
 									  QString   logging_info)
 {
-	_MAP_dbsqlERRORevent__TO__cppfileinfo.insert(row_number, logging_info);
+	_MAP_dbsqlERRORevent__TO__cppfileinfo
+        .yr_insert_item(row_number, logging_info);
 
 	YRDBRUNTIMEVERIF_Logging_Info a_logging_info(logging_info);
 
@@ -463,29 +464,27 @@ void YRDBRUNTIMEVERIF_MainWindow::
                 .yr_insert_item(row_number,
                                 a_logging_NON_ERROR_combobox_info.toString());
 
-            comboBox_RUNTIME_MONITOR_NAME_Logging->setVisible(true);
 
-            comboBox_RUNTIME_MONITOR_NAME_Logging
-                ->find_AND_SET_CURRENT_INDEX(a_logging_NON_ERROR_combobox_info.A_RUNTIME_MONITOR_name);
+            if (1 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
+            {
+                comboBox_RUNTIME_MONITOR_NAME_Logging->setVisible(true);
+
+                comboBox_RUNTIME_MONITOR_NAME_Logging
+                    ->find_AND_SET_CURRENT_INDEX
+                        (a_logging_NON_ERROR_combobox_info.A_RUNTIME_MONITOR_name);
+            }
         }
 
 
         //Call ADD_ITEM here so to complement logging information
         //on an accepting error state.
 
-        YRDBRUNTIMEVERIF_Windows *ALL_WINDOWS_INSTANCE =
-            YR_DB_RUNTIME_VERIF_Config::GET_ALL_WINDOWS_instance();
-
-        if (0 != ALL_WINDOWS_INSTANCE)
-        {
-            ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
-                ->ADD_ERROR_ITEM(a_logging_info.timestamp,
-                                 a_logging_info.an_SQL_event_TOKEN,
-                                 a_logging_info.A_SUT_string_unique_ID,
-                                 "YR-DB-RUNTIME-VERIF",
-                                 a_logging_info.changed_record_db_quantity,
-                                 a_logging_info);
-        }
+        ADD_ERROR_ITEM(a_logging_info.timestamp,
+                       a_logging_info.an_SQL_event_TOKEN,
+                       a_logging_info.A_SUT_string_unique_ID,
+                       "YR-DB-RUNTIME-VERIF",
+                       a_logging_info.changed_record_db_quantity,
+                       a_logging_info);
 
 
         QTableWidgetItem *a_qtable_widget_item = tableWidget_LOGGING_4->item(0, 1);
@@ -505,22 +504,6 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
     RUNTIME_MONITOR_name_TO_PRINT_DOT = a_logging_info.A_RUNTIME_MONITOR_name;
 
-
-    if (RUNTIME_MONITOR_name_TO_PRINT_DOT.isEmpty())
-    {
-        actionVIEW_RUNTIME_monitor
-        ->setText(QString("NO runtime monitor to visualize in PDF form"));
-
-        actionVIEW_RUNTIME_monitor->setVisible(false);
-    }
-    else
-    {
-        actionVIEW_RUNTIME_monitor
-        ->setText(QString("view runtime monitor (%1)")
-                  .arg(RUNTIME_MONITOR_name_TO_PRINT_DOT));
-
-        actionVIEW_RUNTIME_monitor->setVisible(true);
-    }
 
     // 3. Runtime monitor name is set on the main window
     // only for SQL events that lead to an accepting
@@ -639,8 +622,6 @@ bool YRDBRUNTIMEVERIF_MainWindow::
 
 void YRDBRUNTIMEVERIF_MainWindow::set_CURRENT_TABWIDGET_ACTION_visible(bool a_value)
 {
-    actionVIEW_RUNTIME_monitor->setVisible(a_value);
-
     if (0 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
     {
         checkBox_ALL_STATE_SAFETY_PROPERTIES->setVisible(a_value);
@@ -667,11 +648,9 @@ void YRDBRUNTIMEVERIF_MainWindow::set_CURRENT_TABWIDGET_ACTION_visible(bool a_va
         tableWidget_LOGGING->resize_columns_AND_rows_to_contents();
 
         tableWidget_LOGGING_2->resize_columns_AND_rows_to_contents();
-
-
-        actionVIEW_RUNTIME_monitor->setVisible(false);
     }
 
+    actionVIEW_RUNTIME_monitor->setVisible(a_value);
 
     actionPRINT_event_log_excerpt_till_selected_SQL_event->setVisible(a_value);
 
@@ -1263,8 +1242,9 @@ void YRDBRUNTIMEVERIF_MainWindow::ON_Configfuration_panel_window_trigerred()
     if (0 != ALL_WINDOWS_INSTANCE)
     {
     	ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_setup_Window->yr_show();
-    	ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window->yr_close();
     }
+
+    yr_close();
 }
 
 
@@ -1428,10 +1408,14 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
         if (a_logging_info.IS_ERROR_EVENT_LOGGING())
         {
+            actionVIEW_RUNTIME_monitor->setVisible(true);
+
             comboBox_RUNTIME_MONITOR_NAME_Logging->setVisible(true);
         }
         else
         {
+            actionVIEW_RUNTIME_monitor->setVisible(false);
+
             comboBox_RUNTIME_MONITOR_NAME_Logging->setVisible(false);
         }
 
