@@ -313,8 +313,21 @@ void YRDBRUNTIMEVERIF_MainWindow::
 {
     if (!A_RUNTIME_MONITOR_name.isEmpty())
     {
+        actionVIEW_RUNTIME_monitor
+            ->setText(QString("view runtime monitor (%1)")
+                       .arg(A_RUNTIME_MONITOR_name));
+
+        actionVIEW_RUNTIME_monitor->setVisible(true);
+
         comboBox_RUNTIME_MONITOR_NAME_Error_LOGGING
             ->find_AND_SET_CURRENT_INDEX(A_RUNTIME_MONITOR_name.trimmed());
+    }
+    else
+    {
+        actionVIEW_RUNTIME_monitor
+            ->setText(QString("NO runtime monitor to visualize in PDF form"));
+
+        actionVIEW_RUNTIME_monitor->setVisible(false);
     }
 }
 
@@ -1510,23 +1523,6 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
 
             RUNTIME_MONITOR_name_TO_PRINT_DOT = a_logging_info.A_RUNTIME_MONITOR_name;
-
-
-            if (RUNTIME_MONITOR_name_TO_PRINT_DOT.isEmpty())
-            {
-                actionVIEW_RUNTIME_monitor
-                    ->setText(QString("NO runtime monitor to visualize in PDF form"));
-
-                actionVIEW_RUNTIME_monitor->setVisible(false);
-            }
-            else
-            {
-                actionVIEW_RUNTIME_monitor
-                    ->setText(QString("view runtime monitor (%1)")
-                               .arg(RUNTIME_MONITOR_name_TO_PRINT_DOT));
-
-                actionVIEW_RUNTIME_monitor->setVisible(true);
-            }
 
 
             // 5. Runtime monitor name is set on the main window
