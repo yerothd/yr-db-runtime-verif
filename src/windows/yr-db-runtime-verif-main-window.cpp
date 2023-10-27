@@ -280,7 +280,7 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     connect(actionUserGuide_PDF,
     		SIGNAL(triggered()),
 			this,
-            SLOT(ACTION_USER_GUIDE_method()));
+            SLOT(__Progress_BAR__ACTION_USER_GUIDE_method()));
 
 
 	setVisible(true);
@@ -1692,18 +1692,24 @@ void YRDBRUNTIMEVERIF_MainWindow::
 }
 
 
-void YRDBRUNTIMEVERIF_MainWindow::ACTION_USER_GUIDE_method()
+void *YRDBRUNTIMEVERIF_MainWindow::ACTION_USER_GUIDE_method()
 {
 	QStringList progArguments;
+
+	emit SIGNAL_INCREMENT_PROGRESS_BAR(12);
 
 	QProcess aProcess;
 
 	progArguments << "/usr/share/doc/yr-db-runtime-verif/YEROTH_QVGE.pdf";
 
+	emit SIGNAL_INCREMENT_PROGRESS_BAR(30);
+
     YRDBRUNTIMEVERIF_Process::startDetached
             (aProcess,
              YR_DB_RUNTIME_VERIF_Config::pathToPdfReader,
              progArguments);
+
+    emit SIGNAL_INCREMENT_PROGRESS_BAR(98);
 }
 
 

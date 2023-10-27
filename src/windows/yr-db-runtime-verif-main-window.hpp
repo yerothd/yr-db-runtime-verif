@@ -233,8 +233,14 @@ protected slots:
     virtual void ON_QTABLEWIDGET_FILTER_ITEM_Exact_GIVEN(const QString &a_SourceSUT__OR__SQLEvent__Text);
 
 
+    virtual inline void __Progress_BAR__ACTION_USER_GUIDE_method()
+    {
+        YR_DB_RUNTIME_VERIF_ProgressBar(this)(this,
+                                              &YRDBRUNTIMEVERIF_MainWindow::ACTION_USER_GUIDE_method);
+    }
 
-	virtual void ACTION_USER_GUIDE_method();
+
+	virtual void *ACTION_USER_GUIDE_method();
 
 
     inline virtual void about()
