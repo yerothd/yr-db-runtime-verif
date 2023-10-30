@@ -37,9 +37,11 @@ public:
 
 	YRDBRUNTIMEVERIF_MainWindow();
 
+
     inline virtual ~YRDBRUNTIMEVERIF_MainWindow()
     {
     }
+
 
     inline virtual QToolBar &get_tool_bar()
     {
@@ -47,7 +49,10 @@ public:
     }
 
 
-    virtual void SELECT_row(uint a_row_selected);
+    virtual void SELECT_Logging_row(uint a_row_selected);
+
+
+    virtual void SELECT_ERROR_LOGGING_row(uint a_row_selected);
 
 
     virtual void SET_CURRENT_RUNTIME_MONITOR_name_Logging(QString A_RUNTIME_MONITOR_name);
@@ -99,6 +104,18 @@ public slots:
 
 	virtual void set_connection_DBUS_status(QString	message_STATUS,
 											bool 	error_not_connected = false);
+
+
+	virtual void ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *aQTable_widget_item);
+
+
+	/*
+	 * aQTable_widget_item is set to zero ('0') when the
+	 * hidden button "pushButton_lecteur_de_code_barres"
+	 * for showing SQL recovered query string
+	 * is only shown by now.
+     */
+	virtual void ON_QTABLEWIDGET_ERROR_ITEM_pressed(QTableWidgetItem *aQTable_widget_item = 0);
 
 
 protected slots:
@@ -193,18 +210,6 @@ protected slots:
     virtual void ON_BUTON_Filter_pressed();
 
 
-	virtual void ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *aQTable_widget_item);
-
-
-	/*
-	 * aQTable_widget_item is set to zero ('0') when the
-	 * hidden button "pushButton_lecteur_de_code_barres"
-	 * for showing SQL recovered query string
-	 * is only shown by now.
-     */
-	virtual void ON_QTABLEWIDGET_ERROR_ITEM_pressed(QTableWidgetItem *aQTable_widget_item = 0);
-
-
     //for combobox "comboBox_global_filtering"
     virtual void RESET_comboBox_SQL_event_filtering();
 
@@ -243,16 +248,11 @@ protected slots:
 	virtual void *ACTION_USER_GUIDE_method();
 
 
-    inline virtual void about()
+    virtual inline void about()
     {
     	QMessageBox::information(toolBar_mainWindow_YR_DB_RUNTIME_VERIF,
     							 "ABOUT THIS SOFTWARE (YR-DB-RUNTIME-VERIF)",
-    							 QObject::tr("DEVELOPED by PROF. DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU."
-                                             "\n\nAcknowledgments:\n"
-                                             "1. Jan Peleska, VERIFIED SYSTEMS INTERNATIONAL GmbH\n"
-                                             "2. Jan Peleska, UNIVERSITY OF BREMEN, BREMEN, GERMANY\n\n"
-                                             "3. Patrick Lam, WATFORM, THE UNIVERSITY OF WATERLOO, ON, CANADA\n\n"
-                                             "4. The Qt Company\n"));
+    							 QObject::tr("DEVELOPED by PROF. DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU."));
     }
 
 
@@ -268,6 +268,7 @@ protected:
     {
         _CURRENT_runtime_monitor_name_Filtered = a_bool_value;
     }
+
 
     virtual inline bool is_CURRENT_runtime_monitor_name_Filtered()
     {
@@ -287,6 +288,8 @@ public:
 
 private:
 
+    bool                        _pushButton_lecteur_de_code_barres_Logging_JUST_CLICKED;
+
     bool                        _pushButton_lecteur_de_code_barres_JUST_CLICKED;
 
     bool                        _CURRENT_runtime_monitor_name_Filtered;
@@ -302,7 +305,7 @@ private:
     YR_DB_RUNTIME_VERIF_Monitor	*_current_runtime_monitor_INSTANCE;
 
     /**
-     * This is  used to keep selected row acroos
+     * This is  used to keep selected row across
      * "tabWidget_SQL_ERROR_EVENT_LOGGING" QTABLEWIDGET.
      */
     QMap<YRDBRUNTIMEVERIF_TableWidget *, const QModelIndex *>
