@@ -279,6 +279,11 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
 			this,
             SLOT(ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *)));
 
+    connect(tableWidget_LOGGING,
+    		SIGNAL(itemSelectionChanged()),
+			this,
+            SLOT(ON_QTABLEWIDGET_ITEM_itemSelectionChanged()));
+
 
 
     connect(comboBox_global_filtering,
@@ -623,6 +628,11 @@ void YRDBRUNTIMEVERIF_MainWindow::
 	if (0 != aQTable_widget_item                            &&
         1 == tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex())
 	{
+        if (_pushButton_lecteur_de_code_barres_Logging_JUST_CLICKED)
+        {
+            _pushButton_lecteur_de_code_barres_Logging_JUST_CLICKED = false;
+        }
+
 		QString LOGGING_INFO =
             _MAP_dbsqlevent__TO__cppfileinfo
                 .value(GET_QTABLEWIDGET_CURRENT_ROW_TO_Select(1));
@@ -685,10 +695,10 @@ void YRDBRUNTIMEVERIF_MainWindow::
 void YRDBRUNTIMEVERIF_MainWindow::
 		ON_QTABLEWIDGET_ERROR_ITEM_pressed(QTableWidgetItem *aQTable_widget_item /* = 0 */)
 {
-    QString LOGGING_INFO;
-
     if (0 != aQTable_widget_item)
     {
+        QString LOGGING_INFO;
+
         if (_pushButton_lecteur_de_code_barres_JUST_CLICKED)
         {
             _pushButton_lecteur_de_code_barres_JUST_CLICKED = false;

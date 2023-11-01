@@ -106,6 +106,12 @@ public slots:
 											bool 	error_not_connected = false);
 
 
+    virtual inline void ON_QTABLEWIDGET_ITEM_itemSelectionChanged()
+    {
+        pushButton_lecteur_de_code_barres_Logging->click();
+    }
+
+
 	virtual void ON_QTABLEWIDGET_ITEM_pressed(QTableWidgetItem *aQTable_widget_item);
 
 
