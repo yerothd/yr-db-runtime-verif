@@ -43,6 +43,13 @@ public:
 
 public slots:
 
+    virtual void Set_A_SUT_comboBox_SUT_identification(QString &a_sut_identification)
+    {
+        comboBox_SUT_identification
+            ->find_AND_SET_CURRENT_INDEX(a_sut_identification.trimmed());
+    }
+
+
 	virtual void set_connection_DBUS_status(QString	message_STATUS,
 											bool 	error_not_connected = false);
 

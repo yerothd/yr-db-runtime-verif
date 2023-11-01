@@ -118,35 +118,43 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_
     YRDBRUNTIMEVERIF_Windows *ALL_WINDOWS_INSTANCE =
     		YR_DB_RUNTIME_VERIF_Config::GET_ALL_WINDOWS_instance();
 
-    if (0 != ALL_WINDOWS_INSTANCE 								&&
-    	0 != ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window)
+    if (0 != ALL_WINDOWS_INSTANCE)
     {
-    	YRDBRUNTIMEVERIF_Logging_Info a_logging_info;
+        if (0 != ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_setup_Window)
+        {
+            ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_setup_Window
+                ->Set_A_SUT_comboBox_SUT_identification(SUT_string_unique_ID);
+        }
 
-		a_logging_info.A_RUNTIME_MONITOR_name = a_runtime_monitor.get_RUNTIME_MONITOR_NAME();
-		a_logging_info.A_SUT_string_unique_ID = SUT_string_unique_ID;
-		a_logging_info.A_CPP_SOURCE_FILE_NAME = CPP_FILE_NAME;
-		a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER = cpp_line_number;
-        a_logging_info.an_SQL_event_TOKEN = a_trace_log_EVENT_TOKEN;
-        a_logging_info.changed_record_db_quantity = CHANGED_RECORD_DB_QTY;
-        a_logging_info.timestamp = DBUS_CURRENT_TIME_WITH_MILLISECONDS;
+        if (0 != ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window)
+        {
+            YRDBRUNTIMEVERIF_Logging_Info a_logging_info;
 
-        // 2. Runtime monitor name is set on the main window
-        // only for SQL events that lead to an accepting
-        // error state.
-        ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
-            ->SET_CURRENT_RUNTIME_MONITOR_name_ERROR_Logging(QString(""));
+            a_logging_info.A_RUNTIME_MONITOR_name = a_runtime_monitor.get_RUNTIME_MONITOR_NAME();
+            a_logging_info.A_SUT_string_unique_ID = SUT_string_unique_ID;
+            a_logging_info.A_CPP_SOURCE_FILE_NAME = CPP_FILE_NAME;
+            a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER = cpp_line_number;
+            a_logging_info.an_SQL_event_TOKEN = a_trace_log_EVENT_TOKEN;
+            a_logging_info.changed_record_db_quantity = CHANGED_RECORD_DB_QTY;
+            a_logging_info.timestamp = DBUS_CURRENT_TIME_WITH_MILLISECONDS;
 
+            // 2. Runtime monitor name is set on the main window
+            // only for SQL events that lead to an accepting
+            // error state.
+            ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
+                ->SET_CURRENT_RUNTIME_MONITOR_name_ERROR_Logging(QString(""));
 
-    	_LAST_trace_SQL_event_log_GUI_row_number =
-    			ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
-									->ADD_ITEM(a_logging_info.timestamp,
-											   a_logging_info.an_SQL_event_TOKEN,
-											   a_logging_info.A_SUT_string_unique_ID,
-											   "YR-DB-RUNTIME-VERIF",
-											   a_logging_info.changed_record_db_quantity,
-											   a_logging_info);
+            _LAST_trace_SQL_event_log_GUI_row_number =
+                ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window
+                    ->ADD_ITEM(a_logging_info.timestamp,
+                               a_logging_info.an_SQL_event_TOKEN,
+                               a_logging_info.A_SUT_string_unique_ID,
+                               "YR-DB-RUNTIME-VERIF",
+                               a_logging_info.changed_record_db_quantity,
+                               a_logging_info);
+        }
     }
+
     //###########################################################################################
 
 
