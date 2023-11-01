@@ -95,6 +95,9 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     checkBox_ALL_STATE_SAFETY_PROPERTIES_Logging->setVisible(false);
 
 
+    comboBox_RUNTIME_MONITOR_NAME_Logging->setVisible(false);
+
+
     comboBox_RUNTIME_MONITOR_NAME_Error_LOGGING->yr__setEditable(false);
 
     comboBox_RUNTIME_MONITOR_NAME_Logging->yr__setEditable(false);
