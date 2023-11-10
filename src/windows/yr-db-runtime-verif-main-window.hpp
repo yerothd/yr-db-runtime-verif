@@ -258,7 +258,7 @@ protected slots:
     {
     	QMessageBox::information(toolBar_mainWindow_YR_DB_RUNTIME_VERIF,
     							 "ABOUT THIS SOFTWARE (YR-DB-RUNTIME-VERIF)",
-    							 QObject::tr("DEVELOPED by PROF. DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU."));
+    							 QObject::tr("DEVELOPED by PROF. DR.-ING. DIPL.-INF. XAVIER NOUNDOU."));
     }
 
 
