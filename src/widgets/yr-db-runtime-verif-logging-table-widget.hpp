@@ -52,7 +52,8 @@ public:
 				 QString SIGNALItem,
 				 QString SOURCEItem,
 				 QString TARGETItem,
-				 QString changed_OR_modified_database_qty_Item);
+				 QString changed_OR_modified_database_qty_Item,
+				 QString runtime_monitor_QSTRING_ID_Item = "");
 
 
 public slots:
@@ -126,6 +127,8 @@ private:
 	QTableWidgetItem *_TARGETItem;
 
 	QTableWidgetItem *_changed_OR_modified_database_qty_Item;
+
+	QTableWidgetItem *_runtime_monitor_QSTRING_ID_Item;
 };
 
 #endif //_YR_DB_RUNTIME_VERIF_LOGGING_TABLE_WIDGET_HPP_

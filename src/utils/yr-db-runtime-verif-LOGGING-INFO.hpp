@@ -76,6 +76,8 @@ public:
     QString timestamp;
 
     QString RECOVERY_SQL_string__ON_ERROR__accepting_state;
+
+    QString A_RUNTIME_MONITOR_QSTRING_ID;
 };
 
 

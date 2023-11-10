@@ -377,7 +377,8 @@ int YRDBRUNTIMEVERIF_MainWindow::
                        SIGNALItem,
                        SOURCEItem,
                        TARGETItem,
-                       changed_OR_modified_database_qty_Item);
+                       changed_OR_modified_database_qty_Item,
+                       a_logging_info.A_RUNTIME_MONITOR_QSTRING_ID);
 
 
 	QString logging_info = a_logging_info.toString();
@@ -1237,26 +1238,46 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QTableWidget  &cu
                                                                QString       &texTable_IN_OUT,
                                                                int           row_MAX_TO_GO_export /* = -1 */)
 {
-    texTable_IN_OUT.append("\\begin{table*}[!htbp]\n"
-                           "\\centering\n"
-                           "\\resizebox{\\textwidth}{!}{\n"
-                           "\\begin{tabular}"
-                           "{|l|c|c|c|c|c|} \\hline");
-
-    texTable_IN_OUT.append(" & & & & &			    \\\\ \n"
-                           "\\textbf{ID}	        & 	 \n"
-                           "\\textbf{time stamp}	& 	 \n"
-                           "\\textbf{sql event log}	& 	 \n"
-                           "\\textbf{source}	    & 	 \n"
-                           "\\textbf{target} 	    & 	 \n"
-                           "\\textbf{changed qty}   \\\\ \n"
-                           "& & & & &				\\\\ \\hline \\hline \n");
-
-
 	int rowCount = current_QTable_Widget_Item.rowCount();
 
 	int columnCount = current_QTable_Widget_Item.columnCount();
 
+
+    if (6 == columnCount)
+    {
+        texTable_IN_OUT.append("\\begin{table*}[!htbp]\n"
+                               "\\centering\n"
+                               "\\resizebox{\\textwidth}{!}{\n"
+                               "\\begin{tabular}"
+                               "{|l|c|c|c|c|c|c|} \\hline");
+
+        texTable_IN_OUT.append(" & & & & & &		            \\\\ \n"
+                               "\\textbf{ID}	                & 	 \n"
+                               "\\textbf{time stamp}	        & 	 \n"
+                               "\\textbf{sql event log}	        & 	 \n"
+                               "\\textbf{source}	            & 	 \n"
+                               "\\textbf{target} 	            & 	 \n"
+                               "\\textbf{changed qty} 	        & 	 \n"
+                               "\\textbf{runtime monitor ID}    \\\\ \n"
+                               "& & & & & &				        \\\\ \\hline \\hline \n");
+    }
+    else if (5 == columnCount)
+    {
+        texTable_IN_OUT.append("\\begin{table*}[!htbp]\n"
+                               "\\centering\n"
+                               "\\resizebox{\\textwidth}{!}{\n"
+                               "\\begin{tabular}"
+                               "{|l|c|c|c|c|c|} \\hline");
+
+        texTable_IN_OUT.append(" & & & & &			    \\\\ \n"
+                               "\\textbf{ID}	        & 	 \n"
+                               "\\textbf{time stamp}	& 	 \n"
+                               "\\textbf{sql event log}	& 	 \n"
+                               "\\textbf{source}	    & 	 \n"
+                               "\\textbf{target} 	    & 	 \n"
+                               "\\textbf{changed qty}   \\\\ \n"
+                               "& & & & &				\\\\ \\hline \\hline \n");
+    }
 
 
     int MAX_TABLE_MODDEL_ROW_COUNT__to_export = rowCount;
@@ -1365,20 +1386,41 @@ void YRDBRUNTIMEVERIF_MainWindow::get_PRINT_OUT_TexTableString(QTableWidget  &cu
 
                 texTable_IN_OUT.append("\\newpage\n");
 
-                texTable_IN_OUT.append("\\begin{table*}[!htbp]\n"
-                                       "\\centering\n"
-                                       "\\resizebox{\\textwidth}{!}{\n"
-                                       "\\begin{tabular}"
-                                       "{|l|c|c|c|c|c|} \\hline");
+                if (6 == columnCount)
+                {
+                    texTable_IN_OUT.append("\\begin{table*}[!htbp]\n"
+                                           "\\centering\n"
+                                           "\\resizebox{\\textwidth}{!}{\n"
+                                           "\\begin{tabular}"
+                                           "{|l|c|c|c|c|c|c|} \\hline");
 
-                texTable_IN_OUT.append(" & & & & &		            \\\\ \n"
-                                       "\\textbf{ID}			    & 	 \n"
-                                       "\\textbf{time stamp}        & 	 \n"
-                                       "\\textbf{sql event log}	    & 	 \n"
-                                       "\\textbf{source}	        & 	 \n"
-                                       "\\textbf{target} 	        & 	 \n"
-                                       "\\textbf{changed qty}		\\\\ \n"
-                                       "& & & & &			\\\\ \\hline \\hline \n");
+                    texTable_IN_OUT.append(" & & & & & &		            \\\\ \n"
+                                           "\\textbf{ID}	                & 	 \n"
+                                           "\\textbf{time stamp}	        & 	 \n"
+                                           "\\textbf{sql event log}	        & 	 \n"
+                                           "\\textbf{source}	            & 	 \n"
+                                           "\\textbf{target} 	            & 	 \n"
+                                           "\\textbf{changed qty} 	        & 	 \n"
+                                           "\\textbf{runtime monitor ID}    \\\\ \n"
+                                           "& & & & & &				        \\\\ \\hline \\hline \n");
+                }
+                else if (5 == columnCount)
+                {
+                    texTable_IN_OUT.append("\\begin{table*}[!htbp]\n"
+                                           "\\centering\n"
+                                           "\\resizebox{\\textwidth}{!}{\n"
+                                           "\\begin{tabular}"
+                                           "{|l|c|c|c|c|c|} \\hline");
+
+                    texTable_IN_OUT.append(" & & & & &			    \\\\ \n"
+                                           "\\textbf{ID}	        & 	 \n"
+                                           "\\textbf{time stamp}	& 	 \n"
+                                           "\\textbf{sql event log}	& 	 \n"
+                                           "\\textbf{source}	    & 	 \n"
+                                           "\\textbf{target} 	    & 	 \n"
+                                           "\\textbf{changed qty}   \\\\ \n"
+                                           "& & & & &				\\\\ \\hline \\hline \n");
+                }
             }
 
             ++current_table_count;

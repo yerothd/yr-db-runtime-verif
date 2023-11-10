@@ -1659,7 +1659,7 @@
      <widget class="YRDBRUNTIMEVERIF_QPushButton" name="pushButton_choose_pdfReader">
       <property name="geometry">
        <rect>
-        <x>330</x>
+        <x>470</x>
         <y>10</y>
         <width>25</width>
         <height>21</height>
@@ -2149,7 +2149,7 @@
        <rect>
         <x>165</x>
         <y>10</y>
-        <width>160</width>
+        <width>300</width>
         <height>21</height>
        </rect>
       </property>
@@ -2693,7 +2693,7 @@
        <rect>
         <x>165</x>
         <y>10</y>
-        <width>160</width>
+        <width>300</width>
         <height>21</height>
        </rect>
       </property>
@@ -3206,12 +3206,12 @@
      <attribute name="title">
       <string>LOGGING from SUT</string>
      </attribute>
-     <widget class="QComboBox" name="comboBox_SUT_identification">
+     <widget class="YRDBRUNTIMEVERIF_ComboBox" name="comboBox_SUT_identification">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>9</y>
-        <width>205</width>
+        <width>300</width>
         <height>21</height>
        </rect>
       </property>
@@ -3725,7 +3725,7 @@
      <widget class="QPushButton" name="pushButton_STOP_LOGGING_from">
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>305</x>
         <y>9</y>
         <width>111</width>
         <height>21</height>
@@ -6547,6 +6547,11 @@
    <class>YRDBRUNTIMEVERIF_QPushButton</class>
    <extends>QPushButton</extends>
    <header>src/widgets/yr-db-runtime-verif-push-button.hpp</header>
+  </customwidget>
+  <customwidget>
+   <class>YRDBRUNTIMEVERIF_ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>src/widgets/yr-db-runtime-verif-combo-box.hpp</header>
   </customwidget>
  </customwidgets>
  <resources>

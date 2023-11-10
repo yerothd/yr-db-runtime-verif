@@ -130,6 +130,7 @@ void YR_DBUS_COMMON::TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_
         {
             YRDBRUNTIMEVERIF_Logging_Info a_logging_info;
 
+            a_logging_info.A_RUNTIME_MONITOR_QSTRING_ID = a_runtime_monitor.GET_QSTRING_ID();
             a_logging_info.A_RUNTIME_MONITOR_name = a_runtime_monitor.get_RUNTIME_MONITOR_NAME();
             a_logging_info.A_SUT_string_unique_ID = SUT_string_unique_ID;
             a_logging_info.A_CPP_SOURCE_FILE_NAME = CPP_FILE_NAME;
