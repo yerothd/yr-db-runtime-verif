@@ -290,7 +290,7 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString TIMESTAMPtem,
 		   	   	   	   	   	   	   	   	   QString SOURCEItem,
 										   QString TARGETItem,
 										   QString changed_OR_modified_database_qty_Item,
-										   QString runtime_monitor_QSTRING_ID_Item /* = "" */)
+										   QString runtime_monitor_QSTRING_ID_Item)
 {
     setRowCount(_curRow + 1);
 
@@ -300,12 +300,7 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString TIMESTAMPtem,
     SOURCEItem.truncate(50);
     TARGETItem.truncate(50);
     changed_OR_modified_database_qty_Item.truncate(50);
-
-    if (!runtime_monitor_QSTRING_ID_Item.isEmpty())
-    {
-        runtime_monitor_QSTRING_ID_Item.truncate(7);
-    }
-
+    runtime_monitor_QSTRING_ID_Item.truncate(7);
 
     _TIMESTAMPtem = new QTableWidgetItem(TIMESTAMPtem);
     _SIGNALItem = new QTableWidgetItem(SIGNALItem);
@@ -315,11 +310,8 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString TIMESTAMPtem,
     _changed_OR_modified_database_qty_Item =
     		new QTableWidgetItem(changed_OR_modified_database_qty_Item);
 
-
-    if (!runtime_monitor_QSTRING_ID_Item.isEmpty())
-    {
-        _runtime_monitor_QSTRING_ID_Item = new QTableWidgetItem(runtime_monitor_QSTRING_ID_Item);
-    }
+    _runtime_monitor_QSTRING_ID_Item =
+        new QTableWidgetItem(runtime_monitor_QSTRING_ID_Item);
 
 
     _mapListIdxToElement_db_ID.yr_insert_item(_curRow, SIGNALItem);
@@ -334,11 +326,7 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString TIMESTAMPtem,
     setItem(_curRow, idx++, _SOURCEItem);
     setItem(_curRow, idx++, _TARGETItem);
     setItem(_curRow, idx++, _changed_OR_modified_database_qty_Item);
-
-    if (!runtime_monitor_QSTRING_ID_Item.isEmpty())
-    {
-        setItem(_curRow, idx++, _runtime_monitor_QSTRING_ID_Item);
-    }
+    setItem(_curRow, idx++, _runtime_monitor_QSTRING_ID_Item);
 
 
     setQStandardItemFlags(*_TIMESTAMPtem, _myQStandardItemFlags);
@@ -346,11 +334,7 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString TIMESTAMPtem,
     setQStandardItemFlags(*_SOURCEItem, _myQStandardItemFlags);
     setQStandardItemFlags(*_TARGETItem, _myQStandardItemFlags);
     setQStandardItemFlags(*_changed_OR_modified_database_qty_Item, _myQStandardItemFlags);
-
-    if (!runtime_monitor_QSTRING_ID_Item.isEmpty())
-    {
-        setQStandardItemFlags(*_runtime_monitor_QSTRING_ID_Item, _myQStandardItemFlags);
-    }
+    setQStandardItemFlags(*_runtime_monitor_QSTRING_ID_Item, _myQStandardItemFlags);
 
 
     selectRow(_curRow);
