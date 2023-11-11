@@ -5037,6 +5037,9 @@
        <property name="text">
         <string>TIME STAMP</string>
        </property>
+       <property name="textAlignment">
+        <set>AlignCenter</set>
+       </property>
       </column>
       <column>
        <property name="text">
@@ -5047,6 +5050,14 @@
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="textAlignment">
+        <set>AlignCenter</set>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Result</string>
        </property>
        <property name="textAlignment">
         <set>AlignCenter</set>
