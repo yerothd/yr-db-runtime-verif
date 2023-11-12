@@ -10,7 +10,7 @@
 #include "src/utils/yr-db-runtime-verif-utils.hpp"
 
 
-const uint YRDBRUNTIMEVERIF_TableWidget::MAX_TABLE_WIDGET_ROW_COUNT = 666;
+const uint YRDBRUNTIMEVERIF_TableWidget::MAX_TABLE_WIDGET_ROW_COUNT = 0;
 
 
 const unsigned int YRDBRUNTIMEVERIF_TableWidget::TIME_STAMP_COLUMN(0);
@@ -290,9 +290,13 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString TIMESTAMPtem,
 		   	   	   	   	   	   	   	   	   QString SOURCEItem,
 										   QString TARGETItem,
 										   QString changed_OR_modified_database_qty_Item,
-										   QString runtime_monitor_QSTRING_ID_Item)
+										   QString runtime_monitor_QSTRING_ID_Item,
+										   bool    LOGGING_INFO_VISIBLE)
 {
-    setRowCount(_curRow + 1);
+    if (LOGGING_INFO_VISIBLE)
+    {
+        setRowCount(_curRow + 1);
+    }
 
 
     TIMESTAMPtem.truncate(50);
@@ -302,57 +306,67 @@ int YRDBRUNTIMEVERIF_TableWidget::ADD_ITEM(QString TIMESTAMPtem,
     changed_OR_modified_database_qty_Item.truncate(50);
     runtime_monitor_QSTRING_ID_Item.truncate(7);
 
-    _TIMESTAMPtem = new QTableWidgetItem(TIMESTAMPtem);
-    _SIGNALItem = new QTableWidgetItem(SIGNALItem);
-    _SOURCEItem = new QTableWidgetItem(SOURCEItem);
-    _TARGETItem = new QTableWidgetItem(TARGETItem);
 
-    _changed_OR_modified_database_qty_Item =
-    		new QTableWidgetItem(changed_OR_modified_database_qty_Item);
+    if (LOGGING_INFO_VISIBLE)
+    {
+        _TIMESTAMPtem = new QTableWidgetItem(TIMESTAMPtem);
+        _SIGNALItem = new QTableWidgetItem(SIGNALItem);
+        _SOURCEItem = new QTableWidgetItem(SOURCEItem);
+        _TARGETItem = new QTableWidgetItem(TARGETItem);
 
-    _runtime_monitor_QSTRING_ID_Item =
-        new QTableWidgetItem(runtime_monitor_QSTRING_ID_Item);
+        _changed_OR_modified_database_qty_Item =
+            new QTableWidgetItem(changed_OR_modified_database_qty_Item);
+
+        _runtime_monitor_QSTRING_ID_Item =
+            new QTableWidgetItem(runtime_monitor_QSTRING_ID_Item);
+    }
 
 
     _mapListIdxToElement_db_ID.yr_insert_item(_curRow, SIGNALItem);
 
 
-    unsigned idx = 0;
-
-
-    //Each call to setItem triggers a call to YerothPointDeVenteWindow::handleQteChange
-    setItem(_curRow, idx++, _TIMESTAMPtem);
-    setItem(_curRow, idx++, _SIGNALItem);
-    setItem(_curRow, idx++, _SOURCEItem);
-    setItem(_curRow, idx++, _TARGETItem);
-    setItem(_curRow, idx++, _changed_OR_modified_database_qty_Item);
-    setItem(_curRow, idx++, _runtime_monitor_QSTRING_ID_Item);
-
-
-    setQStandardItemFlags(*_TIMESTAMPtem, _myQStandardItemFlags);
-    setQStandardItemFlags(*_SIGNALItem, _myQStandardItemFlags);
-    setQStandardItemFlags(*_SOURCEItem, _myQStandardItemFlags);
-    setQStandardItemFlags(*_TARGETItem, _myQStandardItemFlags);
-    setQStandardItemFlags(*_changed_OR_modified_database_qty_Item, _myQStandardItemFlags);
-    setQStandardItemFlags(*_runtime_monitor_QSTRING_ID_Item, _myQStandardItemFlags);
-
-
-    selectRow(_curRow);
-
-    resize_columns_AND_rows_to_contents();
-
-    int lastCurRow = _curRow;
-
-    if (_curRow <= getMaxSize())
+    if (LOGGING_INFO_VISIBLE)
     {
-    	++_curRow;
-    }
-    else
-    {
-    	_curRow = 0;
+        unsigned idx = 0;
+
+
+        //Each call to setItem triggers a call to YerothPointDeVenteWindow::handleQteChange
+        setItem(_curRow, idx++, _TIMESTAMPtem);
+        setItem(_curRow, idx++, _SIGNALItem);
+        setItem(_curRow, idx++, _SOURCEItem);
+        setItem(_curRow, idx++, _TARGETItem);
+        setItem(_curRow, idx++, _changed_OR_modified_database_qty_Item);
+        setItem(_curRow, idx++, _runtime_monitor_QSTRING_ID_Item);
+
+
+        setQStandardItemFlags(*_TIMESTAMPtem, _myQStandardItemFlags);
+        setQStandardItemFlags(*_SIGNALItem, _myQStandardItemFlags);
+        setQStandardItemFlags(*_SOURCEItem, _myQStandardItemFlags);
+        setQStandardItemFlags(*_TARGETItem, _myQStandardItemFlags);
+        setQStandardItemFlags(*_changed_OR_modified_database_qty_Item, _myQStandardItemFlags);
+        setQStandardItemFlags(*_runtime_monitor_QSTRING_ID_Item, _myQStandardItemFlags);
+
+
+        selectRow(_curRow);
+
+        resize_columns_AND_rows_to_contents();
+
+
+        int lastCurRow = _curRow;
+
+        if (_curRow <= getMaxSize())
+        {
+            ++_curRow;
+        }
+        else
+        {
+            _curRow = 0;
+        }
+
+        return lastCurRow;
     }
 
-    return lastCurRow;
+    return -1;
 }
 
 

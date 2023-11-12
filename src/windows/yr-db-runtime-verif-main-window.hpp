@@ -95,6 +95,24 @@ public:
 
 public slots:
 
+    virtual inline void Set___SUT__Logging(QString A_SUT_ID,
+                                           bool a_boolean_value)
+    {
+        _MAP_SutID__TO__SutLogging.insert(A_SUT_ID,
+                                          a_boolean_value);
+    }
+
+
+    virtual inline bool Is_SUT__to__LOG(QString A_SUT_ID)
+    {
+        return _MAP_SutID__TO__SutLogging.value(A_SUT_ID);
+    }
+
+
+    virtual bool MAP___Assign_SutID__to__SutNAMEQString(QString A_SUT_ID,
+                                                        QString SutNAMEQString);
+
+
 	virtual void Set_YRDBRUNTIMEVERIF_Logging_Info(uint     row_number,
 												   QString  logging_info);
 
@@ -264,6 +282,9 @@ protected slots:
 
 protected:
 
+    virtual void SET__Sut__VISIBILITY_FOR_logging(QString A_SUT_ID);
+
+
     virtual YRDBRUNTIMEVERIF_TableWidget *Get_CURRENT_QTable_WIDGET();
 
 
@@ -294,6 +315,7 @@ public:
 
 private:
 
+
     bool                        _pushButton_lecteur_de_code_barres_Logging_JUST_CLICKED;
 
     bool                        _pushButton_lecteur_de_code_barres_JUST_CLICKED;
@@ -310,8 +332,12 @@ private:
 
     YR_DB_RUNTIME_VERIF_Monitor	*_current_runtime_monitor_INSTANCE;
 
+    QMap<QString, bool> 		_MAP_SutID__TO__SutLogging;
+
+    QMap<QString, QString> 		_MAP_SutID__TO__SutNAMEQString;
+
     /**
-     * This is  used to keep selected row across
+     * This is used to keep selected row across
      * "tabWidget_SQL_ERROR_EVENT_LOGGING" QTABLEWIDGET.
      */
     QMap<YRDBRUNTIMEVERIF_TableWidget *, const QModelIndex *>

@@ -371,6 +371,10 @@ int YRDBRUNTIMEVERIF_MainWindow::
     }
 
 
+	MAP___Assign_SutID__to__SutNAMEQString(a_logging_info.A_SUT_string_unique_ID,
+                                           a_logging_info.A_RUNTIME_MONITOR_name);
+
+
     int last_ERROR_current_row_nr =
         tableWidget_LOGGING_ERROR_EVENT
             ->ADD_ITEM(TIMESTAMPtem,
@@ -378,7 +382,8 @@ int YRDBRUNTIMEVERIF_MainWindow::
                        SOURCEItem,
                        TARGETItem,
                        changed_OR_modified_database_qty_Item,
-                       a_logging_info.A_RUNTIME_MONITOR_QSTRING_ID);
+                       a_logging_info.A_RUNTIME_MONITOR_QSTRING_ID,
+                       true);
 
 
 	QString logging_info = a_logging_info.toString();
@@ -412,12 +417,24 @@ int YRDBRUNTIMEVERIF_MainWindow::
 {
     handle_current_tab_changed(tabWidget_SQL_ERROR_EVENT_LOGGING->currentIndex());
 
-    ++_visible_row_counter;
+    //We check if user has instructed to log this SUT SQL events
+    bool LOGGING_INFO_VISIBLE =
+        Is_SUT__to__LOG(a_logging_info.A_SUT_string_unique_ID);
 
-    if (_visible_row_counter >= 2999)
+    if (LOGGING_INFO_VISIBLE)
+    {
+        ++_visible_row_counter;
+    }
+
+    if (LOGGING_INFO_VISIBLE      &&
+        _visible_row_counter >= 2999)
     {
         _visible_row_counter = 1;
     }
+
+
+	MAP___Assign_SutID__to__SutNAMEQString(a_logging_info.A_SUT_string_unique_ID,
+                                           a_logging_info.A_RUNTIME_MONITOR_name);
 
     int last_current_row_nr =
         tableWidget_LOGGING->ADD_ITEM(TIMESTAMPtem,
@@ -425,7 +442,8 @@ int YRDBRUNTIMEVERIF_MainWindow::
                                       SOURCEItem,
                                       TARGETItem,
                                       changed_OR_modified_database_qty_Item,
-                                      a_logging_info.A_RUNTIME_MONITOR_QSTRING_ID);
+                                      a_logging_info.A_RUNTIME_MONITOR_QSTRING_ID,
+                                      LOGGING_INFO_VISIBLE);
 
 
 	QString logging_info = a_logging_info.toString();
@@ -434,11 +452,17 @@ int YRDBRUNTIMEVERIF_MainWindow::
 	_MAP_dbsqlevent__TO__cppfileinfo.yr_insert_item(last_current_row_nr,
 												  	logging_info);
 
+
+
+    comboBox_RUNTIME_MONITOR_NAME_Logging->setVisible(LOGGING_INFO_VISIBLE);
+
+    tableWidget_LOGGING_2->setVisible(LOGGING_INFO_VISIBLE);
+
+
     tableWidget_LOGGING_2
         ->ADD_ITEM_2(QString("%1:%2")
-                      .arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
-                           a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
-
+                     .arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
+                          a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
 
 	return last_current_row_nr;
 }
@@ -576,10 +600,14 @@ void YRDBRUNTIMEVERIF_MainWindow::
 							 a_logging_info.A_SQL_EVENT_LOG_guarded_condition_expression_VALUE));
 
 
-	//tableWidget_LOGGING_2 ONLY HAS A SINGLE ROW !
-	YRDBRUNTIMEVERIF_MainWindow::
-		SET__foregroundcolor__ON__accepting_state(tableWidget_LOGGING_2->currentRow(),
-												  tableWidget_LOGGING_2);
+	SET__Sut__VISIBILITY_FOR_logging(a_logging_info.A_SUT_string_unique_ID);
+
+
+    //tableWidget_LOGGING_2 ONLY HAS A SINGLE ROW !
+    YRDBRUNTIMEVERIF_MainWindow::
+        SET__foregroundcolor__ON__accepting_state(tableWidget_LOGGING_2->currentRow(),
+                                                  tableWidget_LOGGING_2);
+
 
 	YRDBRUNTIMEVERIF_MainWindow::
 		SET__foregroundcolor__ON__accepting_state(row_number,
@@ -641,10 +669,14 @@ void YRDBRUNTIMEVERIF_MainWindow::
 
 		YRDBRUNTIMEVERIF_Logging_Info a_logging_info(LOGGING_INFO);
 
-		tableWidget_LOGGING_2
-			->ADD_ITEM_2(QString("%1:%2")
-							.arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
-								 a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
+
+        SET__Sut__VISIBILITY_FOR_logging(a_logging_info.A_SUT_string_unique_ID);
+
+
+        tableWidget_LOGGING_2
+            ->ADD_ITEM_2(QString("%1:%2")
+                         .arg(a_logging_info.A_CPP_SOURCE_FILE_NAME,
+                              a_logging_info.A_CPP_SOURCE_FILE_LINE_NUMBER));
 
 
         if (a_logging_info.IS_ERROR_EVENT_LOGGING())
@@ -689,6 +721,10 @@ void YRDBRUNTIMEVERIF_MainWindow::
 	}
 	else
 	{
+        comboBox_RUNTIME_MONITOR_NAME_Logging->setVisible(false);
+
+        tableWidget_LOGGING_2->setVisible(false);
+
 		tableWidget_LOGGING_2->ADD_ITEM_2(QString("no source file info:-1"));
 	}
 }
@@ -767,7 +803,7 @@ void YRDBRUNTIMEVERIF_MainWindow::
                      Qt::white);
 
 
-            //tableWidget_LOGGING_2 ONLY HAS A SINGLE ROW !
+            //tableWidget_LOGGING_ERROR_SOURCE_LOCATION ONLY HAS A SINGLE ROW !
             YRDBRUNTIMEVERIF_MainWindow::
                 SET__foregroundcolor__ON__accepting_state
                     (tableWidget_LOGGING_ERROR_SOURCE_LOCATION->currentRow(),
@@ -1840,6 +1876,17 @@ void *YRDBRUNTIMEVERIF_MainWindow::ACTION_USER_GUIDE_method()
 }
 
 
+void YRDBRUNTIMEVERIF_MainWindow::SET__Sut__VISIBILITY_FOR_logging(QString a_SUT_ID)
+{
+    //We check if user has instructed to log this SUT SQL events
+    bool render_logging_SUT_visible = Is_SUT__to__LOG(a_SUT_ID);
+
+    comboBox_RUNTIME_MONITOR_NAME_Logging->setVisible(render_logging_SUT_visible);
+
+    tableWidget_LOGGING_2->setVisible(render_logging_SUT_visible);
+}
+
+
 YRDBRUNTIMEVERIF_TableWidget* YRDBRUNTIMEVERIF_MainWindow::Get_CURRENT_QTable_WIDGET()
 {
     YRDBRUNTIMEVERIF_TableWidget *current_QTable_Widget_Item = 0;
@@ -1896,4 +1943,34 @@ void YRDBRUNTIMEVERIF_MainWindow::
     }
 }
 
+
+bool YRDBRUNTIMEVERIF_MainWindow::
+        MAP___Assign_SutID__to__SutNAMEQString(QString A_SUT_ID,
+                                               QString SutNAMEQString)
+{
+    bool assigned = false;
+
+    if (!_MAP_SutID__TO__SutNAMEQString.contains(A_SUT_ID))
+    {
+        _MAP_SutID__TO__SutNAMEQString.insert(A_SUT_ID,
+                                              SutNAMEQString);
+
+        _MAP_SutID__TO__SutLogging.insert(A_SUT_ID,
+                                          false);
+
+        assigned = true;
+    }
+    else
+    {
+        /*QDEBUG_STRINGS_OUTPUT_1(QString("ATTEMP TO map assign %1 -> %2 (Already %3)")
+                                    .arg(A_SUT_ID,
+                                         SutNAMEQString,
+                                         _MAP_SutID__TO__SutNAMEQString
+                                            .value(A_SUT_ID)));*/
+
+        assigned = false;
+    }
+
+    return assigned;
+}
 

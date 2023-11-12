@@ -34,8 +34,16 @@ YRDBRUNTIMEVERIF_SetupWindow::YRDBRUNTIMEVERIF_SetupWindow()
         ->setText(YR_DB_RUNTIME_VERIF_Config::pathToPdfReader);
 
 
+    pushButton_STOP_LOGGING
+        ->enable(this, SLOT(ON_STOP__logging__SUT_ACTIONS()));
 
-    pushButton_choose_pdfReader->enable(this, SLOT(ON_choose_path_pdfReader()));
+
+    pushButton_START_LOGGING_from
+        ->enable(this, SLOT(ON_START__logging__SUT_ACTIONS()));
+
+
+    pushButton_choose_pdfReader
+        ->enable(this, SLOT(ON_choose_path_pdfReader()));
 
 
 
@@ -73,6 +81,55 @@ void YRDBRUNTIMEVERIF_SetupWindow::yr_show()
 
 
     YRDBRUNTIMEVERIF_CommonsWindow::yr_show();
+}
+
+
+void YRDBRUNTIMEVERIF_SetupWindow::ON_STOP__logging__SUT_ACTIONS()
+{
+    YRDBRUNTIMEVERIF_Windows *ALL_WINDOWS_INSTANCE =
+    		YR_DB_RUNTIME_VERIF_Config::GET_ALL_WINDOWS_instance();
+
+    if (0 != ALL_WINDOWS_INSTANCE)
+    {
+        if (0 != ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window)
+        {
+            QString SUT_string_ID = comboBox_SUT_identification->currentText();
+
+            if (!SUT_string_ID.isEmpty())
+            {
+                ALL_WINDOWS_INSTANCE
+                    ->_yrdbruntimeverif_main_Window
+                        ->Set___SUT__Logging(SUT_string_ID,
+                                             false);
+            }
+        }
+    }
+}
+
+
+void YRDBRUNTIMEVERIF_SetupWindow::ON_START__logging__SUT_ACTIONS()
+{
+    YRDBRUNTIMEVERIF_Windows *ALL_WINDOWS_INSTANCE =
+    		YR_DB_RUNTIME_VERIF_Config::GET_ALL_WINDOWS_instance();
+
+    if (0 != ALL_WINDOWS_INSTANCE)
+    {
+        if (0 != ALL_WINDOWS_INSTANCE->_yrdbruntimeverif_main_Window)
+        {
+            QString SUT_string_ID = comboBox_SUT_identification->currentText();
+
+            if (!SUT_string_ID.isEmpty())
+            {
+                QDEBUG_STRINGS_OUTPUT_2("ON_START__logging__SUT_ACTIONS",
+                                        SUT_string_ID);
+
+                ALL_WINDOWS_INSTANCE
+                    ->_yrdbruntimeverif_main_Window
+                        ->Set___SUT__Logging(SUT_string_ID,
+                                             true);
+            }
+        }
+    }
 }
 
 

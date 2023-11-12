@@ -53,7 +53,8 @@ public:
 				 QString SOURCEItem,
 				 QString TARGETItem,
 				 QString changed_OR_modified_database_qty_Item,
-				 QString runtime_monitor_QSTRING_ID_Item);
+				 QString runtime_monitor_QSTRING_ID_Item,
+				 bool    LOGGING_INFO_VISIBLE);
 
 
 public slots:

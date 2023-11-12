@@ -43,6 +43,12 @@ public:
 
 public slots:
 
+    virtual void ON_STOP__logging__SUT_ACTIONS();
+
+
+    virtual void ON_START__logging__SUT_ACTIONS();
+
+
     virtual void Set_A_SUT_comboBox_SUT_identification(QString &a_sut_identification)
     {
         comboBox_SUT_identification
@@ -52,6 +58,7 @@ public slots:
 
 	virtual void set_connection_DBUS_status(QString	message_STATUS,
 											bool 	error_not_connected = false);
+
 
 protected slots:
 
