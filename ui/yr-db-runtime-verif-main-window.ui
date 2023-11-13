@@ -518,7 +518,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>YR-DB-RUNTIME-VERIF _ console</string>
+   <string>YR-DB-RUNTIME-VERIF _ console (FOSS version enabled)</string>
   </property>
   <property name="autoFillBackground">
    <bool>true</bool>
@@ -1621,6 +1621,9 @@
       <weight>50</weight>
       <bold>false</bold>
      </font>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;PLEASE, setup window allows to start JUST LOGGING of a system under test.&lt;/p&gt;&lt;p&gt;SQL event error reporting is always enabled; i.e.: SQL event errors reporting are always shown.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="currentIndex">
      <number>0</number>
@@ -13115,7 +13118,7 @@ background-color: rgb(0, 0, 0); </string>
     <addaction name="separator"/>
     <addaction name="actionUserGuide_PDF"/>
     <addaction name="separator"/>
-    <addaction name="actionCONFIGURATION_panel_window"/>
+    <addaction name="actionSETUP_window"/>
     <addaction name="separator"/>
     <addaction name="actionAbout"/>
    </widget>
@@ -14671,7 +14674,7 @@ background-color: rgb(0, 0, 0); </string>
    <addaction name="actionPRINT_event_log_FULL"/>
    <addaction name="action_save_to_csv_format_sheet"/>
    <addaction name="actionUserGuide_PDF"/>
-   <addaction name="actionCONFIGURATION_panel_window"/>
+   <addaction name="actionSETUP_window"/>
   </widget>
   <action name="actionAbout">
    <property name="text">
@@ -14722,17 +14725,17 @@ background-color: rgb(0, 0, 0); </string>
     </font>
    </property>
   </action>
-  <action name="actionCONFIGURATION_panel_window">
+  <action name="actionSETUP_window">
    <property name="icon">
     <iconset>
      <normalon>:/yr-db-runtime-verif-images/printing-setting.png</normalon>
     </iconset>
    </property>
    <property name="text">
-    <string>Configuration parameters</string>
+    <string>Setup window</string>
    </property>
    <property name="toolTip">
-    <string>Configuration parameters</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Setup window&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="font">
     <font>

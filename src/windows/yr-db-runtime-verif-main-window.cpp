@@ -187,7 +187,7 @@ YRDBRUNTIMEVERIF_MainWindow::YRDBRUNTIMEVERIF_MainWindow()
     connect(actionAbout, SIGNAL(triggered()), this, SLOT(about()));
 
 
-    connect(actionCONFIGURATION_panel_window,
+    connect(actionSETUP_window,
     		SIGNAL(triggered()),
 			this,
             SLOT(ON_Configfuration_panel_window_trigerred()));
@@ -436,6 +436,10 @@ int YRDBRUNTIMEVERIF_MainWindow::
 	MAP___Assign_SutID__to__SutNAMEQString(a_logging_info.A_SUT_string_unique_ID,
                                            a_logging_info.A_RUNTIME_MONITOR_name);
 
+
+    SET__Sut__VISIBILITY_FOR_logging(a_logging_info.A_SUT_string_unique_ID);
+
+
     int last_current_row_nr =
         tableWidget_LOGGING->ADD_ITEM(TIMESTAMPtem,
                                       SIGNALItem,
@@ -451,12 +455,6 @@ int YRDBRUNTIMEVERIF_MainWindow::
 
 	_MAP_dbsqlevent__TO__cppfileinfo.yr_insert_item(last_current_row_nr,
 												  	logging_info);
-
-
-
-    comboBox_RUNTIME_MONITOR_NAME_Logging->setVisible(LOGGING_INFO_VISIBLE);
-
-    tableWidget_LOGGING_2->setVisible(LOGGING_INFO_VISIBLE);
 
 
     tableWidget_LOGGING_2
