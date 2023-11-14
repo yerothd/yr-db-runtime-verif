@@ -1,6 +1,23 @@
 #!/bin/bash
 
+
 echo -e "export YR_DB_RUNTIME_VERIF_HOME_FOLDER=/opt/yr-db-runtime-verif" >> /etc/environment
+
 echo -e "export YR_DB_RUNTIME_VERIF_FILE_ABSOLUTEPATH_CONFIGURATION_PROPERTY_FILE=/opt/yr-db-runtime-verif/YR-DB-RUNTIME-VERIF.properties" >> /etc/environment
+
 sh /etc/environment
+
+ln -s /lib/systemd/system/yr-db-runtime-verif.service /etc/systemd/system/yr-db-runtime-verif.service
+
+systemctl daemon-reload &
+
+systemctl enable yr-db-runtime-verif.service &
+
+systemctl start yr-db-runtime-verif.service &
+
 chmod +x /etc/init.d/yr-db-runtime-verif.sh 
+
+update-rc.d yr-db-runtime-verif.sh defaults
+
+/etc/init.d/yr-db-runtime-verif.sh start &
+
