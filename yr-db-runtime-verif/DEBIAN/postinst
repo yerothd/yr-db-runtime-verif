@@ -3,4 +3,4 @@
 echo -e "export YR_DB_RUNTIME_VERIF_HOME_FOLDER=/opt/yr-db-runtime-verif" >> /etc/environment
 echo -e "export YR_DB_RUNTIME_VERIF_FILE_ABSOLUTEPATH_CONFIGURATION_PROPERTY_FILE=/opt/yr-db-runtime-verif/YR-DB-RUNTIME-VERIF.properties" >> /etc/environment
 sh /etc/environment
-#chmod +x /etc/init.d/yr-db-runtime-verif.sh 
+chmod +x /etc/init.d/yr-db-runtime-verif.sh 
