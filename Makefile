@@ -72,10 +72,7 @@ SOURCES       = src/windows/yr-db-runtime-verif-COMMONS-window.cpp \
 		src/utils/yr-db-runtime-verif-CONFIG.cpp \
 		src/utils/yr-db-runtime-verif-utils.cpp \
 		src/utils/yr-db-runtime-verif-database-table-column.cpp \
-		src/yr-db-runtime-verif-database.cpp \
-		src/YEROTH_QVGE_sample_SAFETY_PROPERY_one.cpp \
-		src/YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.cpp \
-		src/yr_sd_runtime_verif_language_EXAMPLE_realcase.cpp moc/moc_yr-db-runtime-verif-COMMONS-window.cpp \
+		src/utils/yr-db-runtime-verif-database.cpp moc/moc_yr-db-runtime-verif-COMMONS-window.cpp \
 		moc/moc_yr-db-runtime-verif-setup-window.cpp \
 		moc/moc_yr-db-runtime-verif-combo-box.cpp \
 		moc/moc_yr-db-runtime-verif-progress-bar.cpp \
@@ -86,9 +83,6 @@ SOURCES       = src/windows/yr-db-runtime-verif-COMMONS-window.cpp \
 		moc/moc_yr-db-runtime-verif-MONITOR.cpp \
 		moc/moc_YR_DBUS_COMMON.cpp \
 		moc/moc_yr-db-runtime-verif-utils.cpp \
-		moc/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one.cpp \
-		moc/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.cpp \
-		moc/moc_yr_sd_runtime_verif_language_EXAMPLE_realcase.cpp \
 		qrc_yr-db-runtime-verif.cpp \
 		verif_adaptor.cpp \
 		moc/moc_verif_adaptor.cpp
@@ -113,9 +107,6 @@ OBJECTS       = obj/yr-db-runtime-verif-COMMONS-window.o \
 		obj/yr-db-runtime-verif-utils.o \
 		obj/yr-db-runtime-verif-database-table-column.o \
 		obj/yr-db-runtime-verif-database.o \
-		obj/YEROTH_QVGE_sample_SAFETY_PROPERY_one.o \
-		obj/YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.o \
-		obj/yr_sd_runtime_verif_language_EXAMPLE_realcase.o \
 		obj/moc_yr-db-runtime-verif-COMMONS-window.o \
 		obj/moc_yr-db-runtime-verif-setup-window.o \
 		obj/moc_yr-db-runtime-verif-combo-box.o \
@@ -127,9 +118,6 @@ OBJECTS       = obj/yr-db-runtime-verif-COMMONS-window.o \
 		obj/moc_yr-db-runtime-verif-MONITOR.o \
 		obj/moc_YR_DBUS_COMMON.o \
 		obj/moc_yr-db-runtime-verif-utils.o \
-		obj/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one.o \
-		obj/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.o \
-		obj/moc_yr_sd_runtime_verif_language_EXAMPLE_realcase.o \
 		obj/qrc_yr-db-runtime-verif.o \
 		obj/verif_adaptor.o \
 		obj/moc_verif_adaptor.o
@@ -249,10 +237,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		src/utils/yr-db-runtime-verif-CONFIG.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/utils/yr-db-runtime-verif-database-table-column.hpp \
-		src/yr-db-runtime-verif-database.hpp \
-		src/YEROTH_QVGE_sample_SAFETY_PROPERY_one.hpp \
-		src/YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.hpp \
-		src/yr_sd_runtime_verif_language_EXAMPLE_realcase.hpp src/windows/yr-db-runtime-verif-COMMONS-window.cpp \
+		src/utils/yr-db-runtime-verif-database.hpp src/windows/yr-db-runtime-verif-COMMONS-window.cpp \
 		src/windows/yr-db-runtime-verif-setup-window.cpp \
 		src/utils/yr-db-runtime-verif-LOGGING-INFO.cpp \
 		src/widgets/yr-db-runtime-verif-combo-box.cpp \
@@ -272,10 +257,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		src/utils/yr-db-runtime-verif-CONFIG.cpp \
 		src/utils/yr-db-runtime-verif-utils.cpp \
 		src/utils/yr-db-runtime-verif-database-table-column.cpp \
-		src/yr-db-runtime-verif-database.cpp \
-		src/YEROTH_QVGE_sample_SAFETY_PROPERY_one.cpp \
-		src/YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.cpp \
-		src/yr_sd_runtime_verif_language_EXAMPLE_realcase.cpp
+		src/utils/yr-db-runtime-verif-database.cpp
 QMAKE_TARGET  = yr-db-runtime-verif
 DESTDIR       = bin/
 TARGET        = bin/yr-db-runtime-verif
@@ -496,10 +478,10 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents src/windows/yr-db-runtime-verif-COMMONS-window.hpp src/windows/yr-db-runtime-verif-setup-window.hpp src/utils/yr-db-runtime-verif-LOGGING-INFO.hpp src/widgets/yr-db-runtime-verif-combo-box.hpp src/utils/yr-db-runtime-verif-qmap.hpp src/widgets/yr-db-runtime-verif-progress-bar.hpp src/widgets/yr-db-runtime-verif-push-button.hpp src/widgets/yr-db-runtime-verif-logging-table-widget.hpp src/windows/yr-db-runtime-verif-windows.hpp src/windows/yr-db-runtime-verif-main-window.hpp src/include/yr-db-runtime-verif-MONITOR.hpp src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp src/include/yr-db-runtime-verif-definition-format-date-time.hpp src/include/yr-db-runtime-verif-software-text-configuration.hpp src/process/yr-db-runtime-verif-PROCESS.hpp src/process/yr-db-runtime-verif-PROCESS-info.hpp src/DBUS/YR_DBUS_COMMON.hpp src/utils/yr-db-runtime-verif-logger.hpp src/utils/yr-db-runtime-verif-sqltable-model.hpp src/utils/yr-db-runtime-verif-CONFIG.hpp src/utils/yr-db-runtime-verif-utils.hpp src/utils/yr-db-runtime-verif-database-table-column.hpp src/yr-db-runtime-verif-database.hpp src/YEROTH_QVGE_sample_SAFETY_PROPERY_one.hpp src/YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.hpp src/yr_sd_runtime_verif_language_EXAMPLE_realcase.hpp $(DISTDIR)/
+	$(COPY_FILE) --parents src/windows/yr-db-runtime-verif-COMMONS-window.hpp src/windows/yr-db-runtime-verif-setup-window.hpp src/utils/yr-db-runtime-verif-LOGGING-INFO.hpp src/widgets/yr-db-runtime-verif-combo-box.hpp src/utils/yr-db-runtime-verif-qmap.hpp src/widgets/yr-db-runtime-verif-progress-bar.hpp src/widgets/yr-db-runtime-verif-push-button.hpp src/widgets/yr-db-runtime-verif-logging-table-widget.hpp src/windows/yr-db-runtime-verif-windows.hpp src/windows/yr-db-runtime-verif-main-window.hpp src/include/yr-db-runtime-verif-MONITOR.hpp src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp src/include/yr-db-runtime-verif-definition-format-date-time.hpp src/include/yr-db-runtime-verif-software-text-configuration.hpp src/process/yr-db-runtime-verif-PROCESS.hpp src/process/yr-db-runtime-verif-PROCESS-info.hpp src/DBUS/YR_DBUS_COMMON.hpp src/utils/yr-db-runtime-verif-logger.hpp src/utils/yr-db-runtime-verif-sqltable-model.hpp src/utils/yr-db-runtime-verif-CONFIG.hpp src/utils/yr-db-runtime-verif-utils.hpp src/utils/yr-db-runtime-verif-database-table-column.hpp src/utils/yr-db-runtime-verif-database.hpp $(DISTDIR)/
 	$(COPY_FILE) --parents yr-db-runtime-verif.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents yr.db-runtime.verif.xml $(DISTDIR)/
-	$(COPY_FILE) --parents src/windows/yr-db-runtime-verif-COMMONS-window.cpp src/windows/yr-db-runtime-verif-setup-window.cpp src/utils/yr-db-runtime-verif-LOGGING-INFO.cpp src/widgets/yr-db-runtime-verif-combo-box.cpp src/utils/yr-db-runtime-verif-qmap.cpp src/widgets/yr-db-runtime-verif-progress-bar.cpp src/widgets/yr-db-runtime-verif-push-button.cpp src/widgets/yr-db-runtime-verif-logging-table-widget.cpp src/windows/yr-db-runtime-verif-windows.cpp src/windows/yr-db-runtime-verif-main-window.cpp src/include/yr-db-runtime-verif-MONITOR.cpp src/yr-db-runtime-verif.cpp src/process/yr-db-runtime-verif-PROCESS.cpp src/process/yr-db-runtime-verif-PROCESS-info.cpp src/DBUS/YR_DBUS_COMMON.cpp src/utils/yr-db-runtime-verif-logger.cpp src/utils/yr-db-runtime-verif-sqltable-model.cpp src/utils/yr-db-runtime-verif-CONFIG.cpp src/utils/yr-db-runtime-verif-utils.cpp src/utils/yr-db-runtime-verif-database-table-column.cpp src/yr-db-runtime-verif-database.cpp src/YEROTH_QVGE_sample_SAFETY_PROPERY_one.cpp src/YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.cpp src/yr_sd_runtime_verif_language_EXAMPLE_realcase.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents src/windows/yr-db-runtime-verif-COMMONS-window.cpp src/windows/yr-db-runtime-verif-setup-window.cpp src/utils/yr-db-runtime-verif-LOGGING-INFO.cpp src/widgets/yr-db-runtime-verif-combo-box.cpp src/utils/yr-db-runtime-verif-qmap.cpp src/widgets/yr-db-runtime-verif-progress-bar.cpp src/widgets/yr-db-runtime-verif-push-button.cpp src/widgets/yr-db-runtime-verif-logging-table-widget.cpp src/windows/yr-db-runtime-verif-windows.cpp src/windows/yr-db-runtime-verif-main-window.cpp src/include/yr-db-runtime-verif-MONITOR.cpp src/yr-db-runtime-verif.cpp src/process/yr-db-runtime-verif-PROCESS.cpp src/process/yr-db-runtime-verif-PROCESS-info.cpp src/DBUS/YR_DBUS_COMMON.cpp src/utils/yr-db-runtime-verif-logger.cpp src/utils/yr-db-runtime-verif-sqltable-model.cpp src/utils/yr-db-runtime-verif-CONFIG.cpp src/utils/yr-db-runtime-verif-utils.cpp src/utils/yr-db-runtime-verif-database-table-column.cpp src/utils/yr-db-runtime-verif-database.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents yr.db-runtime.verif.xml $(DISTDIR)/
 	$(COPY_FILE) --parents verif_adaptor.h $(DISTDIR)/
 	$(COPY_FILE) --parents ui/yr-db-runtime-verif-setup-window.ui ui/yr-db-runtime-verif-main-window.ui $(DISTDIR)/
@@ -543,9 +525,9 @@ moc/moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 		obj/yr-db-runtime-verif.gch/c++
 	g++ -pipe -g -dM -E -o moc/moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc/moc_yr-db-runtime-verif-COMMONS-window.cpp moc/moc_yr-db-runtime-verif-setup-window.cpp moc/moc_yr-db-runtime-verif-combo-box.cpp moc/moc_yr-db-runtime-verif-progress-bar.cpp moc/moc_yr-db-runtime-verif-push-button.cpp moc/moc_yr-db-runtime-verif-logging-table-widget.cpp moc/moc_yr-db-runtime-verif-windows.cpp moc/moc_yr-db-runtime-verif-main-window.cpp moc/moc_yr-db-runtime-verif-MONITOR.cpp moc/moc_YR_DBUS_COMMON.cpp moc/moc_yr-db-runtime-verif-utils.cpp moc/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one.cpp moc/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.cpp moc/moc_yr_sd_runtime_verif_language_EXAMPLE_realcase.cpp
+compiler_moc_header_make_all: moc/moc_yr-db-runtime-verif-COMMONS-window.cpp moc/moc_yr-db-runtime-verif-setup-window.cpp moc/moc_yr-db-runtime-verif-combo-box.cpp moc/moc_yr-db-runtime-verif-progress-bar.cpp moc/moc_yr-db-runtime-verif-push-button.cpp moc/moc_yr-db-runtime-verif-logging-table-widget.cpp moc/moc_yr-db-runtime-verif-windows.cpp moc/moc_yr-db-runtime-verif-main-window.cpp moc/moc_yr-db-runtime-verif-MONITOR.cpp moc/moc_YR_DBUS_COMMON.cpp moc/moc_yr-db-runtime-verif-utils.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc/moc_yr-db-runtime-verif-COMMONS-window.cpp moc/moc_yr-db-runtime-verif-setup-window.cpp moc/moc_yr-db-runtime-verif-combo-box.cpp moc/moc_yr-db-runtime-verif-progress-bar.cpp moc/moc_yr-db-runtime-verif-push-button.cpp moc/moc_yr-db-runtime-verif-logging-table-widget.cpp moc/moc_yr-db-runtime-verif-windows.cpp moc/moc_yr-db-runtime-verif-main-window.cpp moc/moc_yr-db-runtime-verif-MONITOR.cpp moc/moc_YR_DBUS_COMMON.cpp moc/moc_yr-db-runtime-verif-utils.cpp moc/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one.cpp moc/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.cpp moc/moc_yr_sd_runtime_verif_language_EXAMPLE_realcase.cpp
+	-$(DEL_FILE) moc/moc_yr-db-runtime-verif-COMMONS-window.cpp moc/moc_yr-db-runtime-verif-setup-window.cpp moc/moc_yr-db-runtime-verif-combo-box.cpp moc/moc_yr-db-runtime-verif-progress-bar.cpp moc/moc_yr-db-runtime-verif-push-button.cpp moc/moc_yr-db-runtime-verif-logging-table-widget.cpp moc/moc_yr-db-runtime-verif-windows.cpp moc/moc_yr-db-runtime-verif-main-window.cpp moc/moc_yr-db-runtime-verif-MONITOR.cpp moc/moc_YR_DBUS_COMMON.cpp moc/moc_yr-db-runtime-verif-utils.cpp
 moc/moc_yr-db-runtime-verif-COMMONS-window.cpp: src/windows/yr-db-runtime-verif-COMMONS-window.hpp \
 		src/utils/yr-db-runtime-verif-LOGGING-INFO.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
@@ -664,60 +646,6 @@ moc/moc_yr-db-runtime-verif-utils.cpp: src/utils/yr-db-runtime-verif-utils.hpp \
 		moc/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/yerith/yr-db-runtime-verif/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/yerith/yr-db-runtime-verif -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include src/utils/yr-db-runtime-verif-utils.hpp -o moc/moc_yr-db-runtime-verif-utils.cpp
-
-moc/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one.cpp: src/YEROTH_QVGE_sample_SAFETY_PROPERY_one.hpp \
-		src/include/yr-db-runtime-verif-MONITOR.hpp \
-		src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
-		src/utils/yr-db-runtime-verif-utils.hpp \
-		src/include/yr-db-runtime-verif-definition-format-date-time.hpp \
-		src/utils/yr-db-runtime-verif-CONFIG.hpp \
-		src/DBUS/YR_DBUS_COMMON.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
-		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
-		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_STATE.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
-		moc/moc_predefs.h \
-		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/yerith/yr-db-runtime-verif/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/yerith/yr-db-runtime-verif -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include src/YEROTH_QVGE_sample_SAFETY_PROPERY_one.hpp -o moc/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one.cpp
-
-moc/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.cpp: src/YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.hpp \
-		src/include/yr-db-runtime-verif-MONITOR.hpp \
-		src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
-		src/utils/yr-db-runtime-verif-utils.hpp \
-		src/include/yr-db-runtime-verif-definition-format-date-time.hpp \
-		src/utils/yr-db-runtime-verif-CONFIG.hpp \
-		src/DBUS/YR_DBUS_COMMON.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
-		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
-		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_STATE.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
-		moc/moc_predefs.h \
-		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/yerith/yr-db-runtime-verif/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/yerith/yr-db-runtime-verif -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include src/YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.hpp -o moc/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.cpp
-
-moc/moc_yr_sd_runtime_verif_language_EXAMPLE_realcase.cpp: src/yr_sd_runtime_verif_language_EXAMPLE_realcase.hpp \
-		src/include/yr-db-runtime-verif-MONITOR.hpp \
-		src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
-		src/utils/yr-db-runtime-verif-utils.hpp \
-		src/include/yr-db-runtime-verif-definition-format-date-time.hpp \
-		src/utils/yr-db-runtime-verif-CONFIG.hpp \
-		src/DBUS/YR_DBUS_COMMON.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
-		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
-		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_STATE.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
-		moc/moc_predefs.h \
-		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/yerith/yr-db-runtime-verif/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/yerith/yr-db-runtime-verif -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include src/yr_sd_runtime_verif_language_EXAMPLE_realcase.hpp -o moc/moc_yr_sd_runtime_verif_language_EXAMPLE_realcase.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -956,10 +884,7 @@ obj/yr-db-runtime-verif.o: src/yr-db-runtime-verif.cpp src/YRruntimeverification
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_STATE.hpp \
 		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
-		src/YEROTH_QVGE_sample_SAFETY_PROPERY_one.hpp \
-		src/YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.hpp \
-		src/yr_sd_runtime_verif_language_EXAMPLE_realcase.hpp \
-		src/yr-db-runtime-verif-database.hpp \
+		src/utils/yr-db-runtime-verif-database.hpp \
 		src/windows/yr-db-runtime-verif-windows.hpp \
 		src/windows/yr-db-runtime-verif-setup-window.hpp \
 		ui_yr-db-runtime-verif-setup-window.h \
@@ -1081,66 +1006,12 @@ obj/yr-db-runtime-verif-database-table-column.o: src/utils/yr-db-runtime-verif-d
 		obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif-database-table-column.o src/utils/yr-db-runtime-verif-database-table-column.cpp
 
-obj/yr-db-runtime-verif-database.o: src/yr-db-runtime-verif-database.cpp src/yr-db-runtime-verif-database.hpp \
+obj/yr-db-runtime-verif-database.o: src/utils/yr-db-runtime-verif-database.cpp src/utils/yr-db-runtime-verif-database.hpp \
 		src/utils/yr-db-runtime-verif-CONFIG.hpp \
 		src/utils/yr-db-runtime-verif-utils.hpp \
 		src/include/yr-db-runtime-verif-definition-format-date-time.hpp \
 		obj/yr-db-runtime-verif.gch/c++
-	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif-database.o src/yr-db-runtime-verif-database.cpp
-
-obj/YEROTH_QVGE_sample_SAFETY_PROPERY_one.o: src/YEROTH_QVGE_sample_SAFETY_PROPERY_one.cpp src/YEROTH_QVGE_sample_SAFETY_PROPERY_one.hpp \
-		src/include/yr-db-runtime-verif-MONITOR.hpp \
-		src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
-		src/utils/yr-db-runtime-verif-utils.hpp \
-		src/include/yr-db-runtime-verif-definition-format-date-time.hpp \
-		src/utils/yr-db-runtime-verif-CONFIG.hpp \
-		src/DBUS/YR_DBUS_COMMON.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
-		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
-		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_STATE.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
-		src/utils/yr-db-runtime-verif-logger.hpp \
-		obj/yr-db-runtime-verif.gch/c++
-	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/YEROTH_QVGE_sample_SAFETY_PROPERY_one.o src/YEROTH_QVGE_sample_SAFETY_PROPERY_one.cpp
-
-obj/YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.o: src/YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.cpp src/YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.hpp \
-		src/include/yr-db-runtime-verif-MONITOR.hpp \
-		src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
-		src/utils/yr-db-runtime-verif-utils.hpp \
-		src/include/yr-db-runtime-verif-definition-format-date-time.hpp \
-		src/utils/yr-db-runtime-verif-CONFIG.hpp \
-		src/DBUS/YR_DBUS_COMMON.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
-		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
-		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_STATE.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
-		src/utils/yr-db-runtime-verif-logger.hpp \
-		obj/yr-db-runtime-verif.gch/c++
-	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.o src/YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.cpp
-
-obj/yr_sd_runtime_verif_language_EXAMPLE_realcase.o: src/yr_sd_runtime_verif_language_EXAMPLE_realcase.cpp src/yr_sd_runtime_verif_language_EXAMPLE_realcase.hpp \
-		src/include/yr-db-runtime-verif-MONITOR.hpp \
-		src/include/yr-db-runtime-verif-definition-oo-class-operators.hpp \
-		src/utils/yr-db-runtime-verif-utils.hpp \
-		src/include/yr-db-runtime-verif-definition-format-date-time.hpp \
-		src/utils/yr-db-runtime-verif-CONFIG.hpp \
-		src/DBUS/YR_DBUS_COMMON.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EDGE.hpp \
-		src/yr_sd_runtime_verif/utils/YR_CPP_UTILS.hpp \
-		src/yr_sd_runtime_verif/yr-expressions-conditions/YR_CPP_notinset_inset_TRACE_expression.HPP \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_object.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_STATE.hpp \
-		src/yr_sd_runtime_verif/YR_CPP_MONITOR_EVENT.hpp \
-		src/utils/yr-db-runtime-verif-logger.hpp \
-		obj/yr-db-runtime-verif.gch/c++
-	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr_sd_runtime_verif_language_EXAMPLE_realcase.o src/yr_sd_runtime_verif_language_EXAMPLE_realcase.cpp
+	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/yr-db-runtime-verif-database.o src/utils/yr-db-runtime-verif-database.cpp
 
 obj/moc_yr-db-runtime-verif-COMMONS-window.o: moc/moc_yr-db-runtime-verif-COMMONS-window.cpp obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/moc_yr-db-runtime-verif-COMMONS-window.o moc/moc_yr-db-runtime-verif-COMMONS-window.cpp
@@ -1174,15 +1045,6 @@ obj/moc_YR_DBUS_COMMON.o: moc/moc_YR_DBUS_COMMON.cpp obj/yr-db-runtime-verif.gch
 
 obj/moc_yr-db-runtime-verif-utils.o: moc/moc_yr-db-runtime-verif-utils.cpp obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/moc_yr-db-runtime-verif-utils.o moc/moc_yr-db-runtime-verif-utils.cpp
-
-obj/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one.o: moc/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one.cpp obj/yr-db-runtime-verif.gch/c++
-	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one.o moc/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one.cpp
-
-obj/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.o: moc/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.cpp obj/yr-db-runtime-verif.gch/c++
-	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.o moc/moc_YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.cpp
-
-obj/moc_yr_sd_runtime_verif_language_EXAMPLE_realcase.o: moc/moc_yr_sd_runtime_verif_language_EXAMPLE_realcase.cpp obj/yr-db-runtime-verif.gch/c++
-	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/moc_yr_sd_runtime_verif_language_EXAMPLE_realcase.o moc/moc_yr_sd_runtime_verif_language_EXAMPLE_realcase.cpp
 
 obj/qrc_yr-db-runtime-verif.o: qrc_yr-db-runtime-verif.cpp obj/yr-db-runtime-verif.gch/c++
 	$(CXX) -c -include obj/yr-db-runtime-verif $(CXXFLAGS) $(INCPATH) -o obj/qrc_yr-db-runtime-verif.o qrc_yr-db-runtime-verif.cpp
@@ -1226,10 +1088,7 @@ install_sources: first FORCE
 	$(QINSTALL) /home/yerith/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-CONFIG.cpp $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-CONFIG.cpp
 	$(QINSTALL) /home/yerith/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-utils.cpp $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-utils.cpp
 	$(QINSTALL) /home/yerith/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-database-table-column.cpp $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-database-table-column.cpp
-	$(QINSTALL) /home/yerith/yr-db-runtime-verif/src/yr-db-runtime-verif-database.cpp $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-database.cpp
-	$(QINSTALL) /home/yerith/yr-db-runtime-verif/src/YEROTH_QVGE_sample_SAFETY_PROPERY_one.cpp $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./YEROTH_QVGE_sample_SAFETY_PROPERY_one.cpp
-	$(QINSTALL) /home/yerith/yr-db-runtime-verif/src/YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.cpp $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.cpp
-	$(QINSTALL) /home/yerith/yr-db-runtime-verif/src/yr_sd_runtime_verif_language_EXAMPLE_realcase.cpp $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr_sd_runtime_verif_language_EXAMPLE_realcase.cpp
+	$(QINSTALL) /home/yerith/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-database.cpp $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-database.cpp
 	$(QINSTALL) /home/yerith/yr-db-runtime-verif/src/windows/yr-db-runtime-verif-COMMONS-window.hpp $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-COMMONS-window.hpp
 	$(QINSTALL) /home/yerith/yr-db-runtime-verif/src/windows/yr-db-runtime-verif-setup-window.hpp $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-setup-window.hpp
 	$(QINSTALL) /home/yerith/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-LOGGING-INFO.hpp $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-LOGGING-INFO.hpp
@@ -1252,19 +1111,13 @@ install_sources: first FORCE
 	$(QINSTALL) /home/yerith/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-CONFIG.hpp $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-CONFIG.hpp
 	$(QINSTALL) /home/yerith/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-utils.hpp $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-utils.hpp
 	$(QINSTALL) /home/yerith/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-database-table-column.hpp $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-database-table-column.hpp
-	$(QINSTALL) /home/yerith/yr-db-runtime-verif/src/yr-db-runtime-verif-database.hpp $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-database.hpp
-	$(QINSTALL) /home/yerith/yr-db-runtime-verif/src/YEROTH_QVGE_sample_SAFETY_PROPERY_one.hpp $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./YEROTH_QVGE_sample_SAFETY_PROPERY_one.hpp
-	$(QINSTALL) /home/yerith/yr-db-runtime-verif/src/YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.hpp $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.hpp
-	$(QINSTALL) /home/yerith/yr-db-runtime-verif/src/yr_sd_runtime_verif_language_EXAMPLE_realcase.hpp $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr_sd_runtime_verif_language_EXAMPLE_realcase.hpp
+	$(QINSTALL) /home/yerith/yr-db-runtime-verif/src/utils/yr-db-runtime-verif-database.hpp $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-database.hpp
 	$(QINSTALL) /home/yerith/yr-db-runtime-verif/lib.pro $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./lib.pro
 	$(QINSTALL) /home/yerith/yr-db-runtime-verif/yr-db-runtime-verif.pro $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif.pro
 
 uninstall_sources: FORCE
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif.pro
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./lib.pro
-	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr_sd_runtime_verif_language_EXAMPLE_realcase.hpp
-	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.hpp
-	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./YEROTH_QVGE_sample_SAFETY_PROPERY_one.hpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-database.hpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-database-table-column.hpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-utils.hpp
@@ -1288,9 +1141,6 @@ uninstall_sources: FORCE
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-LOGGING-INFO.hpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-setup-window.hpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-COMMONS-window.hpp
-	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr_sd_runtime_verif_language_EXAMPLE_realcase.cpp
-	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./YEROTH_QVGE_sample_SAFETY_PROPERY_one_Recovery_SAMPLE.cpp
-	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./YEROTH_QVGE_sample_SAFETY_PROPERY_one.cpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-database.cpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-database-table-column.cpp
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/yerith/yr-db-runtime-verif/./yr-db-runtime-verif-utils.cpp
