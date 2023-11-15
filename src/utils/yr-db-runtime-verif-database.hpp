@@ -1,5 +1,5 @@
 /*
- * yeren-database.hpp
+ * yr-db-runtime-verif-database.hpp
  *
  *      Author: DR.-ING. DIPL.-INF. XAVIER NOUMBISSI NOUNDOU
  */
@@ -17,13 +17,14 @@
 class QSqlDatabase;
 class QSqlError;
 
-class YerothERPDatabase
+class YRDBRUNTIMEVERIF_Database
 {
+
 public:
 
-    YerothERPDatabase(QString dbType);
+    YRDBRUNTIMEVERIF_Database(QString dbType);
 
-    inline ~YerothERPDatabase()
+    inline ~YRDBRUNTIMEVERIF_Database()
     {
     }
 
@@ -109,6 +110,7 @@ public:
         return _db_connection_options;
     }
 
+
 private:
 
     QSqlDatabase _database;
@@ -120,9 +122,13 @@ private:
     static QString _db_user_pwd;
     static QString _db_connection_options;
 
+
 public:
 
+    static const QString YR_DB_RUNTIME_VERIF;
+
     static const QString MYSQL;
+
 
     inline void *operator   new[](size_t size)
     {

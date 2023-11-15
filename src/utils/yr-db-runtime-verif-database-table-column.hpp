@@ -30,6 +30,12 @@ public:
 
     static const QString CLIENTS_ID;
 
+    static const QString ERROR_ACCEPTED_RUNTIME_MONITOR_NAME;
+
+    static const QString ERROR_ACCEPTED_RUNTIME_MONITOR_NAME_ID;
+
+    static const QString ERROR_ACCEPTED_RUNTIME_MONITOR_NAME_DESCRIPTION;
+
     static const QString REFERENCE_RECU_PAIEMENT_CLIENT;
 
     static const QString REFERENCE_RECU_VENDU;

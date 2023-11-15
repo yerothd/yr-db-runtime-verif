@@ -18,12 +18,16 @@ YR_DB_RUNTIME_VERIF_DatabaseTableColumn::
 HISTORIQUE_STOCK("historique_stock");
 const QString YR_DB_RUNTIME_VERIF_DatabaseTableColumn::CLIENTS_ID("clients_id");
 
-const QString
-YR_DB_RUNTIME_VERIF_DatabaseTableColumn::
-REFERENCE_RECU_PAIEMENT_CLIENT("reference_recu_paiement_client");
-const QString
-YR_DB_RUNTIME_VERIF_DatabaseTableColumn::
-REFERENCE_RECU_VENDU("reference_recu_vendu");
+const QString YR_DB_RUNTIME_VERIF_DatabaseTableColumn::ERROR_ACCEPTED_RUNTIME_MONITOR_NAME("error_accepted_runtime_monitor_NAME");
+
+const QString YR_DB_RUNTIME_VERIF_DatabaseTableColumn::ERROR_ACCEPTED_RUNTIME_MONITOR_NAME_ID("error_accepted_runtime_monitor_name_ID");
+
+const QString YR_DB_RUNTIME_VERIF_DatabaseTableColumn::ERROR_ACCEPTED_RUNTIME_MONITOR_NAME_DESCRIPTION("error_accepted_runtime_monitor_name_DESCRIPTION");
+
+const QString YR_DB_RUNTIME_VERIF_DatabaseTableColumn::REFERENCE_RECU_PAIEMENT_CLIENT("reference_recu_paiement_client");
+
+const QString YR_DB_RUNTIME_VERIF_DatabaseTableColumn::REFERENCE_RECU_VENDU("reference_recu_vendu");
+
 const QString
 YR_DB_RUNTIME_VERIF_DatabaseTableColumn::
 REFERENCE_RECU_SORTIE("reference_recu_sortie");

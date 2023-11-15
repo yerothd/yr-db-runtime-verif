@@ -57,7 +57,7 @@ HEADERS = src/windows/yr-db-runtime-verif-COMMONS-window.hpp \
 		  src/utils/yr-db-runtime-verif-CONFIG.hpp \
 		  src/utils/yr-db-runtime-verif-utils.hpp \
 			src/utils/yr-db-runtime-verif-database-table-column.hpp \
-		  src/yr-db-runtime-verif-database.hpp 
+		  src/utils/yr-db-runtime-verif-database.hpp 
 
 SOURCES = src/windows/yr-db-runtime-verif-COMMONS-window.cpp \
 			src/windows/yr-db-runtime-verif-setup-window.cpp \
@@ -79,7 +79,7 @@ SOURCES = src/windows/yr-db-runtime-verif-COMMONS-window.cpp \
 			src/utils/yr-db-runtime-verif-CONFIG.cpp \
 			src/utils/yr-db-runtime-verif-utils.cpp \
 			src/utils/yr-db-runtime-verif-database-table-column.cpp \
-			src/yr-db-runtime-verif-database.cpp
+			src/utils/yr-db-runtime-verif-database.cpp
 
 
 #YR-USER-CODE-INCLUDE
