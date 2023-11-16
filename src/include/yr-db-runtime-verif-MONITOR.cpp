@@ -95,11 +95,25 @@ bool YR_DB_RUNTIME_VERIF_Monitor::
 
 
 void YR_DB_RUNTIME_VERIF_Monitor::
+        WRITE_failed_error_accepted_Runtime_Monitor___SUT()
+{
+
+}
+
+
+void YR_DB_RUNTIME_VERIF_Monitor::
 		TRACE_SUT_LOG_EVENT_complement_info_ON_ACCEPTING_STATE
 				(YR_CPP_MONITOR_EDGE &an_EDGE_leading_TO_error_FINAL_state)
 {
 	if (0 != _dbus_client)
 	{
+        /*
+         * Write this error accepted state runtime monitor name
+         * into USER APPLICATION (system under test) corresponding
+         * database table columns.
+         */
+        WRITE_failed_error_accepted_Runtime_Monitor___SUT();
+
 		_dbus_client
 			->TRACE_SUT_LOG_EVENT_complement_info_ON_ACCEPTING_STATE
 				(an_EDGE_leading_TO_error_FINAL_state);

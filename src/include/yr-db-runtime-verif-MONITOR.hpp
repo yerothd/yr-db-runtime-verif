@@ -52,27 +52,39 @@ class YR_DB_RUNTIME_VERIF_Monitor : public YR_CPP_MONITOR
 
 public:
 
-    YEROTH_CLASS_OPERATORS
-
 	YR_DB_RUNTIME_VERIF_Monitor();
+
 
     YR_DB_RUNTIME_VERIF_Monitor(QString 					RUNTIME_MONITOR_NAME,
     							YR_DB_RUNTIME_VERIF_Logger 	*aLogger);
 
+
     YR_DB_RUNTIME_VERIF_Monitor(YR_DB_RUNTIME_VERIF_Logger *aLogger);
 
+
     virtual ~YR_DB_RUNTIME_VERIF_Monitor();
+
 
     virtual bool YR_DB_RUNTIME_VERIF_Monitor_notify_SUCCESS_VERIFICATION
 					(YR_CPP_MONITOR_EDGE *an_EDGE_leading_TO_error_FINAL_state = 0);
 
+
+protected:
+
+    virtual void WRITE_failed_error_accepted_Runtime_Monitor___SUT();
+
+
+public:
+
 	virtual void TRACE_SUT_LOG_EVENT_complement_info_ON_ACCEPTING_STATE
 					(YR_CPP_MONITOR_EDGE &an_EDGE_leading_TO_error_FINAL_state);
+
 
 	virtual void TRACE_SUT_LOG_EVENT(YR_DB_RUNTIME_VERIF_Monitor &a_runtime_monitor,
 							 	 	 uint 						 cur_command,
 									 QString 					 &in0,
 									 QString 					 CHANGED_RECORD_DB_QTY);
+
 
     inline virtual void YR_TRIGGERED_EVENT_LOGGING(const QString A_METHOD_CALLED,
                                                    const QString AN_EVENT,
@@ -86,20 +98,26 @@ public:
 				 << "]";
     }
 
+
     inline virtual YR_DB_RUNTIME_VERIF_Logger *get_logger()
     {
         return _logger;
     }
 
+
 public Q_SLOTS:
 
     virtual bool YR_slot_refresh_INSERT_DB_MYSQL(QString in0, uint in1);
 
+
     virtual bool YR_slot_refresh_SELECT_DB_MYSQL(QString in0, uint in1);
+
 
     virtual bool YR_slot_refresh_UPDATE_DB_MYSQL(QString in0, uint in1);
 
+
     virtual bool YR_slot_refresh_DELETE_DB_MYSQL(QString in0, uint in1);
+
 
     /**
      * THIS METHOD PERFORMS EFFECTIVE TEMPORAL LINEAR
