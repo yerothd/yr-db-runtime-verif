@@ -343,6 +343,7 @@ protected:
     {
     }
 
+
     inline YR_CPP_MONITOR(QString RUNTIME_MONITOR_NAME)
     :_ROOT_EDGE(0),
 	 _CALL_BACK_final_state(0),

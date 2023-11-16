@@ -159,7 +159,7 @@ int main(int argc, char *argv[])
 
     YR_DB_RUNTIME_VERIF_Config::init_YR_DB_RUNTIME_VERIF_Config(initCfg);
 
-    YRDBRUNTIMEVERIF_Database database(YR_DB_RUNTIME_VERIF_Config::_db_type);
+    YR_DB_RUNTIME_VERIF_Database database(YR_DB_RUNTIME_VERIF_Config::_db_type);
 
 
     //qDebug() << "++ database.toString(): " << database.toString();

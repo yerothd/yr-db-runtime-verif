@@ -42,11 +42,6 @@ class QRegExp;
 class QLocale;
 class QProcess;
 
-class YerenWindows;
-class YerenLineEdit;
-class YerenSqlTableModel;
-
-
 
 class YR_DB_RUNTIME_VERIF_Utils : public QObject
 {
@@ -58,31 +53,37 @@ public:
     {
     }
 
+
     virtual ~YR_DB_RUNTIME_VERIF_Utils()
     {
     }
+
 
     inline static void setLogFileName(QString logFileName)
     {
         _logFileName = logFileName;
     }
 
+
     inline static QString getLogFileName()
     {
         return _logFileName;
     }
 
+
     inline static bool isEqualsCaseSensitive(const QString &str1,
-                                            const QString &str2)
+                                             const QString &str2)
     {
         return (0 == str1.compare(str2, Qt::CaseSensitive));
     }
 
+
     inline static bool isEqualsCaseInsensitive(const QString &str1,
-                                              const QString &str2)
+                                               const QString &str2)
     {
         return (0 == str1.compare(str2, Qt::CaseInsensitive));
     }
+
 
     inline static QString prepareSqlStr(QString aStr)
     {
@@ -93,14 +94,17 @@ public:
     static void getCurrentSimplifiedDateWITHmilliseconds(QString 	 &date_IN_OUT,
                                                          const QDate &aDate);
 
+
     inline static void getCurrentSimplifiedDateWITHmilliseconds(QString &date_IN_OUT)
     {
         YR_DB_RUNTIME_VERIF_Utils::getCurrentSimplifiedDateWITHmilliseconds(date_IN_OUT,
                                                                             QDate::currentDate());
     }
 
+
     static void getCurrentLocaleDate(QString 		&date_IN_OUT,
                                      const QDate 	&aDate);
+
 
     inline static void getCurrentLocaleDate(QString &date_IN_OUT)
     {
@@ -152,6 +156,7 @@ public:
                                                                const QStringList 	&program_executable_args,
                                                                QString 				&program_output_IN_OUT);
 
+
     /**
      * Returns the size of the output file created
      * by execution of the program 'program' !
@@ -166,6 +171,7 @@ public:
                          QString("%1/%2").arg(program_working_directory_full_path, output_file_name),
 						 program_executable_args);
     }
+
 
     /**
      * Returns the size of the output file created
@@ -226,17 +232,17 @@ public:
     }
 
 
-    static bool execQuery(const QString &strQuery,
-                          YR_DB_RUNTIME_VERIF_Logger *logger = 0);
+    static bool execQuery(const QString                 &strQuery,
+                          YR_DB_RUNTIME_VERIF_Logger    *logger = 0);
 
 
-    static int execQuery(QSqlQuery &query,
-    					 const QString &strQuery,
-                         YR_DB_RUNTIME_VERIF_Logger *logger = 0);
+    static int execQuery(QSqlQuery                      &query,
+    					 const QString                  &strQuery,
+                         YR_DB_RUNTIME_VERIF_Logger *   logger = 0);
 
 
-    static int execQuery(QSqlQuery &query,
-                         YR_DB_RUNTIME_VERIF_Logger *logger = 0);
+    static int execQuery(QSqlQuery                      &query,
+                         YR_DB_RUNTIME_VERIF_Logger     *logger = 0);
 
 
     static QString get_text(const QVariant &qv);

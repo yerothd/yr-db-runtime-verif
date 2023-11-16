@@ -17,14 +17,14 @@
 class QSqlDatabase;
 class QSqlError;
 
-class YRDBRUNTIMEVERIF_Database
+class YR_DB_RUNTIME_VERIF_Database
 {
 
 public:
 
-    YRDBRUNTIMEVERIF_Database(QString dbType);
+    YR_DB_RUNTIME_VERIF_Database(QString dbType);
 
-    inline ~YRDBRUNTIMEVERIF_Database()
+    inline ~YR_DB_RUNTIME_VERIF_Database()
     {
     }
 

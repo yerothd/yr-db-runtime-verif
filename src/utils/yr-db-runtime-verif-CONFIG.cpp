@@ -14,6 +14,8 @@
 //#######################################################################
 
 
+#include "src/utils/yr-db-runtime-verif-database.hpp"
+
 #include "src/utils/yr-db-runtime-verif-utils.hpp"
 
 

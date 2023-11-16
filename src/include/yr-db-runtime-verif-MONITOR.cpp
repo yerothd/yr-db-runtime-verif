@@ -7,6 +7,10 @@
 
 #include "yr-db-runtime-verif-MONITOR.hpp"
 
+#include "src/utils/yr-db-runtime-verif-database-table-column.hpp"
+
+#include "src/utils/yr-db-runtime-verif-database.hpp"
+
 #include "src/utils/yr-db-runtime-verif-logger.hpp"
 
 
@@ -94,10 +98,27 @@ bool YR_DB_RUNTIME_VERIF_Monitor::
 }
 
 
+//TODO: write a description for each runtime monitor
+//error accepted state.
+//This information might come from runtime monitor
+//class itself, as written by developer.
 void YR_DB_RUNTIME_VERIF_Monitor::
         WRITE_failed_error_accepted_Runtime_Monitor___SUT()
 {
+    QString QUERY_TO_SET_A_RUNTIME_MONITOR_FAILURE =
+        QString("INSERT into %1 (`%2`, `%3`, `%4`) values ('%5', '%6', '%7');")
+         .arg(YR_DB_RUNTIME_VERIF_Database::YR_DB_RUNTIME_VERIF,
+              YR_DB_RUNTIME_VERIF_DatabaseTableColumn::ERROR_ACCEPTED_RUNTIME_MONITOR_NAME,
+              YR_DB_RUNTIME_VERIF_DatabaseTableColumn::ERROR_ACCEPTED_RUNTIME_MONITOR_NAME_ID,
+              YR_DB_RUNTIME_VERIF_DatabaseTableColumn::ERROR_ACCEPTED_RUNTIME_MONITOR_NAME_DESCRIPTION,
+              get_RUNTIME_MONITOR_NAME(),
+              GET_QSTRING_ID(),
+              "");
 
+    //QDEBUG_STRINGS_OUTPUT_2("QUERY_TO_SET_A_RUNTIME_MONITOR_FAILURE",
+    //                         QUERY_TO_SET_A_RUNTIME_MONITOR_FAILURE);
+
+    YR_DB_RUNTIME_VERIF_Utils::execQuery(QUERY_TO_SET_A_RUNTIME_MONITOR_FAILURE);
 }
 
 

@@ -19,6 +19,7 @@
 
 class YRDBRUNTIMEVERIF_Windows;
 
+class YR_DB_RUNTIME_VERIF_Database;
 
 
 class YR_DB_RUNTIME_VERIF_Config
@@ -106,6 +107,8 @@ public:
 
     static QString YR_DB_RUNTIME_VERIF_HOME_FOLDER;
 
+
+    static YR_DB_RUNTIME_VERIF_Database *_Database__SUT__for__verification_success_Notification;
 
     static YRDBRUNTIMEVERIF_Windows *ALL_WINDOWS;
 };

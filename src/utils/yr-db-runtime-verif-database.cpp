@@ -11,33 +11,33 @@
 
 
 
-QString YRDBRUNTIMEVERIF_Database::_db_type("");
+QString YR_DB_RUNTIME_VERIF_Database::_db_type("");
 
-QString YRDBRUNTIMEVERIF_Database::_db_name("");
+QString YR_DB_RUNTIME_VERIF_Database::_db_name("");
 
-QString YRDBRUNTIMEVERIF_Database::_db_ip_address("");
+QString YR_DB_RUNTIME_VERIF_Database::_db_ip_address("");
 
-QString YRDBRUNTIMEVERIF_Database::_db_user_name("");
+QString YR_DB_RUNTIME_VERIF_Database::_db_user_name("");
 
-QString YRDBRUNTIMEVERIF_Database::_db_user_pwd("");
+QString YR_DB_RUNTIME_VERIF_Database::_db_user_pwd("");
 
-QString YRDBRUNTIMEVERIF_Database::_db_connection_options("");
-
-
-
-const QString YRDBRUNTIMEVERIF_Database::YR_DB_RUNTIME_VERIF("yr_db_runtime_verif");
-
-const QString YRDBRUNTIMEVERIF_Database::MYSQL("MySQL");
+QString YR_DB_RUNTIME_VERIF_Database::_db_connection_options("");
 
 
 
-YRDBRUNTIMEVERIF_Database::YRDBRUNTIMEVERIF_Database(QString dbType)
+const QString YR_DB_RUNTIME_VERIF_Database::YR_DB_RUNTIME_VERIF("yr_db_runtime_verif");
+
+const QString YR_DB_RUNTIME_VERIF_Database::MYSQL("MySQL");
+
+
+
+YR_DB_RUNTIME_VERIF_Database::YR_DB_RUNTIME_VERIF_Database(QString dbType)
 {
     if (YR_DB_RUNTIME_VERIF_Utils::isEqualsCaseInsensitive
-            (dbType, YRDBRUNTIMEVERIF_Database::MYSQL))
+            (dbType, YR_DB_RUNTIME_VERIF_Database::MYSQL))
     {
         qDebug() <<
-                 "yr-db-runtime-verif | YRDBRUNTIMEVERIF_Database::YRDBRUNTIMEVERIF_Database | database type: QMYSQL \n";
+                 "yr-db-runtime-verif | YR_DB_RUNTIME_VERIF_Database::YR_DB_RUNTIME_VERIF_Database | database type: QMYSQL \n";
         _database = QSqlDatabase::addDatabase("QMYSQL");
     }
 
@@ -49,38 +49,38 @@ YRDBRUNTIMEVERIF_Database::YRDBRUNTIMEVERIF_Database(QString dbType)
     this->set_db_connection_options(YR_DB_RUNTIME_VERIF_Config::_db_connection_options);
 }
 
-void YRDBRUNTIMEVERIF_Database::set_db_name(QString db_name)
+void YR_DB_RUNTIME_VERIF_Database::set_db_name(QString db_name)
 {
     _db_name = db_name;
     _database.setDatabaseName(_db_name);
 }
 
-void YRDBRUNTIMEVERIF_Database::set_db_ip_address(QString db_ip_address)
+void YR_DB_RUNTIME_VERIF_Database::set_db_ip_address(QString db_ip_address)
 {
     _db_ip_address = db_ip_address;
     _database.setHostName(_db_ip_address);
 }
 
-void YRDBRUNTIMEVERIF_Database::set_db_user_name(QString db_user_name)
+void YR_DB_RUNTIME_VERIF_Database::set_db_user_name(QString db_user_name)
 {
     _db_user_name = db_user_name;
     _database.setUserName(_db_user_name);
 }
 
-void YRDBRUNTIMEVERIF_Database::set_db_user_pwd(QString db_user_pwd)
+void YR_DB_RUNTIME_VERIF_Database::set_db_user_pwd(QString db_user_pwd)
 {
     _db_user_pwd = db_user_pwd;
     _database.setPassword(_db_user_pwd);
 }
 
-void YRDBRUNTIMEVERIF_Database::set_db_connection_options(QString db_connection_options)
+void YR_DB_RUNTIME_VERIF_Database::set_db_connection_options(QString db_connection_options)
 {
     _db_connection_options = db_connection_options;
     _database.setConnectOptions(_db_connection_options);
 
 }
 
-QString YRDBRUNTIMEVERIF_Database::toString() const
+QString YR_DB_RUNTIME_VERIF_Database::toString() const
 {
     QString ret;
 
@@ -103,9 +103,9 @@ QString YRDBRUNTIMEVERIF_Database::toString() const
                            "db_name: %2\n"
                            "db_ip_address: %3\n"
                            "db_connection_options: %4").arg(_db_type,
-                                                            YRDBRUNTIMEVERIF_Database::_db_name,
-                                                            YRDBRUNTIMEVERIF_Database::_db_ip_address,
-                                                            YRDBRUNTIMEVERIF_Database::_db_connection_options));
+                                                            YR_DB_RUNTIME_VERIF_Database::_db_name,
+                                                            YR_DB_RUNTIME_VERIF_Database::_db_ip_address,
+                                                            YR_DB_RUNTIME_VERIF_Database::_db_connection_options));
     }
 
     return ret;
